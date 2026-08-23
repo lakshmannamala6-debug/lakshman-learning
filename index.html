@@ -55,6 +55,216 @@ footer{background:#86130f;color:white;text-align:center;padding:25px}
   #historyTable{font-size:13px}
   #historyTable th,#historyTable td{padding:8px!important}
 }
+
+@media(max-width:700px){
+  }
+
+
+.history-view-btn{
+  border:0;
+  border-radius:7px;
+  padding:8px 12px;
+  cursor:pointer;
+  background:#7d1813;
+  color:#fff;
+  font-weight:700;
+}
+.history-view-btn:hover{opacity:.9}
+
+.attempt-details-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(0,0,0,.65);
+  overflow:auto;
+  padding:20px;
+}
+.attempt-details-card{
+  max-width:950px;
+  margin:20px auto;
+  background:#fff;
+  border-radius:14px;
+  padding:20px;
+  box-shadow:0 10px 40px rgba(0,0,0,.25);
+}
+.attempt-details-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+.attempt-details-head button{
+  border:0;
+  background:#eee;
+  border-radius:50%;
+  width:38px;
+  height:38px;
+  cursor:pointer;
+  font-size:18px;
+}
+.attempt-summary{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin:15px 0;
+}
+.attempt-summary div{
+  background:#f7f2ea;
+  padding:12px;
+  border-radius:9px;
+  text-align:center;
+}
+.attempt-summary span{
+  display:block;
+  font-size:21px;
+  font-weight:800;
+  margin-top:4px;
+}
+.attempt-question{
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:14px;
+  margin:12px 0;
+}
+.attempt-question h3{margin-top:0}
+@media(max-width:700px){
+  .attempt-summary{grid-template-columns:repeat(2,1fr)}
+}
+
+
+/* Clean Test Attempt History table */
+.history-section{
+  margin:18px 0 28px;
+  padding:14px;
+  background:#fff;
+  border:1px solid #e2d8ca;
+  border-radius:12px;
+}
+.history-section-title{
+  margin:4px 0 12px;
+  color:#7d1813;
+  font-size:20px;
+}
+.history-subtable{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+  table-layout:auto;
+}
+.history-subtable th,
+.history-subtable td{
+  padding:12px;
+  border:1px solid #ddd;
+  vertical-align:middle;
+  text-align:center;
+  white-space:nowrap;
+}
+.history-subtable th{
+  white-space:nowrap;
+}
+.history-subtable td:last-child{
+  min-width:120px;
+}
+.history-empty{
+  padding:20px !important;
+  text-align:center !important;
+  color:#666;
+} 
+
+.result-subject-section{
+  margin-top:22px;
+}
+
+.history-subtitle{
+  margin:16px 0 10px;
+  color:#555;
+  font-size:16px;
+}
+
+.subject-stats{
+  margin:12px 0 18px;
+}
+
+.subject-stats .stat{
+  min-height:92px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+@media(max-width:900px){
+  .subject-stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:520px){
+  .subject-stats{
+    grid-template-columns:1fr;
+  }
+}
+
+#historyTable{
+  width:100%;
+  border-collapse:collapse;
+  table-layout:auto;
+}
+#historyTable th,
+#historyTable td{
+  vertical-align:middle;
+}
+#historyTable th{
+  white-space:nowrap;
+}
+#historyTable td{
+  white-space:nowrap;
+}
+#historyTable th:last-child,
+#historyTable td:last-child{
+  min-width:120px;
+}
+@media(max-width:700px){
+  #historyTable{
+    min-width:760px;
+  }
+}
+
+
+.take-test-again-section{
+  margin-top:24px;
+  padding:20px;
+  border-radius:16px;
+  background:#fff;
+}
+
+.take-test-again-section h3{
+  margin:0 0 16px;
+  color:#8b0000;
+}
+
+.take-test-again-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+
+.take-test-again-grid .primary{
+  width:100%;
+  min-height:54px;
+  padding:12px 16px;
+  border:0;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:700;
+}
+
+@media(max-width:700px){
+  .take-test-again-grid{
+    grid-template-columns:1fr;
+  }
+}
+
 </style>
 
 <style>
@@ -110,7 +320,14 @@ footer{background:#86130f;color:white;text-align:center;padding:25px}
 <div class="card"><h2>📊 Ratio & Proportion</h2><p>Practice questions coming soon.</p><button class="coming" onclick="comingSoon('Ratio & Proportion')">Coming Soon</button></div>
 <div class="card"><h2>⚡ Average</h2><p>Practice questions coming soon.</p><button class="coming" onclick="comingSoon('Average')">Coming Soon</button></div>
 <div class="card"><h2>⏱️ Time & Work</h2><p>Practice questions coming soon.</p><button class="coming" onclick="comingSoon('Time & Work')">Coming Soon</button></div>
-<div class="card"><h2>🚆 Time, Speed & Distance</h2><p>Practice questions coming soon.</p><button class="coming" onclick="comingSoon('Time, Speed & Distance')">Coming Soon</button></div>
+<div class="card">
+  <h2>🚆 Time, Speed & Distance</h2>
+  <p>18 Questions • 30 Seconds per Question</p>
+
+  <button class="primary" onclick="startTimeDistanceTestAgain()">
+    Start Test
+  </button>
+</div>
 <div class="card"><h2>🧮 Simple & Compound Interest</h2><p>Practice questions coming soon.</p><button class="coming" onclick="comingSoon('Simple & Compound Interest')">Coming Soon</button></div>
 </div>
 </div>
@@ -123,8 +340,19 @@ footer{background:#86130f;color:white;text-align:center;padding:25px}
 <div id="options"></div>
 <div class="actions">
 <button onclick="previous()">← Previous</button>
-<button class="primary" onclick="next()">Next →</button>
-<button class="primary" onclick="submitTest()">Submit Test</button>
+
+
+
+
+<button type="button"
+        class="secondary"
+        id="testBackBtn"
+        onclick="goBackPage()">
+  ← Back
+</button>
+
+<button onclick="markQuestion()">Mark</button>
+<button class="primary" onclick="next()">Save &amp; Next →</button>
 </div>
 </div></div></section>
 
@@ -136,35 +364,114 @@ footer{background:#86130f;color:white;text-align:center;padding:25px}
     <div class="resultbox">
       <h2 class="title">📊 Test Results</h2>
 
-      <div class="stats">
-        <div class="stat"><strong id="totalTests">0</strong>Total Tests Written</div>
-        <div class="stat"><strong id="bestScore">0/32</strong>Best Score</div>
-        <div class="stat"><strong id="averageScore">0%</strong>Average Score</div>
-        <div class="stat"><strong id="latestScore">0/32</strong>Latest Test</div>
+      <!-- 1. Number System Results -->
+      <div class="history-section result-subject-section">
+        <h4 class="history-section-title">1. Number System — Results</h4>
+
+        <div class="stats subject-stats">
+          <div class="stat">
+            <strong id="numberTotalTests">0</strong>
+            Total Tests Written
+          </div>
+          <div class="stat">
+            <strong id="numberBestScore">0/32</strong>
+            Best Score
+          </div>
+          <div class="stat">
+            <strong id="numberAverageScore">0%</strong>
+            Average Score
+          </div>
+          <div class="stat">
+            <strong id="numberLatestScore">0/32</strong>
+            Latest Test
+          </div>
+        </div>
+
+        <h5 class="history-subtitle">📅 Test Attempt History</h5>
+        <div style="overflow-x:auto">
+          <table id="numberHistoryTable" class="history-subtable">
+            <thead>
+              <tr style="background:#f1e4d1">
+                <th>Attempt</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Month</th>
+                <th>Year</th>
+                <th>Score</th>
+                <th>View Details</th>
+              </tr>
+            </thead>
+            <tbody id="numberHistoryBody">
+              <tr><td colspan="7" class="history-empty">No Number System tests attempted yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <h3>📅 Test Attempt History</h3>
-      <div style="overflow-x:auto">
-        <table id="historyTable" style="width:100%;border-collapse:collapse;background:#fff">
-          <thead>
-            <tr style="background:#f1e4d1">
-              <th style="padding:12px;border:1px solid #ddd">Attempt</th>
-              <th style="padding:12px;border:1px solid #ddd">Date</th>
-              <th style="padding:12px;border:1px solid #ddd">Time</th>
-              <th style="padding:12px;border:1px solid #ddd">Month</th>
-              <th style="padding:12px;border:1px solid #ddd">Year</th>
-              <th style="padding:12px;border:1px solid #ddd">Score</th>
-            </tr>
-          </thead>
-          <tbody id="historyBody">
-            <tr><td colspan="6" style="padding:20px;text-align:center">No tests attempted yet.</td></tr>
-          </tbody>
-        </table>
+      <!-- 2. Time, Speed & Distance Results -->
+      <div class="history-section result-subject-section">
+        <h4 class="history-section-title">2. Time, Speed &amp; Distance — Results</h4>
+
+        <div class="stats subject-stats">
+          <div class="stat">
+            <strong id="timeTotalTests">0</strong>
+            Total Tests Written
+          </div>
+          <div class="stat">
+            <strong id="timeBestScore">0/18</strong>
+            Best Score
+          </div>
+          <div class="stat">
+            <strong id="timeAverageScore">0%</strong>
+            Average Score
+          </div>
+          <div class="stat">
+            <strong id="timeLatestScore">0/18</strong>
+            Latest Test
+          </div>
+        </div>
+
+        <h5 class="history-subtitle">📅 Test Attempt History</h5>
+        <div style="overflow-x:auto">
+          <table id="timeHistoryTable" class="history-subtable">
+            <thead>
+              <tr style="background:#f1e4d1">
+                <th>Attempt</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Month</th>
+                <th>Year</th>
+                <th>Score</th>
+                <th>View Details</th>
+              </tr>
+            </thead>
+            <tbody id="timeHistoryBody">
+              <tr><td colspan="7" class="history-empty">No Time, Speed &amp; Distance tests attempted yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <div style="margin-top:20px">
-        <button class="primary" onclick="startTest()">🔄 Take Test Again</button>
-      </div>
+      <div class="take-test-again-section">
+   <div style="margin-bottom:14px;">
+     
+   </div>
+  <h3>📝 Take Test Again</h3>
+
+  <div class="take-test-again-grid">
+
+    <button class="primary" type="button"
+            onclick="startNumberSystemTest()">
+      🔢 Number System — Take Test Again
+    </button>
+
+    <button class="primary" type="button"
+            onclick="startTimeDistanceTestAgain()">
+      🚆 Time, Speed &amp; Distance — Take Test Again
+    </button>
+
+  </div>
+</div>
     </div>
   </div>
 </section>
@@ -172,123 +479,932 @@ footer{background:#86130f;color:white;text-align:center;padding:25px}
 <footer>© 2026 <b>LAKSHMAN LEARNING</b> • LEARN • GROW • WISDOM</footer>
 
 <script>
+const numberSystemQuestions = [
+{"question":"The set of real numbers includes which of the following?","options":["Only Rational Numbers","Only Irrational Numbers","Both Rational and Irrational Numbers","Only Whole Numbers"],"answer":2,"pattern":"Real Numbers = Rational Numbers + Irrational Numbers","solution":"Real numbers consist of both rational and irrational numbers."},
+{"question":"Which of the following statement is TRUE for Whole Numbers?","options":["They include fractions","They include negative numbers","They include zero and positive integers","They start from 1"],"answer":2,"pattern":"Whole Numbers","solution":"Whole numbers are 0 and all positive integers."},
+{"question":"Which set includes numbers like -5, 0, and 6?","options":["Natural Numbers","Integers","Irrational Numbers","Whole Numbers"],"answer":1,"pattern":"Integers","solution":"Integers include negative numbers, zero, and positive integers."},
+{"question":"Which of these is both an Integer and a Whole number?","options":["-4","0","3.5","1/2"],"answer":1,"pattern":"Whole Numbers ⊂ Integers","solution":"0 is a whole number and also an integer."},
+{"question":"Which of the following is a non-zero number that belongs to every set: Whole, Integer, Rational, and Real?","options":["1","0","-1","√2"],"answer":0,"pattern":"Number Classification","solution":"1 belongs to whole, integer, rational, and real numbers."},
+{"question":"Which of the following numbers is both a Rational Number and a Terminating Decimal?","options":["1/3","4/5","√3","π"],"answer":1,"pattern":"Rational Number + Terminating Decimal","solution":"4/5 = 0.8, which is a terminating decimal and rational number."},
+{"question":"Arrange the fractions 5/9, 4/7, 3/5 and 2/3 in ascending order.","options":["3/5, 4/7, 2/3, 5/9","5/9, 4/7, 3/5, 2/3","2/3, 4/7, 3/5, 5/9","4/7, 5/9, 2/3, 3/5"],"answer":1,"pattern":"Comparison of Fractions","solution":"Compare the fractions using common denominators or decimal values."},
+{"question":"What is the average of all three-digit numbers divisible by 23?","options":["752","552","652","452"],"answer":1,"pattern":"Average of Arithmetic Progression","solution":"The multiples form an arithmetic progression; average = (first term + last term)/2."},
+{"question":"Which of the following is a perfect square and an Integer?","options":["√5","√9","3.2","3.4"],"answer":1,"pattern":"Perfect Square Identification","solution":"√9 = 3, which is an integer."},
+{"question":"Which of the following is the least 6-digit number, which is a perfect square?","options":["100489","100588","100688","100788"],"answer":0,"pattern":"Nearest Perfect Square","solution":"100^2 = 10000; the least six-digit perfect square is 317^2 = 100489."},
+{"question":"What is the smallest number that must be added to 2378 to make it a perfect square?","options":["23","24","25","26"],"answer":0,"pattern":"Next Perfect Square","solution":"49^2 = 2401, so 2401 - 2378 = 23."},
+{"question":"If you subtract the square of a number from 4052 and then multiply the result by 15, you get 41340. What is that number?","options":["46","36","26","86"],"answer":1,"pattern":"Equation + Perfect Square","solution":"(4052 - x²)15 = 41340, so 4052 - x² = 2756 and x² = 1296, hence x = 36."},
+{"question":"A number is increased by 120, and the result becomes a perfect square. The original number lies between two consecutive square numbers, 625 and 676. Find the original number.","options":["626","656","664","672"],"answer":2,"pattern":"Perfect Square + Range","solution":"664 + 120 = 784 = 28²."},
+{"question":"What is the total number of factors of 3600?","options":["45","30","35","20"],"answer":0,"pattern":"Number of Factors","solution":"3600 = 2^4 × 3^2 × 5^2, so factors = (4+1)(2+1)(2+1) = 45."},
+{"question":"Convert 0.714285... into a fraction.","options":["5/7","1/7","15/7","16/7"],"answer":0,"pattern":"Recurring Decimal → Fraction","solution":"0.714285... = 5/7."},
+{"question":"Find the least number which leaves remainder 3 when divided by 5, 7, and 8.","options":["280","283","313","275"],"answer":1,"pattern":"LCM + Common Remainder","solution":"LCM(5,7,8) = 280; required number = 280 + 3 = 283."},
+{"question":"The unit digit of 7^103 is:","options":["4","3","1","0"],"answer":1,"pattern":"Unit Digit Cycle","solution":"Unit digits of powers of 7 repeat as 7,9,3,1. Since 103 mod 4 = 3, the unit digit is 3."},
+{"question":"The difference between the two numbers is 1365. On dividing the larger by the smaller, the quotient is 6, and the remainder is 15. Find the smaller number.","options":["240","270","285","295"],"answer":1,"pattern":"Division Algorithm","solution":"Larger = 6x + 15 and larger - x = 1365. Thus 5x + 15 = 1365, giving x = 270."},
+{"question":"If 2x+3y=50 and x, y∈N, then what is the value of x for which y is minimum?","options":["20","22","24","26"],"answer":1,"pattern":"Linear Equation + Minimum Value","solution":"y = (50 - 2x)/3. For natural y and maximum feasible x, x = 22 gives y = 2."},
+{"question":"A number r when divided by 8 leaves remainder 3. What will be the remainder when (r²+6r+7) is divided by 8?","options":["2","3","4","1"],"answer":0,"pattern":"Remainder Theorem / Modular Arithmetic","solution":"r ≡ 3 (mod 8), so r² + 6r + 7 ≡ 9 + 18 + 7 = 34 ≡ 2 (mod 8)."},
+{"question":"If the 9-digit number 5x7985y6 is divisible by 36, then what is the negative value √(2x+y) for the largest possible value of y, given x and y are natural numbers?","options":["5","-5","-7","-4"],"answer":1,"pattern":"Divisibility by 36 = Divisibility by 4 and 9","solution":"Apply divisibility rules for 4 and 9 to determine x and the largest possible y, then evaluate the negative square root."},
+{"question":"Each of Ravi and Kavita had some marbles. Kavita had 12 more marbles than Ravi had. If each of them had one more marble, then three times the number of marbles Kavita would then have had would have been equal to four times the number of marbles Ravi would then have had. How many marbles did Kavita actually have?","options":["43","48","47","51"],"answer":2,"pattern":"Linear Equation","solution":"Let Ravi have x and Kavita x+12. Use 3(x+13)=4(x+1) to obtain Kavita's count."},
+{"question":"In a room, there are some chairs and some people. If on each chair, only one person is seated, then there is no chair for exactly one person. If on each chair, two persons sit, then there is one vacant chair. What is the number of chairs in the room?","options":["3","4","7","6"],"answer":0,"pattern":"Linear Equation","solution":"Translate both seating conditions into equations and solve for the number of chairs."},
+{"question":"In a garden, there are 6 daisy plants the first year. Each year, a gardener adds 3 new daisy plants. He has 26 jasmine plants the first year and loses 2 each year. When will the number of daisy plants equal to the number of jasmine plants after the first year?","options":["5 years","4 years","2 years","6 years"],"answer":0,"pattern":"Arithmetic Progression / Linear Equation","solution":"Daisies = 6 + 3n and jasmine = 26 - 2n. Equating gives n = 4 years after the first year, i.e. the 5th year."},
+{"question":"How many of the following numbers are divisible by 132? 660, 754, 924, 1452, 1526, 1980, 2045 and 2170","options":["3","6","4","5"],"answer":2,"pattern":"Divisibility / Direct Division","solution":"Check each number for divisibility by 132; four of the listed numbers are divisible."},
+{"question":"During a division, Pranjal mistakenly took as the dividend a number that was 10% more than the original dividend. He also mistakenly took as the divisor a number that was 25% more than the original divisor. If the correct quotient of the original division problem was 25 and the remainder was 0, what was the quotient that Pranjal obtained, assuming his calculations had no error?","options":["21.75","28.75","22","21.25"],"answer":2,"pattern":"Percentage Change in Dividend and Divisor","solution":"New quotient = 25 × 1.10 / 1.25 = 22."},
+{"question":"Which number among 24963, 24973, 24983 and 24993 is divisible by 7?","options":["24993","24973","24983","24963"],"answer":2,"pattern":"Divisibility by 7","solution":"Check each candidate using the divisibility rule or direct division by 7."},
+{"question":"Three positive numbers are in the ratio of 4 : 5 : 7, and the sum of their squares is 15,210. Find the sum of the three numbers.","options":["148","156","126","208"],"answer":3,"pattern":"Ratio + Sum of Squares","solution":"Let the numbers be 4k, 5k, 7k. Then (16+25+49)k² = 15210, so 90k² = 15210 and k = 13; sum = 16k = 208."},
+{"question":"7 is added to a certain number and the sum is multiplied by 5. The product is then divided by 3 and 4 is subtracted from the quotient. If the result comes to 16, then what is the original number?","options":["3","1","2","5"],"answer":3,"pattern":"Reverse Operations / Linear Equation","solution":"((x+7)×5)/3 - 4 = 16. Solving gives x = 5."},
+{"question":"Find the weighted arithmetic mean of the first ‘n’ natural numbers, the weights being the corresponding numbers.","options":["n(n+1)(2n+1)/2","n(n+1)/2","n","(2n+1)/3"],"answer":3,"pattern":"Weighted Mean + Summation","solution":"Weighted mean = Σn² / Σn = [n(n+1)(2n+1)/6] / [n(n+1)/2] = (2n+1)/3."},
+{"question":"What is the value of 100²-99²+98²-97²+……12²-11²?","options":["5050","4985","4995","4950"],"answer":2,"pattern":"Difference of Squares","solution":"Pair consecutive squares: 100²−99² + 98²−97² + ... + 12²−11² and sum the resulting arithmetic progression."},
+{"question":"3^50+9^26+27^18+9^28+9^29 is divisible by which of the following integers?","options":["5","11","7","2"],"answer":1,"pattern":"Divisibility using Modular Arithmetic","solution":"Rewrite powers using base 3 and evaluate the expression modulo the given options; it is divisible by 11."}
+];
+
+const timeDistanceQuestions = [
+  {q:"An Uber auto covers a distance of 639 km in 71 hours. What is its speed in km/hr?",options:["9","19","13","4"],answer:0,pattern:"Speed = Distance ÷ Time",solution:"Speed = 639 ÷ 71 = 9 km/hr."},
+  {q:"Walking at (4/7) of his normal speed, Abhijeet is 36 minutes late in reaching his office. The usual time taken by him to cover the distance between his home and his office is:",options:["48 minutes","56 minutes","42 minutes","57 minutes"],answer:0,pattern:"Speed–Time Inverse Relation",solution:"At 4/7 of the normal speed, time becomes 7/4 of normal time. The increase is 3/4 of the normal time = 36 minutes, so normal time = 48 minutes."},
+  {q:"A starts from X at 9:00 a.m. and reaches Y at 1:00 p.m. on the same day, following the same route. B starts from Y at 9:00 a.m. and reaches X at 3:00 p.m. on the same day. At what time do the two meet?",options:["11:24 hrs","11:30 hrs","10:00 hrs","11:12 hrs"],answer:0,pattern:"Meeting Point / Relative Speed",solution:"Let XY be D. A's speed is D/4 and B's speed is D/6. Their combined speed is 5D/12, so meeting time from 9:00 a.m. is 12/5 × 1/6 = 0.4 hour = 24 minutes."},
+  {q:"Nilu covers a distance by walking for 6 h. While returning, her speed decreases by 2 km/h and she takes 9 h to cover the same distance. What was her speed while returning?",options:["5 km/h","4 km/h","7 km/h","2 km/h"],answer:1,pattern:"Same Distance / Different Speeds",solution:"Let outward speed be v. Then 6v = 9(v−2), giving v = 6 km/hr. Return speed = 4 km/hr."},
+  {q:"A car is running in a fog and crosses a person who was walking in the same direction at a speed of 3 km/h. That person could see the car up to a distance of 100 m for 4 minutes. What was the speed of the car?",options:["9/2 km/h","7/2 km/h","5 km/h","5/2 km/h"],answer:0,pattern:"Relative Speed",solution:"Relative speed = 100 m in 4 minutes = 1.5 km/hr. Since the car is moving in the same direction, car speed − 3 = 1.5, so car speed = 4.5 km/hr."},
+  {q:"The distance between two points on a map is 5 cm. The scale of the map is 1:400000. What is the actual distance?",options:["20000","20","200","2000"],answer:1,pattern:"Map Scale",solution:"Actual distance = 5 × 400000 cm = 2000000 cm = 20 km."},
+  {q:"A boy goes to school at a speed of 3 km/hr. He returns at a speed of 5 km/hr. He takes a total of 4 hours for both going to school and returning. The distance between his home and school is:",options:["7.5 km","7.3 km","7.2 km","7.4 km"],answer:0,pattern:"Same Distance / Total Time",solution:"d/3 + d/5 = 4, so 8d/15 = 4 and d = 7.5 km."},
+  {q:"A car travels from City A to City B, a distance of 150 km, at a speed of 60 km/hr. On the way back, due to heavy traffic, the car's speed decreases. If the total time for the round trip is 7 hours 30 minutes, what is the speed during the return trip?",options:["42 km/hr","45 km/hr","36 km/hr","30 km/hr"],answer:3,pattern:"Round Trip Time",solution:"Time outward = 150/60 = 2.5 h. Return time = 7.5−2.5 = 5 h. Return speed = 150/5 = 30 km/hr."},
+  {q:"Rahul covers a distance of 225 km in 15 hours. How many hours will he take to cover 40% less distance if he drives 20% faster than his original speed?",options:["6","7","8","7.5"],answer:3,pattern:"Percentage Change in Distance and Speed",solution:"Original speed = 225/15 = 15 km/hr. New distance = 60% of 225 = 135 km. New speed = 120% of 15 = 18 km/hr. Time = 135/18 = 7.5 h."},
+  {q:"A person has to cover a distance of 8 km in 1 hour. If he covers one-fourth of the distance in one-third of the total time, then what should his speed be to cover the remaining distance in the remaining time so that he reaches the destination exactly on time?",options:["7 km/h","8 km/h","6 km/h","9 km/h"],answer:3,pattern:"Distance–Time Allocation",solution:"One-fourth distance = 2 km in 20 min. Remaining distance = 6 km in 40 min = 2/3 h. Required speed = 6 ÷ (2/3) = 9 km/hr."},
+  {q:"A person covers half the distance of a journey at 60 km/h and the other half at 30 km/h. What is the average speed for the entire journey?",options:["55 km/h","45 km/h","50 km/h","40 km/h"],answer:3,pattern:"Average Speed for Equal Distances",solution:"For equal distances, average speed = 2ab/(a+b) = 2×60×30/90 = 40 km/hr."},
+  {q:"The average speed of a car running at 70 km/hr for 1 hour and 'p' km/hr for 1 1/2 hours is 58 km/hr. Find the value of p.",options:["67.5","50","62.5","70"],answer:1,pattern:"Weighted Average Speed",solution:"(70×1 + p×1.5)/2.5 = 58. Hence 70 + 1.5p = 145, so p = 50 km/hr."},
+  {q:"A car covers three successive 20 km distances at speeds of 10 km/hr, 20 km/hr and 40 km/hr, respectively. Its average speed (in km/hr) is:",options:["19 1/5","15 3/7","13 2/5","17 1/7"],answer:3,pattern:"Average Speed for Equal Distances",solution:"Total time = 20/10 + 20/20 + 20/40 = 3.5 h. Average speed = 60/3.5 = 120/7 = 17 1/7 km/hr."},
+  {q:"One-third of a journey is covered at a speed of 25 km/h, the next one-third of the journey is covered at a speed of 40 km/h and the remaining journey is covered at a speed of 50 km/h. The average speed, rounded off to 1 decimal place, is:",options:["30.3 km/h","33.3 km/h","25.3 km/h","35.3 km/h"],answer:1,pattern:"Average Speed for Equal Distances",solution:"For equal distances, average speed = 3/(1/25 + 1/40 + 1/50) = 33.3 km/hr approximately."},
+  {q:"In a race, an athlete covers a distance of 390 m in 65 sec in the first lap. He covers the second lap of the same length in 195 sec. What is the average speed (in m/sec) of the athlete?",options:["9 m/sec","3 m/sec","4 m/sec","12 m/sec"],answer:1,pattern:"Average Speed",solution:"Total distance = 780 m and total time = 260 sec. Average speed = 780/260 = 3 m/sec."},
+  {q:"Ravi travels from City A to City B. If Ravi drives his car at two fifth of his normal speed, then he reaches City B 30 minutes late. Find the time (in minutes) Ravi would have taken to travel from City A to City B if he drove at his normal speed.",options:["22","18","20","15"],answer:2,pattern:"Speed–Time Inverse Relation",solution:"At 2/5 speed, time becomes 5/2 of normal time. Extra time = 3/2 of normal time = 30 min, so normal time = 20 min."},
+  {q:"An employee claims Rs.20 for each kilometre when he travels by taxi and Rs.10 for each kilometre if he travels by his own car. In one week, he claimed Rs.2,200 for travelling 120 km. How many kilometres did he travel by taxi?",options:["95","100","80","90"],answer:1,pattern:"Linear Equation",solution:"Let taxi distance be x. Then 20x + 10(120−x) = 2200, giving x = 100 km."},
+  {q:"A man travelled a certain distance by bus at the rate of 40 km/h and returned walking at the rate of 5 km/h via the same route. If the two-way journey took him a total of 4 hours 30 minutes, what was the total distance covered by him?",options:["25 km","20 km","30 km","40 km"],answer:1,pattern:"Two-Way Journey",solution:"Let one-way distance be d. d/40 + d/5 = 4.5. Thus 9d/40 = 4.5, so d = 20 km and total distance = 40 km. [Source option list shows 20 km as option 2.]"}
+];
+
+let questions = numberSystemQuestions;
+let currentTestSubject = "Number System";
+
+let current = 0;
+let answers = new Array(questions.length).fill(null);
+let questionStatus = new Array(questions.length).fill("unsubmitted");
+
+/*
+ * Each question owns its own timer.
+ * First visit = 30 seconds.
+ * Leaving the question = remaining seconds are saved.
+ * Returning to the question = saved remaining seconds continue.
+ */
+let questionSeconds = new Array(questions.length).fill(30);
+
+let seconds = 30;
+let timerId = null;
+const ACTIVE_TEST_KEY = "lakshmanLearningActiveTest";
+const ACTIVE_TEST_SUBJECT_KEY = "lakshmanLearningActiveTestSubject";
+
+
+/* =========================================================
+   USER-SPECIFIC TEST HISTORY
+   Existing questions/UI are unchanged.
+   Each browser profile gets its own user key.
+   ========================================================= */
+
+function getLakshmanUserId(){
+
+  let id = localStorage.getItem(
+    "lakshmanLearningUserId"
+  );
+
+  if(!id){
+
+    id =
+      "user_" +
+      Date.now().toString(36) +
+      "_" +
+      Math.random()
+        .toString(36)
+        .slice(2,10);
+
+    localStorage.setItem(
+      "lakshmanLearningUserId",
+      id
+    );
+  }
+
+  return id;
+}
+
+
+function getUserHistoryKey(){
+
+  return (
+    "lakshmanLearningTestHistory_" +
+    getLakshmanUserId()
+  );
+}
+
 
 function getTestHistory(){
-  try {
-    const saved=localStorage.getItem("lakshmanLearningTestHistory");
-    return saved ? JSON.parse(saved) : [];
-  } catch(e) {
+
+  try{
+
+    const key = getUserHistoryKey();
+
+    const saved =
+      localStorage.getItem(key);
+
+    return saved
+      ? JSON.parse(saved)
+      : [];
+
+  }catch(e){
+
+    console.error(
+      "Unable to read user history:",
+      e
+    );
+
     return [];
   }
 }
 
-function saveTestAttempt(correct){
-  const now=new Date();
-  const history=getTestHistory();
-  history.push({
-    date:String(now.getDate()).padStart(2,"0")+"-"+String(now.getMonth()+1).padStart(2,"0")+"-"+now.getFullYear(),
-    time:now.toLocaleTimeString([], {hour:"numeric",minute:"2-digit",second:"2-digit"}),
-    month:now.toLocaleString("en-US",{month:"long"}),
-    year:now.getFullYear(),
-    score:correct,
-    total:questions.length
-  });
-  try {
-    localStorage.setItem("lakshmanLearningTestHistory",JSON.stringify(history));
-  } catch(e) {}
+
+
+function getCurrentLearningUser(){
+
+  return {
+    id: getLakshmanUserId()
+  };
 }
 
-function renderResults(){
-  const history=getTestHistory();
-  document.getElementById("totalTests").textContent=history.length;
+function saveUserTestHistory(history){
 
-  if(history.length===0){
-    document.getElementById("bestScore").textContent="0/"+questions.length;
-    document.getElementById("averageScore").textContent="0%";
-    document.getElementById("latestScore").textContent="0/"+questions.length;
-    document.getElementById("historyBody").innerHTML='<tr><td colspan="6" class="history-empty">No tests attempted yet.</td></tr>';
+  try{
+
+    localStorage.setItem(
+      getUserHistoryKey(),
+      JSON.stringify(history)
+    );
+
+    return true;
+
+  }catch(e){
+
+    console.error(
+      "Unable to save user history:",
+      e
+    );
+
+    return false;
+  }
+}
+
+
+/*
+ * IMPORTANT:
+ * Do NOT migrate the old global
+ * lakshmanLearningTestHistory automatically.
+ *
+ * Otherwise one user's old history could appear
+ * for another browser user.
+ */
+
+
+function saveTestAttempt(correct){
+
+  const now = new Date();
+  const history = getTestHistory();
+
+  let submitted = 0;
+  let marked = 0;
+  let right = 0;
+  let wrong = 0;
+  let unattempted = 0;
+
+  questions.forEach(function(q,i){
+
+    const hasAnswer =
+      answers[i] !== null &&
+      answers[i] !== undefined &&
+      answers[i] !== -1;
+
+    /* Marked is an independent count. */
+    if(questionStatus[i] === "marked"){
+      marked++;
+    }
+
+    /* Submitted is an independent count. */
+    if(questionStatus[i] === "submitted"){
+      submitted++;
+    }
+
+    /* Right / Wrong depend only on the selected answer. */
+    if(hasAnswer){
+      if(answers[i] === q.answer){
+        right++;
+      }else{
+        wrong++;
+      }
+    }else{
+      /* Unattempted = no answer. */
+      unattempted++;
+    }
+  });
+
+  /*
+   * ONE complete snapshot for ONE test attempt.
+   * Nothing here refers to a future/current test.
+   */
+  const snapshotQuestions = questions.map(function(q){
+    return {
+      question: q.question || q.q || "",
+      options: Array.isArray(q.options) ? q.options.slice() : [],
+      answer: q.answer,
+      pattern: q.pattern || "",
+      solution: q.solution || q.explanation || ""
+    };
+  });
+
+  history.push({
+      userId: getLakshmanUserId(),
+      subject:
+        typeof currentTestSubject !== "undefined"
+          ? currentTestSubject
+          : (
+              typeof currentSubject !== "undefined"
+                ? currentSubject
+                : "Number System"
+            ),
+
+    id: Date.now(),
+
+    /*
+     * Keep old history intact.
+     * Display numbering is calculated separately per subject.
+     */
+    attempt: history.length + 1,
+
+    subject: currentTestSubject,
+
+    date:
+      String(now.getDate()).padStart(2,"0") + "-" +
+      String(now.getMonth()+1).padStart(2,"0") + "-" +
+      now.getFullYear(),
+
+    time: now.toLocaleTimeString([],{
+      hour:"numeric",
+      minute:"2-digit",
+      second:"2-digit"
+    }),
+
+    month: now.toLocaleString("en-US",{month:"long"}),
+
+    year: now.getFullYear(),
+
+    score: right,
+
+    total: questions.length,
+
+    submitted: submitted,
+
+    marked: marked,
+
+    right: right,
+
+    wrong: wrong,
+
+    unattempted: unattempted,
+
+    /*
+     * IMPORTANT:
+     * Copy every array.
+     */
+    answers: answers.slice(),
+
+    questionStatus: questionStatus.slice(),
+
+    questions: snapshotQuestions
+  });
+
+  try{
+
+    saveUserTestHistory(history);
+
+    renderAttemptHistory();
+
+  }catch(e){
+
+    console.error(
+      "Unable to save test attempt:",
+      e
+    );
+  }
+}
+
+
+function renderAttemptHistory(){
+
+  const numberBody = document.getElementById("numberHistoryBody");
+  const timeBody = document.getElementById("timeHistoryBody");
+
+  if(!numberBody || !timeBody) return;
+
+  const history = getTestHistory();
+
+  // Clear both sections first.
+  numberBody.innerHTML = "";
+  timeBody.innerHTML = "";
+
+  const numberItems = [];
+  const timeItems = [];
+
+  history.forEach(function(item,index){
+    const subject = String(item.subject || "").toLowerCase();
+
+    if(subject === "time, speed & distance" ||
+       subject === "time and distance" ||
+       subject === "time & distance"){
+      timeItems.push({item:item,index:index});
+    }else{
+      // Existing/older records without a subject are treated as Number System
+      // so previous history is not lost.
+      numberItems.push({item:item,index:index});
+    }
+  });
+
+  function fillTable(body, items, emptyText){
+
+    if(!items.length){
+      body.innerHTML =
+        '<tr><td colspan="7" class="history-empty">'+
+        escapeHTML(emptyText)+
+        '</td></tr>';
+      return;
+    }
+
+    items.forEach(function(record, rowIndex){
+
+      const item = record.item;
+      const historyIndex = record.index;
+
+      const tr = document.createElement("tr");
+
+      // Attempt number is sequential inside each subject section.
+      const attemptNo = rowIndex + 1;
+
+      tr.innerHTML =
+        '<td>'+
+          attemptNo+
+        '</td>' +
+
+        '<td>'+
+          escapeHTML(String(item.date || "-"))+
+        '</td>' +
+
+        '<td>'+
+          escapeHTML(String(item.time || "-"))+
+        '</td>' +
+
+        '<td>'+
+          escapeHTML(String(item.month || "-"))+
+        '</td>' +
+
+        '<td>'+
+          escapeHTML(String(item.year || "-"))+
+        '</td>' +
+
+        '<td style="font-weight:bold">'+
+          (Number(item.score) || 0)+"/"+(Number(item.total) || questions.length)+
+        '</td>' +
+
+        '<td>'+
+          '<button type="button" class="history-view-btn" '+
+          'onclick="viewAttemptDetails('+historyIndex+')">'+
+          'View Details</button>'+
+        '</td>';
+
+      body.appendChild(tr);
+    });
+  }
+
+  fillTable(
+    numberBody,
+    numberItems,
+    "No Number System tests attempted yet."
+  );
+
+  fillTable(
+    timeBody,
+    timeItems,
+    "No Time, Speed & Distance tests attempted yet."
+  );
+}
+
+function viewAttemptDetails(index){
+
+  const history = getTestHistory();
+  const item = history[index];
+
+  if(!item){
+    alert("Test attempt details not found.");
     return;
   }
 
-  const best=Math.max(...history.map(x=>Number(x.score)||0));
-  const average=history.reduce((sum,x)=>sum+(Number(x.score)||0),0)/history.length;
-  const latest=history[history.length-1];
+  const old = document.getElementById("attemptDetailsOverlay");
+  if(old) old.remove();
 
-  document.getElementById("bestScore").textContent=best+"/"+questions.length;
-  document.getElementById("averageScore").textContent=Math.round(average/questions.length*100)+"%";
-  document.getElementById("latestScore").textContent=latest.score+"/"+questions.length;
+  /*
+   * IMPORTANT:
+   * Never use the current global questions/answers here.
+   * Always use the snapshot stored inside THIS attempt.
+   */
+  const detailQuestions =
+    Array.isArray(item.questions)
+      ? item.questions
+      : [];
 
-  document.getElementById("historyBody").innerHTML=history.map((x,i)=>`
-    <tr>
-      <td>${i+1}</td>
-      <td>${x.date}</td>
-      <td>${x.time}</td>
-      <td>${x.month}</td>
-      <td>${x.year}</td>
-      <td><b>${x.score}/${x.total}</b></td>
-    </tr>
-  `).join("");
+  const savedAnswers =
+    Array.isArray(item.answers)
+      ? item.answers
+      : new Array(detailQuestions.length).fill(null);
+
+  const savedStatus =
+    Array.isArray(item.questionStatus)
+      ? item.questionStatus
+      : new Array(detailQuestions.length).fill("unattempted");
+
+  let right = 0;
+  let wrong = 0;
+  let unattempted = 0;
+  let submitted = 0;
+  let marked = 0;
+
+  detailQuestions.forEach(function(q,i){
+
+    const user = savedAnswers[i];
+
+    const hasAnswer =
+      user !== null &&
+      user !== undefined &&
+      user !== -1;
+
+    if(savedStatus[i] === "marked"){
+      marked++;
+    }
+
+    if(savedStatus[i] === "submitted"){
+      submitted++;
+    }
+
+    if(hasAnswer){
+
+      if(user === q.answer){
+        right++;
+      }else{
+        wrong++;
+      }
+
+    }else{
+
+      unattempted++;
+    }
+  });
+
+  const overlay = document.createElement("div");
+
+  overlay.id = "attemptDetailsOverlay";
+  overlay.className = "attempt-details-overlay";
+
+  let htmlText =
+    '<div class="attempt-details-card">' +
+
+      '<div class="attempt-details-head">' +
+
+        '<h2>📋 '+
+          escapeHTML(item.subject || "Test")+
+          ' — Attempt Details'+
+        '</h2>' +
+
+        '<button type="button" onclick="closeAttemptDetails()">✕</button>' +
+
+      '</div>' +
+
+      '<div class="attempt-summary">' +
+
+        '<div><b>Marks</b><span>'+
+          right+' / '+(item.total || detailQuestions.length)+
+        '</span></div>' +
+
+        '<div><b>Submitted</b><span>'+
+          submitted+
+        '</span></div>' +
+
+        '<div><b>Marked</b><span>'+
+          marked+
+        '</span></div>' +
+
+        '<div><b>Right</b><span>'+
+          right+
+        '</span></div>' +
+
+        '<div><b>Wrong</b><span>'+
+          wrong+
+        '</span></div>' +
+
+        '<div><b>Unattempted</b><span>'+
+          unattempted+
+        '</span></div>' +
+
+      '</div>' +
+
+      '<p><b>Date:</b> '+
+        escapeHTML(item.date || "-")+
+        ' &nbsp; <b>Time:</b> '+
+        escapeHTML(item.time || "-")+
+      '</p>' +
+
+      '<div class="attempt-question-list">';
+
+
+  detailQuestions.forEach(function(q,i){
+
+    const user = savedAnswers[i];
+
+    const hasAnswer =
+      user !== null &&
+      user !== undefined &&
+      user !== -1;
+
+    const wasMarked =
+      savedStatus[i] === "marked";
+
+    const wasSubmitted =
+      savedStatus[i] === "submitted";
+
+    let status = "Unattempted";
+
+    /*
+     * Status display:
+     * - Marked if marked and no answer
+     * - Right/Wrong if an answer exists
+     * - Unattempted if no answer
+     */
+    if(hasAnswer){
+
+      if(user === q.answer){
+        status = wasMarked ? "Marked • Right" : "Right";
+      }else{
+        status = wasMarked ? "Marked • Wrong" : "Wrong";
+      }
+
+    }else if(wasMarked){
+
+      status = "Marked";
+
+    }else if(wasSubmitted){
+
+      status = "Unattempted";
+
+    }else{
+
+      status = "Unattempted";
+    }
+
+    const yourAnswer =
+      hasAnswer
+        ? (q.options[user] !== undefined
+            ? q.options[user]
+            : "Not Answered")
+        : "Not Answered";
+
+    const correctAnswer =
+      q.options[q.answer] !== undefined
+        ? q.options[q.answer]
+        : "-";
+
+    htmlText +=
+
+      '<div class="attempt-question">' +
+
+        '<h3>Q'+(i+1)+' — '+
+          escapeHTML(status)+
+        '</h3>' +
+
+        '<p><b>Question:</b> '+
+          escapeHTML(q.question || q.q || "-")+
+        '</p>' +
+
+        '<p><b>Pattern:</b> '+
+          escapeHTML(q.pattern || "-")+
+        '</p>' +
+
+        '<p><b>Your Answer:</b> '+
+          escapeHTML(yourAnswer)+
+        '</p>' +
+
+        '<p><b>Correct Answer:</b> '+
+          escapeHTML(correctAnswer)+
+        '</p>' +
+
+        '<p><b>Solution / Explanation:</b> '+
+          escapeHTML(
+            q.solution ||
+            q.explanation ||
+            "-"
+          )+
+        '</p>' +
+
+      '</div>';
+  });
+
+
+  htmlText +=
+
+      '</div>' +
+
+      '<button type="button" class="primary" '+
+        'onclick="closeAttemptDetails()">Close</button>' +
+
+    '</div>';
+
+
+  overlay.innerHTML = htmlText;
+
+  document.body.appendChild(overlay);
 }
 
-const questions=[{"question": "The set of real numbers includes which of the following?", "options": ["Only Rational Numbers", "Only Irrational Numbers", "Both Rational and Irrational Numbers", "Only Whole Numbers"], "answer": 2}, {"question": "Which of the following statement is TRUE for Whole Numbers?", "options": ["They include fractions", "They include negative numbers", "They include zero and positive integers", "They start from 1"], "answer": 2}, {"question": "Which set includes numbers like -5, 0, and 6?", "options": ["Natural Numbers", "Integers", "Irrational Numbers", "Whole Numbers"], "answer": 1}, {"question": "Which of these is both an Integer and a Whole number?", "options": ["-4", "0", "3.5", "1/2"], "answer": 1}, {"question": "Which of the following is a non-zero number that belongs to every set: Whole, Integer, Rational, and Real?", "options": ["1", "0", "-1", "√2"], "answer": 0}, {"question": "Which of the following numbers is both a Rational Number and a Terminating Decimal?", "options": ["1/3", "4/5", "√3", "π"], "answer": 1}, {"question": "Arrange the fractions 5/9, 4/7, 3/5 and 2/3 in ascending order.", "options": ["3/5, 4/7, 2/3, 5/9", "5/9, 4/7, 3/5, 2/3", "2/3, 4/7, 3/5, 5/9", "4/7, 5/9, 2/3, 3/5"], "answer": 1}, {"question": "What is the average of all three-digit numbers divisible by 23?", "options": ["752", "552", "652", "452"], "answer": 1}, {"question": "Which of the following is a perfect square and an Integer?", "options": ["√5", "√9", "3.2", "3.4"], "answer": 1}, {"question": "Which of the following is the least 6-digit number, which is a perfect square?", "options": ["100489", "100588", "100688", "100788"], "answer": 0}, {"question": "What is the smallest number that must be added to 2378 to make it a perfect square?", "options": ["23", "24", "25", "26"], "answer": 0}, {"question": "If you subtract the square of a number from 4052 and then multiply the result by 15, you get 41340. What is that number?", "options": ["46", "36", "26", "86"], "answer": 1}, {"question": "A number is increased by 120, and the result becomes a perfect square. The original number lies between two consecutive square numbers, 625 and 676. Find the original number.", "options": ["626", "656", "664", "672"], "answer": 2}, {"question": "What is the total number of factors of 3600?", "options": ["45", "30", "35", "20"], "answer": 0}, {"question": "Convert 0.714285... into a fraction.", "options": ["5/7", "1/7", "15/7", "16/7"], "answer": 0}, {"question": "Find the least number which leaves remainder 3 when divided by 5, 7, and 8.", "options": ["280", "283", "313", "275"], "answer": 1}, {"question": "The unit digit of 7^103 is:", "options": ["4", "3", "1", "0"], "answer": 1}, {"question": "The difference between the two numbers is 1365. On dividing the larger by the smaller, the quotient is 6, and the remainder is 15. Find the smaller number.", "options": ["240", "270", "285", "295"], "answer": 1}, {"question": "If 2x+3y=50 and x, y∈N, then what is the value of x for which y is minimum?", "options": ["20", "22", "24", "26"], "answer": 1}, {"question": "A number r when divided by 8 leaves remainder 3. What will be the remainder when (r²+6r+7) is divided by 8?", "options": ["2", "3", "4", "1"], "answer": 0}, {"question": "If the 9-digit number 5x7985y6 is divisible by 36, then what is the negative value √(2x+y) for the largest possible value of y, given x and y are natural numbers?", "options": ["5", "-5", "-7", "-4"], "answer": 1}, {"question": "Each of Ravi and Kavita had some marbles. Kavita had 12 more marbles than Ravi had. If each of them had one more marble, then three times the number of marbles Kavita would then have had would have been equal to four times the number of marbles Ravi would then have had. How many marbles did Kavita actually have?", "options": ["43", "48", "47", "51"], "answer": 2}, {"question": "In a room, there are some chairs and some people. If on each chair, only one person is seated, then there is no chair for exactly one person. If on each chair, two persons sit, then there is one vacant chair. What is the number of chairs in the room?", "options": ["3", "4", "7", "6"], "answer": 0}, {"question": "In a garden, there are 6 daisy plants the first year. Each year, a gardener adds 3 new daisy plants. He has 26 jasmine plants the first year and loses 2 each year. When will the number of daisy plants equal to the number of jasmine plants after the first year?", "options": ["5 years", "4 years", "2 years", "6 years"], "answer": 0}, {"question": "How many of the following numbers are divisible by 132? 660, 754, 924, 1452, 1526, 1980, 2045 and 2170", "options": ["3", "6", "4", "5"], "answer": 2}, {"question": "During a division, Pranjal mistakenly took as the dividend a number that was 10% more than the original dividend. He also mistakenly took as the divisor a number that was 25% more than the original divisor. If the correct quotient of the original division problem was 25 and the remainder was 0, what was the quotient that Pranjal obtained, assuming his calculations had no error?", "options": ["21.75", "28.75", "22", "21.25"], "answer": 2}, {"question": "Which number among 24963, 24973, 24983 and 24993 is divisible by 7?", "options": ["24993", "24973", "24983", "24963"], "answer": 2}, {"question": "Three positive numbers are in the ratio of 4 : 5 : 7, and the sum of their squares is 15,210. Find the sum of the three numbers.", "options": ["148", "156", "126", "208"], "answer": 3}, {"question": "7 is added to a certain number and the sum is multiplied by 5. The product is then divided by 3 and 4 is subtracted from the quotient. If the result comes to 16, then what is the original number?", "options": ["3", "1", "2", "5"], "answer": 3}, {"question": "Find the weighted arithmetic mean of the first ‘n’ natural numbers, the weights being the corresponding numbers.", "options": ["n(n+1)(2n+1)/2", "n(n+1)/2", "n", "(2n+1)/3"], "answer": 3}, {"question": "What is the value of 100²-99²+98²-97²+……12²-11²?", "options": ["5050", "4985", "4995", "4950"], "answer": 2}, {"question": "3^50+9^26+27^18+9^28+9^29 is divisible by which of the following integers?", "options": ["5", "11", "7", "2"], "answer": 1}];
-let current=0;
-let answers=new Array(questions.length).fill(null);
-let seconds=30;
-let timerId=null;
+
+function closeAttemptDetails(){
+  const el = document.getElementById("attemptDetailsOverlay");
+  if(el) el.remove();
+}
+
+
+
+
+
+
+
+
+function escapeHTML(value){
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+function saveActiveTest(){
+  try{
+    /* Always keep the current question's exact remaining time. */
+    questionSeconds[current] = Math.max(0, Math.min(30, seconds));
+
+    localStorage.setItem(ACTIVE_TEST_KEY, JSON.stringify({
+      current: current,
+      answers: answers,
+      questionStatus: questionStatus,
+      questionSeconds: questionSeconds,
+      seconds: seconds,
+      subject: currentTestSubject
+    }));
+  }catch(e){}
+}
+
+
+function getActiveTest(){
+  try{
+    const saved=localStorage.getItem(ACTIVE_TEST_KEY);
+    return saved ? JSON.parse(saved) : null;
+  }catch(e){
+    return null;
+  }
+}
+
+function clearActiveTest(){
+  try{
+    localStorage.removeItem(ACTIVE_TEST_KEY);
+  }catch(e){}
+}
+
+function saveTimerState(){
+  /* Save the exact remaining seconds before leaving/pausing the page. */
+  saveActiveTest();
+}
+
+function restoreActiveTest(){
+  try{
+    const raw = localStorage.getItem(ACTIVE_TEST_KEY);
+    if(!raw) return false;
+
+    const state = JSON.parse(raw);
+
+    if(state.subject && state.subject !== currentTestSubject){
+      return false;
+    }
+
+    if(!Number.isInteger(state.current) ||
+       state.current < 0 ||
+       state.current >= questions.length){
+      localStorage.removeItem(ACTIVE_TEST_KEY);
+      return false;
+    }
+
+    current = state.current;
+
+    answers = Array.isArray(state.answers) &&
+              state.answers.length === questions.length
+              ? state.answers
+              : new Array(questions.length).fill(null);
+
+    questionStatus = Array.isArray(state.questionStatus) &&
+                     state.questionStatus.length === questions.length
+              ? state.questionStatus
+              : new Array(questions.length).fill("unsubmitted");
+
+    if(Array.isArray(state.questionSeconds) &&
+       state.questionSeconds.length === questions.length){
+
+      questionSeconds = state.questionSeconds.map(function(value){
+        const n = Number(value);
+        return Number.isFinite(n)
+          ? Math.max(0, Math.min(30, Math.floor(n)))
+          : 30;
+      });
+
+    }else{
+      /*
+       * Backward compatibility with older saved tests.
+       * The old single "seconds" value belongs to the current question.
+       */
+      questionSeconds = new Array(questions.length).fill(30);
+
+      const oldSeconds = Number(state.seconds);
+      questionSeconds[current] =
+        Number.isFinite(oldSeconds)
+          ? Math.max(0, Math.min(30, Math.floor(oldSeconds)))
+          : 30;
+    }
+
+    seconds = questionSeconds[current];
+
+    return true;
+
+  }catch(e){
+    localStorage.removeItem(ACTIVE_TEST_KEY);
+    return false;
+  }
+}
+
+
+/* ---------- Navigation ---------- */
 
 function hideAll(){
- document.getElementById('home').style.display='none';
- document.getElementById('test').style.display='none';
- document.getElementById('result').style.display='none';
+  document.getElementById('home').style.display='none';
+  document.getElementById('test').style.display='none';
+  document.getElementById('result').style.display='none';
 }
+
 function goHome(){
- clearInterval(timerId); hideAll();
- document.getElementById('home').style.display='block';
- window.scrollTo(0,0);
+  /*
+   * If the user leaves the test, preserve the current question,
+   * selected answers and EXACT remaining seconds.
+   */
+  const testVisible=document.getElementById('test').style.display==='block';
+
+  if(testVisible){
+    saveTimerState();
+  }
+
+  clearInterval(timerId);
+  timerId=null;
+
+  hideAll();
+  document.getElementById('home').style.display='block';
+  window.scrollTo(0,0);
 }
+
 function showNumberSystem(){
- goHome();
- document.querySelector('.container').scrollIntoView({behavior:'smooth'});
+  goHome();
+  document.querySelector('.container').scrollIntoView({behavior:'smooth'});
 }
+
+/* ---------- Start / Resume Test ---------- */
+
+function startTimeDistanceTest(){
+  rememberPreviousAppPage();
+  currentTestSubject = "Time, Speed & Distance";
+  questions = timeDistanceQuestions;
+
+  clearInterval(timerId);
+  timerId = null;
+
+  /* Do not resume a Number System attempt as a TSD test. */
+  const saved = getActiveTest();
+  const sameSubject = saved && saved.subject === currentTestSubject;
+
+  if(sameSubject){
+    restoreActiveTest();
+  }else{
+    current = 0;
+    answers = new Array(questions.length).fill(null);
+    questionStatus = new Array(questions.length).fill("unsubmitted");
+    questionSeconds = new Array(questions.length).fill(30);
+    seconds = 30;
+    saveActiveTest();
+  }
+
+  hideAll();
+  document.getElementById("test").style.display = "block";
+  document.getElementById("qno").textContent = "Question 1 / " + questions.length;
+  renderQuestion();
+  startTimer();
+  window.scrollTo(0,0);
+}
+
 function startTest(){
- clearInterval(timerId);
- hideAll();
- document.getElementById('test').style.display='block';
- current=0;
- answers=new Array(questions.length).fill(null);
- seconds=30;
- renderQuestion();
- startTimer();
- window.scrollTo(0,0);
+  /*
+   * HOME → START TEST = ALWAYS A NEW ATTEMPT.
+   *
+   * Therefore Q1 MUST start at exactly 30 seconds.
+   * An old active-test timer is never restored by Start Test.
+   */
+  rememberPreviousAppPage();
+
+  clearInterval(timerId);
+  timerId = null;
+
+  currentTestSubject = "Number System";
+  questions = numberSystemQuestions;
+
+  /* Remove only the unfinished ACTIVE attempt.
+     Previous completed test history is untouched. */
+  clearActiveTest();
+
+  current = 0;
+  answers = new Array(questions.length).fill(null);
+  questionStatus = new Array(questions.length).fill("unsubmitted");
+
+  /* Every question gets its original 30 seconds. */
+  questionSeconds = new Array(questions.length).fill(30);
+
+  /* Q1 = exactly 30 seconds. */
+  seconds = 30;
+  questionSeconds[0] = 30;
+
+  saveActiveTest();
+
+  hideAll();
+
+  const test = document.getElementById("test");
+  if(test) test.style.display = "block";
+
+  document.getElementById("qno").textContent =
+    "Question 1 / " + questions.length;
+
+  renderQuestion();
+
+  /* startTimer() reads questionSeconds[current] = 30. */
+  startTimer();
+
+  window.scrollTo(0,0);
 }
+
+
+/* ---------- Question rendering ---------- */
+
 function renderQuestion(){
+
   const q=questions[current];
 
   document.getElementById("qno").textContent =
     "Question "+(current+1)+" / "+questions.length;
-  document.getElementById("question").textContent=q.question;
+
+  document.getElementById("question").textContent = q.question || q.q || "";
 
   const box=document.getElementById("options");
   box.innerHTML="";
 
   q.options.forEach(function(opt,i){
+
     const option=document.createElement("button");
+
     option.type="button";
-    option.className="option"+(answers[current]===i ? " selected" : "");
+    option.className="option"+(
+      answers[current]===i ? " selected" : ""
+    );
+
     option.textContent=String.fromCharCode(65+i)+". "+opt;
 
     option.addEventListener("click",function(){
+
       answers[current]=i;
 
-      // Update only the option styles; do not rebuild the question.
       box.querySelectorAll(".option").forEach(function(btn,index){
         btn.classList.toggle("selected",index===i);
       });
 
-      // Update question palette.
       document.querySelectorAll("#palette button").forEach(function(btn,index){
-        btn.classList.toggle("answered",answers[index]!==null);
+        btn.classList.toggle(
+          "answered",
+          answers[index]!==null
+        );
       });
+
+      saveActiveTest();
     });
 
     box.appendChild(option);
@@ -298,18 +1414,26 @@ function renderQuestion(){
   palette.innerHTML="";
 
   questions.forEach(function(_,i){
+
     const b=document.createElement("button");
+
     b.type="button";
     b.textContent=i+1;
 
     if(i===current) b.classList.add("current");
     if(answers[i]!==null) b.classList.add("answered");
 
+    /*
+     * Questions cannot be jumped to.
+     * Current question must be submitted first.
+     */
     b.addEventListener("click",function(){
-      current=i;
-      seconds=30;
-      renderQuestion();
-      startTimer();
+
+      if(i!==current){
+        alert("Please submit the current question first.");
+        return;
+      }
+
     });
 
     palette.appendChild(b);
@@ -317,47 +1441,208 @@ function renderQuestion(){
 
   updateTimer();
 }
+
+/* ---------- Timer ---------- */
+
 function updateTimer(){
- const el=document.getElementById('timer');
- el.textContent='00:'+String(seconds).padStart(2,'0');
- el.classList.toggle('warning',seconds<=10);
+  const el = document.getElementById("timer");
+  if(!el) return;
+  el.textContent = "00:" + String(seconds).padStart(2,"0");
+  el.classList.toggle("warning", seconds <= 10);
 }
+
 function startTimer(){
- clearInterval(timerId);
- timerId=setInterval(function(){
-   seconds--;
-   updateTimer();
-   if(seconds<=0){
-     clearInterval(timerId);
-     if(current<questions.length-1){
-       current++;
-       seconds=30;
-       renderQuestion();
-       startTimer();
-     }else{
-       submitTest();
-     }
-   }
- },1000);
-}
-function next(){
- if(current<questions.length-1){
-   current++;
-   seconds=30;
-   renderQuestion();
-   startTimer();
- }else submitTest();
-}
-function previous(){
- if(current>0){
-   current--;
-   seconds=30;
-   renderQuestion();
-   startTimer();
- }
-}
-function submitTest(){
+
   clearInterval(timerId);
+
+  /*
+   * Use the saved value for THIS question.
+   * Do not assign 30 here.
+   */
+  seconds = Math.max(
+    0,
+    Math.min(30, Number(questionSeconds[current]) || 0)
+  );
+
+  updateTimer();
+
+  if(seconds <= 0){
+    submitCurrentQuestion(true);
+    return;
+  }
+
+  timerId = setInterval(function(){
+
+    if(seconds > 0){
+      seconds--;
+      questionSeconds[current] = seconds;
+      updateTimer();
+      saveActiveTest();
+    }
+
+    if(seconds <= 0){
+      clearInterval(timerId);
+      timerId = null;
+
+      /*
+       * Timer expiry automatically submits this question
+       * and moves to the next question.
+       */
+      submitCurrentQuestion(true);
+    }
+
+  },1000);
+}
+
+
+/* ---------- Mandatory question submission ---------- */
+
+function submitCurrentQuestion(autoSubmit){
+
+  clearInterval(timerId);
+  timerId = null;
+
+  /* Freeze and save the current question's timer. */
+  questionSeconds[current] =
+    Math.max(0, Math.min(30, seconds));
+
+  /*
+   * Timer expiry:
+   * unanswered question is submitted as unanswered.
+   */
+  if(autoSubmit){
+
+    if(answers[current] === null){
+      answers[current] = -1;
+    }
+
+    questionStatus[current] = "submitted";
+
+  }else{
+
+    /*
+     * Manual Save & Next:
+     * blank answer is kept as UNSUBMITTED.
+     * selected answer is SUBMITTED.
+     */
+    if(answers[current] === null){
+      questionStatus[current] = "unsubmitted";
+    }else{
+      questionStatus[current] = "submitted";
+    }
+  }
+
+  saveActiveTest();
+
+  if(current >= questions.length - 1){
+    submitTest();
+    return;
+  }
+
+  /*
+   * Move to a NEW question.
+   * Only a new question gets its original 30 seconds.
+   */
+  current++;
+
+  if(!Number.isFinite(questionSeconds[current])){
+    questionSeconds[current] = 30;
+  }
+
+  seconds = Math.max(
+    0,
+    Math.min(30, Number(questionSeconds[current]))
+  );
+
+  saveActiveTest();
+
+  renderQuestion();
+  startTimer();
+}
+
+
+function markQuestion(){
+
+  clearInterval(timerId);
+  timerId = null;
+
+  questionSeconds[current] =
+    Math.max(0, Math.min(30, seconds));
+
+  questionStatus[current] = "marked";
+
+  saveActiveTest();
+
+  if(current >= questions.length - 1){
+    seconds = questionSeconds[current];
+    renderQuestion();
+    startTimer();
+    return;
+  }
+
+  current++;
+
+  seconds = Math.max(
+    0,
+    Math.min(30, Number(questionSeconds[current]) || 30)
+  );
+
+  saveActiveTest();
+
+  renderQuestion();
+  startTimer();
+}
+
+
+function next(){
+  submitCurrentQuestion(false);
+}
+
+/*
+ * Previous is disabled because each question is mandatory.
+ */
+function previous(){
+
+  clearInterval(timerId);
+  timerId = null;
+
+  /*
+   * Save the exact remaining seconds of the question
+   * we are leaving.
+   */
+  questionSeconds[current] =
+    Math.max(0, Math.min(30, seconds));
+
+  saveActiveTest();
+
+  if(current > 0){
+
+    current--;
+
+    /*
+     * Resume this question with its own saved timer.
+     * Never reset it to 30.
+     */
+    seconds = Math.max(
+      0,
+      Math.min(30, Number(questionSeconds[current]) || 0)
+    );
+
+    saveActiveTest();
+
+    renderQuestion();
+    startTimer();
+  }
+}
+
+
+/* ---------- Final test submission ---------- */
+
+function submitTest(){
+
+  clearInterval(timerId);
+  timerId=null;
+
   let correctCount=0;
 
   questions.forEach(function(q,i){
@@ -365,21 +1650,282 @@ function submitTest(){
   });
 
   saveTestAttempt(correctCount);
-  renderResults();
+
+  /*
+   * Test is completely finished.
+   * Only now remove the active-test state.
+   */
+  clearActiveTest();
+
+  
+
   hideAll();
+
   document.getElementById("result").style.display="block";
+
   window.scrollTo(0,0);
+
+  localStorage.removeItem(ACTIVE_TEST_KEY);
 }
+
 function showResult(){
+
   clearInterval(timerId);
+  timerId=null;
+
   hideAll();
-  renderResults();
-  document.getElementById("result").style.display="block";
+
+  const result = document.getElementById("result");
+  if(result) result.style.display="block";
+
+  /*
+   * Refresh the saved attempt history and result cards.
+   * One completed test = one history row.
+   */
+  renderTestResults();
+
   window.scrollTo(0,0);
 }
+
+/* =========================================================
+   LOGICAL SUBJECT-SPECIFIC TAKE TEST AGAIN
+   ========================================================= */
+
+function startFreshRetest(subject, questionList){
+  rememberPreviousAppPage();
+
+  /*
+   * IMPORTANT:
+   * "Take Test Again" = NEW ATTEMPT.
+   *
+   * Therefore an old active test must NOT be restored here.
+   * Every question in the new attempt starts with its ORIGINAL
+   * 30 seconds. The normal question-to-question timer/resume
+   * logic remains unchanged after the test starts.
+   */
+  clearInterval(timerId);
+  timerId = null;
+
+  currentTestSubject = subject;
+  questions = questionList;
+
+  current = 0;
+  answers = new Array(questions.length).fill(null);
+  questionStatus = new Array(questions.length).fill("unsubmitted");
+  questionSeconds = new Array(questions.length).fill(30);
+
+  seconds = 30;
+  questionSeconds[0] = 30;
+
+  /* Remove only the previous ACTIVE attempt.
+     Test history is never deleted. */
+  clearActiveTest();
+
+  saveActiveTest();
+
+  hideAll();
+
+  const test = document.getElementById("test");
+  if(test) test.style.display = "block";
+
+  renderQuestion();
+
+  /* Force the new attempt's first question to 30 seconds. */
+  seconds = 30;
+  questionSeconds[current] = 30;
+  updateTimer();
+
+  startTimer();
+
+  window.scrollTo(0,0);
+}
+
+
+function startNumberSystemTest(){
+
+  startFreshRetest(
+    "Number System",
+    numberSystemQuestions
+  );
+}
+
+
+function startTimeDistanceTestAgain(){
+
+  startFreshRetest(
+    "Time, Speed & Distance",
+    timeDistanceQuestions
+  );
+}
+
+/*
+ * Existing startTimeDistanceTest() is NOT changed.
+ * It remains responsible for resuming an unfinished TSD test.
+ * The Results "Take Test Again" button uses the NEW-ATTEMPT
+ * function above.
+ */
+
+
+function showResults(){
+  clearInterval(timerId);
+  timerId = null;
+  saveTimerState();
+
+  hideAll();
+
+  const results = document.getElementById("results");
+  if(results){
+    results.style.display = "block";
+  }
+
+  renderTestResults();
+  window.scrollTo(0,0);
+}
+
+function renderTestResults(){
+
+  const history = getTestHistory();
+
+  /*
+   * Logical separation:
+   * 1. Number System
+   * 2. Time, Speed & Distance
+   *
+   * Each subject gets its own:
+   * Total Tests / Best / Average / Latest
+   * and its own Attempt History table.
+   */
+
+  const numberItems = [];
+  const timeItems = [];
+
+  history.forEach(function(item,index){
+
+    const subject = String(item.subject || "").toLowerCase();
+
+    if(
+      subject === "time, speed & distance" ||
+      subject === "time and distance" ||
+      subject === "time & distance"
+    ){
+      timeItems.push({item:item,index:index});
+    }else{
+      /*
+       * Old history records that were created before subject
+       * separation are retained as Number System.
+       */
+      numberItems.push({item:item,index:index});
+    }
+  });
+
+  function updateStats(items, ids, defaultTotal){
+
+    const totalEl = document.getElementById(ids.total);
+    const bestEl = document.getElementById(ids.best);
+    const avgEl = document.getElementById(ids.average);
+    const latestEl = document.getElementById(ids.latest);
+
+    if(totalEl){
+      totalEl.textContent = items.length;
+    }
+
+    if(!items.length){
+
+      if(bestEl) bestEl.textContent = "0/" + defaultTotal;
+      if(avgEl) avgEl.textContent = "0%";
+      if(latestEl) latestEl.textContent = "0/" + defaultTotal;
+
+      return;
+    }
+
+    let bestScore = -1;
+    let bestTotal = defaultTotal;
+
+    let percentSum = 0;
+
+    items.forEach(function(record){
+
+      const item = record.item;
+
+      const score = Number(item.score) || 0;
+      const total = Number(item.total) || defaultTotal;
+
+      if(score > bestScore){
+        bestScore = score;
+        bestTotal = total;
+      }
+
+      percentSum += (score / total) * 100;
+    });
+
+    const latest = items[items.length - 1].item;
+
+    if(bestEl){
+      bestEl.textContent =
+        bestScore + "/" + bestTotal;
+    }
+
+    if(avgEl){
+      avgEl.textContent =
+        Math.round(percentSum / items.length) + "%";
+    }
+
+    if(latestEl){
+      latestEl.textContent =
+        (Number(latest.score) || 0) + "/" +
+        (Number(latest.total) || defaultTotal);
+    }
+  }
+
+  updateStats(
+    numberItems,
+    {
+      total:"numberTotalTests",
+      best:"numberBestScore",
+      average:"numberAverageScore",
+      latest:"numberLatestScore"
+    },
+    32
+  );
+
+  updateStats(
+    timeItems,
+    {
+      total:"timeTotalTests",
+      best:"timeBestScore",
+      average:"timeAverageScore",
+      latest:"timeLatestScore"
+    },
+    18
+  );
+
+  renderAttemptHistory();
+}
+
+
 function comingSoon(name){
  alert(name+' — Coming Soon!');
 }
+</script>
+
+<script>
+/* Preserve the exact remaining seconds when the user leaves the page/tab. */
+window.addEventListener("pagehide", function(){
+  const test=document.getElementById("test");
+  if(test && test.style.display==="block"){
+    saveTimerState();
+  }
+});
+
+document.addEventListener("visibilitychange", function(){
+  if(document.visibilityState==="hidden"){
+    const test=document.getElementById("test");
+    if(test && test.style.display==="block"){
+      saveTimerState();
+    }
+  }
+});
+
 </script>
 
 <script>
@@ -406,6 +1952,65 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", function(){
+  renderAttemptHistory();
+});
+</script>
+
+
+
+
+
+<script>
+function rememberPreviousAppPage() {
+  const test = document.getElementById("test");
+  if (test && test.style.display === "block") return;
+
+  const result = document.getElementById("result");
+  const home = document.getElementById("home");
+
+  if (result && result.style.display === "block") {
+    sessionStorage.setItem("lakshman_previous_app_page", "result");
+  } else {
+    sessionStorage.setItem("lakshman_previous_app_page", "home");
+  }
+}
+
+function goBackPage() {
+  // Stop and save the current question before leaving.
+  if (typeof timerId !== "undefined" && timerId !== null) {
+    clearInterval(timerId);
+    timerId = null;
+  }
+
+  if (typeof saveTimerState === "function") {
+    saveTimerState();
+  }
+
+  // First use the page from which this test was opened.
+  const previousPage =
+    sessionStorage.getItem("lakshman_previous_app_page") || "home";
+
+  if (typeof hideAll === "function") {
+    hideAll();
+  }
+
+  if (previousPage === "result") {
+    const result = document.getElementById("result");
+    if (result) {
+      result.style.display = "block";
+      if (typeof renderTestResults === "function") {
+        renderTestResults();
+      }
+    }
+  } else {
+    const home = document.getElementById("home");
+    if (home) home.style.display = "block";
+  }
+
+  window.scrollTo(0, 0);
+}
 </script>
 
 </body>
