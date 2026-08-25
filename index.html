@@ -76,63 +76,366 @@ footer{background:#86130f;color:white;text-align:center;padding:25px}
   position:fixed;
   inset:0;
   z-index:9999;
-  background:rgba(0,0,0,.65);
-  overflow:auto;
-  padding:20px;
+  background:rgba(255,255,255,.96);
+  overflow:hidden;
+  padding:0;
 }
 .attempt-details-card{
-  max-width:950px;
-  margin:20px auto;
+  width:100%;
+  max-width:none;
+  height:100vh;
+  margin:0;
   background:#fff;
-  border-radius:14px;
-  padding:20px;
-  box-shadow:0 10px 40px rgba(0,0,0,.25);
+  border-radius:0;
+  padding:0;
+  box-shadow:none;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
 }
 .attempt-details-head{
+  min-height:68px;
+  padding:0 22px 0 36px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:10px;
+  gap:12px;
+  border-bottom:1px solid #e5e7eb;
+  flex:0 0 68px;
+}
+.attempt-details-head h2{
+  margin:0;
+  font-size:28px;
+  line-height:1;
+  font-weight:800;
+  color:#171717;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.attempt-details-head h2::first-letter{
+  color:#ef4444;
 }
 .attempt-details-head button{
-  border:0;
-  background:#eee;
-  border-radius:50%;
-  width:38px;
-  height:38px;
-  cursor:pointer;
-  font-size:18px;
+  width:46px !important;
+  height:46px !important;
+  min-width:46px;
+  padding:0 !important;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:0 !important;
+  background:#f5f6f7 !important;
+  color:#111 !important;
+  border-radius:50% !important;
+  cursor:pointer !important;
+  font-size:31px !important;
+  line-height:1 !important;
+  font-weight:400;
 }
+.attempt-details-head button:hover{
+  background:#e9eaec !important;
+  color:#111 !important;
+}
+
 .attempt-summary{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  margin:15px 0;
+  grid-template-columns:repeat(6,minmax(130px,1fr));
+  gap:20px;
+  margin:34px 22px 20px;
+  flex:0 0 auto;
 }
 .attempt-summary div{
-  background:#f7f2ea;
-  padding:12px;
-  border-radius:9px;
+  min-height:98px;
+  padding:18px 12px 12px;
+  border-radius:8px;
   text-align:center;
+  border:1px solid #dfe4ea;
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  font-weight:400;
+}
+.attempt-summary div:nth-child(1){
+  background:#f7fcf7;
+  border-color:#d9eadb;
+}
+.attempt-summary div:nth-child(2){
+  background:#f5f9ff;
+  border-color:#d9e5f7;
+}
+.attempt-summary div:nth-child(3){
+  background:#fffaf0;
+  border-color:#f2dfae;
+}
+.attempt-summary div:nth-child(4){
+  background:#f7fcf7;
+  border-color:#d9eadb;
+}
+.attempt-summary div:nth-child(5){
+  background:#fff6f6;
+  border-color:#f1d6d6;
+}
+.attempt-summary div:nth-child(6){
+  background:#faf7ff;
+  border-color:#e6daf7;
+}
+.attempt-summary div::before{
+  font-size:34px;
+  line-height:1;
+  margin-bottom:7px;
+  font-weight:400;
+}
+.attempt-summary div:nth-child(1)::before{content:"✓";color:#52bd69}
+.attempt-summary div:nth-child(2)::before{content:"➤";color:#3f7ff5}
+.attempt-summary div:nth-child(3)::before{content:"✎";color:#f1a91b}
+.attempt-summary div:nth-child(4)::before{content:"✓";color:#52bd69}
+.attempt-summary div:nth-child(5)::before{content:"×";color:#ef3d32}
+.attempt-summary div:nth-child(6)::before{content:"⟳";color:#7745dc}
+.attempt-summary b{
+  font-size:19px;
+  font-weight:400;
 }
 .attempt-summary span{
   display:block;
-  font-size:21px;
+  font-size:24px;
   font-weight:800;
   margin-top:4px;
 }
+.attempt-summary div:nth-child(1) span,
+.attempt-summary div:nth-child(4) span{color:#0aa52b}
+.attempt-summary div:nth-child(2) span{color:#2563d9}
+.attempt-summary div:nth-child(3) span{color:#ef6c00}
+.attempt-summary div:nth-child(5) span{color:#e31c16}
+.attempt-summary div:nth-child(6) span{color:#6731d0}
+
+.attempt-details-date{
+  margin:0 24px 22px;
+  font-size:20px;
+  color:#666;
+  flex:0 0 auto;
+}
+.attempt-details-date b{
+  color:#111;
+}
+
+.attempt-details-main{
+  display:grid;
+  grid-template-columns:345px minmax(0,1fr);
+  gap:18px;
+  padding:0 21px 22px;
+  min-height:0;
+  flex:1;
+}
+.attempt-question-nav{
+  min-height:0;
+  border:1px solid #e1e5ea;
+  border-radius:8px;
+  background:#fff;
+  padding:16px 16px 14px;
+  overflow:hidden;
+}
+.attempt-question-nav h3{
+  margin:0 0 16px;
+  font-size:20px;
+  font-weight:700;
+}
+.attempt-details-palette{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:9px 16px;
+  align-content:start;
+}
+.attempt-details-palette button{
+  height:40px;
+  min-width:0;
+  padding:4px 8px;
+  background:#fff;
+  border:1px solid #dfe3e8;
+  border-radius:8px;
+  color:#111;
+  font-size:18px;
+  font-weight:400;
+  cursor:pointer;
+}
+.attempt-details-palette button:hover{
+  border-color:#6b8edb;
+  background:#f6f9ff;
+}
+.attempt-details-palette button.current{
+  background:#3b76dc;
+  border-color:#3b76dc;
+  color:#fff;
+  box-shadow:0 0 0 2px rgba(59,118,220,.14);
+}
+.attempt-details-palette button.right{
+  border-color:#65c779;
+  background:#f7fff8;
+}
+.attempt-details-palette button.wrong{
+  border-color:#f06a62;
+  background:#fff8f8;
+}
+.attempt-details-palette button.unattempted{
+  border-color:#e2dce9;
+}
+.attempt-details-palette button.marked{
+  border-color:#e6ba36;
+  background:#fffdf4;
+}
+
+.attempt-details-legend{
+  margin-top:22px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px 28px;
+  align-items:center;
+  font-size:16px;
+  color:#222;
+}
+.attempt-details-legend span{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.attempt-details-legend i{
+  width:14px;
+  height:14px;
+  border-radius:3px;
+  display:inline-block;
+}
+.legend-right{background:#58bd68}
+.legend-wrong{background:#ef3029}
+.legend-unattempted{background:#7741dc}
+.legend-marked{background:#f3c425}
+.legend-current{background:#3f78dc}
+
+.attempt-question-stage{
+  min-height:0;
+  border:1px solid #dfe4ea;
+  border-radius:8px;
+  background:#fff;
+  padding:26px 22px;
+  overflow:auto;
+}
 .attempt-question{
-  border:1px solid #ddd;
-  border-radius:10px;
-  padding:14px;
-  margin:12px 0;
+  border:0;
+  border-radius:0;
+  padding:0;
+  margin:0;
+  scroll-margin-top:8px;
 }
-.attempt-question h3{margin-top:0}
-@media(max-width:700px){
-  .attempt-summary{grid-template-columns:repeat(2,1fr)}
+.attempt-question-hidden{
+  display:none !important;
+}
+.attempt-question h3{
+  margin:0 0 28px;
+  font-size:24px;
+  font-weight:800;
+  color:#111;
+}
+.attempt-detail-row{
+  display:grid;
+  grid-template-columns:273px minmax(0,1fr);
+  min-height:68px;
+  border:1px solid #dfe4ea;
+  border-radius:8px;
+  overflow:hidden;
+  margin:10px 0;
+}
+.attempt-detail-label{
+  display:flex;
+  align-items:center;
+  gap:17px;
+  padding:14px 22px;
+  font-size:20px;
+  font-weight:700;
+  background:#f6faff;
+}
+.attempt-detail-value{
+  display:flex;
+  align-items:center;
+  padding:14px 23px;
+  font-size:20px;
+  line-height:1.55;
+  background:#fff;
+}
+.attempt-detail-row:nth-of-type(3) .attempt-detail-label{
+  background:#fbf8ff;
+}
+.attempt-detail-row:nth-of-type(5) .attempt-detail-label{
+  background:#f7fcf7;
+}
+.attempt-detail-row:nth-of-type(6) .attempt-detail-label{
+  background:#fffaf0;
+}
+.attempt-detail-icon{
+  width:27px;
+  text-align:center;
+  font-size:27px;
+  line-height:1;
+  font-weight:400;
+  flex:0 0 27px;
+}
+.icon-question,.icon-pattern{color:#3f7ff5}
+.icon-answer{color:#7542d8}
+.icon-correct{color:#51bd68}
+.icon-solution{color:#f08b00}
+.attempt-answer-wrong{
+  color:#ef1d1d;
+}
+.attempt-answer-right{
+  color:#168c2d;
+}
+.attempt-answer-muted{
+  color:#ef1d1d;
 }
 
+.attempt-details-nav{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:18px;
+}
+.attempt-details-nav button{
+  border:1px solid #d9dee5;
+  background:#fff;
+  color:#222;
+  border-radius:8px;
+  padding:10px 18px;
+  font-size:15px;
+  font-weight:700;
+}
+.attempt-details-nav button:hover{
+  background:#f5f7fa;
+}
+.attempt-details-close{
+  display:none;
+}
 
+@media(max-width:1100px){
+  .attempt-summary{gap:10px;margin-left:16px;margin-right:16px}
+  .attempt-details-main{grid-template-columns:300px minmax(0,1fr);padding-left:16px;padding-right:16px}
+  .attempt-detail-row{grid-template-columns:220px minmax(0,1fr)}
+}
+@media(max-width:800px){
+  .attempt-details-overlay{overflow:auto}
+  .attempt-details-card{height:auto;min-height:100vh;overflow:visible}
+  .attempt-details-head{padding:0 14px;flex-basis:62px;min-height:62px}
+  .attempt-details-head h2{font-size:20px}
+  .attempt-summary{grid-template-columns:repeat(2,1fr);margin:20px 14px 16px}
+  .attempt-details-date{margin:0 14px 16px;font-size:16px}
+  .attempt-details-main{grid-template-columns:1fr;padding:0 14px 20px}
+  .attempt-question-nav{order:1}
+  .attempt-question-stage{order:2}
+  .attempt-details-palette{gap:8px}
+  .attempt-detail-row{grid-template-columns:1fr}
+  .attempt-detail-label{min-height:52px}
+  .attempt-detail-value{font-size:17px}
+}
 /* Clean Test Attempt History table */
 .history-section{
   margin:18px 0 28px;
@@ -301,27 +604,194 @@ footer{background:#86130f;color:white;text-align:center;padding:25px}
 </style>
 
 <style>
+/* ===== Welcome Hero — matched to the supplied Lakshman Learning design ===== */
 .hero-welcome{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  min-height:845px;
+  margin:0 2%;
+  padding:112px 40px 90px;
   text-align:center;
-  padding:55px 20px;
-  margin:0 auto 30px;
-  background:linear-gradient(135deg,#fffaf1,#f2e4cf);
-  border-radius:0 0 20px 20px;
+  border-radius:0 0 22px 22px;
+  background:
+    radial-gradient(circle at 5% 25%, rgba(255,221,184,.48) 0 5px, transparent 6px),
+    radial-gradient(circle at 94% 47%, rgba(255,221,184,.42) 0 5px, transparent 6px),
+    linear-gradient(135deg,#fffaf3 0%,#fffdf9 48%,#ffedd9 100%);
+  box-shadow:0 10px 28px rgba(90,65,35,.12);
 }
+
+.hero-welcome::before,
+.hero-welcome::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  width:310px;
+  height:310px;
+  border-radius:50%;
+  background:rgba(255,205,151,.16);
+}
+.hero-welcome::before{
+  left:-135px;
+  bottom:-145px;
+}
+.hero-welcome::after{
+  right:-145px;
+  bottom:-145px;
+}
+
+/* Decorative dot clusters */
+.hero-welcome::marker{display:none}
+
+.welcome-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin:0 auto 52px;
+  padding:12px 31px;
+  border-radius:34px;
+  background:linear-gradient(135deg,#fff0dd,#ffe8cb);
+  color:#ef6900;
+  font-size:24px;
+  font-weight:800;
+  box-shadow:0 2px 12px rgba(239,105,0,.06);
+}
+.crown-icon{
+  color:#f47b00;
+  font-size:34px;
+  line-height:1;
+}
+
 .hero-welcome h1{
-  margin:0 0 12px;
-  color:#921914;
-  font-size:clamp(34px,6vw,58px);
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0;
+  line-height:1;
+  letter-spacing:-1.5px;
 }
-.hero-welcome p{
-  margin:8px 0;
-  color:#9d1b15;
-  font-size:22px;
-  font-weight:700;
+.welcome-black{
+  color:#202326;
+  font-size:clamp(48px,5.5vw,76px);
+  font-weight:800;
 }
-.hero-welcome span{
-  color:#555;
-  font-size:17px;
+.welcome-red{
+  margin-top:14px;
+  color:#99191a;
+  font-size:clamp(58px,7vw,94px);
+  font-weight:900;
+  text-shadow:0 5px 8px rgba(90,0,0,.16);
+}
+
+.welcome-values{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:30px;
+  margin:58px auto 0;
+  color:#25313e;
+  font-size:29px;
+  font-weight:600;
+}
+.welcome-value{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  white-space:nowrap;
+}
+.value-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:39px;
+  font-weight:800;
+  line-height:1;
+}
+.learn .value-icon{color:#e84949}
+.practice .value-icon{color:#f08a00}
+.improve .value-icon{color:#61bd68}
+.succeed .value-icon{color:#7543c6}
+.value-divider{
+  width:2px;
+  height:38px;
+  background:#eadac9;
+}
+
+.welcome-decoration{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  margin:50px auto 45px;
+}
+.welcome-decoration span{
+  display:block;
+  width:84px;
+  height:3px;
+  background:#f17b00;
+  border-radius:5px;
+}
+.welcome-decoration b{
+  color:#f17b00;
+  font-size:30px;
+  line-height:1;
+}
+
+.welcome-subtitle{
+  margin:0;
+  color:#20262d;
+  font-size:28px;
+  font-weight:500;
+}
+.welcome-subtitle strong{
+  color:#99191a;
+  font-weight:800;
+}
+
+/* Small dot-pattern ornaments */
+.hero-welcome{
+  background-image:
+    radial-gradient(circle, rgba(255,220,192,.62) 0 4px, transparent 5px),
+    radial-gradient(circle, rgba(255,220,192,.50) 0 4px, transparent 5px),
+    linear-gradient(135deg,#fffaf3 0%,#fffdf9 48%,#ffedd9 100%);
+  background-size:23px 25px,23px 25px,auto;
+  background-position:35px 190px,calc(100% - 35px) 395px,0 0;
+  background-repeat:repeat-y,repeat-y,no-repeat;
+}
+
+@media(max-width:900px){
+  .hero-welcome{
+    min-height:650px;
+    padding:80px 20px 65px;
+  }
+  .welcome-badge{font-size:19px;margin-bottom:40px;padding:10px 22px}
+  .welcome-values{gap:16px;font-size:22px}
+  .value-icon{font-size:31px}
+  .value-divider{height:30px}
+  .welcome-subtitle{font-size:22px}
+}
+
+@media(max-width:700px){
+  .hero-welcome{
+    min-height:auto;
+    margin:0;
+    padding:55px 16px 60px;
+    border-radius:0 0 18px 18px;
+  }
+  .welcome-black{font-size:42px}
+  .welcome-red{font-size:48px;margin-top:10px}
+  .welcome-values{
+    flex-wrap:wrap;
+    gap:14px 18px;
+    margin-top:38px;
+    font-size:19px;
+  }
+  .value-divider{display:none}
+  .value-icon{font-size:27px}
+  .welcome-decoration{margin:35px auto 30px}
+  .welcome-decoration span{width:55px}
+  .welcome-subtitle{font-size:18px;line-height:1.5}
 }
 </style>
 
@@ -348,6 +818,368 @@ input, textarea, select {
 }
 
 </style>
+
+<style>
+/* Attempt Details: enable page/popup scrolling */
+.attempt-details-overlay{
+  overflow-y:auto !important;
+  overflow-x:hidden !important;
+  height:100vh !important;
+  -webkit-overflow-scrolling:touch;
+}
+
+.attempt-details-card{
+  height:auto !important;
+  min-height:100vh !important;
+  overflow:visible !important;
+}
+
+.attempt-details-main{
+  flex:0 0 auto !important;
+  min-height:auto !important;
+  padding-bottom:30px !important;
+}
+
+.attempt-question-nav{
+  overflow:visible !important;
+}
+
+.attempt-question-stage{
+  overflow:visible !important;
+  min-height:auto !important;
+}
+
+@media(max-width:800px){
+  .attempt-details-overlay{
+    overflow-y:auto !important;
+  }
+  .attempt-details-card{
+    height:auto !important;
+    min-height:100vh !important;
+    overflow:visible !important;
+  }
+}
+</style>
+
+
+<style>
+/* ===== TEST SCREEN — MATCH PROVIDED DESIGN ===== */
+body:has(#test[style*="display: block"]),
+body:has(#test[style*="display:block"]){
+  background:#fff !important;
+}
+
+#test{
+  background:#fff !important;
+  min-height:100vh;
+}
+
+#test .container{
+  width:100% !important;
+  max-width:none !important;
+  margin:0 !important;
+  padding:32px 44px 135px !important;
+}
+
+#test .testbox{
+  width:100% !important;
+  min-height:calc(100vh - 32px) !important;
+  margin:0 !important;
+  padding:10px 0 0 !important;
+  background:#fff !important;
+  border:1px solid #d9dde2 !important;
+  border-radius:10px !important;
+  box-shadow:0 1px 5px rgba(0,0,0,.08) !important;
+  overflow:visible !important;
+}
+
+/* Top question number + timer */
+#test .top{
+  padding:0 42px !important;
+  margin:0 !important;
+  min-height:78px !important;
+  align-items:center !important;
+}
+
+#test .badge{
+  background:#fff4df !important;
+  color:#111 !important;
+  border-radius:32px !important;
+  padding:16px 26px !important;
+  font-size:25px !important;
+  font-weight:800 !important;
+}
+
+#test .timer{
+  background:#b51c24 !important;
+  color:#fff !important;
+  border-radius:20px !important;
+  padding:14px 22px !important;
+  font-size:22px !important;
+  font-weight:800 !important;
+  min-width:160px !important;
+  text-align:center !important;
+}
+
+/* Question palette */
+#test .palette{
+  display:flex !important;
+  flex-wrap:nowrap !important;
+  gap:16px !important;
+  margin:10px 42px 42px !important;
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  padding:0 0 2px !important;
+}
+
+#test .palette button{
+  flex:0 0 52px !important;
+  width:52px !important;
+  height:62px !important;
+  padding:0 !important;
+  background:#fff !important;
+  border:1px solid #c8ced6 !important;
+  border-radius:9px !important;
+  color:#111 !important;
+  font-size:21px !important;
+  font-weight:700 !important;
+}
+
+#test .palette button.current{
+  background:#e52328 !important;
+  border-color:#e52328 !important;
+  color:#fff !important;
+}
+
+
+/* ===== QUESTION PALETTE COLORS = ACTION COLORS =====
+   The color tells the user what happened to that question. */
+#test .palette button.action-answered{
+  border:2px solid #258238 !important;
+  background:#f3fff5 !important;
+  color:#176b2b !important;
+}
+
+#test .palette button.action-missed{
+  border:2px solid #e52328 !important;
+  background:#fff1f1 !important;
+  color:#c51d22 !important;
+}
+
+#test .palette button.action-mark{
+  border:2px solid #f39a00 !important;
+  background:#fff7e6 !important;
+  color:#d57a00 !important;
+}
+
+#test .palette button.action-previous{
+  border:2px solid #1767df !important;
+  background:#f1f7ff !important;
+  color:#1767df !important;
+}
+
+#test .palette button.action-back{
+  border:2px solid #9635e9 !important;
+  background:#faf3ff !important;
+  color:#7d27c9 !important;
+}
+
+/* Current question is always clearly highlighted. */
+#test .palette button.current{
+  background:#e52328 !important;
+  border-color:#e52328 !important;
+  color:#fff !important;
+  box-shadow:0 0 0 3px rgba(229,35,40,.12) !important;
+}
+
+#test .palette button.answered{
+  border:2px solid #258238 !important;
+}
+
+#test .palette button.visited{
+  border:2px solid #d58b19 !important;
+  background:#fffaf0 !important;
+}
+
+/* Question */
+#test .question{
+  margin:0 42px 35px !important;
+  font-size:30px !important;
+  line-height:1.35 !important;
+  font-weight:800 !important;
+  color:#111 !important;
+}
+
+/* Answer options */
+#test #options{
+  margin:0 42px !important;
+}
+
+#test .option{
+  min-height:96px !important;
+  margin:20px 0 !important;
+  padding:25px 28px !important;
+  border:1.5px solid #cfd4db !important;
+  border-radius:14px !important;
+  background:#fff !important;
+  color:#111 !important;
+  font-size:25px !important;
+  font-weight:500 !important;
+  line-height:1.3 !important;
+}
+
+#test .option::first-letter{
+  color:#b51c24;
+  font-weight:800;
+}
+
+#test .option.selected{
+  background:#fffaf0 !important;
+  border:1.5px solid #e52328 !important;
+}
+
+#test .option:hover{
+  background:#fff !important;
+  border-color:#cfd4db !important;
+}
+
+/* Bottom action bar */
+#test .actions{
+  position:fixed !important;
+  left:0 !important;
+  right:0 !important;
+  bottom:0 !important;
+  z-index:1000 !important;
+  display:grid !important;
+  grid-template-columns:235px 210px 205px 240px !important;
+  justify-content:space-between !important;
+  align-items:center !important;
+  gap:25px !important;
+  margin:0 !important;
+  padding:38px 45px !important;
+  background:#fff !important;
+  border-top:1px solid #e1e4e8 !important;
+  box-shadow:0 -2px 6px rgba(0,0,0,.03) !important;
+}
+
+#test .actions button{
+  height:86px !important;
+  padding:0 24px !important;
+  border-radius:9px !important;
+  background:#fff !important;
+  font-size:25px !important;
+  font-weight:800 !important;
+}
+
+#test .actions button:nth-child(1){
+  border:2px solid #1767df !important;
+  color:#1767df !important;
+  background:#f7fbff !important;
+}
+
+#test .actions button:nth-child(2){
+  border:2px solid #9b38ee !important;
+  color:#9635e9 !important;
+  background:#fffaff !important;
+}
+
+#test .actions button:nth-child(3){
+  border:2px solid #f39a00 !important;
+  color:#ed9000 !important;
+  background:#fffdf5 !important;
+}
+
+#test .actions #nextBtn{
+  border:2px solid #e52328 !important;
+  color:#fff !important;
+  background:#f02b2f !important;
+  box-shadow:inset 0 0 0 4px rgba(255,255,255,.25) !important;
+}
+
+/* Desktop spacing */
+@media(min-width:1200px){
+  #test .question{
+    margin-top:0 !important;
+  }
+}
+
+/* Responsive */
+@media(max-width:1000px){
+  #test .actions{
+    grid-template-columns:repeat(2,1fr) !important;
+  }
+  #test .actions button{
+    height:68px !important;
+    font-size:19px !important;
+  }
+}
+
+@media(max-width:700px){
+  #test .container{
+    padding:10px 8px 190px !important;
+  }
+
+  #test .testbox{
+    min-height:calc(100vh - 10px) !important;
+  }
+
+  #test .top{
+    padding:8px 14px !important;
+  }
+
+  #test .badge{
+    font-size:18px !important;
+    padding:12px 18px !important;
+  }
+
+  #test .timer{
+    font-size:17px !important;
+    min-width:125px !important;
+    padding:11px 14px !important;
+  }
+
+  #test .palette{
+    margin:8px 14px 28px !important;
+    gap:9px !important;
+  }
+
+  #test .palette button{
+    flex-basis:44px !important;
+    width:44px !important;
+    height:50px !important;
+    font-size:17px !important;
+  }
+
+  #test .question{
+    margin:0 14px 24px !important;
+    font-size:21px !important;
+  }
+
+  #test #options{
+    margin:0 14px !important;
+  }
+
+  #test .option{
+    min-height:68px !important;
+    padding:18px !important;
+    font-size:19px !important;
+    margin:12px 0 !important;
+  }
+
+  #test .actions{
+    grid-template-columns:1fr 1fr !important;
+    gap:10px !important;
+    padding:16px 12px !important;
+  }
+
+  #test .actions button{
+    height:58px !important;
+    font-size:16px !important;
+    padding:0 10px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <script>
@@ -421,9 +1253,38 @@ input, textarea, select {
 
 <section id="home">
 <section class="hero-welcome">
-  <h1>Welcome to Lakshman Learning</h1>
-  <p>Learn • Practice • Improve • Succeed</p>
-  <span>Your platform for Competitive Exam Preparation</span>
+  <div class="welcome-badge"><span class="crown-icon">♛</span> <span>Welcome Aboard!</span></div>
+
+  <h1>
+    <span class="welcome-black">Welcome to</span>
+    <span class="welcome-red">Lakshman Learning</span>
+  </h1>
+
+  <div class="welcome-values">
+    <div class="welcome-value learn">
+      <span class="value-icon">▢</span><span>Learn</span>
+    </div>
+    <span class="value-divider"></span>
+    <div class="welcome-value practice">
+      <span class="value-icon">◎</span><span>Practice</span>
+    </div>
+    <span class="value-divider"></span>
+    <div class="welcome-value improve">
+      <span class="value-icon">↗</span><span>Improve</span>
+    </div>
+    <span class="value-divider"></span>
+    <div class="welcome-value succeed">
+      <span class="value-icon">♛</span><span>Succeed</span>
+    </div>
+  </div>
+
+  <div class="welcome-decoration">
+    <span></span><b>•</b><span></span>
+  </div>
+
+  <p class="welcome-subtitle">
+    Your platform for <strong>Competitive Exam Preparation</strong>
+  </p>
 </section>
 
 <div class="container">
@@ -445,7 +1306,7 @@ input, textarea, select {
 </div>
 <div class="card">
   <h2>📅 Calendar</h2>
-  <p>12 Questions • 30 Seconds per Question</p>
+  <p id="calendarQuestionCount">51 Questions • 30 Seconds per Question</p>
 
   <button class="primary" onclick="startCalendarTestAgain()">
     Start Test
@@ -475,7 +1336,7 @@ input, textarea, select {
 </button>
 
 <button onclick="markQuestion()">Mark</button>
-<button class="primary" onclick="next()">Save &amp; Next →</button>
+<button class="primary" id="nextBtn" onclick="next()">Save &amp; Next →</button>
 </div>
 </div></div></section>
 
@@ -603,7 +1464,7 @@ input, textarea, select {
             Total Tests Written
           </div>
           <div class="stat">
-            <strong id="calendarBestScore">0/12</strong>
+            <strong id="calendarBestScore">0/19</strong>
             Best Score
           </div>
           <div class="stat">
@@ -611,7 +1472,7 @@ input, textarea, select {
             Average Score
           </div>
           <div class="stat">
-            <strong id="calendarLatestScore">0/12</strong>
+            <strong id="calendarLatestScore">0/19</strong>
             Latest Test
           </div>
         </div>
@@ -689,19 +1550,58 @@ const numberSystemQuestions = [
 ];
 
 
-const calendarQuestions = [
-  {question:"If Today is ‘Tuesday’ what would be the day after 38 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:0,pattern:"After 38 days → 38 ÷ 7 → remainder 3",solution:"38 ÷ 7 leaves remainder 3. Starting from Tuesday, move 3 days forward: Wednesday, Thursday, Friday."},
-  {question:"If Today is ‘Tuesday’ what would be the day after 23 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:3,pattern:"After 23 days → 23 ÷ 7 → remainder 2",solution:"23 ÷ 7 leaves remainder 2. Starting from Tuesday, move 2 days forward: Wednesday, Thursday."},
-  {question:"If Today is ‘Tuesday’ what would be the day after 64 days?",options:["Friday","Wednesday","Tuesday","Thursday"],answer:1,pattern:"After 64 days → 64 ÷ 7 → remainder 1",solution:"64 ÷ 7 leaves remainder 1. Starting from Tuesday, move 1 day forward: Wednesday."},
-  {question:"If Today is ‘Tuesday’ what would be the day after 55 days?",options:["Friday","Saturday","Monday","Thursday"],answer:2,pattern:"After 55 days → 55 ÷ 7 → remainder 6",solution:"55 ÷ 7 leaves remainder 6. Tuesday + 6 days = Monday (equivalently Tuesday − 1 day = Monday)."},
-  {question:"If Today is ‘Tuesday’ what would be the day after 75 days?",options:["Sunday","Saturday","Tuesday","Thursday"],answer:0,pattern:"After 75 days → 75 ÷ 7 → remainder 5",solution:"75 ÷ 7 leaves remainder 5. Tuesday + 5 days = Sunday."},
-  {question:"If Today is ‘Tuesday’ what would be the day after 42 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:2,pattern:"After 42 days → 42 ÷ 7 → remainder 0",solution:"42 is exactly divisible by 7, so the day remains Tuesday."},
-  {question:"If Today is ‘Tuesday’ what would be the day before 65 days?",options:["Friday","Saturday","Tuesday","Sunday"],answer:3,pattern:"Before 65 days → 65 ÷ 7 → remainder 2",solution:"65 ÷ 7 leaves remainder 2. Move 2 days backward from Tuesday: Sunday."},
-  {question:"If Today is ‘Tuesday’ what would be the day before 40 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:3,pattern:"Before 40 days → 40 ÷ 7 → remainder 5",solution:"40 ÷ 7 leaves remainder 5. Move 5 days backward from Tuesday: Thursday."},
-  {question:"If Today is ‘Tuesday’ what would be the day before 67 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:0,pattern:"Before 67 days → 67 ÷ 7 → remainder 4",solution:"67 ÷ 7 leaves remainder 4. Move 4 days backward from Tuesday: Friday."},
-  {question:"If Today is ‘Tuesday’ what would be the day before 368 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:0,pattern:"Before 368 days → 368 ÷ 7 → remainder 4",solution:"368 ÷ 7 leaves remainder 4. Move 4 days backward from Tuesday: Friday."},
-  {question:"If Today is ‘Tuesday’ what would be the day before 96 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:3,pattern:"Before 96 days → 96 ÷ 7 → remainder 5",solution:"96 ÷ 7 leaves remainder 5. Move 5 days backward from Tuesday: Thursday."},
-  {question:"If Today is ‘Tuesday’ what would be the day before 426 days?",options:["Wednesday","Saturday","Tuesday","Thursday"],answer:0,pattern:"Before 426 days → 426 ÷ 7 → remainder 6",solution:"426 ÷ 7 leaves remainder 6. Move 6 days backward from Tuesday: Wednesday."}
+const calendarQuestions = [{question:"If Today is ‘Tuesday’ what would be the day after 38 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:0,pattern:"After 38 days → 38 ÷ 7 → remainder 3",solution:"38 ÷ 7 leaves remainder 3. Starting from Tuesday, move 3 days forward: Wednesday, Thursday, Friday."},
+{question:"If Today is ‘Tuesday’ what would be the day after 23 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:3,pattern:"After 23 days → 23 ÷ 7 → remainder 2",solution:"23 ÷ 7 leaves remainder 2. Starting from Tuesday, move 2 days forward: Wednesday, Thursday."},
+{question:"If Today is ‘Tuesday’ what would be the day after 64 days?",options:["Friday","Wednesday","Tuesday","Thursday"],answer:1,pattern:"After 64 days → 64 ÷ 7 → remainder 1",solution:"64 ÷ 7 leaves remainder 1. Starting from Tuesday, move 1 day forward: Wednesday."},
+{question:"If Today is ‘Tuesday’ what would be the day after 55 days?",options:["Friday","Saturday","Monday","Thursday"],answer:2,pattern:"After 55 days → 55 ÷ 7 → remainder 6",solution:"55 ÷ 7 leaves remainder 6. Tuesday + 6 days = Monday (equivalently Tuesday − 1 day = Monday)."},
+{question:"If Today is ‘Tuesday’ what would be the day after 75 days?",options:["Sunday","Saturday","Tuesday","Thursday"],answer:0,pattern:"After 75 days → 75 ÷ 7 → remainder 5",solution:"75 ÷ 7 leaves remainder 5. Tuesday + 5 days = Sunday."},
+{question:"If Today is ‘Tuesday’ what would be the day after 42 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:2,pattern:"After 42 days → 42 ÷ 7 → remainder 0",solution:"42 is exactly divisible by 7, so the day remains Tuesday."},
+{question:"If Today is ‘Tuesday’ what would be the day before 65 days?",options:["Friday","Saturday","Tuesday","Sunday"],answer:3,pattern:"Before 65 days → 65 ÷ 7 → remainder 2",solution:"65 ÷ 7 leaves remainder 2. Move 2 days backward from Tuesday: Sunday."},
+{question:"If Today is ‘Tuesday’ what would be the day before 40 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:3,pattern:"Before 40 days → 40 ÷ 7 → remainder 5",solution:"40 ÷ 7 leaves remainder 5. Move 5 days backward from Tuesday: Thursday."},
+{question:"If Today is ‘Tuesday’ what would be the day before 67 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:0,pattern:"Before 67 days → 67 ÷ 7 → remainder 4",solution:"67 ÷ 7 leaves remainder 4. Move 4 days backward from Tuesday: Friday."},
+{question:"If Today is ‘Tuesday’ what would be the day before 368 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:0,pattern:"Before 368 days → 368 ÷ 7 → remainder 4",solution:"368 ÷ 7 leaves remainder 4. Move 4 days backward from Tuesday: Friday."},
+{question:"If Today is ‘Tuesday’ what would be the day before 96 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:3,pattern:"Before 96 days → 96 ÷ 7 → remainder 5",solution:"96 ÷ 7 leaves remainder 5. Move 5 days backward from Tuesday: Thursday."},
+{question:"If Today is ‘Tuesday’ what would be the day before 426 days?",options:["Wednesday","Saturday","Tuesday","Thursday"],answer:0,pattern:"Before 426 days → 426 ÷ 7 → remainder 6",solution:"426 ÷ 7 leaves remainder 6. Move 6 days backward from Tuesday: Wednesday."},
+{question:"If 5th of a month falls 2 days after Monday, what day will precede 23rd of the month?",options:["Wednesday","Saturday","Sunday","Monday"],answer:1,pattern:"5th = Wednesday; 23rd − 5th = 18 days → remainder 4",solution:"2 days after Monday is Wednesday. From the 5th to the 23rd there are 18 days. 18 ÷ 7 leaves remainder 4, so the 23rd is Sunday. The day preceding Sunday is Saturday."},
+{question:"If 9th of the month falls on the day preceding Sunday, on what day will 1st of the month fall?",options:["Friday","Saturday","Sunday","Monday"],answer:0,pattern:"9th = Saturday; 9 − 1 = 8 days → remainder 1",solution:"The day preceding Sunday is Saturday. The 1st is 8 days before the 9th. 8 ÷ 7 leaves remainder 1, so move one day backward from Saturday: Friday."},
+{question:"If 2nd of the month falls on the day preceding Monday, on what day will 31st fall?",options:["Friday","Saturday","Sunday","Monday"],answer:3,pattern:"2nd = Sunday; 31 − 2 = 29 days → remainder 1",solution:"The day preceding Monday is Sunday. From the 2nd to the 31st there are 29 days. 29 ÷ 7 leaves remainder 1. Sunday + 1 day = Monday."},
+{question:"If 7th of the month is 3 days earlier than Friday, what day will it be on 19th day of the month?",options:["Monday","Tuesday","Wednesday","Sunday"],answer:3,pattern:"7th = Tuesday; 19 − 7 = 12 days → remainder 5",solution:"Three days earlier than Friday is Tuesday. From the 7th to the 19th there are 12 days. 12 ÷ 7 leaves remainder 5. Tuesday + 5 days = Sunday."},
+{question:"If 28th of the month is Friday, then what day is 3 weeks 4 days earlier?",options:["Sunday","Monday","Thursday","Saturday"],answer:1,pattern:"3 weeks 4 days = 25 days → remainder 4",solution:"3 weeks = 21 days. 21 + 4 = 25 days. 25 ÷ 7 leaves remainder 4. Move 4 days backward from Friday: Monday."},
+{question:"How many days are there in Z weeks Z days?",options:["7Z","8Z","14Z","7Z + 7"],answer:1,pattern:"Z weeks = 7Z days; add Z days",solution:"1 week = 7 days. Therefore Z weeks = 7Z days. Adding Z more days gives 7Z + Z = 8Z days. Answer: 8Z."},
+{question:"If 15th March 1997 is Tuesday, what was the day on 28th March 1997?",options:["Sunday","Monday","Friday","Saturday"],answer:1,pattern:"28 − 15 = 13 days → 13 ÷ 7 leaves remainder 6",solution:"The difference between 15th March and 28th March is 13 days. 13 ÷ 7 leaves remainder 6. Starting from Tuesday, move 6 days forward: Monday."},
+{question:"If 13th September 1993 is Monday, what was the day on 26th October 1993?",options:["Sunday","Monday","Tuesday","Saturday"],answer:2,pattern:"13 September 1993 → 26 October 1993 = 43 days → remainder 1",solution:"The difference between 13th September and 26th October is 43 days. 43 ÷ 7 leaves remainder 1. Starting from Monday, move 1 day forward: Tuesday."},
+{question:"If 16th October 1991 is Wednesday, what was the day on 24th December 1991?",options:["Tuesday","Monday","Friday","Saturday"],answer:0,pattern:"16 October 1991 → 24 December 1991 = 69 days → remainder 6",solution:"The difference is 69 days. 69 ÷ 7 leaves remainder 6. Starting from Wednesday, move 6 days forward: Tuesday."},
+{question:"If 17th June 2019 is Thursday, what was the day on 23rd September 2019?",options:["Sunday","Thursday","Tuesday","Saturday"],answer:1,pattern:"June 17 → September 23 = 98 days → remainder 0",solution:"The difference between 17th June and 23rd September is 98 days. 98 is exactly divisible by 7, so the day remains Thursday."},
+{question:"If 23rd May 2012 is Monday, what was the day on 18th July 2012?",options:["Sunday","Monday","Friday","Saturday"],answer:1,pattern:"May 23 → July 18 = 56 days → remainder 0",solution:"The difference between 23rd May and 18th July is 56 days. 56 is exactly divisible by 7, so the day remains Monday."},
+{question:"If 25th January 2020 is Tuesday, what was the day on 12th March 2020?",options:["Sunday","Monday","Tuesday","Saturday"],answer:0,pattern:"January 25 → March 12 = 47 days → remainder 5",solution:"The difference is 47 days. 47 ÷ 7 leaves remainder 5. Starting from Tuesday, move 5 days forward: Sunday."},
+{question:"If 16th September 2017 is Monday, what was the day on 18th November 2017?",options:["Sunday","Monday","Tuesday","Saturday"],answer:1,pattern:"September 16 → November 18 = 63 days → remainder 0",solution:"The difference between 16th September and 18th November is 63 days. 63 is exactly divisible by 7, so the day remains Monday."},
+{question:"If 25th day of any year is Monday, what day is 85th day of the same year?",options:["Friday","Saturday","Thursday","Monday"],answer:0,pattern:"85 − 25 = 60 days → remainder 4",solution:"From the 25th to the 85th there are 60 days. 60 ÷ 7 leaves remainder 4. Monday + 4 days = Friday."},
+{question:"If 266th day of any year is Thursday, what day is the last day of a non-leap year?",options:["Friday","Saturday","Thursday","Cannot be determined"],answer:3,pattern:"266th → Thursday; 365th is 99 days later, while a leap year has 366 days",solution:"For a non-leap year, the last day is the 365th day. For a leap year it is the 366th day. Since the question specifies only 'any year', the last day can differ. Therefore it cannot be determined."},
+{question:"If 94th day of a non-leap year is Thursday, what day is 42nd day of the same year?",options:["Friday","Saturday","Sunday","Monday"],answer:3,pattern:"94 − 42 = 52 days → remainder 3",solution:"The 42nd day is 52 days before the 94th day. 52 ÷ 7 leaves remainder 3. Move 3 days backward from Thursday: Monday."},
+{question:"If 105th day of a leap year is Tuesday, what day is 64th day of the same year?",options:["Friday","Wednesday","Thursday","Monday"],answer:1,pattern:"105 − 64 = 41 days → remainder 6",solution:"The 64th day is 41 days before the 105th day. 41 ÷ 7 leaves remainder 6. Move 6 days backward from Tuesday: Wednesday."},
+{question:"If 100th day of a leap year is Thursday, what day is 200th day of the same year?",options:["Friday","Saturday","Sunday","Monday"],answer:1,pattern:"200 − 100 = 100 days → remainder 2",solution:"The 200th day is 100 days after the 100th day. 100 ÷ 7 leaves remainder 2. Thursday + 2 days = Saturday."},
+{question:"If 1st day of the month falls on Wednesday, then what day is 30th day of the same month?",options:["Friday","Saturday","Tuesday","Thursday"],answer:3,pattern:"Take difference: 30 − 1 = 29; 29 ÷ 7 leaves remainder 1",solution:"The 1st day is Wednesday. The difference between the 1st and 30th is 29 days. 29 ÷ 7 leaves remainder 1. Wednesday + 1 day = Thursday."},
+{question:"If 1st day of the non-leap year is Friday, then what day is last day of the same year?",options:["Friday","Saturday","Tuesday","Monday"],answer:0,pattern:"Take difference: 365 − 1 = 364; 364 ÷ 7 leaves remainder 0",solution:"The 1st day is Friday. The difference between the 1st and last day is 364 days. 364 is exactly divisible by 7, so the last day is Friday."},
+{question:"If 8th day of the month falls on Monday, then what day is 28th day of the same month?",options:["Sunday","Tuesday","Thursday","Saturday"],answer:0,pattern:"Take difference: 28 − 8 = 20; 20 ÷ 7 leaves remainder 6",solution:"The 8th day is Monday. The difference is 20 days. 20 ÷ 7 leaves remainder 6. Monday + 6 days = Sunday."},
+{question:"If 25th day of the non-leap year is Tuesday, then what day is 100th day of the same year?",options:["Friday","Saturday","Sunday","Monday"],answer:2,pattern:"100 − 25 = 75 days → remainder 5",solution:"The 25th day is Tuesday. The difference is 75 days. 75 ÷ 7 leaves remainder 5. Tuesday + 5 days = Sunday."},
+{question:"If 34th day of the non-leap year is Thursday, then what day is 97th day of the same year?",options:["Friday","Wednesday","Thursday","Monday"],answer:2,pattern:"97 − 34 = 63 days → remainder 0",solution:"The 34th day is Thursday. The difference is 63 days. 63 ÷ 7 leaves remainder 0. Therefore, the 97th day is Thursday."},
+{question:"If 15th day of the leap year is Tuesday, then what day is 90th day of the same year?",options:["Friday","Saturday","Sunday","Monday"],answer:2,pattern:"90 − 15 = 75 days → remainder 5",solution:"The 15th day is Tuesday. The difference is 75 days. 75 ÷ 7 leaves remainder 5. Tuesday + 5 days = Sunday."},
+{question:"If 12th August 2029 is Tuesday, what was the day on 15th October 2029?",options:["Wednesday","Thursday","Tuesday","Saturday"],answer:0,pattern:"12th Aug → 15th Oct: Aug remaining 19 days + September 30 days + October 15 days = 64 days; 64 ÷ 7 leaves remainder 1",solution:"The difference is 64 days. 64 ÷ 7 leaves remainder 1. Tuesday + 1 day = Wednesday."},
+{question:"If 9th March 1993 is Monday, what was the day on 17th May 1993?",options:["Sunday","Monday","Friday","Saturday"],answer:0,pattern:"9th Mar → 17th May: remaining March 22 + April 30 + May 17 = 69 days; 69 ÷ 7 leaves remainder 6",solution:"The difference is 69 days. 69 ÷ 7 leaves remainder 6. Monday + 6 days = Sunday."},
+{question:"If 23rd September 2040 is Monday, what was the day on 25th December 2040?",options:["Sunday","Monday","Wednesday","Saturday"],answer:2,pattern:"23rd Sep → 25th Dec: Sep remaining 7 + October 31 + November 30 + December 25 = 93 days; 93 ÷ 7 leaves remainder 2",solution:"The difference is 93 days. 93 ÷ 7 leaves remainder 2. Monday + 2 days = Wednesday."},
+{question:"If 28th September 2015 is Tuesday, what was the day on 18th August 2015?",options:["Sunday","Monday","Tuesday","Wednesday"],answer:3,pattern:"28th Sep → 18th Aug: 10 days backward; 10 ÷ 7 leaves remainder 3",solution:"The 18th August is 41 days before 28th September when counted across the month boundary. 41 ÷ 7 leaves remainder 6, so moving 6 days backward from Tuesday gives Wednesday."},
+{question:"If 23rd December 1818 is Thursday, what was the day on 16th October 1818?",options:["Tuesday","Monday","Friday","Saturday"],answer:3,pattern:"Date Difference: 23 December → 16 October",solution:"The difference is 68 days. 68 ÷ 7 leaves remainder 5. Moving 5 days backward from Thursday gives Saturday."},
+{question:"If 25th November 2019 is Monday, what was the day on 13th September 2019?",options:["Sunday","Thursday","Tuesday","Saturday"],answer:1,pattern:"Date Difference: 25 November → 13 September",solution:"The difference is 73 days. 73 ÷ 7 leaves remainder 3. Moving 3 days backward from Monday gives Thursday."},
+{question:"If 20th March 2020 is Friday, what was the day on 23rd January 2020?",options:["Sunday","Monday","Thursday","Saturday"],answer:2,pattern:"Date Difference: 20 March → 23 January",solution:"The difference is 57 days. 57 ÷ 7 leaves remainder 1. Moving 1 day backward from Friday gives Thursday."},
+{question:"If 16th September 2017 is Monday, what was the day on 18th July 2017?",options:["Sunday","Monday","Tuesday","Thursday"],answer:3,pattern:"Date Difference: 16 September → 18 July",solution:"The difference is 60 days. 60 ÷ 7 leaves remainder 4. Moving 4 days backward from Monday gives Thursday."}
+,
+{question:"If 16th August 2009 is Tuesday, what was the day on 15th April 2009?",options:["Wednesday","Thursday","Friday","Saturday"],answer:2,pattern:"Date Difference: 16 August → 15 April",solution:"From 15th April to 16th August, the total difference is 123 days. 123 ÷ 7 leaves remainder 4. Moving 4 days backward from Tuesday gives Friday."},
+{question:"If 23rd December 2040 is Monday, what was the day on 15th September 2040?",options:["Sunday","Monday","Friday","Saturday"],answer:0,pattern:"Date Difference: 23 December → 15 September",solution:"The difference is 99 days. 99 ÷ 7 leaves remainder 1. Moving 1 day backward from Monday gives Sunday."},
+{question:"If 25th March 1997 is Monday, what was the day on 29th January 1997?",options:["Sunday","Monday","Tuesday","Saturday"],answer:2,pattern:"Date Difference: 25 March → 29 January",solution:"The difference is 55 days. 55 ÷ 7 leaves remainder 6. Moving 6 days backward from Monday is the same as moving 1 day forward, giving Tuesday."},
+{question:"If 1st January 1994 is Tuesday, what was the day on 31st December 1994?",options:["Sunday","Monday","Tuesday","Saturday"],answer:2,pattern:"Date Difference: 1 January → 31 December",solution:"1994 is not a leap year. From 1st January to 31st December there are 364 days. 364 ÷ 7 leaves remainder 0, so the day remains Tuesday."},
+{question:"If 4th January 2015 is Sunday, what was the day on 30th December 2015?",options:["Wednesday","Thursday","Tuesday","Friday"],answer:0,pattern:"Date Difference: 4 January → 30 December",solution:"The difference is 360 days. 360 ÷ 7 leaves remainder 3. Moving 3 days forward from Sunday gives Wednesday."},
+{question:"If 6th January 2020 is Saturday, what was the day on 31st December 2020?",options:["Sunday","Monday","Tuesday","Saturday"],answer:2,pattern:"Date Difference: 6 January → 31 December",solution:"The difference is 360 days. 360 ÷ 7 leaves remainder 3. Starting from Saturday, move 3 days forward: Sunday, Monday, Tuesday."},
+{question:"Suresh was born on 7th October 1999, Sita was born 8 days before Suresh, the Independence Day of that year fell on Sunday. Which day was Sita born?",options:["Tuesday","Wednesday","Monday","Sunday"],answer:1,pattern:"15 August = Sunday; 15 August → 7 October = 53 days → remainder 4",solution:"Independence Day, 15th August, was Sunday. From 15th August to 7th October is 53 days, leaving remainder 4, so 7th October was Thursday. Sita was born 8 days before Thursday, which is Wednesday."}
 ];
 
 const timeDistanceQuestions = [
@@ -731,6 +1631,16 @@ let currentTestSubject = "Number System";
 let current = 0;
 let answers = new Array(questions.length).fill(null);
 let questionStatus = new Array(questions.length).fill("unsubmitted");
+
+/*
+ * Palette color remembers HOW the user left each question.
+ * save-next-unanswered = missed/skipped
+ * mark = marked for review
+ * previous = went back
+ * back = left the test
+ * answered = answered
+ */
+let questionAction = new Array(questions.length).fill("");
 
 /*
  * Each question owns its own timer.
@@ -1135,15 +2045,8 @@ function viewAttemptDetails(index){
   const old = document.getElementById("attemptDetailsOverlay");
   if(old) old.remove();
 
-  /*
-   * IMPORTANT:
-   * Never use the current global questions/answers here.
-   * Always use the snapshot stored inside THIS attempt.
-   */
   const detailQuestions =
-    Array.isArray(item.questions)
-      ? item.questions
-      : [];
+    Array.isArray(item.questions) ? item.questions : [];
 
   const savedAnswers =
     Array.isArray(item.answers)
@@ -1170,21 +2073,12 @@ function viewAttemptDetails(index){
       user !== undefined &&
       user !== -1;
 
-    /*
-     * Recalculate everything from THIS attempt snapshot.
-     * Never trust summary counters from an older attempt.
-     *
-     * Submitted = actual selected answer.
-     * Unattempted = no selected answer, even if timer
-     * automatically submitted that blank question.
-     */
     if(savedStatus[i] === "marked"){
       marked++;
     }
 
     if(hasAnswer){
       submitted++;
-
       if(user === q.answer){
         right++;
       }else{
@@ -1195,16 +2089,9 @@ function viewAttemptDetails(index){
     }
   });
 
-  /*
-   * Consistency guard:
-   * right + wrong + unattempted must equal the number
-   * of stored questions. "Submitted" is a subset of
-   * answered questions, while "Marked" may overlap.
-   */
   submitted = right + wrong;
 
   const overlay = document.createElement("div");
-
   overlay.id = "attemptDetailsOverlay";
   overlay.className = "attempt-details-overlay";
 
@@ -1212,14 +2099,11 @@ function viewAttemptDetails(index){
     '<div class="attempt-details-card">' +
 
       '<div class="attempt-details-head">' +
-
-        '<h2>📋 '+
+        '<h2>🗓️ '+
           escapeHTML(item.subject || "Test")+
           ' — Attempt Details'+
         '</h2>' +
-
-        '<button type="button" onclick="closeAttemptDetails()">✕</button>' +
-
+        '<button type="button" onclick="closeAttemptDetails()" aria-label="Close">×</button>' +
       '</div>' +
 
       '<div class="attempt-summary">' +
@@ -1228,36 +2112,79 @@ function viewAttemptDetails(index){
           right+' / '+(item.total || detailQuestions.length)+
         '</span></div>' +
 
-        '<div><b>Submitted</b><span>'+
-          submitted+
-        '</span></div>' +
+        '<div><b>Submitted</b><span>'+submitted+'</span></div>' +
 
-        '<div><b>Marked</b><span>'+
-          marked+
-        '</span></div>' +
+        '<div><b>Marked</b><span>'+marked+'</span></div>' +
 
-        '<div><b>Right</b><span>'+
-          right+
-        '</span></div>' +
+        '<div><b>Right</b><span>'+right+'</span></div>' +
 
-        '<div><b>Wrong</b><span>'+
-          wrong+
-        '</span></div>' +
+        '<div><b>Wrong</b><span>'+wrong+'</span></div>' +
 
-        '<div><b>Unattempted</b><span>'+
-          unattempted+
-        '</span></div>' +
+        '<div><b>Unattempted</b><span>'+unattempted+'</span></div>' +
 
       '</div>' +
 
-      '<p><b>Date:</b> '+
+      '<div class="attempt-details-date">' +
+        '<b>Date:</b> '+
         escapeHTML(item.date || "-")+
-        ' &nbsp; <b>Time:</b> '+
+        ' &nbsp;&nbsp; <b>Time:</b> '+
         escapeHTML(item.time || "-")+
-      '</p>' +
+      '</div>' +
 
-      '<div class="attempt-question-list">';
+      '<div class="attempt-details-main">' +
 
+        '<aside class="attempt-question-nav">' +
+          '<h3>Questions</h3>' +
+          '<div class="attempt-details-palette" id="attemptDetailsPalette">';
+
+  detailQuestions.forEach(function(q,i){
+
+    const user = savedAnswers[i];
+    const hasAnswer =
+      user !== null &&
+      user !== undefined &&
+      user !== -1;
+
+    const wasMarked = savedStatus[i] === "marked";
+
+    let status = "Unattempted";
+    let paletteClass = "unattempted";
+
+    if(hasAnswer){
+      if(user === q.answer){
+        status = wasMarked ? "Marked • Right" : "Right";
+        paletteClass = wasMarked ? "marked" : "right";
+      }else{
+        status = wasMarked ? "Marked • Wrong" : "Wrong";
+        paletteClass = wasMarked ? "marked" : "wrong";
+      }
+    }else if(wasMarked){
+      status = "Marked • Unattempted";
+      paletteClass = "marked";
+    }
+
+    htmlText +=
+      '<button type="button" '+
+        'class="'+paletteClass+(i===0 ? ' current' : '')+'" '+
+        'data-question-index="'+i+'" '+
+        'onclick="selectAttemptDetailsQuestion('+i+')">'+
+        (i+1)+
+      '</button>';
+  });
+
+  htmlText +=
+          '</div>' +
+
+          '<div class="attempt-details-legend">' +
+            '<span><i class="legend-right"></i>Right</span>' +
+            '<span><i class="legend-wrong"></i>Wrong</span>' +
+            '<span><i class="legend-unattempted"></i>Unattempted</span>' +
+            '<span><i class="legend-marked"></i>Marked</span>' +
+            '<span><i class="legend-current"></i>Current</span>' +
+          '</div>' +
+        '</aside>' +
+
+        '<section class="attempt-question-stage" id="attemptQuestionStage">';
 
   detailQuestions.forEach(function(q,i){
 
@@ -1268,103 +2195,156 @@ function viewAttemptDetails(index){
       user !== undefined &&
       user !== -1;
 
-    const wasMarked =
-      savedStatus[i] === "marked";
-
-    const wasSubmitted =
-      savedStatus[i] === "submitted";
+    const wasMarked = savedStatus[i] === "marked";
 
     let status = "Unattempted";
 
-    /*
-     * Status display:
-     * - Marked if marked and no answer
-     * - Right/Wrong if an answer exists
-     * - Unattempted if no answer
-     */
     if(hasAnswer){
-
       if(user === q.answer){
         status = wasMarked ? "Marked • Right" : "Right";
       }else{
         status = wasMarked ? "Marked • Wrong" : "Wrong";
       }
-
     }else if(wasMarked){
-
       status = "Marked • Unattempted";
-
-    }else{
-
-      /*
-       * Whether the blank question was auto-submitted by
-       * the timer or simply left blank, it remains
-       * logically UNATTEMPTED.
-       */
-      status = "Unattempted";
     }
 
     const yourAnswer =
       hasAnswer
-        ? (q.options[user] !== undefined
+        ? (q.options && q.options[user] !== undefined
             ? q.options[user]
             : "Not Answered")
         : "Not Answered";
 
     const correctAnswer =
-      q.options[q.answer] !== undefined
+      q.options && q.options[q.answer] !== undefined
         ? q.options[q.answer]
         : "-";
 
-    htmlText +=
+    let yourClass = "attempt-answer-muted";
+    if(hasAnswer){
+      yourClass = user === q.answer
+        ? "attempt-answer-right"
+        : "attempt-answer-wrong";
+    }
 
-      '<div class="attempt-question">' +
+    htmlText +=
+      '<div class="attempt-question '+
+        (i===0 ? '' : 'attempt-question-hidden')+
+        '" data-question-index="'+i+'">' +
 
         '<h3>Q'+(i+1)+' — '+
           escapeHTML(status)+
         '</h3>' +
 
-        '<p><b>Question:</b> '+
-          escapeHTML(q.question || q.q || "-")+
-        '</p>' +
+        '<div class="attempt-detail-row">' +
+          '<div class="attempt-detail-label">' +
+            '<span class="attempt-detail-icon icon-question">?</span>Question' +
+          '</div>' +
+          '<div class="attempt-detail-value">'+
+            escapeHTML(q.question || q.q || "-")+
+          '</div>' +
+        '</div>' +
 
-        '<p><b>Pattern:</b> '+
-          escapeHTML(q.pattern || "-")+
-        '</p>' +
+        '<div class="attempt-detail-row">' +
+          '<div class="attempt-detail-label">' +
+            '<span class="attempt-detail-icon icon-pattern">▦</span>Pattern' +
+          '</div>' +
+          '<div class="attempt-detail-value">'+
+            escapeHTML(q.pattern || "-")+
+          '</div>' +
+        '</div>' +
 
-        '<p><b>Your Answer:</b> '+
-          escapeHTML(yourAnswer)+
-        '</p>' +
+        '<div class="attempt-detail-row">' +
+          '<div class="attempt-detail-label">' +
+            '<span class="attempt-detail-icon icon-answer">♟</span>Your Answer' +
+          '</div>' +
+          '<div class="attempt-detail-value '+yourClass+'">'+
+            escapeHTML(yourAnswer)+
+          '</div>' +
+        '</div>' +
 
-        '<p><b>Correct Answer:</b> '+
-          escapeHTML(correctAnswer)+
-        '</p>' +
+        '<div class="attempt-detail-row">' +
+          '<div class="attempt-detail-label">' +
+            '<span class="attempt-detail-icon icon-correct">✓</span>Correct Answer' +
+          '</div>' +
+          '<div class="attempt-detail-value">'+
+            escapeHTML(correctAnswer)+
+          '</div>' +
+        '</div>' +
 
-        '<p><b>Solution / Explanation:</b> '+
-          escapeHTML(
-            q.solution ||
-            q.explanation ||
-            "-"
-          )+
-        '</p>' +
+        '<div class="attempt-detail-row">' +
+          '<div class="attempt-detail-label">' +
+            '<span class="attempt-detail-icon icon-solution">▮</span>Solution / Explanation' +
+          '</div>' +
+          '<div class="attempt-detail-value">'+
+            escapeHTML(
+              q.solution ||
+              q.explanation ||
+              "-"
+            )+
+          '</div>' +
+        '</div>' +
 
       '</div>';
   });
 
-
   htmlText +=
-
+        '</section>' +
       '</div>' +
-
-      '<button type="button" class="primary" '+
-        'onclick="closeAttemptDetails()">Close</button>' +
-
     '</div>';
 
-
   overlay.innerHTML = htmlText;
-
   document.body.appendChild(overlay);
+
+  overlay.dataset.currentQuestion = "0";
+}
+
+function selectAttemptDetailsQuestion(index){
+  const overlay = document.getElementById("attemptDetailsOverlay");
+  if(!overlay) return;
+
+  const cards = overlay.querySelectorAll(".attempt-question");
+  const buttons = overlay.querySelectorAll("#attemptDetailsPalette button");
+
+  if(!cards.length || index < 0 || index >= cards.length) return;
+
+  cards.forEach(function(card,i){
+    card.classList.toggle("attempt-question-hidden", i !== index);
+  });
+
+  buttons.forEach(function(button,i){
+    button.classList.toggle("current", i === index);
+  });
+
+  overlay.dataset.currentQuestion = String(index);
+
+  const stage = overlay.querySelector("#attemptQuestionStage");
+  if(stage){
+    stage.scrollTop = 0;
+  }
+}
+
+function attemptDetailsPrevious(){
+  const overlay = document.getElementById("attemptDetailsOverlay");
+  if(!overlay) return;
+
+  const cards = overlay.querySelectorAll(".attempt-question");
+  if(!cards.length) return;
+
+  let current = Number(overlay.dataset.currentQuestion || 0);
+  selectAttemptDetailsQuestion(Math.max(0,current-1));
+}
+
+function attemptDetailsNext(){
+  const overlay = document.getElementById("attemptDetailsOverlay");
+  if(!overlay) return;
+
+  const cards = overlay.querySelectorAll(".attempt-question");
+  if(!cards.length) return;
+
+  let current = Number(overlay.dataset.currentQuestion || 0);
+  selectAttemptDetailsQuestion(Math.min(cards.length-1,current+1));
 }
 
 
@@ -1411,6 +2391,7 @@ function saveActiveTest(){
       current: current,
       answers: answers,
       questionStatus: questionStatus,
+      questionAction: questionAction,
       questionSeconds: questionSeconds,
       seconds: seconds,
       subject: currentTestSubject
@@ -1468,6 +2449,11 @@ function restoreActiveTest(){
                      state.questionStatus.length === questions.length
               ? state.questionStatus
               : new Array(questions.length).fill("unsubmitted");
+
+    questionAction = Array.isArray(state.questionAction) &&
+                     state.questionAction.length === questions.length
+              ? state.questionAction
+              : new Array(questions.length).fill("");
 
     if(Array.isArray(state.questionSeconds) &&
        state.questionSeconds.length === questions.length){
@@ -1591,6 +2577,7 @@ function startTest(){
   current = 0;
   answers = new Array(questions.length).fill(null);
   questionStatus = new Array(questions.length).fill("unsubmitted");
+  questionAction = new Array(questions.length).fill("");
 
   /* Every question gets its original 30 seconds. */
   questionSeconds = new Array(questions.length).fill(30);
@@ -1624,6 +2611,17 @@ function renderQuestion(){
 
   const q=questions[current];
 
+  const nextBtn = document.getElementById("nextBtn");
+  if(nextBtn){
+    if(current >= questions.length - 1){
+      nextBtn.textContent = "Submit Test";
+      nextBtn.onclick = function(){ submitCurrentQuestion(false); };
+    }else{
+      nextBtn.textContent = "Save & Next →";
+      nextBtn.onclick = function(){ next(); };
+    }
+  }
+
   document.getElementById("qno").textContent =
     "Question "+(current+1)+" / "+questions.length;
 
@@ -1646,6 +2644,10 @@ function renderQuestion(){
     option.addEventListener("click",function(){
 
       answers[current]=i;
+
+      if(questionStatus[current] !== "marked"){
+        questionAction[current] = "answered";
+      }
 
       box.querySelectorAll(".option").forEach(function(btn,index){
         btn.classList.toggle("selected",index===i);
@@ -1676,10 +2678,29 @@ function renderQuestion(){
 
     if(i===current) b.classList.add("current");
 
-    if(answers[i]!==null && answers[i]!==undefined && answers[i]!==-1){
-      b.classList.add("answered");
-    }else if(i !== current && Number(questionSeconds[i]) < 30){
-      b.classList.add("visited");
+    /*
+     * The palette shows the action/status of every question.
+     * Current question stays red; once the user leaves it,
+     * its last meaningful state is shown with the button's color.
+     */
+    if(i !== current){
+      if(questionAction[i] === "back"){
+        b.classList.add("action-back");
+      }else if(questionAction[i] === "previous"){
+        b.classList.add("action-previous");
+      }else if(questionAction[i] === "mark"){
+        b.classList.add("action-mark");
+      }else if(questionAction[i] === "save-next"){
+        if(answers[i] === null || answers[i] === undefined || answers[i] === -1){
+          b.classList.add("action-missed");
+        }else{
+          b.classList.add("action-answered");
+        }
+      }else if(answers[i] !== null && answers[i] !== undefined && answers[i] !== -1){
+        b.classList.add("action-answered");
+      }else if(Number(questionSeconds[i]) < 30){
+        b.classList.add("action-missed");
+      }
     }
 
     /*
@@ -1787,6 +2808,18 @@ function submitCurrentQuestion(autoSubmit){
   clearInterval(timerId);
   timerId = null;
 
+  /*
+   * Save & Next color:
+   * answered -> green
+   * blank -> red (missed/skipped)
+   * timer expiry -> red when unanswered
+   */
+  if(autoSubmit){
+    questionAction[current] = "save-next";
+  }else{
+    questionAction[current] = "save-next";
+  }
+
   /* Freeze and save the current question's timer. */
   questionSeconds[current] =
     Math.max(0, Math.min(30, seconds));
@@ -1820,6 +2853,11 @@ function submitCurrentQuestion(autoSubmit){
   saveActiveTest();
 
   if(current >= questions.length - 1){
+    if(answers[current] === null){
+      answers[current] = -1;
+      questionStatus[current] = "submitted";
+      saveActiveTest();
+    }
     submitTest();
     return;
   }
@@ -1855,6 +2893,7 @@ function markQuestion(){
     Math.max(0, Math.min(30, seconds));
 
   questionStatus[current] = "marked";
+  questionAction[current] = "mark";
 
   saveActiveTest();
 
@@ -1897,6 +2936,8 @@ function previous(){
    */
   questionSeconds[current] =
     Math.max(0, Math.min(30, seconds));
+
+  questionAction[current] = "previous";
 
   saveActiveTest();
 
@@ -2046,6 +3087,14 @@ function startTimeDistanceTestAgain(){
   );
 }
 
+
+function updateCalendarQuestionCount(){
+  const el = document.getElementById("calendarQuestionCount");
+  if(el){
+    el.textContent =
+      calendarQuestions.length + " Questions • 30 Seconds per Question";
+  }
+}
 
 function startCalendarTestAgain(){
 
@@ -2200,7 +3249,7 @@ function renderTestResults(){
       average:"calendarAverageScore",
       latest:"calendarLatestScore"
     },
-    12
+    19
   );
 
   renderAttemptHistory();
@@ -2276,6 +3325,12 @@ function goBackPage() {
     timerId = null;
   }
 
+  if (typeof questionAction !== "undefined" &&
+      typeof current !== "undefined" &&
+      questionAction[current] !== undefined) {
+    questionAction[current] = "back";
+  }
+
   if (typeof saveTimerState === "function") {
     saveTimerState();
   }
@@ -2305,5 +3360,6 @@ function goBackPage() {
 }
 </script>
 
+<script>document.addEventListener("DOMContentLoaded", updateCalendarQuestionCount);</script>
 </body>
 </html>
