@@ -354,38 +354,58 @@ input, textarea, select {
 
 /* ---------- Content Copy Restriction ---------- */
 (function () {
-  // Block right-click/context menu.
+  const editableTags = ["INPUT", "TEXTAREA", "SELECT"];
+
+  function isEditableTarget(target) {
+    const tag = (target && target.tagName) || "";
+    return editableTags.includes(tag) || !!(target && target.isContentEditable);
+  }
+
+  // Disable right-click/context menu.
   document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
+    e.stopPropagation();
   }, true);
 
-  // Block copy, cut, drag and selection from the page.
-  ["copy", "cut", "dragstart", "selectstart"].forEach(function (eventName) {
+  // Disable copy, cut, paste, selection, drag and drop.
+  ["copy", "cut", "paste", "selectstart", "dragstart", "dragover", "drop"].forEach(function (eventName) {
     document.addEventListener(eventName, function (e) {
-      const tag = (e.target && e.target.tagName) || "";
-      if (tag !== "INPUT" && tag !== "TEXTAREA" && tag !== "SELECT") {
+      if (!isEditableTarget(e.target)) {
         e.preventDefault();
+        e.stopPropagation();
       }
     }, true);
   });
 
-  // Block common keyboard shortcuts used to copy/save/view source.
+  // Disable keyboard shortcuts used to select/copy/paste/save/print/view source/devtools.
   document.addEventListener("keydown", function (e) {
     const key = String(e.key || "").toLowerCase();
     const ctrlOrCmd = e.ctrlKey || e.metaKey;
 
+    if (isEditableTarget(e.target)) return;
+
+    const blockedCtrlKeys = ["a", "c", "v", "x", "u", "s", "p"];
+    const blockedDevToolsKeys = ["i", "j", "c"];
+
     if (
-      (ctrlOrCmd && ["c", "x", "a", "u", "s", "p"].includes(key)) ||
-      (ctrlOrCmd && e.shiftKey && ["i", "j", "c"].includes(key)) ||
-      e.key === "F12"
+      (ctrlOrCmd && blockedCtrlKeys.includes(key)) ||
+      (ctrlOrCmd && e.shiftKey && blockedDevToolsKeys.includes(key)) ||
+      key === "f12" ||
+      (e.shiftKey && key === "insert")
     ) {
-      const tag = (e.target && e.target.tagName) || "";
-      if (tag !== "INPUT" && tag !== "TEXTAREA" && tag !== "SELECT") {
-        e.preventDefault();
-        e.stopPropagation();
-      }
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
     }
   }, true);
+
+  // Also block drag/drop at the window level.
+  ["dragover", "drop"].forEach(function (eventName) {
+    window.addEventListener(eventName, function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }, true);
+  });
 })();
 
 </script>
@@ -420,6 +440,14 @@ input, textarea, select {
   <p>18 Questions • 30 Seconds per Question</p>
 
   <button class="primary" onclick="startTimeDistanceTestAgain()">
+    Start Test
+  </button>
+</div>
+<div class="card">
+  <h2>📅 Calendar</h2>
+  <p>12 Questions • 30 Seconds per Question</p>
+
+  <button class="primary" onclick="startCalendarTestAgain()">
     Start Test
   </button>
 </div>
@@ -565,6 +593,59 @@ input, textarea, select {
         </div>
       </div>
 
+      <!-- 3. Calendar Results -->
+      <div class="history-section result-subject-section">
+        <h4 class="history-section-title">3. Calendar — Results</h4>
+
+        <div class="stats subject-stats">
+          <div class="stat">
+            <strong id="calendarTotalTests">0</strong>
+            Total Tests Written
+          </div>
+          <div class="stat">
+            <strong id="calendarBestScore">0/12</strong>
+            Best Score
+          </div>
+          <div class="stat">
+            <strong id="calendarAverageScore">0%</strong>
+            Average Score
+          </div>
+          <div class="stat">
+            <strong id="calendarLatestScore">0/12</strong>
+            Latest Test
+          </div>
+        </div>
+
+        <div class="subject-retest-action">
+          <button class="take-test-again-btn" type="button"
+                  onclick="startCalendarTestAgain()"
+                  aria-label="Take Calendar Test Again">
+            <span class="take-test-again-icon">⟳</span>
+            <span>Take Test Again</span>
+          </button>
+        </div>
+
+        <h5 class="history-subtitle">📅 Test Attempt History</h5>
+        <div style="overflow-x:auto">
+          <table id="calendarHistoryTable" class="history-subtable">
+            <thead>
+              <tr style="background:#f1e4d1">
+                <th>Attempt</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Month</th>
+                <th>Year</th>
+                <th>Score</th>
+                <th>View Details</th>
+              </tr>
+            </thead>
+            <tbody id="calendarHistoryBody">
+              <tr><td colspan="7" class="history-empty">No Calendar tests attempted yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -605,6 +686,22 @@ const numberSystemQuestions = [
 {"question":"Find the weighted arithmetic mean of the first ‘n’ natural numbers, the weights being the corresponding numbers.","options":["n(n+1)(2n+1)/2","n(n+1)/2","n","(2n+1)/3"],"answer":3,"pattern":"Weighted Mean + Summation","solution":"Weighted mean = Σn² / Σn = [n(n+1)(2n+1)/6] / [n(n+1)/2] = (2n+1)/3."},
 {"question":"What is the value of 100²-99²+98²-97²+……12²-11²?","options":["5050","4985","4995","4950"],"answer":2,"pattern":"Difference of Squares","solution":"Pair consecutive squares: 100²−99² + 98²−97² + ... + 12²−11² and sum the resulting arithmetic progression."},
 {"question":"3^50+9^26+27^18+9^28+9^29 is divisible by which of the following integers?","options":["5","11","7","2"],"answer":1,"pattern":"Divisibility using Modular Arithmetic","solution":"Rewrite powers using base 3 and evaluate the expression modulo the given options; it is divisible by 11."}
+];
+
+
+const calendarQuestions = [
+  {question:"If Today is ‘Tuesday’ what would be the day after 38 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:0,pattern:"After 38 days → 38 ÷ 7 → remainder 3",solution:"38 ÷ 7 leaves remainder 3. Starting from Tuesday, move 3 days forward: Wednesday, Thursday, Friday."},
+  {question:"If Today is ‘Tuesday’ what would be the day after 23 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:3,pattern:"After 23 days → 23 ÷ 7 → remainder 2",solution:"23 ÷ 7 leaves remainder 2. Starting from Tuesday, move 2 days forward: Wednesday, Thursday."},
+  {question:"If Today is ‘Tuesday’ what would be the day after 64 days?",options:["Friday","Wednesday","Tuesday","Thursday"],answer:1,pattern:"After 64 days → 64 ÷ 7 → remainder 1",solution:"64 ÷ 7 leaves remainder 1. Starting from Tuesday, move 1 day forward: Wednesday."},
+  {question:"If Today is ‘Tuesday’ what would be the day after 55 days?",options:["Friday","Saturday","Monday","Thursday"],answer:2,pattern:"After 55 days → 55 ÷ 7 → remainder 6",solution:"55 ÷ 7 leaves remainder 6. Tuesday + 6 days = Monday (equivalently Tuesday − 1 day = Monday)."},
+  {question:"If Today is ‘Tuesday’ what would be the day after 75 days?",options:["Sunday","Saturday","Tuesday","Thursday"],answer:0,pattern:"After 75 days → 75 ÷ 7 → remainder 5",solution:"75 ÷ 7 leaves remainder 5. Tuesday + 5 days = Sunday."},
+  {question:"If Today is ‘Tuesday’ what would be the day after 42 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:2,pattern:"After 42 days → 42 ÷ 7 → remainder 0",solution:"42 is exactly divisible by 7, so the day remains Tuesday."},
+  {question:"If Today is ‘Tuesday’ what would be the day before 65 days?",options:["Friday","Saturday","Tuesday","Sunday"],answer:3,pattern:"Before 65 days → 65 ÷ 7 → remainder 2",solution:"65 ÷ 7 leaves remainder 2. Move 2 days backward from Tuesday: Sunday."},
+  {question:"If Today is ‘Tuesday’ what would be the day before 40 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:3,pattern:"Before 40 days → 40 ÷ 7 → remainder 5",solution:"40 ÷ 7 leaves remainder 5. Move 5 days backward from Tuesday: Thursday."},
+  {question:"If Today is ‘Tuesday’ what would be the day before 67 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:0,pattern:"Before 67 days → 67 ÷ 7 → remainder 4",solution:"67 ÷ 7 leaves remainder 4. Move 4 days backward from Tuesday: Friday."},
+  {question:"If Today is ‘Tuesday’ what would be the day before 368 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:0,pattern:"Before 368 days → 368 ÷ 7 → remainder 4",solution:"368 ÷ 7 leaves remainder 4. Move 4 days backward from Tuesday: Friday."},
+  {question:"If Today is ‘Tuesday’ what would be the day before 96 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:3,pattern:"Before 96 days → 96 ÷ 7 → remainder 5",solution:"96 ÷ 7 leaves remainder 5. Move 5 days backward from Tuesday: Thursday."},
+  {question:"If Today is ‘Tuesday’ what would be the day before 426 days?",options:["Wednesday","Saturday","Tuesday","Thursday"],answer:0,pattern:"Before 426 days → 426 ÷ 7 → remainder 6",solution:"426 ÷ 7 leaves remainder 6. Move 6 days backward from Tuesday: Wednesday."}
 ];
 
 const timeDistanceQuestions = [
@@ -881,7 +978,8 @@ function saveTestAttempt(correct){
 
     saveUserTestHistory(history);
 
-    renderAttemptHistory();
+    // Refresh statistics and history immediately after every completed test.
+    renderTestResults();
 
   }catch(e){
 
@@ -897,24 +995,29 @@ function renderAttemptHistory(){
 
   const numberBody = document.getElementById("numberHistoryBody");
   const timeBody = document.getElementById("timeHistoryBody");
+  const calendarBody = document.getElementById("calendarHistoryBody");
 
-  if(!numberBody || !timeBody) return;
+  if(!numberBody || !timeBody || !calendarBody) return;
 
   const history = getTestHistory();
 
-  // Clear both sections first.
+  // Clear all subject sections first.
   numberBody.innerHTML = "";
   timeBody.innerHTML = "";
+  calendarBody.innerHTML = "";
 
   const numberItems = [];
   const timeItems = [];
+  const calendarItems = [];
 
   history.forEach(function(item,index){
     const subject = String(item.subject || "").toLowerCase();
 
-    if(subject === "time, speed & distance" ||
-       subject === "time and distance" ||
-       subject === "time & distance"){
+    if(subject === "calendar"){
+      calendarItems.push({item:item,index:index});
+    }else if(subject === "time, speed & distance" ||
+             subject === "time and distance" ||
+             subject === "time & distance"){
       timeItems.push({item:item,index:index});
     }else{
       // Existing/older records without a subject are treated as Number System
@@ -990,13 +1093,20 @@ function renderAttemptHistory(){
     "No Time, Speed & Distance tests attempted yet."
   );
 
+  fillTable(
+    calendarBody,
+    calendarItems,
+    "No Calendar tests attempted yet."
+  );
+
   /*
    * Bind dynamically-created View Details buttons.
    * This avoids depending on inline onclick handlers.
    */
   document.querySelectorAll(
     "#numberHistoryBody .history-view-btn[data-history-index]," +
-    "#timeHistoryBody .history-view-btn[data-history-index]"
+    "#timeHistoryBody .history-view-btn[data-history-index]," +
+    "#calendarHistoryBody .history-view-btn[data-history-index]"
   ).forEach(function(button){
 
     button.addEventListener("click", function(event){
@@ -1826,6 +1936,9 @@ function submitTest(){
 
   saveTestAttempt(correctCount);
 
+  // Refresh subject-wise statistics immediately after submission.
+  renderTestResults();
+
   /*
    * Test is completely finished.
    * Only now remove the active-test state.
@@ -1933,6 +2046,15 @@ function startTimeDistanceTestAgain(){
   );
 }
 
+
+function startCalendarTestAgain(){
+
+  startFreshRetest(
+    "Calendar",
+    calendarQuestions
+  );
+}
+
 function showResults(){
   clearInterval(timerId);
   timerId = null;
@@ -1957,6 +2079,7 @@ function renderTestResults(){
    * Logical separation:
    * 1. Number System
    * 2. Time, Speed & Distance
+   * 3. Calendar
    *
    * Each subject gets its own:
    * Total Tests / Best / Average / Latest
@@ -1965,12 +2088,15 @@ function renderTestResults(){
 
   const numberItems = [];
   const timeItems = [];
+  const calendarItems = [];
 
   history.forEach(function(item,index){
 
     const subject = String(item.subject || "").toLowerCase();
 
-    if(
+    if(subject === "calendar"){
+      calendarItems.push({item:item,index:index});
+    }else if(
       subject === "time, speed & distance" ||
       subject === "time and distance" ||
       subject === "time & distance"
@@ -2066,6 +2192,17 @@ function renderTestResults(){
     18
   );
 
+  updateStats(
+    calendarItems,
+    {
+      total:"calendarTotalTests",
+      best:"calendarBestScore",
+      average:"calendarAverageScore",
+      latest:"calendarLatestScore"
+    },
+    12
+  );
+
   renderAttemptHistory();
 }
 
@@ -2096,18 +2233,6 @@ document.addEventListener("visibilitychange", function(){
 </script>
 
 <script>
-document.addEventListener('contextmenu',function(e){e.preventDefault();});
-document.addEventListener('copy',function(e){e.preventDefault();});
-document.addEventListener('cut',function(e){e.preventDefault();});
-document.addEventListener('dragstart',function(e){e.preventDefault();});
-document.addEventListener('keydown',function(e){
- const k=(e.key||'').toLowerCase();
- if(e.ctrlKey && ['c','x','u','s','p'].includes(k)) e.preventDefault();
- if(k==='f12') e.preventDefault();
-});
-</script>
-
-<script>
 document.addEventListener("DOMContentLoaded", function(){
   const logo=document.querySelector(".logo");
   if(logo){
@@ -2121,7 +2246,7 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 document.addEventListener("DOMContentLoaded", function(){
-  renderAttemptHistory();
+  renderTestResults();
 });
 </script>
 
