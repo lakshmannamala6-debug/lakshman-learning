@@ -357,6 +357,8 @@ footer{background:#86130f;color:white;text-align:center;padding:25px}
   background:#f6faff;
 }
 .attempt-detail-value{
+  white-space:pre-line;
+  white-space:pre-line;
   display:flex;
   align-items:center;
   padding:14px 23px;
@@ -1607,72 +1609,157 @@ const numberSystemQuestions = [
    Only calendar patterns are changed; question/answer logic stays intact.
    ========================================================= */
 function getCalendarDisplayPattern(q){
-  let pattern = String(q.pattern || "");
 
-  /*
-   * ===== CALENDAR BEFORE ↔ AFTER LOGICAL SHORTCUT =====
-   *
-   * Always show the mathematically equivalent direction:
-   *
-   *   Before: Day - R  ↔  After: Day + (7-R)
-   *   After:  Day + R  ↔  Before: Day - (7-R)
-   *
-   * Examples:
-   *   40 ÷ 7 → Remainder 5
-   *   → Before: Tue - 5 → Thursday
-   *   → After:  Tue + 2 → Thursday
-   *
-   *   67 ÷ 7 → Remainder 4
-   *   → Before: Tue - 4 → Friday
-   *   → After:  Tue + 3 → Friday
-   *
-   * NOTE: For R = 0 both directions are the same day.
-   */
+  const question = String(q?.question || "");
+  const raw = String(q?.pattern || "");
+  const solution = String(q?.solution || "");
 
-  /* Remove source OR-shortcuts so we can display one clean logical pair. */
-  pattern = pattern.replace(
-    /\s+OR\s+(\b(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)(?:day)?\b)\s*[-−+]\s*\d+\s*→\s*[A-Za-z]+/g,
-    ""
-  );
+  const dayNames = [
+    "Sunday","Monday","Tuesday","Wednesday",
+    "Thursday","Friday","Saturday"
+  ];
 
-  /* Remove existing direction labels before rebuilding the pair.
-     This prevents duplicate labels such as "After: After:". */
-  pattern = pattern.replace(/\b(?:Before|After):\s*/gi, "");
+  function fullDay(name){
+    if(!name) return "";
+    const x = String(name).trim().toLowerCase();
+    return dayNames.find(d => d.toLowerCase() === x) ||
+           dayNames.find(d => d.toLowerCase().startsWith(x)) ||
+           String(name).trim();
+  }
 
-  /*
-   * Convert every simple Day ± N → Result expression into:
-   *   Before: Day - N → Result | After: Day + (7-N) → Result
-   * or the reverse when the source expression is an AFTER expression.
-   *
-   * This is based on the 7-day cycle, so the final day remains unchanged.
-   */
-  pattern = pattern.replace(
-    /(\b(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)(?:day)?\b)\s*([−+-])\s*(\d+)\s*→\s*([A-Za-z]+)\b/g,
-    function(_, day, sign, n, result){
-      n = Number(n) % 7;
+  function moveDay(day, amount){
+    const index = dayNames.indexOf(fullDay(day));
+    if(index < 0) return day;
+    return dayNames[(index + amount + 700) % 7];
+  }
 
-      if(n === 0){
-        return "Before: " + day + " → " + result +
-               " | After: " + day + " → " + result;
-      }
+  function answerFromQuestion(){
+    const m = question.match(
+      /Today\s+is\s+[‘'"]?([A-Za-z]+)[’'"]?.*?\b(after|before)\s+(\d+)\s+days/i
+    );
 
-      if(sign === "+" || sign === "＋"){
-        return "After: " + day + " + " + n + " → " + result +
-               " | Before: " + day + " - " + (7 - n) + " → " + result;
-      }
+    if(!m) return null;
 
-      return "Before: " + day + " - " + n + " → " + result +
-             " | After: " + day + " + " + (7 - n) + " → " + result;
+    const day = fullDay(m[1]);
+    const direction = m[2].toLowerCase();
+    const number = Number(m[3]);
+
+    const weeks = Math.floor(number / 7);
+    const remainder = number % 7;
+
+    const finalDay =
+      direction === "after"
+        ? moveDay(day, remainder)
+        : moveDay(day, -remainder);
+
+    const lines = [];
+
+    // EXACT STEP-BY-STEP FORMAT REQUESTED
+    lines.push("Step 1: Divide " + number + " by 7");
+    lines.push("");
+    lines.push(
+      number + " ÷ 7 = " + weeks + " remainder " + remainder
+    );
+    lines.push("");
+    lines.push(
+      "Because 7 days = 1 week, every 7 days brings us back to the same day."
+    );
+    lines.push("");
+
+    if(remainder === 0){
+      lines.push("Step 2: Ignore " + weeks + " weeks");
+      lines.push("");
+      lines.push(
+        weeks + " × 7 = " + (weeks * 7) + " days"
+      );
+      lines.push("");
+      lines.push(
+        "After " + (weeks * 7) + " days → " + day + " again."
+      );
+      lines.push("");
+      lines.push("Step 3: Move the remaining 0 days");
+      lines.push("");
+      lines.push(day + " → " + day);
+      lines.push("");
+      lines.push("🎯 Answer: " + day);
+      return lines.join("\n");
     }
-  );
 
-  /* Natural-language direction words. */
-  pattern = pattern.replace(
-    /\bPreceding\s+([A-Za-z]+)\s*→/g,
-    "Before: Preceding $1 →"
-  );
+    lines.push("Step 2: Ignore " + weeks + " weeks");
+    lines.push("");
+    lines.push(
+      weeks + " × 7 = " + (weeks * 7) + " days"
+    );
+    lines.push("");
+    lines.push(
+      "After " + (weeks * 7) + " days → " + day + " again."
+    );
+    lines.push("");
 
-  return pattern;
+    lines.push(
+      "Step 3: Move the remaining " +
+      remainder + " day" + (remainder === 1 ? "" : "s")
+    );
+    lines.push("");
+
+    let current = day;
+    const walk = [];
+
+    for(let i = 1; i <= remainder; i++){
+      current = direction === "after"
+        ? moveDay(current, 1)
+        : moveDay(current, -1);
+
+      walk.push(current);
+    }
+
+    lines.push(day + " → " + walk.join(" → "));
+    lines.push("");
+
+    const sign = direction === "after" ? "+" : "−";
+    lines.push(
+      day + " " + sign + " " + remainder + " = " + finalDay
+    );
+    lines.push("");
+
+    // Exact equivalent-day shortcut used in the user's 55-day example.
+    if(direction === "after" && remainder > 3){
+      const opposite = 7 - remainder;
+
+      lines.push("Step 4: Equivalent Day Method");
+      lines.push("");
+      lines.push("+" + remainder + " = −" + opposite);
+      lines.push("");
+      lines.push(
+        day + " − " + opposite + " = " + finalDay
+      );
+      lines.push("");
+    }
+
+    if(direction === "before" && remainder > 3){
+      const opposite = 7 - remainder;
+
+      lines.push("Step 4: Equivalent Day Method");
+      lines.push("");
+      lines.push("−" + remainder + " = +" + opposite);
+      lines.push("");
+      lines.push(
+        day + " + " + opposite + " = " + finalDay
+      );
+      lines.push("");
+    }
+
+    lines.push("🎯 Answer: " + finalDay);
+
+    return lines.join("\n");
+  }
+
+  const result = answerFromQuestion();
+  if(result) return result;
+
+  // For non-Today calendar questions, preserve the existing saved pattern
+  // instead of inventing new content.
+  return raw || solution || "-";
 }
 
 const calendarQuestions = [{
@@ -2440,7 +2527,15 @@ function viewAttemptDetails(index){
             '<span class="attempt-detail-icon icon-pattern">▦</span>Pattern' +
           '</div>' +
           '<div class="attempt-detail-value">'+
-            escapeHTML((String(item.subject || "").toLowerCase() === "calendar") ? getCalendarDisplayPattern(q) : (q.pattern || "-"))+
+            escapeHTML(
+              String(item.subject || "").toLowerCase() === "calendar"
+                ? getCalendarDisplayPattern({
+                    question: q.question || q.q || "",
+                    pattern: q.pattern || "",
+                    solution: q.solution || q.explanation || ""
+                  })
+                : (q.pattern || "-")
+            )+
           '</div>' +
         '</div>' +
 
