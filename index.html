@@ -1675,24 +1675,47 @@ function getCalendarDisplayPattern(q){
   return pattern;
 }
 
-const calendarQuestions = [{question:"If Today is ‘Tuesday’ what would be the day after 38 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:0,pattern:"Today = Tuesday
-We know: 7 days = same day
+const calendarQuestions = [{
+  question: "If Today is ‘Tuesday’ what would be the day after 38 days?",
+
+  options: [
+    "Friday",
+    "Saturday",
+    "Tuesday",
+    "Thursday"
+  ],
+
+  answer: 0,
+
+  pattern: `Today = Tuesday
+
+We know:
+7 days = same day
+
 So divide 38 by 7:
 38 ÷ 7 = 5 weeks + 3 days
+
 5 weeks → Tuesday
+
 Remaining 3 days:
 Tuesday + 1 = Wednesday
-2 = Thursday
-3 = Friday ✅
-Another form: 
+Tuesday + 2 = Thursday
+Tuesday + 3 = Friday ✅
+
+Another form:
 Tuesday − 4 = Friday
+
 Count like this:
 Tuesday → Monday → Sunday → Saturday → Friday
+
 So:
 Tuesday − 1 = Monday
 Tuesday − 2 = Sunday
 Tuesday − 3 = Saturday
-Tuesday − 4 = Friday ✅",solution:"38 ÷ 7 leaves remainder 3. Starting from Tuesday, move 3 days forward: Wednesday, Thursday, Friday."},
+Tuesday − 4 = Friday ✅`,
+
+  solution: "38 ÷ 7 leaves remainder 3. Starting from Tuesday, move 3 days forward: Wednesday, Thursday, Friday."
+},
 {question:"If Today is ‘Tuesday’ what would be the day after 23 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:3,pattern:"23 ÷ 7 → Remainder 2 → Tue + 2 → Thursday",solution:"23 ÷ 7 leaves remainder 2. Starting from Tuesday, move 2 days forward: Wednesday, Thursday."},
 {question:"If Today is ‘Tuesday’ what would be the day after 64 days?",options:["Friday","Wednesday","Tuesday","Thursday"],answer:1,pattern:"64 ÷ 7 → Remainder 1 → Tue + 1 → Wednesday",solution:"64 ÷ 7 leaves remainder 1. Starting from Tuesday, move 1 day forward: Wednesday."},
 {question:"If Today is ‘Tuesday’ what would be the day after 55 days?",options:["Friday","Saturday","Monday","Thursday"],answer:2,pattern:"55 ÷ 7 → Remainder 6 → Tue + 6 → Monday OR Tue - 1 → Monday",solution:"55 ÷ 7 leaves remainder 6. Tuesday + 6 days = Monday (equivalently Tuesday − 1 day = Monday)."},
