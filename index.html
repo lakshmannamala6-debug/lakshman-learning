@@ -400,20 +400,30 @@ footer{background:#86130f;color:white;text-align:center;padding:25px}
 .attempt-details-nav{
   display:flex;
   justify-content:space-between;
-  gap:10px;
+  gap:12px;
   margin-top:18px;
 }
 .attempt-details-nav button{
-  border:1px solid #d9dee5;
-  background:#fff;
-  color:#222;
+  border:2px solid #921914 !important;
+  background:#921914 !important;
+  color:#fff !important;
   border-radius:8px;
-  padding:10px 18px;
+  padding:10px 20px;
   font-size:15px;
   font-weight:700;
+  cursor:pointer;
+  transition:all .2s ease;
 }
-.attempt-details-nav button:hover{
-  background:#f5f7fa;
+.attempt-details-nav button:hover:not(:disabled){
+  background:#b13b22 !important;
+  border-color:#b13b22 !important;
+}
+.attempt-details-nav button:disabled{
+  background:#e0e0e0 !important;
+  border-color:#c8c8c8 !important;
+  color:#888 !important;
+  cursor:not-allowed;
+  opacity:1 !important;
 }
 .attempt-details-close{
   display:none;
@@ -603,6 +613,7 @@ footer{background:#86130f;color:white;text-align:center;padding:25px}
   background:#9d1b15 !important;
   color:#fff !important;
 }
+
 
 </style>
 
@@ -1080,6 +1091,16 @@ body:has(#test[style*="display:block"]){
   background:#f7fbff !important;
 }
 
+/* Logical navigation state */
+#test .actions button:disabled{
+  background:#e5e7eb !important;
+  border:2px solid #c7cbd1 !important;
+  color:#8a8f98 !important;
+  cursor:not-allowed !important;
+  opacity:1 !important;
+  box-shadow:none !important;
+}
+
 #test .actions button:nth-child(2){
   border:2px solid #9b38ee !important;
   color:#9635e9 !important;
@@ -1365,6 +1386,13 @@ body:has(#test[style*="display:block"]){
     Start Test
   </button>
 </div>
+<div class="card">
+  <h2>🧭 Directions</h2>
+  <p id="directionsQuestionCount">5 Questions • 30 Seconds per Question</p>
+  <button class="primary" onclick="startDirectionsTestAgain()">
+    Start Test
+  </button>
+</div>
 <div class="card"><h2>🧮 Simple & Compound Interest</h2><p>Practice questions coming soon.</p><button class="coming" onclick="comingSoon('Simple & Compound Interest')">Coming Soon</button></div>
 </div>
 </div>
@@ -1562,7 +1590,44 @@ body:has(#test[style*="display:block"]){
 
     </div>
   </div>
+
+
+      <!-- 4. Directions Results -->
+      <div class="history-section result-subject-section">
+        <h4 class="history-section-title">4. Directions — Results</h4>
+        <div class="stats subject-stats">
+          <div class="stat"><strong id="directionsTotalTests">0</strong>Total Tests Written</div>
+          <div class="stat"><strong id="directionsBestScore">0/5</strong>Best Score</div>
+          <div class="stat"><strong id="directionsAverageScore">0%</strong>Average Score</div>
+          <div class="stat"><strong id="directionsLatestScore">0/5</strong>Latest Test</div>
+        </div>
+        <div class="subject-retest-action">
+          <button class="take-test-again-btn" type="button"
+                  onclick="startDirectionsTestAgain()"
+                  aria-label="Take Directions Test Again">
+            <span class="take-test-again-icon">⟳</span>
+            <span>Take Test Again</span>
+          </button>
+        </div>
+        <h5 class="history-subtitle">📅 Test Attempt History</h5>
+        <div style="overflow-x:auto">
+          <table id="directionsHistoryTable" class="history-subtable">
+            <thead>
+              <tr style="background:#f1e4d1">
+                <th>Attempt</th><th>Date</th><th>Time</th><th>Month</th>
+                <th>Year</th><th>Score</th><th>View Details</th>
+              </tr>
+            </thead>
+            <tbody id="directionsHistoryBody">
+              <tr><td colspan="7" class="history-empty">No Directions tests attempted yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 </section>
+
+
+
 
 <footer>© 2026 <b>LAKSHMAN LEARNING</b> • LEARN • GROW • WISDOM</footer>
 
@@ -1754,6 +1819,20 @@ function getCalendarDisplayPattern(q){
     return lines.join("\n");
   }
 
+  // Q13: use the detailed explanation pattern exactly as saved in question data.
+  if(question === "If 5th of a month falls 2 days after Monday, what day will precede 23rd of the month?"){
+    return `Step 1:
+2 days after Monday = Wednesday
+5th = Wednesday.
+
+Step 2:
+23rd − 5th = 18 days
+18 ÷ 7 = 2 weeks remainder 4
+
+Wednesday + 4 days = Sunday
+The day preceding Sunday = Saturday.`;
+  }
+
   const result = answerFromQuestion();
   if(result) return result;
 
@@ -1761,6 +1840,337 @@ function getCalendarDisplayPattern(q){
   // instead of inventing new content.
   return raw || solution || "-";
 }
+
+const directionsQuestions = [
+  {
+    question: "Nikita started walking 20 metres towards north. After that she turned right, then left, then left, then right, and finally turned right. In which direction is she facing now?",
+    options: ["North", "South", "East", "West"],
+    answer: 2,
+    pattern: `R, L, L, R, R
+R + L = Cancel
+L + R = Cancel
+Remaining turn = 1R
+From North, 1 Right = East`,
+    solution: `Step 1: Starting direction = North
+
+Step 2: Apply the turns
+North → Right → East
+East → Left → North
+North → Left → West
+West → Right → North
+North → Right → East
+
+Step 3: Short Trick
+R, L, L, R, R → 1R
+From North, 1 Right = East
+
+Answer: East`
+  },
+  {
+    question: "'A' starts walking towards North, turns left, again turns left, turns right, again turns left, turns right, again turns right. In which direction is 'A' walking now?",
+    options: ["North", "South", "West", "South-East"],
+    answer: 0,
+    pattern: `Starting Direction = North
+
+Turns = L, L, R, L, R, R
+
+L = 90° Left
+R = 90° Right
+
+Net turn = L + L + R + L + R + R
+         = 3L + 3R
+         = 0°
+
+Therefore, the final direction remains North.`,
+    solution: `Step 1: Start facing North.
+
+Step 2: Follow each turn:
+North → Left → West
+West → Left → South
+South → Right → West
+West → Left → South
+South → Right → West
+West → Right → North
+
+Step 3: Final direction = North.
+
+Short Trick:
+L, L, R, L, R, R
+3 Left turns and 3 Right turns cancel each other.
+
+Answer: North`
+  },
+  {
+    question: "Chandu starts walking towards East, turns left, turns right, turns right, turns left, turns left, finally turns left. In which direction is Chandu facing now?",
+    options: ["North", "South", "West", "South-East"],
+    answer: 2,
+    pattern: `Starting Direction = East
+
+Turns = L, R, R, L, L, L
+
+L + R = Cancel
+R + L = Cancel
+Remaining = L + L = 2L = 180°
+
+From East, 180° anti-clockwise = West`,
+    solution: `Step 1: Start facing East.
+
+Step 2: Follow the turns:
+East → Left → North
+North → Right → East
+East → Right → South
+South → Left → East
+East → Left → North
+North → Left → West
+
+Step 3: Final direction = West.
+
+Short Trick:
+L, R, R, L cancel in pairs.
+L + L = 180°.
+From East, 180° turn = West.
+
+Answer: West`
+  },
+  {
+    question: "Sita starts walking towards North-East, turns left, turns right, turns right, turns left, turns right, turns left, finally turns right. In which direction Sita is facing now?",
+    options: ["North-East", "South-West", "North-West", "South-East"],
+    answer: 3,
+    pattern: `Starting Direction = North-East
+
+Turns = L, R, R, L, R, L, R
+
+L + R = Cancel
+R + L = Cancel
+R + L = Cancel
+Remaining = R
+
+From North-East, 1 Right = South-East`,
+    solution: `Step 1: Start facing North-East.
+
+Step 2: Follow each turn:
+North-East → Left → North-West
+North-West → Right → North-East
+North-East → Right → South-East
+South-East → Left → North-East
+North-East → Right → South-East
+South-East → Left → North-East
+North-East → Right → South-East
+
+Step 3: Final direction = South-East.
+
+Short Trick:
+L, R, R, L, R, L, R
+Cancel L + R pairs.
+One Right remains.
+
+From North-East, 1 Right = South-East.
+
+Answer: South-East`
+  },
+  {
+    question: "Mintu starts walking towards South-West, turns right, turns right, turns left, turns right, turns left, turns right, again turns left. In which direction is Mintu walking now?",
+    options: ["North-East", "South-West", "North-West", "South-East"],
+    answer: 2,
+    pattern: `Starting Direction = South-West
+
+Turns = R, R, L, R, L, R, L
+
+R + L = Cancel
+R + L = Cancel
+R + L = Cancel
+Remaining = R
+
+From South-West, 1 Right = North-West`,
+    solution: `Step 1: Start facing South-West.
+
+Step 2: Follow the turns:
+South-West → Right → North-West
+North-West → Right → North-East
+North-East → Left → North-West
+North-West → Right → North-East
+North-East → Left → North-West
+North-West → Right → North-East
+North-East → Left → North-West
+
+Step 3: Final direction = North-West.
+
+Short Trick:
+R, R, L, R, L, R, L
+Cancel R + L pairs.
+One Right remains.
+From South-West, 1 Right = North-West.
+
+Answer: North-West`
+  },
+  {
+    question: "One evening, Raja started to walk toward the Sun 3 km, then he turned to his right walked 2 km. He again turned to his right walked 2 km. He again turned to his right walked 7 km. In which direction is he facing?",
+    options: ["South", "East", "West", "North"],
+    answer: 0,
+    pattern: `Phrase 1: One evening
+
+👉 ఒక సాయంత్రం
+
+🌇 సాయంత్రం సమయంలో Sun = West (పడమర) వైపు ఉంటుంది.
+
+Starting Direction = West
+
+
+---
+
+Phrase 2: Raja started to walk toward the Sun
+
+👉 రాజా సూర్యుడి వైపు నడవడం ప్రారంభించాడు.
+
+అంటే రాజా West వైపు నడుస్తున్నాడు.
+
+➡️ Direction = West
+
+
+---
+
+Phrase 3: 3 km
+
+👉 3 కిలోమీటర్లు నడిచాడు.
+
+ఇది distance మాత్రమే. Direction మారదు.
+
+➡️ Still West
+
+
+---
+
+Phrase 4: then he turned to his right
+
+👉 తర్వాత తన కుడివైపు తిరిగాడు.
+
+West వైపు చూస్తున్నప్పుడు Right turn చేస్తే:
+
+West → North
+
+⬆️ Now = North
+
+
+---
+
+Phrase 5: walked 2 km
+
+👉 2 కిలోమీటర్లు నడిచాడు.
+
+Distance మాత్రమే.
+
+➡️ Still North
+
+
+---
+
+Phrase 6: He again turned to his right
+
+👉 మళ్లీ తన కుడివైపు తిరిగాడు.
+
+North వైపు చూస్తున్నప్పుడు Right:
+
+North → East
+
+➡️ Now = East
+
+
+---
+
+Phrase 7: walked 2 km
+
+👉 2 కిలోమీటర్లు నడిచాడు.
+
+➡️ Still East
+
+
+---
+
+Phrase 8: He again turned right
+
+👉 మళ్లీ కుడివైపు తిరిగాడు.
+
+East వైపు చూస్తున్నప్పుడు Right:
+
+East → South
+
+⬇️ Now = South
+
+
+---
+
+Phrase 9: walked 7 km
+
+👉 7 కిలోమీటర్లు నడిచాడు.
+
+Distance మాత్రమే; direction మారదు.
+
+➡️ Still South
+
+
+---
+
+Final
+
+West → Right → North → Right → East → Right → South
+
+✅ Raja is facing South (దక్షిణం).`,
+    solution: `Step 1: It is evening, so the Sun is in the West.
+Starting direction = West.
+
+Step 2: First Right turn.
+West → North
+
+Step 3: Second Right turn.
+North → East
+
+Step 4: Third Right turn.
+East → South
+
+The distances (3 km, 2 km, 2 km, 7 km) do not change the facing direction.
+
+Short Trick:
+R, R, R = 3R = 270° clockwise.
+
+From West, 3 Right turns = South.
+
+Answer: South`
+  },
+  {
+    question: "Raju is standing facing north. He goes 30 metres ahead and turns left and goes for 15 metres. Now he turns right and goes for 50 metres and finally turns to his right and walks. In which direction is he walking?",
+    options: ["North", "East", "South", "West"],
+    answer: 1,
+    pattern: `Starting Direction = North
+
+Turns = L, R, R
+
+L + R = Cancel
+Remaining = R
+
+From North, 1 Right = East`,
+    solution: `Step 1: Starting direction = North.
+
+Step 2: He goes 30 metres ahead.
+Direction remains North.
+
+Step 3: He turns left.
+North → West
+
+Step 4: He goes 15 metres.
+Direction remains West.
+
+Step 5: He turns right.
+West → North
+
+Step 6: He goes 50 metres.
+Direction remains North.
+
+Step 7: Finally, he turns right.
+North → East
+
+Answer: East`
+  }
+];
 
 const calendarQuestions = [{
   question: "If Today is ‘Tuesday’ what would be the day after 38 days?",
@@ -1815,33 +2225,7 @@ Tuesday − 4 = Friday ✅`,
 {question:"If Today is ‘Tuesday’ what would be the day before 96 days?",options:["Friday","Saturday","Tuesday","Thursday"],answer:3,pattern:"96 ÷ 7 → Remainder 5 → Tue - 5 → Thursday",solution:"96 ÷ 7 leaves remainder 5. Move 5 days backward from Tuesday: Thursday."},
 {question:"If Today is ‘Tuesday’ what would be the day before 426 days?",options:["Wednesday","Saturday","Tuesday","Thursday"],answer:0,pattern:"426 ÷ 7 → Remainder 6 → Tue - 6 → Wednesday OR Tue + 1 → Wednesday",solution:"426 ÷ 7 leaves remainder 6. Move 6 days backward from Tuesday: Wednesday."},
 {question:"If 5th of a month falls 2 days after Monday, what day will precede 23rd of the month?",options:["Wednesday","Saturday","Sunday","Monday"],answer:1,pattern:"Step 1:\n2 days after Monday = Wednesday\n5th = Wednesday.\n\nStep 2:\n23rd − 5th = 18 days\n18 ÷ 7 = 2 weeks remainder 4\n\nWednesday + 4 days = Sunday\nThe day preceding Sunday = Saturday.",solution:"2 days after Monday is Wednesday. From the 5th to the 23rd there are 18 days. 18 ÷ 7 leaves remainder 4, so the 23rd is Sunday. The day preceding Sunday is Saturday."},
-{
-  question: "If 9th of the month falls on the day preceding Sunday, on what day will 1st of the month fall?",
-  options: ["Friday", "Saturday", "Sunday", "Monday"],
-  answer: 0,
-
-  pattern: [
-    "Step 1: Find the preceding day of Sunday",
-    "The day preceding Sunday is Saturday.",
-    "Therefore: 9th → Saturday",
-
-    "Step 2: Find the gap between 1st and 9th",
-    "9 − 1 = 8 days",
-    "So, the 9th is 8 days after the 1st.",
-
-    "Step 3: Divide by 7",
-    "8 ÷ 7 → Remainder = 1",
-    "Every 7 days brings us back to the same day.",
-    "So, only 1 remaining day is considered.",
-
-    "Step 4: Move backward by the remainder",
-    "Saturday − 1 day = Friday",
-
-    "Answer: Friday"
-  ],
-
-  solution: "The day preceding Sunday is Saturday. The 1st is 8 days before the 9th. 8 ÷ 7 leaves remainder 1, so move one day backward from Saturday: Friday."
-},
+{question:"If 9th of the month falls on the day preceding Sunday, on what day will 1st of the month fall?",options:["Friday","Saturday","Sunday","Monday"],answer:0,pattern:"Preceding Sunday → Sat → 9 − 1 = 8 → 8 ÷ 7 → Remainder 1 → Sat − 1 → Fri",solution:"The day preceding Sunday is Saturday. The 1st is 8 days before the 9th. 8 ÷ 7 leaves remainder 1, so move one day backward from Saturday: Friday."},
 {question:"If 2nd of the month falls on the day preceding Monday, on what day will 31st fall?",options:["Friday","Saturday","Sunday","Monday"],answer:3,pattern:"Preceding Monday → Sun → 31 − 2 = 29 → 29 ÷ 7 → Remainder 1 → Sun + 1 → Mon",solution:"The day preceding Monday is Sunday. From the 2nd to the 31st there are 29 days. 29 ÷ 7 leaves remainder 1. Sunday + 1 day = Monday."},
 {question:"If 7th of the month is 3 days earlier than Friday, what day will it be on 19th day of the month?",options:["Monday","Tuesday","Wednesday","Sunday"],answer:3,pattern:"Fri − 3 → Tue → 19 − 7 = 12 → 12 ÷ 7 → Remainder 5 → Tue + 5 → Sun",solution:"Three days earlier than Friday is Tuesday. From the 7th to the 19th there are 12 days. 12 ÷ 7 leaves remainder 5. Tuesday + 5 days = Sunday."},
 {question:"If 28th of the month is Friday, then what day is 3 weeks 4 days earlier?",options:["Sunday","Monday","Thursday","Saturday"],answer:1,pattern:"3 weeks + 4 days = 25 → 25 ÷ 7 → Remainder 4 → Fri − 4 → Mon",solution:"3 weeks = 21 days. 21 + 4 = 25 days. 25 ÷ 7 leaves remainder 4. Move 4 days backward from Friday: Monday."},
@@ -2203,13 +2587,23 @@ function saveTestAttempt(correct){
 }
 
 
+
+function syncDirectionsResultTotals(){
+  const total = directionsQuestions.length;
+  const best = document.getElementById("directionsBestScore");
+  const latest = document.getElementById("directionsLatestScore");
+  if(best && /^0\/\d+$/.test(best.textContent.trim())) best.textContent = "0/" + total;
+  if(latest && /^0\/\d+$/.test(latest.textContent.trim())) latest.textContent = "0/" + total;
+}
+
 function renderAttemptHistory(){
 
   const numberBody = document.getElementById("numberHistoryBody");
   const timeBody = document.getElementById("timeHistoryBody");
   const calendarBody = document.getElementById("calendarHistoryBody");
+  const directionsBody = document.getElementById("directionsHistoryBody");
 
-  if(!numberBody || !timeBody || !calendarBody) return;
+  if(!numberBody || !timeBody || !calendarBody || !directionsBody) return;
 
   const history = getTestHistory();
 
@@ -2217,16 +2611,20 @@ function renderAttemptHistory(){
   numberBody.innerHTML = "";
   timeBody.innerHTML = "";
   calendarBody.innerHTML = "";
+  directionsBody.innerHTML = "";
 
   const numberItems = [];
   const timeItems = [];
   const calendarItems = [];
+  const directionsItems = [];
 
   history.forEach(function(item,index){
     const subject = String(item.subject || "").toLowerCase();
 
     if(subject === "calendar"){
       calendarItems.push({item:item,index:index});
+    }else if(subject === "directions"){
+      directionsItems.push({item:item,index:index});
     }else if(subject === "time, speed & distance" ||
              subject === "time and distance" ||
              subject === "time & distance"){
@@ -2311,6 +2709,12 @@ function renderAttemptHistory(){
     "No Calendar tests attempted yet."
   );
 
+  fillTable(
+    directionsBody,
+    directionsItems,
+    "No Directions tests attempted yet."
+  );
+
   /*
    * Bind dynamically-created View Details buttons.
    * This avoids depending on inline onclick handlers.
@@ -2318,7 +2722,8 @@ function renderAttemptHistory(){
   document.querySelectorAll(
     "#numberHistoryBody .history-view-btn[data-history-index]," +
     "#timeHistoryBody .history-view-btn[data-history-index]," +
-    "#calendarHistoryBody .history-view-btn[data-history-index]"
+    "#calendarHistoryBody .history-view-btn[data-history-index]," +
+    "#directionsHistoryBody .history-view-btn[data-history-index]"
   ).forEach(function(button){
 
     button.addEventListener("click", function(event){
@@ -2602,12 +3007,21 @@ function viewAttemptDetails(index){
   htmlText +=
         '</section>' +
       '</div>' +
+      '<div class="attempt-details-nav">' +
+        '<button type="button" onclick="attemptDetailsPrevious()">← Previous</button>' +
+        '<button type="button" onclick="attemptDetailsNext()">Next →</button>' +
+      '</div>' +
     '</div>';
 
   overlay.innerHTML = htmlText;
   document.body.appendChild(overlay);
 
   overlay.dataset.currentQuestion = "0";
+
+  const prevBtn = overlay.querySelector("#attemptDetailsPrevBtn");
+  const nextBtn = overlay.querySelector("#attemptDetailsNextBtn");
+  if(prevBtn) prevBtn.disabled = true;
+  if(nextBtn) nextBtn.disabled = detailQuestions.length <= 1;
 }
 
 function selectAttemptDetailsQuestion(index){
@@ -2629,6 +3043,20 @@ function selectAttemptDetailsQuestion(index){
 
   overlay.dataset.currentQuestion = String(index);
 
+  // Logical Previous / Next state:
+  // Previous is disabled on the first question.
+  // Next is disabled on the last question.
+  const prevBtn = overlay.querySelector("#attemptDetailsPrevBtn");
+  const nextBtn = overlay.querySelector("#attemptDetailsNextBtn");
+  if(prevBtn){
+    prevBtn.disabled = index === 0;
+    prevBtn.setAttribute("aria-disabled", String(index === 0));
+  }
+  if(nextBtn){
+    nextBtn.disabled = index === cards.length - 1;
+    nextBtn.setAttribute("aria-disabled", String(index === cards.length - 1));
+  }
+
   const stage = overlay.querySelector("#attemptQuestionStage");
   if(stage){
     stage.scrollTop = 0;
@@ -2642,8 +3070,12 @@ function attemptDetailsPrevious(){
   const cards = overlay.querySelectorAll(".attempt-question");
   if(!cards.length) return;
 
-  let current = Number(overlay.dataset.currentQuestion || 0);
-  selectAttemptDetailsQuestion(Math.max(0,current-1));
+  const current = Number(overlay.dataset.currentQuestion || 0);
+
+  // First question: Previous is disabled and cannot move further back.
+  if(current <= 0) return;
+
+  selectAttemptDetailsQuestion(current - 1);
 }
 
 function attemptDetailsNext(){
@@ -2653,8 +3085,12 @@ function attemptDetailsNext(){
   const cards = overlay.querySelectorAll(".attempt-question");
   if(!cards.length) return;
 
-  let current = Number(overlay.dataset.currentQuestion || 0);
-  selectAttemptDetailsQuestion(Math.min(cards.length-1,current+1));
+  const current = Number(overlay.dataset.currentQuestion || 0);
+
+  // Last question: Next is disabled and cannot move further forward.
+  if(current >= cards.length - 1) return;
+
+  selectAttemptDetailsQuestion(current + 1);
 }
 
 
@@ -2920,54 +3356,84 @@ function startTest(){
 
 function renderQuestion(){
 
-  const q=questions[current];
+  const q = questions[current];
 
+  /*
+   * LOGICAL TEST NAVIGATION
+   * -----------------------
+   * First question  -> Previous disabled
+   * Middle question -> Previous + Save & Next enabled
+   * Last question   -> Previous enabled + Submit Test
+   *
+   * "Next" never silently submits a test.
+   * On the last question the button explicitly becomes "Submit Test".
+   */
+  const actionButtons = document.querySelectorAll("#test .actions button");
+  const previousBtn = actionButtons[0];
   const nextBtn = document.getElementById("nextBtn");
+
+  if(previousBtn){
+    previousBtn.disabled = current === 0;
+    previousBtn.setAttribute("aria-disabled", String(current === 0));
+    previousBtn.title =
+      current === 0
+        ? "Previous is disabled on the first question"
+        : "Go to the previous question";
+  }
+
   if(nextBtn){
     if(current >= questions.length - 1){
       nextBtn.textContent = "Submit Test";
-      nextBtn.onclick = function(){ submitCurrentQuestion(false); };
+      nextBtn.onclick = function(){
+        submitCurrentQuestion(false);
+      };
+      nextBtn.title = "Submit the complete test";
     }else{
       nextBtn.textContent = "Save & Next →";
-      nextBtn.onclick = function(){ next(); };
+      nextBtn.onclick = function(){
+        next();
+      };
+      nextBtn.title = "Save this question and go to the next question";
     }
   }
 
   document.getElementById("qno").textContent =
-    "Question "+(current+1)+" / "+questions.length;
+    "Question " + (current + 1) + " / " + questions.length;
 
-  document.getElementById("question").textContent = q.question || q.q || "";
+  const questionEl = document.getElementById("question");
+  questionEl.textContent = q.question || q.q || "";
 
-  const box=document.getElementById("options");
-  box.innerHTML="";
+  const box = document.getElementById("options");
+  box.innerHTML = "";
 
   q.options.forEach(function(opt,i){
 
-    const option=document.createElement("button");
+    const option = document.createElement("button");
 
-    option.type="button";
-    option.className="option"+(
-      answers[current]===i ? " selected" : ""
+    option.type = "button";
+    option.className = "option" + (
+      answers[current] === i ? " selected" : ""
     );
 
-    option.textContent=String.fromCharCode(65+i)+". "+opt;
+    option.textContent =
+      String.fromCharCode(65+i) + ". " + opt;
 
     option.addEventListener("click",function(){
 
-      answers[current]=i;
+      answers[current] = i;
 
       if(questionStatus[current] !== "marked"){
         questionAction[current] = "answered";
       }
 
       box.querySelectorAll(".option").forEach(function(btn,index){
-        btn.classList.toggle("selected",index===i);
+        btn.classList.toggle("selected",index === i);
       });
 
       document.querySelectorAll("#palette button").forEach(function(btn,index){
         btn.classList.toggle(
           "answered",
-          answers[index]!==null
+          answers[index] !== null
         );
       });
 
@@ -2977,22 +3443,21 @@ function renderQuestion(){
     box.appendChild(option);
   });
 
-  const palette=document.getElementById("palette");
-  palette.innerHTML="";
+  const palette = document.getElementById("palette");
+  palette.innerHTML = "";
 
   questions.forEach(function(_,i){
 
-    const b=document.createElement("button");
+    const b = document.createElement("button");
 
-    b.type="button";
-    b.textContent=i+1;
+    b.type = "button";
+    b.textContent = i + 1;
 
-    if(i===current) b.classList.add("current");
+    if(i === current) b.classList.add("current");
 
     /*
-     * The palette shows the action/status of every question.
-     * Current question stays red; once the user leaves it,
-     * its last meaningful state is shown with the button's color.
+     * The palette shows what happened to each question.
+     * Current question is always highlighted red.
      */
     if(i !== current){
       if(questionAction[i] === "back"){
@@ -3002,12 +3467,20 @@ function renderQuestion(){
       }else if(questionAction[i] === "mark"){
         b.classList.add("action-mark");
       }else if(questionAction[i] === "save-next"){
-        if(answers[i] === null || answers[i] === undefined || answers[i] === -1){
+        if(
+          answers[i] === null ||
+          answers[i] === undefined ||
+          answers[i] === -1
+        ){
           b.classList.add("action-missed");
         }else{
           b.classList.add("action-answered");
         }
-      }else if(answers[i] !== null && answers[i] !== undefined && answers[i] !== -1){
+      }else if(
+        answers[i] !== null &&
+        answers[i] !== undefined &&
+        answers[i] !== -1
+      ){
         b.classList.add("action-answered");
       }else if(Number(questionSeconds[i]) < 30){
         b.classList.add("action-missed");
@@ -3015,12 +3488,10 @@ function renderQuestion(){
     }
 
     /*
-     * LOGICAL PALETTE NAVIGATION:
-     * The user can directly open ANY question.
-     * The current question's exact remaining time is saved.
-     * A first visit starts with 30 seconds.
-     * A visited question resumes its saved remaining time.
-     * Existing answers/status are preserved.
+     * Direct question navigation:
+     * - save the exact remaining time of the question being left
+     * - do not reset an already visited question to 30 seconds
+     * - preserve its answer and status
      */
     b.addEventListener("click",function(){
 
@@ -3043,7 +3514,10 @@ function renderQuestion(){
       }
 
       questionSeconds[current] =
-        Math.max(0, Math.min(30, Number(questionSeconds[current])));
+        Math.max(
+          0,
+          Math.min(30, Number(questionSeconds[current]))
+        );
 
       seconds = questionSeconds[current];
 
@@ -3234,9 +3708,16 @@ function next(){
 }
 
 /*
- * Previous is disabled because each question is mandatory.
+ * LOGICAL PREVIOUS:
+ * First question has no previous question.
+ * Middle/last questions return to the immediately previous question.
  */
 function previous(){
+
+  if(current <= 0){
+    renderQuestion();
+    return;
+  }
 
   clearInterval(timerId);
   timerId = null;
@@ -3415,6 +3896,23 @@ function startCalendarTestAgain(){
   );
 }
 
+function updateDirectionsQuestionCount(){
+  const el = document.getElementById("directionsQuestionCount");
+  if(el){
+    el.textContent =
+      directionsQuestions.length + " Question" +
+      (directionsQuestions.length === 1 ? "" : "s") +
+      " • 30 Seconds per Question";
+  }
+}
+
+function startDirectionsTestAgain(){
+  startFreshRetest(
+    "Directions",
+    directionsQuestions
+  );
+}
+
 function showResults(){
   clearInterval(timerId);
   timerId = null;
@@ -3440,6 +3938,7 @@ function renderTestResults(){
    * 1. Number System
    * 2. Time, Speed & Distance
    * 3. Calendar
+   * 4. Directions
    *
    * Each subject gets its own:
    * Total Tests / Best / Average / Latest
@@ -3449,6 +3948,7 @@ function renderTestResults(){
   const numberItems = [];
   const timeItems = [];
   const calendarItems = [];
+  const directionsItems = [];
 
   history.forEach(function(item,index){
 
@@ -3456,6 +3956,8 @@ function renderTestResults(){
 
     if(subject === "calendar"){
       calendarItems.push({item:item,index:index});
+    }else if(subject === "directions"){
+      directionsItems.push({item:item,index:index});
     }else if(
       subject === "time, speed & distance" ||
       subject === "time and distance" ||
@@ -3563,6 +4065,17 @@ function renderTestResults(){
     19
   );
 
+  updateStats(
+    directionsItems,
+    {
+      total:"directionsTotalTests",
+      best:"directionsBestScore",
+      average:"directionsAverageScore",
+      latest:"directionsLatestScore"
+    },
+    directionsQuestions.length
+  );
+
   renderAttemptHistory();
 }
 
@@ -3606,6 +4119,9 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 document.addEventListener("DOMContentLoaded", function(){
+  updateCalendarQuestionCount();
+  updateDirectionsQuestionCount();
+  syncDirectionsResultTotals();
   renderTestResults();
 });
 </script>
