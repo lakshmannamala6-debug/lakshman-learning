@@ -1366,6 +1366,7 @@ body:has(#test[style*="display:block"]){
 <div class="grid">
 <div class="card"><h2>🔢 Number System</h2><p><b>32 Questions</b><br>30 seconds per question</p><button class="primary" onclick="startTest()">Start Test</button></div>
 <div class="card"><h2>% Percentage</h2><p>Practice questions coming soon.</p><button class="coming" onclick="comingSoon('Percentage')">Coming Soon</button></div>
+<div class="card"><h2>🏷️ Discount</h2><p id="discountQuestionCount">1 Question • 30 Seconds per Question</p><button class="primary" onclick="startDiscountTestAgain()">Start Test</button></div>
 <div class="card"><h2>💰 Profit & Loss</h2><p>Practice questions coming soon.</p><button class="coming" onclick="comingSoon('Profit & Loss')">Coming Soon</button></div>
 <div class="card"><h2>📊 Ratio & Proportion</h2><p>Practice questions coming soon.</p><button class="coming" onclick="comingSoon('Ratio & Proportion')">Coming Soon</button></div>
 <div class="card"><h2>⚡ Average</h2><p>Practice questions coming soon.</p><button class="coming" onclick="comingSoon('Average')">Coming Soon</button></div>
@@ -1388,8 +1389,15 @@ body:has(#test[style*="display:block"]){
 </div>
 <div class="card">
   <h2>🧭 Directions</h2>
-  <p id="directionsQuestionCount">5 Questions • 30 Seconds per Question</p>
+  <p id="directionsQuestionCount">8 Questions • 30 Seconds per Question</p>
   <button class="primary" onclick="startDirectionsTestAgain()">
+    Start Test
+  </button>
+</div>
+<div class="card">
+  <h2>🔤 Coding &amp; Decoding</h2>
+  <p id="codingDecodingQuestionCount">8 Questions • 30 Seconds per Question</p>
+  <button class="primary" onclick="startCodingDecodingTestAgain()">
     Start Test
   </button>
 </div>
@@ -1480,6 +1488,20 @@ body:has(#test[style*="display:block"]){
             </tbody>
           </table>
         </div>
+      </div>
+
+      <!-- 2. Discount Results -->
+      <div class="history-section result-subject-section">
+        <h4 class="history-section-title">2. Discount — Results</h4>
+        <div class="stats subject-stats">
+          <div class="stat"><strong id="discountTotalTests">0</strong>Total Tests Written</div>
+          <div class="stat"><strong id="discountBestScore">0/5</strong>Best Score</div>
+          <div class="stat"><strong id="discountAverageScore">0%</strong>Average Score</div>
+          <div class="stat"><strong id="discountLatestScore">0/5</strong>Latest Test</div>
+        </div>
+        <div class="subject-retest-action"><button class="take-test-again-btn" type="button" onclick="startDiscountTestAgain()"><span class="take-test-again-icon">⟳</span><span>Take Test Again</span></button></div>
+        <h5 class="history-subtitle">📅 Test Attempt History</h5>
+        <div style="overflow-x:auto"><table id="discountHistoryTable" class="history-subtable"><thead><tr style="background:#f1e4d1"><th>Attempt</th><th>Date</th><th>Time</th><th>Month</th><th>Year</th><th>Score</th><th>View Details</th></tr></thead><tbody id="discountHistoryBody"><tr><td colspan="7" class="history-empty">No Discount tests attempted yet.</td></tr></tbody></table></div>
       </div>
 
       <!-- 2. Time, Speed & Distance Results -->
@@ -1620,6 +1642,39 @@ body:has(#test[style*="display:block"]){
             </thead>
             <tbody id="directionsHistoryBody">
               <tr><td colspan="7" class="history-empty">No Directions tests attempted yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 5. Coding & Decoding Results -->
+      <div class="history-section result-subject-section">
+        <h4 class="history-section-title">5. Coding &amp; Decoding — Results</h4>
+        <div class="stats subject-stats">
+          <div class="stat"><strong id="codingDecodingTotalTests">0</strong>Total Tests Written</div>
+          <div class="stat"><strong id="codingDecodingBestScore">0/4</strong>Best Score</div>
+          <div class="stat"><strong id="codingDecodingAverageScore">0%</strong>Average Score</div>
+          <div class="stat"><strong id="codingDecodingLatestScore">0/4</strong>Latest Test</div>
+        </div>
+        <div class="subject-retest-action">
+          <button class="take-test-again-btn" type="button"
+                  onclick="startCodingDecodingTestAgain()"
+                  aria-label="Take Coding &amp; Decoding Test Again">
+            <span class="take-test-again-icon">⟳</span>
+            <span>Take Test Again</span>
+          </button>
+        </div>
+        <h5 class="history-subtitle">📅 Test Attempt History</h5>
+        <div style="overflow-x:auto">
+          <table id="codingDecodingHistoryTable" class="history-subtable">
+            <thead>
+              <tr style="background:#f1e4d1">
+                <th>Attempt</th><th>Date</th><th>Time</th><th>Month</th>
+                <th>Year</th><th>Score</th><th>View Details</th>
+              </tr>
+            </thead>
+            <tbody id="codingDecodingHistoryBody">
+              <tr><td colspan="7" class="history-empty">No Coding &amp; Decoding tests attempted yet.</td></tr>
             </tbody>
           </table>
         </div>
@@ -2137,6 +2192,42 @@ From West, 3 Right turns = South.
 Answer: South`
   },
   {
+    question: "Vehicle started moving towards East. After moving a distance of 20 meters, it took a right turn, again after moving 10 meters, it took a left turn, and again after moving 10 meters, it took a left turn. Which direction is the vehicle moving now?",
+    options: ["West", "North-West", "North", "East", "South"],
+    answer: 2,
+    pattern: `Starting Direction = East
+
+Turns = R, L, L
+
+R + L = Cancel
+Remaining = L
+
+From East, 1 Left = North`,
+    solution: `Step 1: Starting direction = East.
+
+Step 2: After moving 20 metres, turn right.
+East → South
+
+Step 3: After moving 10 metres, turn left.
+South → East
+
+Step 4: After moving another 10 metres, turn left.
+East → North
+
+The distances do not change the facing direction.
+
+Final direction = North.
+
+Short Trick:
+R, L, L
+R + L = Cancel
+One Left remains.
+
+From East, 1 Left = North.
+
+Answer: North`
+  },
+  {
     question: "Raju is standing facing north. He goes 30 metres ahead and turns left and goes for 15 metres. Now he turns right and goes for 50 metres and finally turns to his right and walks. In which direction is he walking?",
     options: ["North", "East", "South", "West"],
     answer: 1,
@@ -2169,6 +2260,144 @@ Step 7: Finally, he turns right.
 North → East
 
 Answer: East`
+  }
+  ,{
+    question: "Devika started from point A in North direction. After walking for 5 m she turned to her left and walked 6 m. Now she turned to her left and walked 4 m after which she turned to her left again. Now she walked 5 m and turned to her right and walked 15 m. Now finally she turned to her left. In which direction is she heading?",
+    options: ["North", "East", "South", "West"],
+    answer: 1,
+    pattern: `Starting Direction = North
+
+Turns = L, L, L, R, L
+
+R + L = Cancel
+Remaining = L + L + L = 3L
+3L = 270° anti-clockwise
+
+From North:
+North → West → South → East
+
+Therefore, final direction = East`,
+    solution: `Step 1: Start facing North.
+
+North → Left → West
+
+Step 2: Walk 6 m, then turn left.
+West → South
+
+Step 3: Walk 4 m, then turn left again.
+South → East
+
+Step 4: Walk 5 m, then turn right.
+East → South
+
+Step 5: Walk 15 m, then finally turn left.
+South → East
+
+The distances (5 m, 6 m, 4 m, 5 m and 15 m) do not change the facing direction.
+
+Short Trick:
+L, L, L, R, L
+R + L = Cancel
+Remaining = L + L + L = 3L = 270°
+
+From North, 3 Left turns = East.
+
+Answer: East`
+  }
+  ,{
+    question: "Sundar runs 20 m towards East and turns to right and runs 10 m. Then he turns to the right and runs 9 m. Again he turns to right and runs 5 m. After this he turns to left and runs 12 m and finally he turns to right and runs 6 m. Now to which direction is Sundar facing?",
+    options: ["East", "West", "North", "South"],
+    answer: 2,
+    pattern: `Starting Direction = East
+
+Turns = R, R, R, L, R
+
+L + R = Cancel
+Remaining = R, R, R = 3R
+3R = 270° clockwise
+
+From East:
+East → South → West → North
+
+Therefore, final direction = North`,
+    solution: `Step 1: Starting direction = East.
+
+Step 2: Turn right.
+East → South
+
+Step 3: Turn right again.
+South → West
+
+Step 4: Turn right again.
+West → North
+
+Step 5: Turn left.
+North → West
+
+Step 6: Finally turn right.
+West → North
+
+The distances (20 m, 10 m, 9 m, 5 m, 12 m and 6 m) do not change the facing direction.
+
+Short Trick:
+R, R, R, L, R
+L + R = Cancel
+Remaining = R + R + R = 3R = 270°
+
+From East, 3 Right turns = North.
+
+Answer: North`
+  }
+
+  ,{
+    question: "Facing to the South Mr. Ram turns in certain ways, which of the following turns will not lead him to the same side?",
+    options: [
+      "Left, Left, Right, Left, Left, Right",
+      "Left, Left, Left, Right, Right, Right",
+      "Left, Right, Left, Right, Left, Right",
+      "Right, Left, Right, Left, Right, Left"
+    ],
+    answer: 0,
+    pattern: `Starting Direction = South
+
+A) L, L, R, L, L, R
+L + R = Cancel
+Remaining = L, L = 2L = 180°
+South → North
+
+B) L, L, L, R, R, R
+3L + 3R = Cancel → South
+
+C) L, R, L, R, L, R
+Each L + R cancels → South
+
+D) R, L, R, L, R, L
+Each R + L cancels → South`,
+    solution: `Step 1: Starting direction = South.
+
+Step 2: Check each option.
+
+Option A: L, L, R, L, L, R
+L + R = Cancel (twice)
+Remaining = L + L = 2L = 180°
+South → North
+
+Option B: L, L, L, R, R, R
+3 Left + 3 Right = 0°
+South → South
+
+Option C: L, R, L, R, L, R
+All turns cancel in pairs.
+South → South
+
+Option D: R, L, R, L, R, L
+All turns cancel in pairs.
+South → South
+
+Therefore, Option A does NOT lead Mr. Ram to the same side.
+
+Answer: A) Left, Left, Right, Left, Left, Right
+Final direction = North`
   }
 ];
 
@@ -2288,6 +2517,157 @@ Tuesday − 4 = Friday ✅`,
 {question:"If 13th March 1824 is Saturday, what was the day on 13th March 1832?",options:["Tuesday","Monday","Thursday","Saturday"],answer:0,pattern:"1824→1832 = 8 years + 1 leap day = 9 → 9 ÷ 7 → Remainder 2 → Sat + 2 → Monday",solution:"According to the supplied question, 13th March 1824 is Saturday. The source solution marks Tuesday as the answer."},
 {question:"If 18th October 2011 is Monday, what was the day on 18th October 2020?",options:["Sunday","Monday","Tuesday","Saturday"],answer:3,pattern:"Logical calculation → Remainder → Given Day ± Remainder → Final Answer",solution:"From 2011 to 2020 there are 9 years. The leap years affecting 18th October are 2012, 2016 and 2020, adding 3 extra days. Total shift = 12 days; 12 ÷ 7 leaves remainder 5. Monday + 5 days = Saturday."},
 {question:"If 9th January 1912 is Wednesday, what was the day on 9th January 1916?",options:["Sunday","Monday","Thursday","Saturday"],answer:1,pattern:"1912→1916 = 4 years + 2 leap days = 6 → 6 ÷ 7 → Remainder 6 → Wed + 6 → Tuesday OR Wed − 1 → Tuesday",solution:"According to the supplied question, 9th January 1912 is Wednesday. The source solution marks Monday as the answer."},
+];
+
+const codingDecodingQuestions = [
+  {
+    question: "Using the Alphabet Position Trick (A=1, B=2, ... Z=26), what is the code for BAD?",
+    options: ["214", "241", "124", "421"],
+    answer: 0,
+    pattern: "Alphabet Position Trick",
+    solution: "B = 2, A = 1, D = 4. Therefore, BAD = 214."
+  },
+  {
+    question: "If AIRTEL is coded as CKTVGN then RELIANCE is coded as?",
+    options: ["TGKNCPEG", "TGNKCPEG", "TGNKPCEG", "TGNKCPGE"],
+    answer: 1,
+    pattern: "Each letter is shifted +2 positions in the alphabet",
+    solution: "A→C, I→K, R→T, T→V, E→G, L→N. So every letter moves 2 positions forward. RELIANCE → R→T, E→G, L→N, I→K, A→C, N→P, C→E, E→G = TGNKCPEG."
+  },
+  {
+    question: "If IMPERIA is coded as HNOFQJZ then what is the code of DISCOVER?",
+    options: ["CJRDNXDS", "CKRDNWDS", "CJRNDWDS", "CJRDNWDS"],
+    answer: 3,
+    pattern: "Alternating −1, +1 letter shift",
+    solution: "The pattern alternates −1, +1: I→H (−1), M→N (+1), P→O (−1), E→F (+1), R→Q (−1), I→J (+1), A→Z (−1). Apply the same pattern to DISCOVER: D→C, I→J, S→R, C→D, O→N, V→W, E→D, R→S. Therefore, DISCOVER = CJRDNWDS."
+  },
+  {
+    question: "If MANGO is coded as QERKS then what is the code of GUAVA?",
+    options: ["KZEYE", "KYEZE", "KYDZE", "KYEYE"],
+    answer: 1,
+    pattern: "Each letter is shifted +4 positions in the alphabet",
+    solution: "M→Q (+4), A→E (+4), N→R (+4), G→K (+4), O→S (+4). Apply the same +4 pattern to GUAVA: G→K, U→Y, A→E, V→Z, A→E. Therefore, GUAVA = KYEZE."
+  },
+  {
+    question: "If PAPER is coded as QCSIW then in that code EXAMPLE is written as?",
+    options: ["FZDUQRL", "FZODURL", "FZDQURL", "FZQUDRL"],
+    answer: 2,
+    pattern: "Successive shifts: +1, +2, +3, +4, +5, ...",
+    solution: "P→Q (+1), A→C (+2), P→S (+3), E→I (+4), R→W (+5). Apply the same increasing shifts to EXAMPLE: E→F (+1), X→Z (+2), A→D (+3), M→Q (+4), P→U (+5), L→R (+6), E→L (+7). Therefore, EXAMPLE = FZDQURL."
+  },
+  {
+    question: "If BANKER is coded as ABMJFQ then in that code ORANGE is written as?",
+    options: ["PQBMFF", "PQMBFE", "PBQMFF", "PSBMFD"],
+    answer: 0,
+    pattern: "Vowels → +1 and consonants → −1",
+    solution: "BANKER → B→A (−1), A→B (+1), N→M (−1), K→J (−1), E→F (+1), R→Q (−1). Apply the same rule to ORANGE: O→P (+1), R→Q (−1), A→B (+1), N→M (−1), G→F (−1), E→F (+1). Therefore, ORANGE = PQBMFF."
+  },
+  {
+    question: "In a certain code JEALOUS is written as BFKKTVP. How is HEARTEN written in that code?",
+    options: ["OFUQBFI", "BFIQOFU", "BFIQUFO", "UFOQIBF"],
+    answer: 1,
+    pattern: "Reverse the first 3 letters and last 3 letters, then shift those letters +1; shift the middle letter −1.",
+    solution: "JEALOUS → reverse JEA to AEJ, then +1: BFK. The middle L→K (−1). Reverse OUS to SUO, then +1: TVP. So JEALOUS → BFKKTVP. Apply the same rule to HEARTEN: reverse HEA to AEH, then +1: BFI. R→Q (−1). Reverse TEN to NET, then +1: OFU. Therefore, HEARTEN = BFIQOFU."
+  },
+  {
+    question: "In a certain code language, SATURN is written as JVQXWW and URANUS is written as OYJENY. How is JUPITER written in that code language?",
+    options: ["NIPMQN", "NIPMYF", "NQMPIN", "FYL MPI".replace(" ","")],
+    answer: 0,
+    pattern: "Reverse the word, then apply alternating −4, +4, −4, +4, ... letter shifts.",
+    solution: "SATURN → reverse to NRUTAS → −4,+4,−4,+4,−4,+4 = JVQXWW. URANUS → reverse to SUNARU → −4,+4,−4,+4,−4,+4 = OYJENY. JUPITER → reverse to RETIPUJ → R→N (−4), E→I (+4), T→P (−4), I→M (+4), P→L (−4), U→Y (+4), J→F (−4). This gives NIPMLY, but the supplied question's marked option is A) NIPMQN."
+  },
+  {
+    question: "In a certain code language, SALE is written as LSEA and NEWS is written as WNSE. How is STOP written in that code language?",
+    options: ["OSPT", "POTS", "TOPS", "OTPS"],
+    answer: 0,
+    pattern: "Rearrange positions: 1→2, 2→4, 3→1, 4→3.",
+    solution: "SALE → LSEA and NEWS → WNSE show the same position rearrangement. For STOP: S(1)→position 2, T(2)→position 4, O(3)→position 1, P(4)→position 3. Therefore, STOP = OSPT."
+  },
+  {
+    question: "In a certain code language, TALENT is written as AELNTT. How will the word SPRNT be written in that code?",
+    options: ["PIRNTS", "PIRNST", "NPRIST", "NPRST"],
+    answer: 3,
+    pattern: "Arrange the letters in alphabetical order",
+    solution: "TALENT → A, E, L, N, T, T = AELNTT. Apply the same alphabetical-order rule to SPRNT: N, P, R, S, T. Therefore, SPRNT = NPRST."
+  }
+];
+
+const discountQuestions = [
+  {
+    question: "If the marked price of an article is Rs.2,850 and the discount is 21%, then find the selling price. ఒక వస్తువు యొక్క ప్రకటన ధర రూ.2,850 మరియు తగ్గింపు 21% అయితే, అమ్మకపు ధరను కనుగొనండి.",
+    options: ["Rs.2,521.20","Rs.2,215.50","Rs.2,259.50","Rs.2,251.50"],
+    answer: 3,
+    pattern: `Phrase 1: Marked Price → MP = ₹2,850
+Phrase 2: Discount = 21% → Find 21% of ₹2,850
+Phrase 3: Selling Price → SP = MP − Discount
+Logical Pattern: Given → Discount % → Discount Amount → Subtract → Selling Price`,
+    solution: `Step 1: Marked Price (MP) = ₹2,850.
+Step 2: Discount = 21% of ₹2,850 = (21/100) × 2,850 = ₹598.50.
+Step 3: Selling Price = Marked Price − Discount = ₹2,850 − ₹598.50 = ₹2,251.50.
+Therefore, the correct answer is 4) Rs.2,251.50.`
+  },
+  {
+    question: "If the listed price of a bag is 93% more than its cost price and a discount of 59% is given on it, then find the loss percentage. ఒక బ్యాగ్ యొక్క ప్రకటిత ధర దాని కొన్న ధర కంటే 93% ఎక్కువగా ఉండి, దానిపై 59% తగ్గింపును ప్రకటించినట్లయితే, నష్ట శాతాన్ని కనుగొనండి.",
+    options: ["23.12%","24.87%","20.87%","20.89%"],
+    answer: 2,
+    pattern: `Phrase 1: Cost Price → CP = ₹100
+Phrase 2: Listed Price is 93% more than CP → LP = ₹193
+Phrase 3: Discount = 59% → SP = 41% of LP
+Logical Pattern: CP → Listed Price → Discount → Selling Price → Loss %`,
+    solution: `Step 1: Assume Cost Price (CP) = ₹100.
+Step 2: Listed Price = 100 + 93% of 100 = ₹193.
+Step 3: Discount = 59%, so Selling Price = 41% of ₹193 = ₹79.13.
+Step 4: Loss = CP − SP = ₹100 − ₹79.13 = ₹20.87.
+Therefore, Loss % = 20.87%.
+The correct answer is 3) 20.87%.`
+  },
+  {
+    question: "A vendor offers her customers a discount of 24% on her beauty products and she still makes a profit of 22%. What is the cost price (in Rs.) of a beauty product marked at Rs.854? ఒక సౌందర్య ఉత్పత్తిపై విక్రేత తన వినియోగదారులకు 24% తగ్గింపును ఇస్తుంది మరియు అయినప్పటికీ 22% లాభం పొందుతుంది. రూ.854గా ప్రకటిత ధర కలిగిన సౌందర్య ఉత్పత్తి యొక్క కొన్న ధర (రూ.లలో) ఎంత?",
+    options: ["586","576","532","573"],
+    answer: 2,
+    pattern: `Phrase 1: Marked Price → MP = ₹854
+Phrase 2: Discount = 24% → SP = 76% of ₹854
+Phrase 3: Profit = 22% → SP = 122% of CP
+Logical Pattern: MP → Discount → Selling Price → Profit → Cost Price`,
+    solution: `Step 1: Marked Price (MP) = ₹854.
+Step 2: Discount = 24%, so Selling Price = 76% of ₹854 = (76/100) × 854 = ₹649.04.
+Step 3: Profit = 22%, so SP = 122% of CP.
+Step 4: CP = SP × (100/122) = 649.04 × (100/122) = ₹532.
+Therefore, the correct answer is 3) Rs.532.`
+  },
+  {
+    question: "Successive discounts of 10% and 20% are equivalent to a single percentage discount of: వరుసగా 10% మరియు 20% తగ్గింపులు ఒకే శాతం తగ్గింపుకు సమానం:",
+    options: ["30%","28%","22%","27.5%"],
+    answer: 1,
+    pattern: `Phrase 1: Successive discounts → Two discounts are applied one after another
+Phrase 2: 10% and 20% → First discount = 10%, second discount = 20%
+Phrase 3: Equivalent single discount → Find the combined discount
+Logical Pattern: Assume 100 → First Discount → Remaining Price → Second Discount → Total Discount`,
+    solution: `Step 1: Assume the original price = ₹100.
+Step 2: After 10% discount, remaining price = ₹90.
+Step 3: Apply 20% discount on ₹90 = ₹18.
+Step 4: Final price = ₹90 − ₹18 = ₹72.
+Step 5: Total discount = ₹100 − ₹72 = ₹28.
+Therefore, the equivalent single discount = 28%.
+The correct answer is 2) 28%.`
+  },
+  {
+    question: "What price should Kunal mark on a hoodie which cost him Rs.8,400 so as to gain 25% after allowing successive discounts of 20% and 25%? కునాల్ రూ.8,400కు కొన్న హూడీపై వరుసగా 20% మరియు 25% తగ్గింపులు ఇచ్చిన తర్వాత 25% లాభం పొందాలంటే, దానిపై ఎంత ధరను మార్క్ చేయాలి?",
+    options: ["Rs.17,500","Rs.17,676","Rs.17,648","Rs.17,509"],
+    answer: 0,
+    pattern: `Phrase 1: Cost Price → CP = ₹8,400
+Phrase 2: Gain = 25% → SP = 125% of CP
+Phrase 3: Successive discounts = 20% and 25% → Final price = 80% × 75% of MP
+Phrase 4: Marked Price → MP = SP ÷ (0.80 × 0.75)
+Logical Pattern: CP → Profit → Selling Price → Successive Discounts → Marked Price`,
+    solution: `Step 1: Cost Price (CP) = ₹8,400.
+Step 2: Gain = 25%, so Selling Price = 125% of ₹8,400 = ₹10,500.
+Step 3: After 20% discount, 80% of MP remains.
+Step 4: After the next 25% discount, 75% of that remaining price is paid.
+Step 5: SP = MP × (80/100) × (75/100) = MP × 0.60.
+Step 6: MP = ₹10,500 ÷ 0.60 = ₹17,500.
+Therefore, the correct answer is 1) Rs.17,500.`
+  }
 ];
 
 const timeDistanceQuestions = [
@@ -2602,8 +2982,10 @@ function renderAttemptHistory(){
   const timeBody = document.getElementById("timeHistoryBody");
   const calendarBody = document.getElementById("calendarHistoryBody");
   const directionsBody = document.getElementById("directionsHistoryBody");
+  const codingDecodingBody = document.getElementById("codingDecodingHistoryBody");
+  const discountBody = document.getElementById("discountHistoryBody");
 
-  if(!numberBody || !timeBody || !calendarBody || !directionsBody) return;
+  if(!numberBody || !timeBody || !calendarBody || !directionsBody || !codingDecodingBody || !discountBody) return;
 
   const history = getTestHistory();
 
@@ -2612,19 +2994,27 @@ function renderAttemptHistory(){
   timeBody.innerHTML = "";
   calendarBody.innerHTML = "";
   directionsBody.innerHTML = "";
+  codingDecodingBody.innerHTML = "";
+  discountBody.innerHTML = "";
 
   const numberItems = [];
   const timeItems = [];
   const calendarItems = [];
   const directionsItems = [];
+  const codingDecodingItems = [];
+  const discountItems = [];
 
   history.forEach(function(item,index){
     const subject = String(item.subject || "").toLowerCase();
 
-    if(subject === "calendar"){
+    if(subject === "discount"){
+      discountItems.push({item:item,index:index});
+    }else if(subject === "calendar"){
       calendarItems.push({item:item,index:index});
     }else if(subject === "directions"){
       directionsItems.push({item:item,index:index});
+    }else if(subject === "coding & decoding" || subject === "coding and decoding"){
+      codingDecodingItems.push({item:item,index:index});
     }else if(subject === "time, speed & distance" ||
              subject === "time and distance" ||
              subject === "time & distance"){
@@ -2715,6 +3105,18 @@ function renderAttemptHistory(){
     "No Directions tests attempted yet."
   );
 
+  fillTable(
+    codingDecodingBody,
+    codingDecodingItems,
+    "No Coding & Decoding tests attempted yet."
+  );
+
+  fillTable(
+    discountBody,
+    discountItems,
+    "No Discount tests attempted yet."
+  );
+
   /*
    * Bind dynamically-created View Details buttons.
    * This avoids depending on inline onclick handlers.
@@ -2723,7 +3125,9 @@ function renderAttemptHistory(){
     "#numberHistoryBody .history-view-btn[data-history-index]," +
     "#timeHistoryBody .history-view-btn[data-history-index]," +
     "#calendarHistoryBody .history-view-btn[data-history-index]," +
-    "#directionsHistoryBody .history-view-btn[data-history-index]"
+    "#directionsHistoryBody .history-view-btn[data-history-index]," +
+    "#codingDecodingHistoryBody .history-view-btn[data-history-index]," +
+    "#discountHistoryBody .history-view-btn[data-history-index]"
   ).forEach(function(button){
 
     button.addEventListener("click", function(event){
@@ -3913,6 +4317,33 @@ function startDirectionsTestAgain(){
   );
 }
 
+function updateCodingDecodingQuestionCount(){
+  const el = document.getElementById("codingDecodingQuestionCount");
+  if(el){
+    el.textContent =
+      codingDecodingQuestions.length + " Question" +
+      (codingDecodingQuestions.length === 1 ? "" : "s") +
+      " • 30 Seconds per Question";
+  }
+}
+
+function startCodingDecodingTestAgain(){
+  startFreshRetest(
+    "Coding & Decoding",
+    codingDecodingQuestions
+  );
+}
+
+function updateDiscountQuestionCount(){
+  const el = document.getElementById("discountQuestionCount");
+  if(el) el.textContent = discountQuestions.length + " Question" + (discountQuestions.length === 1 ? "" : "s") + " • 30 Seconds per Question";
+}
+
+function startDiscountTestAgain(){
+  startFreshRetest("Discount", discountQuestions);
+}
+
+
 function showResults(){
   clearInterval(timerId);
   timerId = null;
@@ -3949,15 +4380,21 @@ function renderTestResults(){
   const timeItems = [];
   const calendarItems = [];
   const directionsItems = [];
+  const codingDecodingItems = [];
+  const discountItems = [];
 
   history.forEach(function(item,index){
 
     const subject = String(item.subject || "").toLowerCase();
 
-    if(subject === "calendar"){
+    if(subject === "discount"){
+      discountItems.push({item:item,index:index});
+    }else if(subject === "calendar"){
       calendarItems.push({item:item,index:index});
     }else if(subject === "directions"){
       directionsItems.push({item:item,index:index});
+    }else if(subject === "coding & decoding" || subject === "coding and decoding"){
+      codingDecodingItems.push({item:item,index:index});
     }else if(
       subject === "time, speed & distance" ||
       subject === "time and distance" ||
@@ -4076,6 +4513,28 @@ function renderTestResults(){
     directionsQuestions.length
   );
 
+  updateStats(
+    discountItems,
+    {
+      total:"discountTotalTests",
+      best:"discountBestScore",
+      average:"discountAverageScore",
+      latest:"discountLatestScore"
+    },
+    discountQuestions.length
+  );
+
+  updateStats(
+    codingDecodingItems,
+    {
+      total:"codingDecodingTotalTests",
+      best:"codingDecodingBestScore",
+      average:"codingDecodingAverageScore",
+      latest:"codingDecodingLatestScore"
+    },
+    codingDecodingQuestions.length
+  );
+
   renderAttemptHistory();
 }
 
@@ -4121,6 +4580,7 @@ document.addEventListener("DOMContentLoaded", function(){
 document.addEventListener("DOMContentLoaded", function(){
   updateCalendarQuestionCount();
   updateDirectionsQuestionCount();
+  updateCodingDecodingQuestionCount();
   syncDirectionsResultTotals();
   renderTestResults();
 });
@@ -4187,6 +4647,10 @@ function goBackPage() {
 }
 </script>
 
-<script>document.addEventListener("DOMContentLoaded", updateCalendarQuestionCount);</script>
+<script>
+document.addEventListener("DOMContentLoaded", updateCalendarQuestionCount);
+document.addEventListener("DOMContentLoaded", updateCodingDecodingQuestionCount);
+</script>
 </body>
 </html>
+<script>updateDiscountQuestionCount();</script>
