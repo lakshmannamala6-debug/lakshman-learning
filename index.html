@@ -1250,6 +1250,55 @@ body:has(#test[style*="display:block"]){
 }
 </style>
 
+
+<style>
+/* ===== Equal-width Test Result Sections ===== */
+#result .resultbox{
+  width:100%;
+}
+
+#result .result-subject-section{
+  width:100%;
+  margin:22px 0;
+}
+
+#result .subject-stats{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  width:100%;
+}
+
+#result .subject-stats .stat{
+  min-width:0;
+  width:100%;
+}
+
+#result .subject-retest-action{
+  width:100%;
+}
+
+#result .take-test-again-btn{
+  width:100%;
+}
+
+#result .history-subtable{
+  width:100%;
+}
+
+@media(max-width:900px){
+  #result .subject-stats{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:520px){
+  #result .subject-stats{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+
 </head>
 <body>
 <script>
@@ -1506,7 +1555,7 @@ body:has(#test[style*="display:block"]){
 
       <!-- 2. Time, Speed & Distance Results -->
       <div class="history-section result-subject-section">
-        <h4 class="history-section-title">2. Time, Speed &amp; Distance — Results</h4>
+        <h4 class="history-section-title">3. Time, Speed &amp; Distance — Results</h4>
 
         <div class="stats subject-stats">
           <div class="stat">
@@ -1559,7 +1608,7 @@ body:has(#test[style*="display:block"]){
 
       <!-- 3. Calendar Results -->
       <div class="history-section result-subject-section">
-        <h4 class="history-section-title">3. Calendar — Results</h4>
+        <h4 class="history-section-title">4. Calendar — Results</h4>
 
         <div class="stats subject-stats">
           <div class="stat">
@@ -1567,7 +1616,7 @@ body:has(#test[style*="display:block"]){
             Total Tests Written
           </div>
           <div class="stat">
-            <strong id="calendarBestScore">0/56</strong>
+            <strong id="calendarBestScore">0/68</strong>
             Best Score
           </div>
           <div class="stat">
@@ -1575,7 +1624,7 @@ body:has(#test[style*="display:block"]){
             Average Score
           </div>
           <div class="stat">
-            <strong id="calendarLatestScore">0/56</strong>
+            <strong id="calendarLatestScore">0/68</strong>
             Latest Test
           </div>
         </div>
@@ -1610,18 +1659,14 @@ body:has(#test[style*="display:block"]){
         </div>
       </div>
 
-    </div>
-  </div>
-
-
       <!-- 4. Directions Results -->
       <div class="history-section result-subject-section">
-        <h4 class="history-section-title">4. Directions — Results</h4>
+        <h4 class="history-section-title">5. Directions — Results</h4>
         <div class="stats subject-stats">
           <div class="stat"><strong id="directionsTotalTests">0</strong>Total Tests Written</div>
-          <div class="stat"><strong id="directionsBestScore">0/5</strong>Best Score</div>
+          <div class="stat"><strong id="directionsBestScore">0/11</strong>Best Score</div>
           <div class="stat"><strong id="directionsAverageScore">0%</strong>Average Score</div>
-          <div class="stat"><strong id="directionsLatestScore">0/5</strong>Latest Test</div>
+          <div class="stat"><strong id="directionsLatestScore">0/11</strong>Latest Test</div>
         </div>
         <div class="subject-retest-action">
           <button class="take-test-again-btn" type="button"
@@ -1649,12 +1694,12 @@ body:has(#test[style*="display:block"]){
 
       <!-- 5. Coding & Decoding Results -->
       <div class="history-section result-subject-section">
-        <h4 class="history-section-title">5. Coding &amp; Decoding — Results</h4>
+        <h4 class="history-section-title">6. Coding &amp; Decoding — Results</h4>
         <div class="stats subject-stats">
           <div class="stat"><strong id="codingDecodingTotalTests">0</strong>Total Tests Written</div>
-          <div class="stat"><strong id="codingDecodingBestScore">0/4</strong>Best Score</div>
+          <div class="stat"><strong id="codingDecodingBestScore">0/48</strong>Best Score</div>
           <div class="stat"><strong id="codingDecodingAverageScore">0%</strong>Average Score</div>
-          <div class="stat"><strong id="codingDecodingLatestScore">0/4</strong>Latest Test</div>
+          <div class="stat"><strong id="codingDecodingLatestScore">0/48</strong>Latest Test</div>
         </div>
         <div class="subject-retest-action">
           <button class="take-test-again-btn" type="button"
@@ -1679,9 +1724,9 @@ body:has(#test[style*="display:block"]){
           </table>
         </div>
       </div>
+      </div>
+    </div>
 </section>
-
-
 
 
 <footer>© 2026 <b>LAKSHMAN LEARNING</b> • LEARN • GROW • WISDOM</footer>
@@ -2517,6 +2562,8 @@ Tuesday − 4 = Friday ✅`,
 {question:"If 13th March 1824 is Saturday, what was the day on 13th March 1832?",options:["Tuesday","Monday","Thursday","Saturday"],answer:0,pattern:"1824→1832 = 8 years + 1 leap day = 9 → 9 ÷ 7 → Remainder 2 → Sat + 2 → Monday",solution:"According to the supplied question, 13th March 1824 is Saturday. The source solution marks Tuesday as the answer."},
 {question:"If 18th October 2011 is Monday, what was the day on 18th October 2020?",options:["Sunday","Monday","Tuesday","Saturday"],answer:3,pattern:"Logical calculation → Remainder → Given Day ± Remainder → Final Answer",solution:"From 2011 to 2020 there are 9 years. The leap years affecting 18th October are 2012, 2016 and 2020, adding 3 extra days. Total shift = 12 days; 12 ÷ 7 leaves remainder 5. Monday + 5 days = Saturday."},
 {question:"If 9th January 1912 is Wednesday, what was the day on 9th January 1916?",options:["Sunday","Monday","Thursday","Saturday"],answer:1,pattern:"1912→1916 = 4 years + 2 leap days = 6 → 6 ÷ 7 → Remainder 6 → Wed + 6 → Tuesday OR Wed − 1 → Tuesday",solution:"According to the supplied question, 9th January 1912 is Wednesday. The source solution marks Monday as the answer."},
+
+{question:"If VEDA's birthday is on 22-5-41, then RAGA's birthday is on? VEDA పుట్టినరోజు 22-5-41 న అయితే, RAGA పుట్టినరోజు ____?",options:["17-1-71","18-11-51","18-1-71","19-1-61"],answer:2,pattern:"Alphabet Position Trick: A=1, B=2, ... Z=26. V=22, E=5, D=4, A=1. Therefore VEDA = 22-5-4-1. Apply the same rule to RAGA: R=18, A=1, G=7, A=1 → 18-1-7-1.",solution:"Using alphabet positions, R=18, A=1, G=7, A=1. Therefore RAGA's birthday code is 18-1-71. Correct answer: C) 18-1-71."},
 ];
 
 const codingDecodingQuestions = [
@@ -2590,6 +2637,310 @@ const codingDecodingQuestions = [
     pattern: "Arrange the letters in alphabetical order",
     solution: "TALENT → A, E, L, N, T, T = AELNTT. Apply the same alphabetical-order rule to SPRNT: N, P, R, S, T. Therefore, SPRNT = NPRST."
   }
+,
+  {
+    question: "If MENTAL is written LNDFMOSUZBKM, then how would TEST be written in that code? MENTAL ను LNDFMOSUZBKM గా కోడ్ చేస్తే, ఈ కోడ్‌లో TEST ఎలా వ్రాయబడుతుంది?",
+    options: ["UVFEGTUUV", "RSCDQRRS", "SUDFQRSU", "SUDFRTSU"],
+    answer: 3,
+    pattern: "Each letter is written with its previous and next alphabet letters",
+    solution: "MENTAL → M→LN, E→DF, N→MO, T→SU, A→ZB, L→KM. Apply the same rule to TEST: T→SU, E→DF, S→RT, T→SU. Therefore, TEST = SUDFRTSU."
+  },
+  {
+    question: "If BOMBAY is written as MYMYMY, how will TAMILNADU be written in that code? BOMBAY ను MYMYMY అని రాస్తే, ఆ కోడ్‌లో TAMILNADU ఎలా వ్రాయబడుతుంది?",
+    options: ["TIATIATIA", "IATIATIAT", "MNUMNUMNU", "ALDALDALD"],
+    answer: 2,
+    pattern: "Take every 3rd letter and repeat the selected letters. BOMBAY → M (3rd), Y (6th) → MYMYMY.",
+    solution: "BOMBAY has 6 letters. Take the 3rd and 6th letters: M, Y → MYMYMY. TAMILNADU has 9 letters. Take the 3rd, 6th and 9th letters: M, N, U → MNU. Repeat MNU three times: MNUMNUMNU. Therefore, the correct answer is C) MNUMNUMNU."
+  },
+  {
+    question: "If COBRA can be written as 3152181, how can GORILLA be written? COBRA ను 3152181 గా రాస్తే, GORILLA ను ఎలా వ్రాయవచ్చు?",
+    options: ["71516912121", "71418912121", "71518912121", "71518712121"],
+    answer: 2,
+    pattern: "Letter position coding: each letter is replaced by its alphabet position.",
+    solution: "COBRA → C=3, O=15, B=2, R=18, A=1 → 3152181. Apply the same rule to GORILLA: G=7, O=15, R=18, I=9, L=12, L=12, A=1. Therefore, GORILLA = 71518912121. Correct answer: C) 71518912121."
+  },
+  {
+    question: "If RED is coded as 6720, then how is GREEN coded? RED 6720 గా కోడ్ చేయబడితే, GREEN ఎలా కోడ్ చేయబడుతుంది?",
+    options: ["9207716", "1677199", "1677209", "16717209"],
+    answer: 2,
+    pattern: "Reverse the letter order, then add 2 to each letter's alphabet position.",
+    solution: "RED → R=18, E=5, D=4. Reverse the order: D, E, R → 4, 5, 18. Add 2 to each: 6, 7, 20 → 6720. GREEN → G=7, R=18, E=5, E=5, N=14. Reverse the order: N, E, E, R, G → 14, 5, 5, 18, 7. Add 2 to each: 16, 7, 7, 20, 9 → 1677209. Therefore, the correct answer is C) 1677209."
+  },
+  {
+    question: "If REASON is coded as 5 and BELIEVED as 7, what is the code number for GOVERNMENT? REASON ను 5 గా, BELIEVED ను 7 గా కోడ్ చేస్తే, GOVERNMENT కు కోడ్ సంఖ్య ఎంత?",
+    options: ["6", "8", "9", "10"],
+    answer: 3,
+    pattern: "Code number = Number of letters in the word",
+    solution: "REASON has 6 letters, but it is given as 5; BELIEVED has 8 letters, but it is given as 7. Therefore, the code is the number of letters minus 1. GOVERNMENT has 10 letters. 10 − 1 = 9. Therefore, the correct answer is C) 9."
+  },
+  {
+    question: "In a certain code language, AKBAR is coded as 15. How is ANWAR coded in the same code?",
+    options: ["23", "25", "27", "21"],
+    answer: 3,
+    pattern: "Alphabet positions are reduced to single digits, then added",
+    solution: "AKBAR → A=1, K=11→1+1=2, B=2, A=1, R=18→1+8=9. So 1+2+2+1+9=15. ANWAR → A=1, N=14→1+4=5, W=23→2+3=5, A=1, R=18→1+8=9. Therefore, 1+5+5+1+9=21. The correct answer is D) 21."
+  },
+  {
+    question: "If MOBILITY is coded as 46293927, then EXAMINATION is coded as? MOBILITY 46293927 గా కోడ్ చేయబడితే, EXAMINATION ను ఎలా కోడ్ చేయబడింది?",
+    options: ["45038401854", "56149512965", "57159413955", "67250623076"],
+    answer: 1,
+    pattern: "Convert each letter to its alphabet position, then add the digits of that position",
+    solution: "MOBILITY → M=13→1+3=4, O=15→1+5=6, B=2→2, I=9→9, L=12→1+2=3, I=9→9, T=20→2+0=2, Y=25→2+5=7. Therefore MOBILITY = 46293927. Apply the same rule to EXAMINATION: E=5, X=24→6, A=1, M=13→4, I=9, N=14→5, A=1, T=20→2, I=9, O=15→6, N=14→5. Therefore EXAMINATION = 56149512965. The correct answer is B) 56149512965."
+  },
+  {
+    question: 'In a certain code language, "SAVE" is written as "24" and "TO" is written as "2". How is "WATER" written in that code language? ఒక నిర్దిష్ట కోడ్ భాషలో "SAVE" ను "24" గా మరియు "TO" ను "2" గా వ్రాస్తే, అదే కోడ్‌లో "WATER" ను ఎలా వ్రాస్తారు?',
+    options: ["150", "80", "120", "100"],
+    answer: 2,
+    pattern: "Code = Factorial of the number of letters",
+    solution: "SAVE has 4 letters, so 4! = 24. TO has 2 letters, so 2! = 2. WATER has 5 letters, so 5! = 5×4×3×2×1 = 120. Therefore, the correct answer is C) 120."
+  },
+  {
+    question: 'In a certain code language, "STOP" is written as "61" and "REASON" is written as "63". How is "EDUCATION" written in that code language? ఒక నిర్దిష్ట కోడ్ భాషలో, "STOP" ను "61" గా మరియు "REASON" ను "63" గా వ్రాస్తే, అదే కోడ్‌లో "EDUCATION" ను ఎలా వ్రాస్తారు?',
+    options: ["15", "18", "19", "11"],
+    answer: 1,
+    pattern: "Square the number of letters, then reverse the digits",
+    solution: "STOP has 4 letters: 4² = 16, reversed → 61. REASON has 6 letters: 6² = 36, reversed → 63. EDUCATION has 9 letters: 9² = 81, reversed → 18. Therefore, the correct answer is B) 18."
+  },
+  {
+    question: 'In a certain code language, "UNIVERSAL" is written as "20" and "EDUCATION" is written as "20". How is "IMPORTFUN" written in that code language? ఒక నిర్దిష్ట కోడ్ భాషలో, "UNIVERSAL" ను "20" గా మరియు "EDUCATION" ను "20" గా వ్రాస్తే, "IMPORTFUN" ను ఎలా వ్రాస్తారు?',
+    options: ["16", "18", "9", "11"],
+    answer: 1,
+    pattern: "Code = Number of vowels × Number of consonants",
+    solution: "UNIVERSAL has 4 vowels and 5 consonants: 4×5=20. EDUCATION has 5 vowels and 4 consonants: 5×4=20. IMPORTFUN has 3 vowels (I, O, U) and 6 consonants (M, P, R, T, F, N). Therefore, 3×6=18. The correct answer is B) 18."
+  },
+  {
+    question: 'If CAR, TIN and BOAT are coded as 364, 182 and 7561 respectively, then CONTRACTOR is coded as? CAR, TIN మరియు BOAT వరుసగా 364, 182 మరియు 7561 గా కోడ్ చేయబడితే, CONTRACTOR ఎలా కోడ్ చేయబడుతుంది?',
+    options: ["3521643154", "3521463154", "3524163154", "3521634154"],
+    answer: 1,
+    pattern: "Each letter is replaced by its corresponding code number.",
+    solution: "From CAR → 364: C=3, A=6, R=4. From TIN → 182: T=1, I=8, N=2. From BOAT → 7561: B=7, O=5, A=6, T=1. Therefore CONTRACTOR = C O N T R A C T O R = 3 5 2 1 4 6 3 1 5 4 = 3521463154. Hence, the correct answer is B) 3521463154."
+  },
+  {
+    question: 'If TEN, GANG and MEAT are coded as 439, 6596 and 1354 respectively, then how is MANAGEMENT coded? ఒక నిర్దిష్ట కోడ్ భాషలో TEN, GANG మరియు MEAT వరుసగా 439, 6596 మరియు 1354 గా కోడ్ చేయబడితే, MANAGEMENT ఎలా కోడ్ చేయబడుతుంది?',
+    options: ["1596531394", "1596351394", "1595361394", "1595631394"],
+    answer: 3,
+    pattern: "Each letter is replaced by its corresponding code number.",
+    solution: "From TEN → 439: T=4, E=3, N=9. From GANG → 6596: G=6, A=5, N=9. From MEAT → 1354: M=1, E=3, A=5, T=4. Therefore MANAGEMENT = M A N A G E M E N T = 1 5 9 5 6 3 1 3 9 4 = 1595631394. Hence, the correct answer is D) 1595631394."
+  },  {
+    question: "In a code language, 'ORGANISATION' is written as 'CBDWLQJWYQCL' and 'OPERATION' is written as 'CXFBWYQCL'. How would 'SEPARATION' be coded? ఒక కోడ్ భాషలో, 'ORGANISATION' ను 'CBDWLQJWYQCL' అని మరియు 'OPERATION' ను 'CXFBWYQCL' అని రాస్తారు. 'SEPARATION' ను ఎలా కోడ్ చేస్తారు?",
+    options: ["JFXWEBYQCL", "JFXYWB CXQL".replace(" ",""), "JFXWBWYQCL", "JFXYWBFXCL"],
+    answer: 2,
+    pattern: "Each letter is replaced by its corresponding fixed code letter.",
+    solution: "From ORGANISATION → CBDWLQJWYQCL and OPERATION → CXFBWYQCL, the letter mappings are O→C, R→B, G→D, A→W, N→L, I→Q, S→J, T→Y, P→X and E→F. Therefore, SEPARATION = S E P A R A T I O N = J F X W B W Y Q C L = JFXWBWYQCL. Hence, the correct answer is C) JFXWBWYQCL."
+  },
+  {
+    question: "If BROTHER is coded as 2456784, SISTER is coded as 919684. What is the code for ROBBERS? ఒక కోడ్ భాషలో, BROTHER ను 2456784 గా, SISTER ను 919684 గా కోడ్ చేస్తే, ROBBERS కు కోడ్ ఏమిటి?",
+    options: ["4528249", "4562689", "4245789", "4522849"],
+    answer: 3,
+    pattern: "Each letter is replaced by its corresponding fixed code number.",
+    solution: "From BROTHER → 2456784: B→2, R→4, O→5, T→6, H→7, E→8, R→4. From SISTER → 919684: S→9, I→1, S→9, T→6, E→8, R→4. Therefore, ROBBERS = R O B B E R S = 4 5 2 2 8 4 9 = 4522849. Hence, the correct answer is D) 4522849."
+  },
+  {
+    question: "If GLARE is coded as 67810 and MONSOON as 2395339, then how can RANSOM be coded? GLARE ను 67810 మరియు MONSOON ను 2395339 గా కోడ్ చేస్తే, RANSOM ను ఎలా కోడ్ చేయవచ్చు?",
+    options: ["183952", "198532", "189352", "189532"],
+    answer: 3,
+    pattern: "Each letter is replaced by its corresponding fixed code number.",
+    solution: "From GLARE → 67810: G→6, L→7, A→8, R→1, E→0. From MONSOON → 2395339: M→2, O→3, N→9, S→5, O→3, O→3, N→9. Therefore, RANSOM = R A N S O M = 1 8 9 5 3 2 = 189532. Hence, the correct answer is D) 189532."
+  },
+  {
+    question: "In a certain code, BRAIN is written as *%÷#× and TIER is written as $#+%. How is TRAIN written in that code? ఒక నిర్దిష్ట కోడ్‌లో BRAIN ను *%÷#× గా మరియు TIER ను $#+% గా రాస్తే, TRAIN ను ఎలా రాస్తారు?",
+    options: ["$%×#*", "$%÷#×", "$%+×+", "÷+×%$"],
+    answer: 1,
+    pattern: "Each letter is replaced by its corresponding fixed code symbol.",
+    solution: "From BRAIN → *%÷#×: B→*, R→%, A→÷, I→#, N→×. From TIER → $#+%: T→$, I→#, E→+, R→%. Therefore, TRAIN = T R A I N = $ % ÷ # × = $%÷#×. Hence, the correct answer is B) $%÷#×."
+  },
+  {
+    question: "If KASHMIR is written as 8142753, how can RIMSHAK be written in that code? ఒక కోడ్‌లో KASHMIR ను 8142753 గా రాస్తే, అదే కోడ్‌లో RIMSHAK ను ఎలా రాయవచ్చు?",
+    options: ["3574218", "3571842", "3521478", "3574812"],
+    answer: 0,
+    pattern: "Each letter is replaced by its corresponding fixed code number.",
+    solution: "From KASHMIR → 8142753: K→8, A→1, S→4, H→2, M→7, I→5, R→3. Therefore, RIMSHAK = R I M S H A K = 3 5 7 4 2 1 8 = 3574218. Hence, the correct answer is A) 3574218."
+  },
+  {
+    question: "In a certain code, BRASS is written as 23425 and RUN is written as 746. How is SIR written in that code? ఒక నిర్దిష్ట కోడ్‌లో, BRASS ను 23425 గా మరియు RUN ను 746 గా రాస్తే, అదే కోడ్‌లో SIR ను ఎలా రాయాలి?",
+    options: ["425", "842", "243", "724"],
+    answer: 1,
+    pattern: "Use the coding pattern given in the question; the supplied answer marks B) 842.",
+    solution: "BRASS → 23425 and RUN → 746 are given. The supplied question's marked answer is B) 842. Therefore, SIR = 842. Note: the two examples do not establish a unique fixed letter-to-digit mapping (R appears with different digits), so the exact derivation of 842 is not uniquely supported by the printed data."
+  },
+  {
+    question: "If SMILE is coded as ELIMS then what is the code of \"FAITH\"? SMILE ను ELIMS గా కోడ్ చేస్తే, FAITH ను ఎలా కోడ్ చేస్తారు?",
+    options: ["THIAF", "HTIAF", "IAFTH", "TIFAH"],
+    answer: 1,
+    pattern: "Reverse the letters",
+    solution: "SMILE → ELIMS is the reverse of SMILE. Apply the same rule to FAITH: FAITH → HTIAF. Therefore, the correct answer is B) HTIAF."
+  },
+  {
+    question: "If COMPUTER is coded as PMOCRETU then what is the code of \"MOVEMENT\"? COMPUTER ను PMOCRETU గా కోడ్ చేస్తే, MOVEMENT ను ఎలా కోడ్ చేస్తారు?",
+    options: ["EVMOTNEM", "EVOTMNEM", "EVONMTEM", "EVOMTNEM"],
+    answer: 3,
+    pattern: "Reverse each group of four letters",
+    solution: "COMPUTER → PMOCRETU. Split COMPUTER into two groups of four: COMP | UTER. Reverse each group: PMOC | RETU. Apply the same rule to MOVEMENT: MOVE | MENT → EVOM | TNEM. Therefore, the correct answer is D) EVOMTNEM."
+  },
+  {
+    question: "If VEDA's birthday is on 22-5-41, then RAGA's birthday is on? VEDA పుట్టినరోజు 22-5-41 న అయితే, RAGA పుట్టినరోజు ____?",
+    options: ["17-1-71", "18-11-51", "18-1-71", "19-1-61"],
+    answer: 2,
+    pattern: "Alphabet Position Trick: A=1, B=2, ... Z=26",
+    solution: "VEDA → V=22, E=5, D=4, A=1. RAGA → R=18, A=1, G=7, A=1. Therefore, RAGA = 18-1-71. Correct answer: C) 18-1-71."
+  },
+  {
+    question: "If ROAD is coded as 19514, then MODE is coded as? ROAD : 19514 అయితే, MODE : ______?",
+    options: ["16468", "12575", "14545", "15454"],
+    answer: 2,
+    pattern: "Alphabet-position transformation: increase the 1st letter value by 1, reduce the 2nd letter value by 10, and keep the remaining letter values unchanged.",
+    solution: "ROAD → R=18, O=15, A=1, D=4. Apply the pattern: 18+1=19, 15−10=5, A=1, D=4 → 19514. For MODE: M=13, O=15, D=4, E=5. Apply the same pattern: 13+1=14, 15−10=5, D=4, E=5 → 14545. Therefore, the correct answer is C) 14545."
+  },
+  {
+    question: "If FACT is coded as 54, then TAKE is coded as? FACT : 54 అయితే, TAKE : ______?",
+    options: ["35", "46", "68", "82"],
+    answer: 0,
+    pattern: "Multiply the 3rd and 4th letter positions, multiply the 1st and 2nd letter positions, then take the absolute difference.",
+    solution: "FACT → F=6, A=1, C=3, T=20. (C×T) − (F×A) = (3×20) − (6×1) = 60 − 6 = 54. Apply the same rule to TAKE: T=20, A=1, K=11, E=5. (K×E) − (T×A) = (11×5) − (20×1) = 55 − 20 = 35. Therefore, the correct answer is A) 35."
+  },
+  {
+    question: "The pair among the following that has the same relationship as BELOW : OBWEL is? BELOW : OBWEL కు ఒకే సంబంధాన్ని కలిగి ఉన్న జంట ఏది?",
+    options: ["REPLY : LRYPE", "ALONG : NAOLG", "DRAFT : FDTRA", "YEARS : RESYA"],
+    answer: 2,
+    pattern: "Rearrange the letters in the positions 4, 1, 5, 2, 3.",
+    solution: "BELOW → B(1), E(2), L(3), O(4), W(5). Rearrange as 4,1,5,2,3: O, B, W, E, L = OBWEL. Apply the same rearrangement to DRAFT: D(1), R(2), A(3), F(4), T(5) → F, D, T, R, A = FDTRA. Therefore, the correct answer is C) DRAFT : FDTRA."
+  },
+  {
+    question: "The pair among the following that has the same relationship as OFTEN : FOTNE is? OFTEN : FOTNE కు ఒకే సంబంధాన్ని కలిగి ఉన్న జంట ఏది?",
+    options: ["HEART : TRAHE", "RISKY : IRSYK", "OPENS : SNEOP", "LUNGS : UNLGS"],
+    answer: 1,
+    pattern: "Rearrange the letters in the positions 2, 1, 3, 5, 4.",
+    solution: "OFTEN → O(1), F(2), T(3), E(4), N(5). Rearrange as 2,1,3,5,4: F, O, T, N, E = FOTNE. Apply the same rearrangement to RISKY: R(1), I(2), S(3), K(4), Y(5) → I, R, S, Y, K = IRSYK. Therefore, the correct answer is B) RISKY : IRSYK."
+  },
+  {
+    question: "In a certain code, 'Green is Blue', 'Blue is Yellow', 'Yellow is Red', 'Red is Black', 'Black is White', 'White is Brown'. What is the color of the blood according to the given code? ఒక నిర్దిష్ట కోడ్‌లో 'ఆకుపచ్చ నీలం', 'నీలం పసుపు', 'పసుపు ఎరుపు', 'ఎరుపు నలుపు', 'నలుపు తెలుపు', 'తెలుపు గోధుమ రంగు' అని అంటారు. ఇచ్చిన కోడ్ ప్రకారం రక్తం యొక్క రంగు ఏమిటి?",
+    options: ["Black / నలుపు", "Red / ఎరుపు", "Blue / నీలం", "Brown / గోధుమ రంగు"],
+    answer: 0,
+    pattern: "Find the actual color first, then replace it using the given code relationship.",
+    solution: "Step 1: The actual color of blood is Red. Step 2: According to the code, 'Red is Black'. Therefore, the color of blood according to the given code is Black. Hence, the correct answer is A) Black / నలుపు."
+  },
+  {
+    question: "If 'black' is 'pink', 'pink' is 'blue', 'blue' is 'white', 'white' is 'yellow', 'yellow' is 'red' and 'red' is 'brown', then what is the colour of clear sky? 'నలుపు' ను 'పింక్' అని, 'పింక్' ను 'నీలం' అని, 'నీలం' ను 'తెలుపు' అని, 'తెలుపు' ను 'పసుపు' అని, 'పసుపు' ను 'ఎరుపు' అని, 'ఎరుపు' ను 'గోధుమ రంగు' అని అంటారు. అయితే స్పష్టమైన ఆకాశం రంగు ఏమిటి?",
+    options: ["Brown / గోధుమ రంగు", "White / తెలుపు", "Blue / నీలం", "Pink / పింక్"],
+    answer: 1,
+    pattern: "Find the actual color first, then replace it using the given code relationship.",
+    solution: "Step 1: The actual colour of a clear sky is Blue. Step 2: According to the code, 'Blue is White'. Therefore, the colour of the clear sky according to the given code is White. Hence, the correct answer is B) White / తెలుపు."
+  },
+  {
+    question: "If 'lead' is called as 'stick', 'stick' is called as 'nib', 'nib' is called as 'needle', 'needle' is called as 'rope' and 'rope' is called as 'thread', what will be fitted in a pen to write with it? 'సీసం' ను 'కర్ర' అని, 'కర్ర'ను 'నిబ్' అని, 'నిబ్'ను 'సూది' అని, 'సూది'ని 'తాడు' అని, 'తాడు'ను 'దారం' అని పిలిస్తే, రాయడానికి పెన్నులో దేనిని అమరుస్తారు?",
+    options: ["Stick / కర్ర", "Lead / సీసం", "Needle / సూది", "Nib / నిబ్"],
+    answer: 2,
+    pattern: "Find the actual object first, then replace it using the given code relationship.",
+    solution: "Step 1: The actual object fitted in a pen for writing is a Nib. Step 2: According to the code, 'Nib is Needle'. Therefore, the object to be fitted in the pen according to the given code is Needle. Hence, the correct answer is C) Needle / సూది."
+  },
+  {
+    question: "If 'dust' is 'air', 'air' is 'fire', 'fire' is 'water', 'water' is 'colour', 'colour' is 'rain' and 'rain' is 'dust', then where do fish live? 'దుమ్ము' ను 'గాలి' అని, 'గాలి'ని 'అగ్ని' అని, 'అగ్ని'ని 'నీరు' అని, 'నీరు'ని 'రంగు' అని, 'రంగు'ని 'వర్షం' అని, 'వర్షం'ని 'దుమ్ము' అని పిలిస్తే, చేపలు ఎక్కడ నివసిస్తాయి?",
+    options: ["Fire / అగ్ని", "Water / నీరు", "Colour / రంగు", "Dust / దుమ్ము"],
+    answer: 2,
+    pattern: "Find the actual place/object first, then replace it using the given code relationship.",
+    solution: "Step 1: Fish actually live in Water. Step 2: According to the code, 'Water is Colour'. Therefore, where fish live according to the given code is Colour. Hence, the correct answer is C) Colour / రంగు."
+  },
+  {
+    question: "If 'blue' means 'green', 'green' means 'white', 'white' means 'yellow', 'yellow' means 'black', 'black' means 'red' and 'red' means 'brown', then what is the colour of milk? 'నీలం' అంటే 'ఆకుపచ్చ', 'ఆకుపచ్చ' అంటే 'తెలుపు', 'తెలుపు' అంటే 'పసుపు', 'పసుపు' అంటే 'నలుపు', 'నలుపు' అంటే 'ఎరుపు' మరియు 'ఎరుపు' అంటే 'గోధుమ రంగు' అని అంటారు. అయితే పాలు రంగు ఏమిటి?",
+    options: ["Black / నలుపు", "Blue / నీలం", "Yellow / పసుపు", "Green / ఆకుపచ్చ"],
+    answer: 3,
+    pattern: "Find the actual color first, then replace it using the given code relationship.",
+    solution: "Step 1: The actual colour of milk is White. Step 2: In the given code, 'green' means 'white', so the word used for White is Green. Therefore, the colour of milk according to the code is Green. Hence, the correct answer is D) Green / ఆకుపచ్చ."
+  },
+  {
+    question: "If 'clock' means 'television', 'television' means 'radio', 'radio' means 'oven', 'oven' means 'grinder' and 'grinder' means 'iron', in what will a lady bake? 'గడియారం' అంటే 'టెలివిజన్', 'టెలివిజన్' అంటే 'రేడియో', 'రేడియో' అంటే 'ఓవెన్', 'ఓవెన్' అంటే 'గ్రైండర్' మరియు 'గ్రైండర్' అంటే 'ఇనుము' అని అంటే, ఒక మహిళ దేనిలో బేక్ చేస్తుంది?",
+    options: ["Radio / రేడియో", "Oven / ఓవెన్", "Grinder / గ్రైండర్", "Iron / ఇనుము"],
+    answer: 2,
+    pattern: "Find the actual object first, then replace it using the given code relationship.",
+    solution: "Step 1: A lady bakes in an Oven. Step 2: According to the code, 'Oven means Grinder'. Therefore, the coded answer is Grinder. Hence, the correct answer is C) Grinder / గ్రైండర్."
+  },
+  {
+    question: "If 'paper' means 'wood', 'wood' means 'straw', 'straw' means 'grass', 'grass' means 'rubber' and 'rubber' means 'cloth', by using what furniture is made? 'కాగితం' అంటే 'చెక్క', 'చెక్క' అంటే 'గడ్డి', 'గడ్డి' అంటే 'పచ్చిక', 'పచ్చిక' అంటే 'రబ్బరు' మరియు 'రబ్బరు' అంటే 'వస్త్రం' అని అంటే, దేనిని ఉపయోగించి ఫర్నిచర్ తయారు చేస్తారు?",
+    options: ["Paper / కాగితం", "Wood / చెక్క", "Straw / గడ్డి", "Grass / పచ్చిక"],
+    answer: 2,
+    pattern: "Find the actual material first, then replace it using the given code relationship.",
+    solution: "Step 1: Furniture is actually made using Wood. Step 2: According to the code, 'Wood means Straw'. Therefore, the coded answer is Straw. Hence, the correct answer is C) Straw / గడ్డి."
+  },
+  {
+    question: "On another planet, the local terminology for 'earth', 'water', 'light', 'air' and 'sky' are 'sky', 'light', 'air', 'water' and 'earth' respectively. If someone is thirsty there, what would he drink? మరొక గ్రహంలో 'భూమి', 'నీరు', 'కాంతి', 'గాలి' మరియు 'ఆకాశం'లకు స్థానిక పేర్లు వరుసగా 'ఆకాశం', 'కాంతి', 'గాలి', 'నీరు' మరియు 'భూమి'. అక్కడ ఎవరికైనా దాహంగా ఉంటే, అతను ఏమి తాగుతాడు?",
+    options: ["Light / కాంతి", "Air / గాలి", "Sky / ఆకాశం", "Water / నీరు"],
+    answer: 0,
+    pattern: "First identify the actual thing needed, then replace it with its local coded name.",
+    solution: "Step 1: A thirsty person needs Water. Step 2: According to the code, Water means Light. Therefore, the coded answer is Light. Hence, the correct answer is A) Light / కాంతి."
+  },
+  {
+    question: "If the animals which can walk are called 'swimmers', animals who crawl are called 'flying', those living in water are called 'snakes' and those which fly in the sky are called 'hunters', then what will a lizard be called? నడవగల జంతువులను 'ఈతగాళ్లు', పాకే జంతువులను 'ఎగిరేవి', నీటిలో నివసించే జంతువులను 'పాములు', ఆకాశంలో ఎగిరే జంతువులను 'వేటగాళ్లు' అని పిలిస్తే, బల్లి అని దేనిని పిలుస్తారు?",
+    options: ["Swimmers / ఈతగాళ్లు", "Snakes / పాములు", "Flying / ఎగిరేవి", "Hunters / వేటగాళ్లు"],
+    answer: 2,
+    pattern: "First identify what the lizard actually does, then use the given coded name for that category.",
+    solution: "Step 1: A lizard crawls. Step 2: According to the code, animals who crawl are called Flying. Therefore, the lizard will be called Flying. Hence, the correct answer is C) Flying / ఎగిరేవి."
+  },
+
+  {
+    question: "In a certain code, the word 'SAINT' is coded as 82147 and the word 'MONKEY' as 364950. If any code ends with '0', change '0' to 9. What is the final code for 'MONKEY'?",
+    options: ["364950", "364959", "364590", "369450"],
+    answer: 1,
+    pattern: "Given: SAINT = 82147 and MONKEY = 364950. Condition: If any code ends with 0, replace the final 0 with 9.",
+    solution: "MONKEY is coded as 364950. The code ends with 0. According to the given condition, change the final 0 to 9. Therefore, the final code is 364959. Correct answer: B) 364959."
+  },
+  {
+    question: "In a certain code, the word 'SAINT' is coded as 82147 and the word 'MONKEY' as 364950. If the first digit is '0', replace it by 1. What is the final code for 'YAK'?",
+    options: ["029", "129", "109", "192"],
+    answer: 1,
+    pattern: "First identify the code for each letter. Then, if the first digit of the resulting code is 0, replace that first digit with 1.",
+    solution: "From MONKEY = 364950, Y = 0 and K = 9. From SAINT = 82147, A = 2. Therefore YAK = 0-2-9 = 029. Since the first digit is 0, replace it with 1. The final code is 129. Correct answer: B) 129."
+  },
+  {
+    question: "In a certain code, the word 'SAINT' is coded as 82147 and the word 'MONKEY' as 364950. If the first digit of the code is '0', replace it by 1. What is the final code for 'YAM'?",
+    options: ["023", "123", "203", "1239"],
+    answer: 1,
+    pattern: "Given: SAINT = 82147 and MONKEY = 364950. Rule: If the first digit of the resulting code is 0, replace it with 1.",
+    solution: "From MONKEY = 364950, Y = 0 and M = 3. From SAINT = 82147, A = 2. Therefore YAM = 0-2-3 = 023. The first digit is 0, so replace it with 1. Hence the final code is 123. Correct answer: B) 123."
+  },
+    {
+    question: "In a certain code, the word 'SAINT' is coded as 82147 and the word 'MONKEY' as 364950. If both the first and last digits are equal numbers, but are not equal to 0 and not equal to 2, then change the first digit to 2. What is the final code for 'K...K'?",
+    options: ["999", "299", "929", "229"],
+    answer: 1,
+    pattern: "First identify the code for K. From MONKEY = 364950, K = 9. For K...K, the first and last digits are both 9. Since 9 is neither 0 nor 2, change the first digit to 2.",
+    solution: "From MONKEY = 364950, K = 9. Therefore K...K gives a code beginning and ending with 9: 9...9. The first and last digits are equal, and 9 is neither 0 nor 2. So change the first digit 9 to 2. The final code is 299. Correct answer: B) 299."
+  },
+  {
+    question: "In a certain code of the word 'SAINT' is coded as 82147 and the word 'MONKEY' as 364950. If the code for the word INMATES is / INMATES అనే పదానికి కోడ్?",
+    options: ["1342578", "1347258", "1432758", "1432578"],
+    answer: 2,
+    pattern: "Each letter is replaced by its corresponding fixed code number.",
+    solution: "From the given code pattern: I = 1, N = 4, M = 3, A = 2, T = 7, E = 5, S = 8. Therefore INMATES = 1-4-3-2-7-5-8 = 1432758. Hence, the correct answer is C) 1432758."
+  },
+
+  {
+    question: "In a certain code, the word 'SAINT' is coded as 82147 and the word 'MONKEY' as 364950. If the code for the word YESTERDAY is / YESTERDAY అనే పదానికి కోడ్?",
+    options: ["15875XX29", "15875XX21", "05875XX20", "15857XX29"],
+    answer: 2,
+    pattern: "Each letter is replaced by its corresponding fixed code number.",
+    solution: "From SAINT = 82147: S = 8, A = 2, I = 1, N = 4, T = 7. From MONKEY = 364950: M = 3, O = 6, N = 4, K = 9, E = 5, Y = 0. Therefore YESTERDAY = Y-E-S-T-E-R-D-A-Y = 0-5-8-7-5-X-X-2-0. Hence the code is 05875XX20. Correct answer: C) 05875XX20."
+  },
+  {
+    question: "In a certain code of the word 'SAINT' is coded as 82147 and the word 'MONKEY' as 364950. If the code for the word STALKINGS is / STALKINGS అనే పదానికి కోడ్",
+    options: ["872X914X8", "87X2914X8", "272X914X8", "272X194X8"],
+    answer: 0,
+    pattern: "Each known letter is replaced by its corresponding fixed code number. Letters whose codes are not given are represented by X.",
+    solution: "From SAINT = 82147: S = 8, T = 7, A = 2, I = 1, N = 4. From MONKEY = 364950: K = 9. For STALKINGS: S-T-A-L-K-I-N-G-S = 8-7-2-X-9-1-4-X-8. Therefore the code is 872X914X8. Correct answer: A) 872X914X8."
+  },
+  {
+    question: "In a certain code, the word 'SAINT' is coded as 82147 and the word 'MONKEY' as 364950. If the code for the word MONASTERY is / MONASTERY అనే పదానికి కోడ్?",
+    options: ["3642875X9", "36248750X", "3642785X0", "3642857X2"],
+    answer: 2,
+    pattern: "Each known letter is replaced by its corresponding fixed code number. Letters whose codes are not given are represented by X.",
+    solution: "From SAINT = 82147: S = 8, A = 2, I = 1, N = 4, T = 7. From MONKEY = 364950: M = 3, O = 6, K = 9, E = 5, Y = 0. The letter R is not given, so it is represented by X. Therefore MONASTERY = M-O-N-A-S-T-E-R-Y = 3-6-4-2-8-7-5-X-0 = 3642875X0. Hence, the correct answer is C) 3642875X0."
+  },
+  {
+    question: "In a certain code of the word 'SAINT' is coded as 82147 and the word 'MONKEY' as 364950. If the code for the word ASTEROIDS is / ASTEROIDS అనే పదానికి కోడ్?",
+    options: ["1875X61X8", "2875X61X8", "3875X61X8", "278X561X8"],
+    answer: 0,
+    pattern: "Each known letter is replaced by its corresponding fixed code number. Letters whose codes are not given are represented by X.",
+    solution: "From SAINT = 82147: A = 2, S = 8, I = 1, N = 4, T = 7. From MONKEY = 364950: E = 5, O = 6, Y = 0. The letter R is not given, so it is represented by X. Therefore ASTEROIDS = A-S-T-E-R-O-I-D-S = 2-8-7-5-X-6-1-X-8 = 2875X61X8. Hence, the correct answer is B) 2875X61X8."
+  }
+
 ];
 
 const discountQuestions = [
@@ -2667,7 +3018,8 @@ Step 4: After the next 25% discount, 75% of that remaining price is paid.
 Step 5: SP = MP × (80/100) × (75/100) = MP × 0.60.
 Step 6: MP = ₹10,500 ÷ 0.60 = ₹17,500.
 Therefore, the correct answer is 1) Rs.17,500.`
-  }
+  },
+
 ];
 
 const timeDistanceQuestions = [
@@ -3026,7 +3378,7 @@ function renderAttemptHistory(){
     }
   });
 
-  function fillTable(body, items, emptyText){
+  function fillTable(body, items, emptyText, defaultTotal){
 
     if(!items.length){
       body.innerHTML =
@@ -3068,7 +3420,7 @@ function renderAttemptHistory(){
         '</td>' +
 
         '<td style="font-weight:bold">'+
-          (Number(item.score) || 0)+"/"+(Number(item.total) || questions.length)+
+          (Number(item.score) || 0)+"/"+(Number(item.total) || defaultTotal)+
         '</td>' +
 
         '<td>'+
@@ -3084,37 +3436,43 @@ function renderAttemptHistory(){
   fillTable(
     numberBody,
     numberItems,
-    "No Number System tests attempted yet."
+    "No Number System tests attempted yet.",
+    numberSystemQuestions.length
   );
 
   fillTable(
     timeBody,
     timeItems,
-    "No Time, Speed & Distance tests attempted yet."
+    "No Time, Speed & Distance tests attempted yet.",
+    timeDistanceQuestions.length
   );
 
   fillTable(
     calendarBody,
     calendarItems,
-    "No Calendar tests attempted yet."
+    "No Calendar tests attempted yet.",
+    calendarQuestions.length
   );
 
   fillTable(
     directionsBody,
     directionsItems,
-    "No Directions tests attempted yet."
+    "No Directions tests attempted yet.",
+    directionsQuestions.length
   );
 
   fillTable(
     codingDecodingBody,
     codingDecodingItems,
-    "No Coding & Decoding tests attempted yet."
+    "No Coding & Decoding tests attempted yet.",
+    codingDecodingQuestions.length
   );
 
   fillTable(
     discountBody,
     discountItems,
-    "No Discount tests attempted yet."
+    "No Discount tests attempted yet.",
+    discountQuestions.length
   );
 
   /*
@@ -4220,13 +4578,11 @@ function startFreshRetest(subject, questionList){
   rememberPreviousAppPage();
 
   /*
-   * IMPORTANT:
-   * "Take Test Again" = NEW ATTEMPT.
-   *
-   * Therefore an old active test must NOT be restored here.
-   * Every question in the new attempt starts with its ORIGINAL
-   * 30 seconds. The normal question-to-question timer/resume
-   * logic remains unchanged after the test starts.
+   * TAKE TEST AGAIN = COMPLETELY NEW ATTEMPT
+   * ----------------------------------------
+   * Stop every old timer, remove only the old ACTIVE attempt,
+   * rebuild all test state, and give EVERY question a fresh 30 seconds.
+   * Completed test history is preserved.
    */
   clearInterval(timerId);
   timerId = null;
@@ -4234,17 +4590,17 @@ function startFreshRetest(subject, questionList){
   currentTestSubject = subject;
   questions = questionList;
 
+  /* Remove any previous unfinished attempt BEFORE saving the new one. */
+  clearActiveTest();
+
   current = 0;
   answers = new Array(questions.length).fill(null);
   questionStatus = new Array(questions.length).fill("unsubmitted");
+  questionAction = new Array(questions.length).fill("");
+
+  /* Every question in the new attempt starts with 30 seconds. */
   questionSeconds = new Array(questions.length).fill(30);
-
   seconds = 30;
-  questionSeconds[0] = 30;
-
-  /* Remove only the previous ACTIVE attempt.
-     Test history is never deleted. */
-  clearActiveTest();
 
   saveActiveTest();
 
@@ -4253,18 +4609,27 @@ function startFreshRetest(subject, questionList){
   const test = document.getElementById("test");
   if(test) test.style.display = "block";
 
+  document.getElementById("qno").textContent =
+    "Question 1 / " + questions.length;
+
   renderQuestion();
 
-  /* Force the new attempt's first question to 30 seconds. */
+  /*
+   * Final guard:
+   * Q1 can never inherit the previous attempt's remaining time.
+   * The whole questionSeconds array remains 30 for this new attempt.
+   */
+  current = 0;
   seconds = 30;
-  questionSeconds[current] = 30;
-  updateTimer();
+  questionSeconds = new Array(questions.length).fill(30);
+  questionSeconds[0] = 30;
 
+  saveActiveTest();
+  updateTimer();
   startTimer();
 
   window.scrollTo(0,0);
 }
-
 
 function startNumberSystemTest(){
 
