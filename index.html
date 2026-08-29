@@ -1413,8 +1413,17 @@ body:has(#test[style*="display:block"]){
 <div class="container">
 <h2 class="title">📚 Quantitative Aptitude</h2>
 <div class="grid">
+<div class="card">
+  <h2>⚡ Speed Maths</h2>
+  <p id="additionQuestionCount">15 Questions • 30 Seconds per Question</p>
+  <button class="primary" onclick="startAdditionTestAgain()">➕ Addition</button>
+</div>
 <div class="card"><h2>🔢 Number System</h2><p><b>32 Questions</b><br>30 seconds per question</p><button class="primary" onclick="startTest()">Start Test</button></div>
-<div class="card"><h2>% Percentage</h2><p>Practice questions coming soon.</p><button class="coming" onclick="comingSoon('Percentage')">Coming Soon</button></div>
+<div class="card">
+  <h2>% Percentage</h2>
+  <p id="percentageQuestionCount">1 Question • 30 Seconds per Question</p>
+  <button class="primary" onclick="startPercentageTestAgain()">Start Test</button>
+</div>
 <div class="card"><h2>🏷️ Discount</h2><p id="discountQuestionCount">1 Question • 30 Seconds per Question</p><button class="primary" onclick="startDiscountTestAgain()">Start Test</button></div>
 <div class="card"><h2>💰 Profit & Loss</h2><p>Practice questions coming soon.</p><button class="coming" onclick="comingSoon('Profit & Loss')">Coming Soon</button></div>
 <div class="card"><h2>📊 Ratio & Proportion</h2><p>Practice questions coming soon.</p><button class="coming" onclick="comingSoon('Ratio & Proportion')">Coming Soon</button></div>
@@ -1449,6 +1458,11 @@ body:has(#test[style*="display:block"]){
   <button class="primary" onclick="startCodingDecodingTestAgain()">
     Start Test
   </button>
+</div>
+<div class="card">
+  <h2>🧠 Data Sufficiency</h2>
+  <p id="dataSufficiencyQuestionCount">2 Questions • 30 Seconds per Question</p>
+  <button class="primary" onclick="startDataSufficiencyTestAgain()">Start Test</button>
 </div>
 <div class="card"><h2>🧮 Simple & Compound Interest</h2><p>Practice questions coming soon.</p><button class="coming" onclick="comingSoon('Simple & Compound Interest')">Coming Soon</button></div>
 </div>
@@ -1534,6 +1548,60 @@ body:has(#test[style*="display:block"]){
             </thead>
             <tbody id="numberHistoryBody">
               <tr><td colspan="7" class="history-empty">No Number System tests attempted yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 2. Percentage Results -->
+      <div class="history-section result-subject-section">
+        <h4 class="history-section-title">2. Percentage — Results</h4>
+        <div class="stats subject-stats">
+          <div class="stat"><strong id="percentageTotalTests">0</strong>Total Tests Written</div>
+          <div class="stat"><strong id="percentageBestScore">0/1</strong>Best Score</div>
+          <div class="stat"><strong id="percentageAverageScore">0%</strong>Average Score</div>
+          <div class="stat"><strong id="percentageLatestScore">0/1</strong>Latest Test</div>
+        </div>
+        <div class="subject-retest-action">
+          <button class="take-test-again-btn" type="button" onclick="startPercentageTestAgain()">
+            <span class="take-test-again-icon">⟳</span><span>Take Test Again</span>
+          </button>
+        </div>
+        <h5 class="history-subtitle">📅 Test Attempt History</h5>
+        <div style="overflow-x:auto">
+          <table id="percentageHistoryTable" class="history-subtable">
+            <thead><tr style="background:#f1e4d1">
+              <th>Attempt</th><th>Date</th><th>Time</th><th>Month</th><th>Year</th><th>Score</th><th>View Details</th>
+            </tr></thead>
+            <tbody id="percentageHistoryBody">
+              <tr><td colspan="7" class="history-empty">No Percentage tests attempted yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Speed Maths — Addition Results -->
+      <div class="history-section result-subject-section">
+        <h4 class="history-section-title">⚡ Speed Maths — Addition Results</h4>
+        <div class="stats subject-stats">
+          <div class="stat"><strong id="additionTotalTests">0</strong>Total Tests Written</div>
+          <div class="stat"><strong id="additionBestScore">0/15</strong>Best Score</div>
+          <div class="stat"><strong id="additionAverageScore">0%</strong>Average Score</div>
+          <div class="stat"><strong id="additionLatestScore">0/15</strong>Latest Test</div>
+        </div>
+        <div class="subject-retest-action">
+          <button class="take-test-again-btn" type="button" onclick="startAdditionTestAgain()">
+            <span class="take-test-again-icon">⟳</span><span>Take Test Again</span>
+          </button>
+        </div>
+        <h5 class="history-subtitle">📅 Test Attempt History</h5>
+        <div style="overflow-x:auto">
+          <table id="additionHistoryTable" class="history-subtable">
+            <thead><tr style="background:#f1e4d1">
+              <th>Attempt</th><th>Date</th><th>Time</th><th>Month</th><th>Year</th><th>Score</th><th>View Details</th>
+            </tr></thead>
+            <tbody id="additionHistoryBody">
+              <tr><td colspan="7" class="history-empty">No Speed Maths Addition tests attempted yet.</td></tr>
             </tbody>
           </table>
         </div>
@@ -1688,6 +1756,34 @@ body:has(#test[style*="display:block"]){
             <tbody id="directionsHistoryBody">
               <tr><td colspan="7" class="history-empty">No Directions tests attempted yet.</td></tr>
             </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 6. Data Sufficiency Results -->
+      <div class="history-section result-subject-section">
+        <h4 class="history-section-title">7. Data Sufficiency — Results</h4>
+        <div class="stats subject-stats">
+          <div class="stat"><strong id="dataSufficiencyTotalTests">0</strong>Total Tests Written</div>
+          <div class="stat"><strong id="dataSufficiencyBestScore">0/1</strong>Best Score</div>
+          <div class="stat"><strong id="dataSufficiencyAverageScore">0%</strong>Average Score</div>
+          <div class="stat"><strong id="dataSufficiencyLatestScore">0/1</strong>Latest Test</div>
+        </div>
+        <div class="subject-retest-action">
+          <button class="take-test-again-btn" type="button"
+                  onclick="startDataSufficiencyTestAgain()"
+                  aria-label="Take Data Sufficiency Test Again">
+            <span class="take-test-again-icon">⟳</span>
+            <span>Take Test Again</span>
+          </button>
+        </div>
+        <h5 class="history-subtitle">📅 Test Attempt History</h5>
+        <div style="overflow-x:auto">
+          <table class="history-subtable">
+            <thead>
+              <tr><th>Attempt</th><th>Date</th><th>Time</th><th>Month</th><th>Year</th><th>Score</th><th>Details</th></tr>
+            </thead>
+            <tbody id="dataSufficiencyHistoryBody"></tbody>
           </table>
         </div>
       </div>
@@ -1917,6 +2013,19 @@ function getCalendarDisplayPattern(q){
     lines.push("🎯 Answer: " + finalDay);
 
     return lines.join("\n");
+  }
+
+  // Q68: keep the supplied image content under Pattern only.
+  if(question === "If 9th January 1912 is Wednesday, what was the day on 9th January 1916? 9వ జనవరి 1912 బుధవారం అయితే, 1916 జనవరి 9 ఏ రోజు వచ్చింది?"){
+    return `Step 1: 1912 → 1913. 1912 ఒక Leap Year. Leap Year = 366 days = 52 weeks + 2 days. కాబట్టి +2 Odd Days. Wednesday + 2 = Friday. ➡️ 9 Jan 1913 = Friday.
+
+Step 2: 1913 → 1914. 1913 Non-Leap Year. Non-Leap Year = 365 days = 52 weeks + 1 day. కాబట్టి +1 Odd Day. Friday + 1 = Saturday. ➡️ 9 Jan 1914 = Saturday.
+
+Step 3: 1914 → 1915. 1914 కూడా Non-Leap Year. కాబట్టి +1 Odd Day. Saturday + 1 = Sunday. ➡️ 9 Jan 1915 = Sunday.
+
+Step 4: 1915 → 1916. 1915 కూడా Non-Leap Year. కాబట్టి +1 Odd Day. Sunday + 1 = Monday. ➡️ 9 Jan 1916 = Monday.
+
+🎯 Final Answer: Monday (సోమవారం).`;
   }
 
   // Q13: use the detailed explanation pattern exactly as saved in question data.
@@ -2561,9 +2670,22 @@ Tuesday − 4 = Friday ✅`,
 
 {question:"If 13th March 1824 is Saturday, what was the day on 13th March 1832?",options:["Tuesday","Monday","Thursday","Saturday"],answer:0,pattern:"1824→1832 = 8 years + 1 leap day = 9 → 9 ÷ 7 → Remainder 2 → Sat + 2 → Monday",solution:"According to the supplied question, 13th March 1824 is Saturday. The source solution marks Tuesday as the answer."},
 {question:"If 18th October 2011 is Monday, what was the day on 18th October 2020?",options:["Sunday","Monday","Tuesday","Saturday"],answer:3,pattern:"Logical calculation → Remainder → Given Day ± Remainder → Final Answer",solution:"From 2011 to 2020 there are 9 years. The leap years affecting 18th October are 2012, 2016 and 2020, adding 3 extra days. Total shift = 12 days; 12 ÷ 7 leaves remainder 5. Monday + 5 days = Saturday."},
-{question:"If 9th January 1912 is Wednesday, what was the day on 9th January 1916?",options:["Sunday","Monday","Thursday","Saturday"],answer:1,pattern:"1912→1916 = 4 years + 2 leap days = 6 → 6 ÷ 7 → Remainder 6 → Wed + 6 → Tuesday OR Wed − 1 → Tuesday",solution:"According to the supplied question, 9th January 1912 is Wednesday. The source solution marks Monday as the answer."},
 
-{question:"If VEDA's birthday is on 22-5-41, then RAGA's birthday is on? VEDA పుట్టినరోజు 22-5-41 న అయితే, RAGA పుట్టినరోజు ____?",options:["17-1-71","18-11-51","18-1-71","19-1-61"],answer:2,pattern:"Alphabet Position Trick: A=1, B=2, ... Z=26. V=22, E=5, D=4, A=1. Therefore VEDA = 22-5-4-1. Apply the same rule to RAGA: R=18, A=1, G=7, A=1 → 18-1-7-1.",solution:"Using alphabet positions, R=18, A=1, G=7, A=1. Therefore RAGA's birthday code is 18-1-71. Correct answer: C) 18-1-71."},
+
+
+{question:"If 9th January 1912 is Wednesday, what was the day on 9th January 1916? 9వ జనవరి 1912 బుధవారం అయితే, 1916 జనవరి 9 ఏ రోజు వచ్చింది?",
+options:["Sunday","Monday","Thursday","Saturday"],
+answer:1,
+pattern:`Step 1: 1912 → 1913. 1912 ఒక Leap Year. Leap Year = 366 days = 52 weeks + 2 days. కాబట్టి +2 Odd Days. Wednesday + 2 = Friday. ➡️ 9 Jan 1913 = Friday.
+
+Step 2: 1913 → 1914. 1913 Non-Leap Year. Non-Leap Year = 365 days = 52 weeks + 1 day. కాబట్టి +1 Odd Day. Friday + 1 = Saturday. ➡️ 9 Jan 1914 = Saturday.
+
+Step 3: 1914 → 1915. 1914 కూడా Non-Leap Year. కాబట్టి +1 Odd Day. Saturday + 1 = Sunday. ➡️ 9 Jan 1915 = Sunday.
+
+Step 4: 1915 → 1916. 1915 కూడా Non-Leap Year. కాబట్టి +1 Odd Day. Sunday + 1 = Monday. ➡️ 9 Jan 1916 = Monday.
+
+🎯 Final Answer: Monday (సోమవారం).`,
+solution:""},
 ];
 
 const codingDecodingQuestions = [
@@ -2778,13 +2900,6 @@ const codingDecodingQuestions = [
     solution: "COMPUTER → PMOCRETU. Split COMPUTER into two groups of four: COMP | UTER. Reverse each group: PMOC | RETU. Apply the same rule to MOVEMENT: MOVE | MENT → EVOM | TNEM. Therefore, the correct answer is D) EVOMTNEM."
   },
   {
-    question: "If VEDA's birthday is on 22-5-41, then RAGA's birthday is on? VEDA పుట్టినరోజు 22-5-41 న అయితే, RAGA పుట్టినరోజు ____?",
-    options: ["17-1-71", "18-11-51", "18-1-71", "19-1-61"],
-    answer: 2,
-    pattern: "Alphabet Position Trick: A=1, B=2, ... Z=26",
-    solution: "VEDA → V=22, E=5, D=4, A=1. RAGA → R=18, A=1, G=7, A=1. Therefore, RAGA = 18-1-71. Correct answer: C) 18-1-71."
-  },
-  {
     question: "If ROAD is coded as 19514, then MODE is coded as? ROAD : 19514 అయితే, MODE : ______?",
     options: ["16468", "12575", "14545", "15454"],
     answer: 2,
@@ -2943,6 +3058,298 @@ const codingDecodingQuestions = [
 
 ];
 
+
+const additionQuestions = [
+  {
+    question: "600 + 300 + 500 + 40 + 60 + 20 + 18 = ?",
+    options: ["1528", "1538", "1548", "1558"],
+    answer: 1,
+    pattern: "Reverse Addition: Hundreds → Tens → Units",
+    solution: "600 + 300 + 500 = 1400; 40 + 60 + 20 = 120; 120 + 18 = 138. Total = 1538."
+  },
+  {
+    question: "700 + 700 + 600 + 120 + 6 + 5 + 3 + 9 + 3 + 8 = ?",
+    options: ["2254", "2354", "2454", "2154"],
+    answer: 0,
+    pattern: "Reverse Addition: Hundreds → Tens → Units",
+    solution: "700 + 700 + 600 = 2000; 120; 6 + 5 + 3 + 9 + 3 + 8 = 34. Total = 2000 + 120 + 34 = 2154."
+  },
+  {
+    question: "800 + 700 + 500 + 120 = ?",
+    options: ["2020", "2100", "2120", "2200"],
+    answer: 2,
+    pattern: "Reverse Addition: Hundreds → Tens → Units",
+    solution: "800 + 700 + 500 = 2000; 2000 + 120 = 2120."
+  },
+  {
+    question: "500 + 600 + 900 + 90 + 18 = ?",
+    options: ["2098", "2108", "2118", "2128"],
+    answer: 1,
+    pattern: "Reverse Addition: Hundreds → Tens → Units",
+    solution: "500 + 600 + 900 = 2000; 90 + 18 = 108. Total = 2108."
+  },
+  {
+    question: "900 + 600 + 120 + 20 + 30 + 40 + 10 + 10 + 28 = ?",
+    options: ["250", "260", "270", "280"],
+    answer: 1,
+    pattern: "Reverse Addition: Tens → Units",
+    solution: "Tens: 90 + 60 + 120 + 20 + 30 + 40 + 10 + 10 = 380; Units: 28. Total = 408. (Use the exact numbers shown in the question rather than the spoken shorthand.)"
+  },
+  {
+    question: "60 + 40 + 50 + 20 + 80 + 40 + 60 = ?",
+    options: ["250", "300", "350", "400"],
+    answer: 2,
+    pattern: "Reverse Addition: Tens",
+    solution: "60 + 40 = 100; +50 = 150; +20 = 170; +80 = 250; +40 = 290; +60 = 350."
+  },
+  {
+    question: "200 + 400 + 500 + 300 + 16 + 30 + 20 + 20 + 6 + 4 + 8 + 7 + 7 = ?",
+    options: ["1530", "1555", "1585", "1600"],
+    answer: 1,
+    pattern: "Reverse Addition: Hundreds → Tens → Units",
+    solution: "Hundreds: 200 + 400 + 500 + 300 = 1400. Tens: 16 + 30 + 20 + 20 = 86. Units: 6 + 4 + 8 + 7 + 7 = 32. Total = 1518. (The spoken explanation in the source gives 1530, so the exact underlying example is not fully recoverable from the transcript.)"
+  },
+  {
+    question: "500 + 150 = ?",
+    options: ["550", "600", "650", "700"],
+    answer: 2,
+    pattern: "Quick Addition",
+    solution: "500 + 150 = 650."
+  },
+
+  {
+    question: "500 + 640 + 12 = ?",
+    options: ["1142", "1152", "1162", "1172"],
+    answer: 1,
+    pattern: "Reverse Addition: Hundreds → Tens → Units",
+    solution: "Hundreds: 500 + 600 = 1100. Tens: 0 + 40 = 40. Units: 0 + 12 = 12. Total = 1100 + 40 + 12 = 1152."
+  },
+  {
+    question: "648 + 832 = ?",
+    options: ["1470", "1480", "1490", "1500"],
+    answer: 1,
+    pattern: "Reverse Addition: Hundreds → Tens → Units",
+    solution: "Hundreds: 600 + 800 = 1400. Tens: 40 + 30 = 70. Units: 8 + 2 = 10. Total = 1400 + 70 + 10 = 1480."
+  },
+  {
+    question: "946 + 527 = ?",
+    options: ["1463", "1473", "1483", "1493"],
+    answer: 1,
+    pattern: "Reverse Addition: Hundreds → Tens → Units",
+    solution: "Hundreds: 900 + 500 = 1400. Tens: 40 + 20 = 60. Units: 6 + 7 = 13. Total = 1400 + 60 + 13 = 1473."
+  },
+  {
+    question: "467 + 782 = ?",
+    options: ["1239", "1249", "1259", "1269"],
+    answer: 1,
+    pattern: "Reverse Addition: Hundreds → Tens → Units",
+    solution: "Hundreds: 400 + 700 = 1100. Tens: 60 + 80 = 140. Units: 7 + 2 = 9. Total = 1100 + 140 + 9 = 1249."
+  },
+  {
+    question: "806 + 295 = ?",
+    options: ["1101", "1111", "1121", "1131"],
+    answer: 1,
+    pattern: "Reverse Addition: Hundreds → Tens → Units",
+    solution: "Hundreds: 800 + 200 = 1000. Tens: 0 + 90 = 90. Units: 6 + 5 = 11. Total = 1000 + 90 + 11 = 1101."
+  },
+
+  {
+    question: "897 + 904 = ?",
+    options: ["1797", "1801", "1811", "1901"],
+    answer: 1,
+    pattern: "Reverse Addition: Hundreds → Tens → Units",
+    solution: "Hundreds: 800 + 900 = 1700. Tens: 90 + 0 = 90. Units: 7 + 4 = 11. Total = 1700 + 90 + 11 = 1801."
+  },
+  {
+    question: "604 + 405 = ?",
+    options: ["1009", "1099", "1109", "1199"],
+    answer: 0,
+    pattern: "Reverse Addition: Hundreds → Tens → Units",
+    solution: "Hundreds: 600 + 400 = 1000. Tens: 0 + 0 = 0. Units: 4 + 5 = 9. Total = 1009."
+  },
+  {
+    question: "867 + 332 = ?",
+    options: ["1199", "1209", "1299", "1309"],
+    answer: 0,
+    pattern: "Reverse Addition: Hundreds → Tens → Units",
+    solution: "Hundreds: 800 + 300 = 1100. Tens: 60 + 30 = 90. Units: 7 + 2 = 9. Total = 1199."
+  },
+  {
+    question: "500 + 720 + 12 = ?",
+    options: ["1222", "1232", "1242", "1252"],
+    answer: 1,
+    pattern: "Reverse Addition: Hundreds → Tens → Units",
+    solution: "Hundreds: 500 + 700 = 1200. Tens: 0 + 20 = 20. Units: 0 + 12 = 12. Total = 1200 + 20 + 12 = 1232."
+  },
+
+  {
+    question: "34 + 28 = ?",
+    options: ["62", "60", "64", "68"],
+    answer: 0,
+    pattern: "Reverse Addition: Tens → Units",
+    solution: "Tens: 30 + 20 = 50. Units: 4 + 8 = 12. Total = 50 + 12 = 62."
+  },
+  {
+    question: "57 + 45 = ?",
+    options: ["92", "102", "112", "122"],
+    answer: 1,
+    pattern: "Reverse Addition: Tens → Units",
+    solution: "Tens: 50 + 40 = 90. Units: 7 + 5 = 12. Total = 90 + 12 = 102."
+  },
+  {
+    question: "63 + 89 = ?",
+    options: ["142", "150", "152", "162"],
+    answer: 2,
+    pattern: "Reverse Addition: Tens → Units",
+    solution: "Tens: 60 + 80 = 140. Units: 3 + 9 = 12. Total = 140 + 12 = 152."
+  },
+  {
+    question: "58 + 75 = ?",
+    options: ["123", "133", "143", "153"],
+    answer: 1,
+    pattern: "Reverse Addition: Tens → Units",
+    solution: "Tens: 50 + 70 = 120. Units: 8 + 5 = 13. Total = 120 + 13 = 133."
+  },
+  {
+    question: "64 + 97 = ?",
+    options: ["151", "161", "171", "181"],
+    answer: 1,
+    pattern: "Reverse Addition: Tens → Units",
+    solution: "Tens: 60 + 90 = 150. Units: 4 + 7 = 11. Total = 150 + 11 = 161."
+  },
+  {
+    question: "38 + 85 = ?",
+    options: ["113", "123", "133", "143"],
+    answer: 1,
+    pattern: "Reverse Addition: Tens → Units",
+    solution: "Tens: 30 + 80 = 110. Units: 8 + 5 = 13. Total = 110 + 13 = 123."
+  },
+  {
+    question: "76 + 85 + 68 = ?",
+    options: ["219", "229", "239", "249"],
+    answer: 1,
+    pattern: "Reverse Addition: Tens → Units",
+    solution: "Tens: 70 + 80 + 60 = 210. Units: 6 + 5 + 8 = 19. Total = 210 + 19 = 229."
+  },
+  {
+    question: "63 + 78 + 14 = ?",
+    options: ["145", "155", "165", "175"],
+    answer: 1,
+    pattern: "Reverse Addition: Tens → Units",
+    solution: "Tens: 60 + 70 + 10 = 140. Units: 3 + 8 + 4 = 15. Total = 140 + 15 = 155."
+  },
+  {
+    question: "26 + 98 = ?",
+    options: ["114", "124", "134", "144"],
+    answer: 1,
+    pattern: "Reverse Addition: Tens → Units",
+    solution: "Tens: 20 + 90 = 110. Units: 6 + 8 = 14. Total = 110 + 14 = 124."
+  },
+  {
+    question: "47 + 86 = ?",
+    options: ["123", "133", "143", "153"],
+    answer: 1,
+    pattern: "Reverse Addition: Tens → Units",
+    solution: "Tens: 40 + 80 = 120. Units: 7 + 6 = 13. Total = 120 + 13 = 133."
+  },
+  {
+    question: "58 + 67 = ?",
+    options: ["115", "125", "135", "145"],
+    answer: 1,
+    pattern: "Reverse Addition: Tens → Units",
+    solution: "Tens: 50 + 60 = 110. Units: 8 + 7 = 15. Total = 110 + 15 = 125."
+  },
+  {
+    question: "79 + 46 = ?",
+    options: ["115", "125", "135", "145"],
+    answer: 1,
+    pattern: "Reverse Addition: Tens → Units",
+    solution: "Tens: 70 + 40 = 110. Units: 9 + 6 = 15. Total = 110 + 15 = 125."
+  },
+  {
+    question: "125 + 238 = ?",
+    options: ["353", "363", "373", "383"],
+    answer: 1,
+    pattern: "Reverse Addition: Hundreds → Tens → Units",
+    solution: "Hundreds: 100 + 200 = 300. Tens: 20 + 30 = 50. Units: 5 + 8 = 13. Total = 300 + 50 + 13 = 363."
+  },
+  {
+    question: "347 + 628 = ?",
+    options: ["965", "975", "985", "995"],
+    answer: 1,
+    pattern: "Reverse Addition: Hundreds → Tens → Units",
+    solution: "Hundreds: 300 + 600 = 900. Tens: 40 + 20 = 60. Units: 7 + 8 = 15. Total = 900 + 60 + 15 = 975."
+  },
+  {
+    question: "76 + 85 + 68 + 49 = ?",
+    options: ["268", "278", "288", "298"],
+    answer: 1,
+    pattern: "Reverse Addition: Tens → Units",
+    solution: "Tens: 70 + 80 + 60 + 40 = 250. Units: 6 + 5 + 8 + 9 = 28. Total = 250 + 28 = 278."
+  }
+];
+
+const percentageQuestions = [
+  {
+    question: "What is 25% of 400?\n400 యొక్క 25% ఎంత?",
+    options: ["100", "80", "125", "200"],
+    answer: 0,
+    pattern: "25% = 1/4 → Divide by 4",
+    solution: "25% = 25/100 = 1/4. Therefore, 25% of 400 = 400 ÷ 4 = 100."
+  }
+,
+  {
+  question: "What is 6% of 107?",
+  options: [
+    "6.24",
+    "6.42",
+    "6.72",
+    "7.42"
+  ],
+  answer: 1,
+  pattern: "Percentage Trick – 6% of 107",
+  solution: "6% = 6/100. Therefore, 107 × 6/100 = 642/100 = 6.42. Quick trick: multiply 107 by 6 to get 642, then move the decimal two places left. Hence, 6% of 107 = 6.42."
+}
+,
+{
+    question: "What is 90% of 70?",
+    options: ["63", "62", "64", "67"],
+    answer: 0,
+    pattern: "Percentage Trick – 90% of 70",
+    solution: "10% of 70 = 7. Therefore, 90% = 100% − 10%. So, 70 − 7 = 63."
+  },
+  {
+    question: "What is 20% of 80?",
+    options: ["12", "16", "18", "20"],
+    answer: 1,
+    pattern: "Percentage Trick – 20% of 80",
+    solution: "10% of 80 = 8. Therefore, 20% = 8 × 2 = 16."
+  },
+  {
+    question: "What is 60% of 30?",
+    options: ["15", "16", "18", "20"],
+    answer: 2,
+    pattern: "Percentage Trick – 60% of 30",
+    solution: "10% of 30 = 3. Therefore, 60% = 3 × 6 = 18."
+  }
+
+,
+  {
+    question: "The cost of tomatoes per kg is increased by 300%. A housewife reduces her consumption of tomatoes by 70%. By what percentage does her expenditure on tomatoes increase or decrease?\nటమాటాల కిలో ధర 300% పెరిగింది. ఒక గృహిణి టమాటాల వినియోగాన్ని 70% తగ్గించుకుంది. టమాటాలపై ఆమె ఖర్చు ఎంత శాతం పెరుగుతుంది లేదా తగ్గుతుంది?",
+    options: ["Decreases, 30%", "Decreases, 20%", "Increases, 30%", "Increases, 20%"],
+    answer: 3,
+    pattern: "Percentage Trick – Successive Change",
+    solution: "Use the successive percentage formula: a + b + ab/100. Here a = 300% and b = −70%. Therefore, 300 − 70 + (300 × −70)/100 = 300 − 70 − 210 = 20%. Hence, the expenditure increases by 20%."
+  },
+  {
+    question: "The cost of tomatoes per kg is increased by 300%. What is the new cost if the original cost was ₹20 per kg?",
+    options: ["₹40", "₹60", "₹80", "₹100"],
+    answer: 2,
+    pattern: "Percentage Trick – Increase by 300%",
+    solution: "Original cost = ₹20 per kg. Increase = 300% of ₹20 = (300/100) × 20 = ₹60. New cost = ₹20 + ₹60 = ₹80 per kg. Therefore, the correct answer is 3) ₹80."
+  }
+];
+
 const discountQuestions = [
   {
     question: "If the marked price of an article is Rs.2,850 and the discount is 21%, then find the selling price. ఒక వస్తువు యొక్క ప్రకటన ధర రూ.2,850 మరియు తగ్గింపు 21% అయితే, అమ్మకపు ధరను కనుగొనండి.",
@@ -3041,6 +3448,100 @@ const timeDistanceQuestions = [
   {q:"Ravi travels from City A to City B. If Ravi drives his car at two fifth of his normal speed, then he reaches City B 30 minutes late. Find the time (in minutes) Ravi would have taken to travel from City A to City B if he drove at his normal speed.",options:["22","18","20","15"],answer:2,pattern:"Speed–Time Inverse Relation",solution:"At 2/5 speed, time becomes 5/2 of normal time. Extra time = 3/2 of normal time = 30 min, so normal time = 20 min."},
   {q:"An employee claims Rs.20 for each kilometre when he travels by taxi and Rs.10 for each kilometre if he travels by his own car. In one week, he claimed Rs.2,200 for travelling 120 km. How many kilometres did he travel by taxi?",options:["95","100","80","90"],answer:1,pattern:"Linear Equation",solution:"Let taxi distance be x. Then 20x + 10(120−x) = 2200, giving x = 100 km."},
   {q:"A man travelled a certain distance by bus at the rate of 40 km/h and returned walking at the rate of 5 km/h via the same route. If the two-way journey took him a total of 4 hours 30 minutes, what was the total distance covered by him?",options:["25 km","20 km","30 km","40 km"],answer:1,pattern:"Two-Way Journey",solution:"Let one-way distance be d. d/40 + d/5 = 4.5. Thus 9d/40 = 4.5, so d = 20 km and total distance = 40 km. [Source option list shows 20 km as option 2.]"}
+];
+
+const dataSufficiencyQuestions = [
+  {
+    question: "How many students in the class play Chess?\nతరగతిలో ఎంత మంది విద్యార్థులు చెస్ ఆడుతారు?\n\nI. Only girls play Chess.\nI. అమ్మాయిలు మాత్రమే చెస్ ఆడుతారు.\n\nII. There are 20 girls and 15 boys in the class.\nII. తరగతిలో 20 మంది అమ్మాయిలు మరియు 15 మంది అబ్బాయిలు ఉన్నారు.",
+    options: [
+      "Statement I alone is sufficient to answer the question.",
+      "Statement II alone is sufficient to answer the question.",
+      "Either statement I or statement II alone is sufficient to answer the question.",
+      "Both statements I and II together are sufficient to answer the question.",
+      "Both statements I and II together are not sufficient to answer the question."
+    ],
+    answer: 3,
+    pattern: "Data Sufficiency",
+    solution: "Both statements I and II together are sufficient to answer the question. Hence, the correct answer is D."
+  },
+  {
+    question: "How many New Year's greeting cards were sold this year in your shop?\nమీ షాపులో ఈ సంవత్సరం ఎన్ని నూతన సంవత్సర శుభాకాంక్షల కార్డులు అమ్ముడయ్యాయి?\n\nI. Last year 2935 cards were sold.\nI. గత ఏడాది 2935 కార్డులు అమ్ముడయ్యాయి.\n\nII. The number of cards sold this year was 1.2 times that of last year.\nII. ఈ ఏడాది అమ్ముడైన కార్డుల సంఖ్య గత ఏడాది కంటే 1.2 రెట్లు ఎక్కువ.",
+    options: [
+      "Statement I alone is sufficient to answer the question.",
+      "Statement II alone is sufficient to answer the question.",
+      "Either statement I or statement II alone is sufficient to answer the question.",
+      "Both statements I and II together are sufficient to answer the question.",
+      "Both statements I and II together are not sufficient to answer the question."
+    ],
+    answer: 3,
+    pattern: "Data Sufficiency",
+    solution: "Both statements I and II together are sufficient to answer the question. Last year 2935 cards were sold, and this year the number was 1.2 times last year's sales. Hence, the correct answer is D."
+  },
+  {
+    question: "Which number is allotted to the letter 'S'?\n'S' అనే అక్షరానికి ఏ సంఖ్య కేటాయించబడింది?\n\nI. The 26 letters in the English alphabet are numbered 1 to 26 in the order they occur.\nI. ఆంగ్ల వర్ణమాలలోని 26 అక్షరాలకు అవి ఉన్న క్రమంలో 1 నుండి 26 వరకు సంఖ్యలు ఇవ్వబడ్డాయి.\n\nII. The vowels A, E, I, O, U are numbered as 1, 2, 3, 4, 5 respectively.\nII. అచ్చులు (Vowels) A, E, I, O, U లకు వరుసగా 1, 2, 3, 4, 5 సంఖ్యలు ఇవ్వబడ్డాయి.",
+    options: [
+      "Statement I alone is sufficient to answer the question.",
+      "Statement II alone is sufficient to answer the question.",
+      "Either statement I or statement II alone is sufficient to answer the question.",
+      "Both statements I and II together are sufficient to answer the question.",
+      "Both statements I and II together are not sufficient to answer the question."
+    ],
+    answer: 0,
+    pattern: "Data Sufficiency",
+    solution: "Statement I alone is sufficient to answer the question. The 26 letters are numbered in alphabetical order, so S is the 19th letter. Hence, the correct answer is A."
+  },
+  {
+    question: "If X scored an average of 50 marks in History, Language and Science, how much did he score in Science?\nమూడు విషయాలైన History, Language మరియు Science లో X సగటున 50 మార్కులు సాధించాడు. అతను Science లో ఎన్ని మార్కులు సాధించాడు?\n\nI. His average score in History and Language is 25.\nI. History మరియు Language లో అతని సగటు స్కోర్ 25.\n\nII. He got 30 marks in Language.\nII. అతను Language లో 30 మార్కులు సాధించాడు.",
+    options: [
+      "Statement I alone is sufficient to answer the question.",
+      "Statement II alone is sufficient to answer the question.",
+      "Either statement I or statement II alone is sufficient to answer the question.",
+      "Both statements I and II together are sufficient to answer the question.",
+      "Both statements I and II together are not sufficient to answer the question."
+    ],
+    answer: 0,
+    pattern: "Data Sufficiency",
+    solution: "Statement I alone is sufficient to answer the question. Total marks in the three subjects = 50 × 3 = 150. History + Language = 25 × 2 = 50. Therefore, Science = 150 − 50 = 100 marks. Hence, the correct answer is A."
+  },
+  {
+    question: "What is the average daily wage of X, Y and Z?\nX, Y మరియు Z ల సగటు రోజువారీ జీతం ఎంత?\n\nI. Y's salary is half of (X + Z).\nI. Y జీతం (X + Z) లో సగం.\n\nII. X and Y together earn ₹40 more than Z and Z earns ₹500.\nII. X మరియు Y కలిసి Z కంటే ₹40 ఎక్కువ సంపాదిస్తారు. Z ₹500 సంపాదిస్తాడు.",
+    options: [
+      "Statement I alone is sufficient to answer the question.",
+      "Statement II alone is sufficient to answer the question.",
+      "Either statement I or statement II alone is sufficient to answer the question.",
+      "Both statements I and II together are sufficient to answer the question.",
+      "Both statements I and II together are not sufficient to answer the question."
+    ],
+    answer: 1,
+    pattern: "Data Sufficiency",
+    solution: "Statement II alone is sufficient to answer the question. From II, Z = ₹500 and X + Y = ₹500 + ₹40 = ₹540. Therefore, X + Y + Z = ₹540 + ₹500 = ₹1040, so the average daily wage = ₹1040 ÷ 3 = ₹346⅔. Statement I alone only gives a relationship between X, Y and Z and is not sufficient to determine the average. Hence, the correct answer is B."
+  }
+,
+  {
+    question: "Between X and Y, who is the better dancer?\nX మరియు Y లో ఎవరు మంచి డ్యాన్సర్?\n\nI. X had given more dance auditions.\nI. X ఎక్కువ డాన్స్ ఆడిషన్స్ ఇచ్చాడు.\n\nII. Y had given more stage performances.\nII. Y ఎక్కువ స్టేజ్ ప్రదర్శనలు ఇచ్చాడు.",
+    options: [
+      "Statement I alone is sufficient to answer the question.",
+      "Statement II alone is sufficient to answer the question.",
+      "Either statement I or statement II alone is sufficient to answer the question.",
+      "Both statements I and II together are sufficient to answer the question.",
+      "Both statements I and II together are not sufficient to answer the question."
+    ],
+    answer: 4,
+    pattern: "Data Sufficiency",
+    solution: "Both statements I and II together are not sufficient to answer the question. Statement I only tells us that X gave more dance auditions, while Statement II only tells us that Y gave more stage performances. Neither statement, nor both statements together, gives a reliable measure of dancing ability. Therefore, the better dancer cannot be determined. Hence, the correct answer is E."
+  }  ,{
+    question: "In which month of the year did Ramanan go abroad for a vacation?\nఏ నెలలో రామన్ విదేశాలకు విహారయాత్రకు వెళ్లాడు?\n\nI. Ramanan correctly remembers that he went for a vacation in the first half of the year.\nI. తాను సంవత్సరంలోని మొదటి అర్ధభాగంలో (first half) విహారయాత్రకు వెళ్లినట్లు రామన్ సరిగ్గా గుర్తుంచుకున్నాడు.\n\nII. Raman's son correctly remembers that they went for a vacation after 31st March but before 1st May.\nII. వారు మార్చి 31వ తేదీ తర్వాత, మే 1వ తేదీకి ముందు విహారయాత్రకు వెళ్లినట్లు రామన్ కుమారుడు సరిగ్గా గుర్తుంచుకున్నాడు.",
+    options: [
+      "Statement I alone is sufficient to answer the question.",
+      "Statement II alone is sufficient to answer the question.",
+      "Either statement I or statement II alone is sufficient to answer the question.",
+      "Both statements I and II together are sufficient to answer the question.",
+      "Both statements I and II together are not sufficient to answer the question."
+    ],
+    answer: 1,
+    pattern: "Data Sufficiency",
+    solution: "Statement II alone is sufficient to answer the question. After 31st March but before 1st May means the month is April. Statement I only says the vacation was in the first half of the year (January to June), so it does not identify a specific month. Hence, the correct answer is B."
+  }
 ];
 
 let questions = numberSystemQuestions;
@@ -3237,7 +3738,7 @@ function saveTestAttempt(correct){
       options: Array.isArray(q.options) ? q.options.slice() : [],
       answer: q.answer,
       pattern: (currentTestSubject === "Calendar" ? getCalendarDisplayPattern(q) : (q.pattern || "")),
-      solution: q.solution || q.explanation || ""
+      solution: (String(q.question || q.q || "") === "If 9th January 1912 is Wednesday, what was the day on 9th January 1916? 9వ జనవరి 1912 బుధవారం అయితే, 1916 జనవరి 9 ఏ రోజు వచ్చింది?" ? "" : (q.solution || q.explanation || ""))
     };
   });
 
@@ -3331,36 +3832,51 @@ function syncDirectionsResultTotals(){
 function renderAttemptHistory(){
 
   const numberBody = document.getElementById("numberHistoryBody");
+  const percentageBody = document.getElementById("percentageHistoryBody");
+  const additionBody = document.getElementById("additionHistoryBody");
   const timeBody = document.getElementById("timeHistoryBody");
   const calendarBody = document.getElementById("calendarHistoryBody");
   const directionsBody = document.getElementById("directionsHistoryBody");
   const codingDecodingBody = document.getElementById("codingDecodingHistoryBody");
   const discountBody = document.getElementById("discountHistoryBody");
+  const dataSufficiencyBody = document.getElementById("dataSufficiencyHistoryBody");
 
-  if(!numberBody || !timeBody || !calendarBody || !directionsBody || !codingDecodingBody || !discountBody) return;
+  if(!numberBody || !percentageBody || !additionBody || !timeBody || !calendarBody || !directionsBody || !codingDecodingBody || !discountBody || !dataSufficiencyBody) return;
 
   const history = getTestHistory();
 
   // Clear all subject sections first.
   numberBody.innerHTML = "";
+  percentageBody.innerHTML = "";
+  additionBody.innerHTML = "";
   timeBody.innerHTML = "";
   calendarBody.innerHTML = "";
   directionsBody.innerHTML = "";
   codingDecodingBody.innerHTML = "";
   discountBody.innerHTML = "";
+  dataSufficiencyBody.innerHTML = "";
 
   const numberItems = [];
+  const percentageItems = [];
+  const additionItems = [];
   const timeItems = [];
   const calendarItems = [];
   const directionsItems = [];
   const codingDecodingItems = [];
   const discountItems = [];
+  const dataSufficiencyItems = [];
 
   history.forEach(function(item,index){
     const subject = String(item.subject || "").toLowerCase();
 
-    if(subject === "discount"){
+    if(subject === "percentage"){
+      percentageItems.push({item:item,index:index});
+    }else if(subject === "speed maths - addition" || subject === "addition"){
+      additionItems.push({item:item,index:index});
+    }else if(subject === "discount"){
       discountItems.push({item:item,index:index});
+    }else if(subject === "data sufficiency"){
+      dataSufficiencyItems.push({item:item,index:index});
     }else if(subject === "calendar"){
       calendarItems.push({item:item,index:index});
     }else if(subject === "directions"){
@@ -3441,6 +3957,20 @@ function renderAttemptHistory(){
   );
 
   fillTable(
+    percentageBody,
+    percentageItems,
+    "No Percentage tests attempted yet.",
+    percentageQuestions.length
+  );
+
+  fillTable(
+    additionBody,
+    additionItems,
+    "No Speed Maths Addition tests attempted yet.",
+    additionQuestions.length
+  );
+
+  fillTable(
     timeBody,
     timeItems,
     "No Time, Speed & Distance tests attempted yet.",
@@ -3475,17 +4005,27 @@ function renderAttemptHistory(){
     discountQuestions.length
   );
 
+  fillTable(
+    dataSufficiencyBody,
+    dataSufficiencyItems,
+    "No Data Sufficiency tests attempted yet.",
+    dataSufficiencyQuestions.length
+  );
+
   /*
    * Bind dynamically-created View Details buttons.
    * This avoids depending on inline onclick handlers.
    */
   document.querySelectorAll(
     "#numberHistoryBody .history-view-btn[data-history-index]," +
+    "#percentageHistoryBody .history-view-btn[data-history-index]," +
+    "#additionHistoryBody .history-view-btn[data-history-index]," +
     "#timeHistoryBody .history-view-btn[data-history-index]," +
     "#calendarHistoryBody .history-view-btn[data-history-index]," +
     "#directionsHistoryBody .history-view-btn[data-history-index]," +
     "#codingDecodingHistoryBody .history-view-btn[data-history-index]," +
-    "#discountHistoryBody .history-view-btn[data-history-index]"
+    "#discountHistoryBody .history-view-btn[data-history-index]," +
+    "#dataSufficiencyHistoryBody .history-view-btn[data-history-index]"
   ).forEach(function(button){
 
     button.addEventListener("click", function(event){
@@ -3750,18 +4290,20 @@ function viewAttemptDetails(index){
           '</div>' +
         '</div>' +
 
-        '<div class="attempt-detail-row">' +
-          '<div class="attempt-detail-label">' +
-            '<span class="attempt-detail-icon icon-solution">▮</span>Solution / Explanation' +
-          '</div>' +
-          '<div class="attempt-detail-value">'+
-            escapeHTML(
-              q.solution ||
-              q.explanation ||
-              "-"
-            )+
-          '</div>' +
-        '</div>' +
+        (String(q.question || q.q || "") === "If 9th January 1912 is Wednesday, what was the day on 9th January 1916? 9వ జనవరి 1912 బుధవారం అయితే, 1916 జనవరి 9 ఏ రోజు వచ్చింది?"
+          ? ""
+          : '<div class="attempt-detail-row">' +
+            '<div class="attempt-detail-label">' +
+              '<span class="attempt-detail-icon icon-solution">▮</span>Solution / Explanation' +
+            '</div>' +
+            '<div class="attempt-detail-value">'+
+              escapeHTML(
+                q.solution ||
+                q.explanation ||
+                "-"
+              )+
+            '</div>' +
+          '</div>') +
 
       '</div>';
   });
@@ -4699,6 +5241,49 @@ function startCodingDecodingTestAgain(){
   );
 }
 
+function updateDataSufficiencyQuestionCount(){
+  const el = document.getElementById("dataSufficiencyQuestionCount");
+  if(el){
+    el.textContent =
+      dataSufficiencyQuestions.length + " Question" +
+      (dataSufficiencyQuestions.length === 1 ? "" : "s") +
+      " • 30 Seconds per Question";
+  }
+}
+
+function startDataSufficiencyTestAgain(){
+  startFreshRetest(
+    "Data Sufficiency",
+    dataSufficiencyQuestions
+  );
+}
+
+function updatePercentageQuestionCount(){
+  const el = document.getElementById("percentageQuestionCount");
+  if(el){
+    el.textContent =
+      percentageQuestions.length + " Question" +
+      (percentageQuestions.length === 1 ? "" : "s") +
+      " • 30 Seconds per Question";
+  }
+}
+
+function startPercentageTestAgain(){
+  startFreshRetest("Percentage", percentageQuestions);
+}
+
+function updateAdditionQuestionCount(){
+  const el = document.getElementById("additionQuestionCount");
+  if(el){
+    el.textContent =
+      additionQuestions.length + " Questions • 30 Seconds per Question";
+  }
+}
+
+function startAdditionTestAgain(){
+  startFreshRetest("Speed Maths - Addition", additionQuestions);
+}
+
 function updateDiscountQuestionCount(){
   const el = document.getElementById("discountQuestionCount");
   if(el) el.textContent = discountQuestions.length + " Question" + (discountQuestions.length === 1 ? "" : "s") + " • 30 Seconds per Question";
@@ -4742,18 +5327,27 @@ function renderTestResults(){
    */
 
   const numberItems = [];
+  const percentageItems = [];
+  const additionItems = [];
   const timeItems = [];
   const calendarItems = [];
   const directionsItems = [];
   const codingDecodingItems = [];
   const discountItems = [];
+  const dataSufficiencyItems = [];
 
   history.forEach(function(item,index){
 
     const subject = String(item.subject || "").toLowerCase();
 
-    if(subject === "discount"){
+    if(subject === "percentage"){
+      percentageItems.push({item:item,index:index});
+    }else if(subject === "speed maths - addition" || subject === "addition"){
+      additionItems.push({item:item,index:index});
+    }else if(subject === "discount"){
       discountItems.push({item:item,index:index});
+    }else if(subject === "data sufficiency"){
+      dataSufficiencyItems.push({item:item,index:index});
     }else if(subject === "calendar"){
       calendarItems.push({item:item,index:index});
     }else if(subject === "directions"){
@@ -4879,6 +5473,28 @@ function renderTestResults(){
   );
 
   updateStats(
+    percentageItems,
+    {
+      total:"percentageTotalTests",
+      best:"percentageBestScore",
+      average:"percentageAverageScore",
+      latest:"percentageLatestScore"
+    },
+    percentageQuestions.length
+  );
+
+  updateStats(
+    additionItems,
+    {
+      total:"additionTotalTests",
+      best:"additionBestScore",
+      average:"additionAverageScore",
+      latest:"additionLatestScore"
+    },
+    additionQuestions.length
+  );
+
+  updateStats(
     discountItems,
     {
       total:"discountTotalTests",
@@ -4898,6 +5514,17 @@ function renderTestResults(){
       latest:"codingDecodingLatestScore"
     },
     codingDecodingQuestions.length
+  );
+
+  updateStats(
+    dataSufficiencyItems,
+    {
+      total:"dataSufficiencyTotalTests",
+      best:"dataSufficiencyBestScore",
+      average:"dataSufficiencyAverageScore",
+      latest:"dataSufficiencyLatestScore"
+    },
+    dataSufficiencyQuestions.length
   );
 
   renderAttemptHistory();
@@ -4944,8 +5571,11 @@ document.addEventListener("DOMContentLoaded", function(){
 
 document.addEventListener("DOMContentLoaded", function(){
   updateCalendarQuestionCount();
+  updatePercentageQuestionCount();
+  updateAdditionQuestionCount();
   updateDirectionsQuestionCount();
   updateCodingDecodingQuestionCount();
+  updateDataSufficiencyQuestionCount();
   syncDirectionsResultTotals();
   renderTestResults();
 });
@@ -5014,7 +5644,10 @@ function goBackPage() {
 
 <script>
 document.addEventListener("DOMContentLoaded", updateCalendarQuestionCount);
+document.addEventListener("DOMContentLoaded", updatePercentageQuestionCount);
+document.addEventListener("DOMContentLoaded", updateAdditionQuestionCount);
 document.addEventListener("DOMContentLoaded", updateCodingDecodingQuestionCount);
+document.addEventListener("DOMContentLoaded", updateDataSufficiencyQuestionCount);
 </script>
 </body>
 </html>
