@@ -615,6 +615,15 @@ footer{background:#86130f;color:white;text-align:center;padding:25px}
 }
 
 
+.topnav a{cursor:pointer}
+#englishSection{scroll-margin-top:100px}
+.english-history-section{
+  margin-top:28px;
+}
+.english-history-section .history-section-title{
+  font-size:24px;
+}
+
 </style>
 
 <style>
@@ -1299,6 +1308,18 @@ body:has(#test[style*="display:block"]){
 }
 </style>
 
+
+<style>
+/* English Results history — same content as English Test History */
+.english-result-history-section{
+  margin-top:28px;
+}
+.english-result-history-section .history-section-title{
+  font-size:24px;
+}
+</style>
+
+
 </head>
 <body>
 <script>
@@ -1366,6 +1387,7 @@ body:has(#test[style*="display:block"]){
 </div>
 <nav class="topnav">
 <a onclick="goHome()">Home</a>
+<a onclick="showEnglish()">English</a>
 <a onclick="showResult()">Results</a>
 </nav>
 </header>
@@ -1467,6 +1489,28 @@ body:has(#test[style*="display:block"]){
 <div class="card"><h2>🧮 Simple & Compound Interest</h2><p>Practice questions coming soon.</p><button class="coming" onclick="comingSoon('Simple & Compound Interest')">Coming Soon</button></div>
 </div>
 </div>
+</section>
+
+<section id="englishSection" style="display:none;">
+  <div class="container">
+    <div class="top" style="margin-bottom:20px;">
+      <h2 class="title" style="margin:0;">📖 English</h2>
+      <button class="primary" onclick="goHome()">← Home</button>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>📝 One Word Substitution</h2>
+        <p id="oneWordSubstitutionQuestionCount">
+          12 Questions • 30 Seconds per Question
+        </p>
+        <button class="primary" onclick="startOneWordSubstitutionTestAgain()">
+          Start Test
+        </button>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <section id="test"><div class="container"><div class="testbox">
@@ -1818,6 +1862,44 @@ body:has(#test[style*="display:block"]){
               <tr><td colspan="7" class="history-empty">No Coding &amp; Decoding tests attempted yet.</td></tr>
             </tbody>
           </table>
+        </div>
+      </div>
+
+      <!-- 7. English — One Word Substitution Results -->
+      <div class="history-section result-subject-section">
+        <h4 class="history-section-title">7. English — One Word Substitution Results</h4>
+        <div class="stats subject-stats">
+          <div class="stat"><strong id="oneWordSubstitutionTotalTests">0</strong>Total Tests Written</div>
+          <div class="stat"><strong id="oneWordSubstitutionBestScore">0/151</strong>Best Score</div>
+          <div class="stat"><strong id="oneWordSubstitutionAverageScore">0%</strong>Average Score</div>
+          <div class="stat"><strong id="oneWordSubstitutionLatestScore">0/151</strong>Latest Test</div>
+        </div>
+        <div class="subject-retest-action">
+          <button class="take-test-again-btn" type="button"
+                  onclick="startOneWordSubstitutionTestAgain()"
+                  aria-label="Take One Word Substitution Test Again">
+            <span class="take-test-again-icon">⟳</span>
+            <span>Take Test Again</span>
+          </button>
+        </div>
+
+        <!-- English Test History is displayed directly in English Results -->
+        <div class="history-section english-result-history-section">
+          <h4 class="history-section-title">📚 English Test History</h4>
+          <p class="history-subtitle">One Word Substitution — Test Attempts</p>
+          <div style="overflow-x:auto">
+            <table id="oneWordSubstitutionResultHistoryTable" class="history-subtable">
+              <thead>
+                <tr style="background:#f1e4d1">
+                  <th>Attempt</th><th>Date</th><th>Time</th><th>Month</th>
+                  <th>Year</th><th>Score</th><th>View Details</th>
+                </tr>
+              </thead>
+              <tbody id="oneWordSubstitutionResultHistoryBody">
+                <tr><td colspan="7" class="history-empty">No One Word Substitution tests attempted yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       </div>
@@ -3544,6 +3626,1796 @@ const dataSufficiencyQuestions = [
   }
 ];
 
+const oneWordSubstitutionQuestions = [
+  {
+    question: "Fondness towards women — choose the one word.",
+    options: ["Philogyny", "Misogyny", "Androphile", "Philanderer"],
+    answer: 0,
+    pattern: "Fondness towards women",
+    solution: "Philogyny = fondness or love towards women."
+  },
+  {
+    question: "One who has keen interest in food and drinks — choose the one word.",
+    options: ["Gourmet", "Bibliophile", "Sycophant", "Philosopher"],
+    answer: 0,
+    pattern: "Keen interest in food and drinks",
+    solution: "Gourmet = a person who has a keen interest in food and drinks."
+  },
+  {
+    question: "Love for mankind — choose the one word.",
+    options: ["Philantrophy", "Philanthropy", "Philogyny", "Andromania"],
+    answer: 1,
+    pattern: "Love for mankind",
+    solution: "Philanthropy = love of mankind, especially shown through charitable concern or action."
+  },
+  {
+    question: "Someone who loves collecting books — choose the one word.",
+    options: ["Bibliophile", "Gourmet", "Misandrist", "Anglophile"],
+    answer: 0,
+    pattern: "Loves collecting books",
+    solution: "Bibliophile = a person who loves or collects books."
+  },
+  {
+    question: "One who loves and admires the British — choose the one word.",
+    options: ["Anglophile", "Androphile", "Philanderer", "Sycophant"],
+    answer: 0,
+    pattern: "Loves and admires the British",
+    solution: "Anglophile = one who loves or admires England or the British."
+  },
+  {
+    question: "One who loves without seriousness — choose the one word.",
+    options: ["Philanderer", "Philosopher", "Gourmet", "Misogynist"],
+    answer: 0,
+    pattern: "Loves without seriousness",
+    solution: "Philanderer = a person who engages in casual or unserious romantic relationships."
+  },
+  {
+    question: "One who is a boot licker, flatterer — choose the one word.",
+    options: ["Sycophant", "Bibliophile", "Andromania", "Gourmet"],
+    answer: 0,
+    pattern: "Boot licker / flatterer",
+    solution: "Sycophant = a person who flatters powerful people for personal advantage."
+  },
+  {
+    question: "One who loves men — choose the one word.",
+    options: ["Androphile", "Philogyny", "Misandrist", "Anglophile"],
+    answer: 0,
+    pattern: "Loves men",
+    solution: "Androphile = one who is attracted to or has an affinity for men."
+  },
+  {
+    question: "One who loves wisdom (hence pursues it) — choose the one word.",
+    options: ["Philosopher", "Philanderer", "Philanthropist", "Sycophant"],
+    answer: 0,
+    pattern: "Loves wisdom and pursues it",
+    solution: "Philosopher = one who loves wisdom and pursues it."
+  },
+  {
+    question: "One who hates men — choose the one word.",
+    options: ["Misandrist", "Androphile", "Misogynist", "Philogyny"],
+    answer: 0,
+    pattern: "Hates men",
+    solution: "Misandrist = one who hates or strongly dislikes men."
+  },
+  {
+    question: "Madness or obsession with males — choose the one word.",
+    options: ["Andromania", "Androphile", "Misandrist", "Philogyny"],
+    answer: 0,
+    pattern: "Madness or obsession with males",
+    solution: "Andromania = an excessive or obsessive interest in males."
+  },
+  {
+    question: "One who hates women — choose the one word.",
+    options: ["Misogynist", "Misandrist", "Anglophile", "Philogynist"],
+    answer: 0,
+    pattern: "Hates women",
+    solution: "Misogynist = one who hates or strongly dislikes women."
+  },
+  {
+    "question": "Ravi talks continuously and enjoys talking a lot. Which one word best describes him?",
+    "options": [
+      "Loquacious",
+      "Patriot",
+      "Misogamist",
+      "Misanthropist"
+    ],
+    "answer": 0,
+    "pattern": "One who loves to speak",
+    "solution": "Loquacious = fond of talking or tending to talk a lot."
+  },
+  {
+    "question": "A person who deeply loves and is devoted to his country is called a:",
+    "options": [
+      "Patriot",
+      "Misanthropist",
+      "Misogamist",
+      "Sycophant"
+    ],
+    "answer": 0,
+    "pattern": "One who loves his country",
+    "solution": "Patriot = one who loves and is devoted to his country."
+  },
+  {
+    "question": "Extreme or excessive love for one's country is best described as:",
+    "options": [
+      "Sympathy",
+      "Super patriotism",
+      "Antipathy",
+      "Empathy"
+    ],
+    "answer": 1,
+    "pattern": "Excessive love for one's country",
+    "solution": "Super patriotism = excessive or extreme love for one's country."
+  },
+  {
+    "question": "A person who strongly dislikes or hates marriage is called a:",
+    "options": [
+      "Misogamist",
+      "Patriot",
+      "Loquacious",
+      "Misanthropist"
+    ],
+    "answer": 0,
+    "pattern": "One who hates marriage",
+    "solution": "Misogamist = one who hates or dislikes marriage."
+  },
+  {
+    "question": "A person who hates or strongly dislikes mankind is called a:",
+    "options": [
+      "Misanthropist",
+      "Patriot",
+      "Misogamist",
+      "Loquacious"
+    ],
+    "answer": 0,
+    "pattern": "One who hates mankind",
+    "solution": "Misanthropist = one who hates or distrusts mankind."
+  },
+  {
+    "question": "Ravi has a strong and deep dislike towards a particular person or thing. This feeling is called:",
+    "options": [
+      "Antipathy",
+      "Sympathy",
+      "Empathy",
+      "Patriotism"
+    ],
+    "answer": 0,
+    "pattern": "Strong, deep dislike",
+    "solution": "Antipathy = a strong feeling of dislike."
+  },
+  {
+    "question": "Two people experience similar feelings at the same time. The feeling of sharing or being affected by similar feelings is called:",
+    "options": [
+      "Empathy",
+      "Sympathy",
+      "Antipathy",
+      "Loquaciousness"
+    ],
+    "answer": 1,
+    "pattern": "Simultaneously affected by similar feelings",
+    "solution": "Sympathy = the feeling of being affected by or sharing similar feelings with someone."
+  },
+  {
+    "question": "You mentally put yourself in another person's situation and understand exactly how that person feels. This is called:",
+    "options": [
+      "Empathy",
+      "Sympathy",
+      "Antipathy",
+      "Super patriotism"
+    ],
+    "answer": 0,
+    "pattern": "Mentally identifying oneself with another person or a thing",
+    "solution": "Empathy = mentally identifying with another person and understanding their feelings."
+  },
+  {
+    "question": "A country has no government or ruling authority, leading to a state of disorder. Which one word best describes this situation?",
+    "options": [
+      "Anarchy",
+      "Oligarchy",
+      "Stratocracy",
+      "Theocracy"
+    ],
+    "answer": 0,
+    "pattern": "Absence of government",
+    "solution": "Anarchy = a state or situation in which there is no government or effective authority."
+  },
+  {
+    "question": "Only a small group of wealthy and powerful people controls the government. This form of government is called:",
+    "options": [
+      "Theocracy",
+      "Anarchy",
+      "Oligarchy",
+      "Stratocracy"
+    ],
+    "answer": 2,
+    "pattern": "Government by a few powerful people",
+    "solution": "Oligarchy = government by a small group of powerful people."
+  },
+  {
+    "question": "A country is ruled by members of the military, who hold the main political power. Which one word best describes this government?",
+    "options": [
+      "Stratocracy",
+      "Oligarchy",
+      "Theocracy",
+      "Anarchy"
+    ],
+    "answer": 0,
+    "pattern": "Government by military class",
+    "solution": "Stratocracy = government or rule by the military class."
+  },
+  {
+    "question": "A country is governed according to religious principles, with religious leaders or divine guidance influencing the government. This is called:",
+    "options": [
+      "Anarchy",
+      "Theocracy",
+      "Oligarchy",
+      "Stratocracy"
+    ],
+    "answer": 1,
+    "pattern": "Government by divine guidance",
+    "solution": "Theocracy = a system of government in which divine or religious authority guides the government."
+  },
+  {
+    "question": "Government by departments of state is called:",
+    "options": [
+      "Bureaucracy",
+      "Aristocracy",
+      "Plutocracy",
+      "Democracy"
+    ],
+    "answer": 0,
+    "pattern": "Government by departments of state",
+    "solution": "Bureaucracy = a system of government or administration through departments and officials of the state."
+  },
+  {
+    "question": "Government by nobility is called:",
+    "options": [
+      "Plutocracy",
+      "Aristocracy",
+      "Democracy",
+      "Bureaucracy"
+    ],
+    "answer": 1,
+    "pattern": "Government by nobility",
+    "solution": "Aristocracy = government by a privileged or noble class."
+  },
+  {
+    "question": "Government by wealthy people is called:",
+    "options": [
+      "Democracy",
+      "Aristocracy",
+      "Plutocracy",
+      "Monarchy"
+    ],
+    "answer": 2,
+    "pattern": "Government by wealthy",
+    "solution": "Plutocracy = government or control by wealthy people."
+  },
+  {
+    "question": "Government by the people is called:",
+    "options": [
+      "Democracy",
+      "Monarchy",
+      "Autocracy",
+      "Diarchy"
+    ],
+    "answer": 0,
+    "pattern": "Government by the people",
+    "solution": "Democracy = government by the people, usually through elected representatives."
+  },
+  {
+    "question": "A system of governing a country suggesting a father-child relation is called:",
+    "options": [
+      "Patriarchy",
+      "Paternalism",
+      "Matriarchy",
+      "Autonomy"
+    ],
+    "answer": 1,
+    "pattern": "A system of governing a country suggesting a father-child relation",
+    "solution": "Paternalism = a system of governing or treating people in a father-like manner, suggesting a father-child relation."
+  },
+  {
+    "question": "Government by one person (royal) is called:",
+    "options": [
+      "Autocracy",
+      "Monarchy",
+      "Diarchy",
+      "Democracy"
+    ],
+    "answer": 1,
+    "pattern": "Government by one person (royal)",
+    "solution": "Monarchy = government by one person, usually a king or queen."
+  },
+  {
+    "question": "Government by two agencies is called:",
+    "options": [
+      "Monarchy",
+      "Autocracy",
+      "Diarchy",
+      "Democracy"
+    ],
+    "answer": 2,
+    "pattern": "Government by two agencies",
+    "solution": "Diarchy = government or rule by two authorities or agencies."
+  },
+  {
+    "question": "Government by one absolutely is called:",
+    "options": [
+      "Democracy",
+      "Diarchy",
+      "Monarchy",
+      "Autocracy"
+    ],
+    "answer": 3,
+    "pattern": "Government by one absolutely",
+    "solution": "Autocracy = government by one person with absolute power or authority."
+  },
+  {
+    "question": "A system ruled or controlled by men is called:",
+    "options": [
+      "Matriarchy",
+      "Patriarchy",
+      "Autonomy",
+      "Paternalism"
+    ],
+    "answer": 1,
+    "pattern": "A system ruled or controlled by men",
+    "solution": "Patriarchy = a system ruled or controlled by men."
+  },
+  {
+    "question": "The rule or control of mother is called:",
+    "options": [
+      "Patriarchy",
+      "Paternalism",
+      "Matriarchy",
+      "Autonomy"
+    ],
+    "answer": 2,
+    "pattern": "The rule or control of mother",
+    "solution": "Matriarchy = the rule or control of mother or women."
+  },
+  {
+    "question": "Self-rule or control is called:",
+    "options": [
+      "Autonomy",
+      "Autocracy",
+      "Monarchy",
+      "Democracy"
+    ],
+    "answer": 0,
+    "pattern": "Self-rule or control",
+    "solution": "Autonomy = self-rule or self-control."
+  },
+  {
+    "question": "One who walks on ropes is called a:",
+    "options": [
+      "Funambulist",
+      "Chirographer",
+      "Obstetrician",
+      "Chiropodist"
+    ],
+    "answer": 0,
+    "pattern": "One who walks on ropes",
+    "solution": "Funambulist = one who walks or performs on a rope."
+  },
+  {
+    "question": "An expert in writing by hand is called a:",
+    "options": [
+      "Funambulist",
+      "Chirographer",
+      "Orthodontist",
+      "Dermatologist"
+    ],
+    "answer": 1,
+    "pattern": "An expert in writing by hand",
+    "solution": "Chirographer = an expert in writing by hand."
+  },
+  {
+    "question": "The doctor who attends to child delivery is called an:",
+    "options": [
+      "Endodontist",
+      "Obstetrician",
+      "Cardiologist",
+      "Ophthalmologist"
+    ],
+    "answer": 1,
+    "pattern": "The doctor who attends to child delivery",
+    "solution": "Obstetrician = a doctor who attends to pregnancy and child delivery."
+  },
+  {
+    "question": "The doctor who attends to corns in the feet and hands is called a:",
+    "options": [
+      "Chiropodist",
+      "Orthopedician",
+      "Dermatologist",
+      "Gynecologist"
+    ],
+    "answer": 0,
+    "pattern": "The doctor who attends to corns in the feet and hands",
+    "solution": "Chiropodist = a doctor or specialist who attends to disorders of the feet, including corns."
+  },
+  {
+    "question": "The doctor who treats bone problems is called an:",
+    "options": [
+      "Orthopedician",
+      "Ophthalmologist",
+      "Cardiologist",
+      "Dermatologist"
+    ],
+    "answer": 0,
+    "pattern": "The doctor who treats bone problems",
+    "solution": "Orthopedician = the doctor who treats bone problems."
+  },
+  {
+    "question": "The doctor who treats eye diseases is called an:",
+    "options": [
+      "Obstetrician",
+      "Endodontist",
+      "Ophthalmologist",
+      "Cardiologist"
+    ],
+    "answer": 2,
+    "pattern": "The doctor who treats eye diseases",
+    "solution": "Ophthalmologist = a doctor who treats diseases of the eyes."
+  },
+  {
+    "question": "The doctor who specializes in root canal and nerve treatment is called an:",
+    "options": [
+      "Orthodontist",
+      "Endodontist",
+      "Periodontist",
+      "Ophthalmologist"
+    ],
+    "answer": 1,
+    "pattern": "The doctor who specializes in root canal and nerve treatment",
+    "solution": "Endodontist = a dental specialist who specializes in root canal and nerve treatment."
+  },
+  {
+    "question": "The doctor who straightens teeth is called an:",
+    "options": [
+      "Orthopedician",
+      "Orthodontist",
+      "Endodontist",
+      "Chiropodist"
+    ],
+    "answer": 1,
+    "pattern": "The doctor who straightens teeth",
+    "solution": "Orthodontist = a doctor who specializes in straightening and aligning teeth."
+  },
+  {
+    "question": "One with unlimited power is called an:",
+    "options": [
+      "Autocrat",
+      "Democrat",
+      "Patriot",
+      "Bureaucrat"
+    ],
+    "answer": 0,
+    "pattern": "One with unlimited power",
+    "solution": "Autocrat = one who has unlimited or absolute power."
+  },
+  {
+    "question": "One who is all powerful is called:",
+    "options": [
+      "Omnipotent",
+      "Omniscient",
+      "Omnipresent",
+      "Omnivorous"
+    ],
+    "answer": 0,
+    "pattern": "One who is all powerful",
+    "solution": "Omnipotent = one who is all powerful."
+  },
+  {
+    "question": "One who is all knowing is called:",
+    "options": [
+      "Omnipresent",
+      "Omniscient",
+      "Omnipotent",
+      "Omnivorous"
+    ],
+    "answer": 1,
+    "pattern": "One who is all knowing",
+    "solution": "Omniscient = one who is all knowing."
+  },
+  {
+    "question": "One who is present all over is called:",
+    "options": [
+      "Omnipotent",
+      "Omniscient",
+      "Omnipresent",
+      "Omnivorous"
+    ],
+    "answer": 2,
+    "pattern": "One who is present all over",
+    "solution": "Omnipresent = one who is present all over."
+  },
+  {
+    "question": "One who can throw his voice is called a:",
+    "options": [
+      "Somniloquist",
+      "Ventriloquist",
+      "Somnambulist",
+      "Noctambulist"
+    ],
+    "answer": 1,
+    "pattern": "One who can throw his voice",
+    "solution": "Ventriloquist = one who can throw his voice so that it seems to come from another place."
+  },
+  {
+    "question": "One who talks while sleeping is called a:",
+    "options": [
+      "Ventriloquist",
+      "Somniloquist",
+      "Noctambulist",
+      "Iconoclast"
+    ],
+    "answer": 1,
+    "pattern": "One who talks while sleeping",
+    "solution": "Somniloquist = one who talks while sleeping."
+  },
+  {
+    "question": "One who exhibits courage or fearlessness is called:",
+    "options": [
+      "Intrepid",
+      "Introvert",
+      "Notorious",
+      "Ambivert"
+    ],
+    "answer": 0,
+    "pattern": "One who exhibits courage or fearlessness",
+    "solution": "Intrepid = one who exhibits courage or fearlessness."
+  },
+  {
+    "question": "One who walks in sleep is called a:",
+    "options": [
+      "Noctambulist",
+      "Somniloquist",
+      "Somnambulist",
+      "Ventriloquist"
+    ],
+    "answer": 2,
+    "pattern": "One who walks in sleep",
+    "solution": "Somnambulist = one who walks in sleep."
+  },
+  {
+    "question": "One who walks at night is called a:",
+    "options": [
+      "Somnambulist",
+      "Noctambulist",
+      "Somniloquist",
+      "Ventriloquist"
+    ],
+    "answer": 1,
+    "pattern": "One who walks at night",
+    "solution": "Noctambulist = one who walks at night."
+  },
+  {
+    "question": "One who is violently against established beliefs and traditions is called an:",
+    "options": [
+      "Iconoclast",
+      "Martinet",
+      "Introvert",
+      "Ambivert"
+    ],
+    "answer": 0,
+    "pattern": "One who is violently against established beliefs and traditions",
+    "solution": "Iconoclast = one who is violently against established beliefs and traditions."
+  },
+  {
+    "question": "One who turns his thoughts inwards is called an:",
+    "options": [
+      "Ambivert",
+      "Extrovert",
+      "Introvert",
+      "Iconoclast"
+    ],
+    "answer": 2,
+    "pattern": "One who turns his thoughts inwards",
+    "solution": "Introvert = one who turns his thoughts inwards."
+  },
+  {
+    "question": "One who is well known for bad qualities is called:",
+    "options": [
+      "Intrepid",
+      "Notorious",
+      "Ambivert",
+      "Martinet"
+    ],
+    "answer": 1,
+    "pattern": "Well known for bad qualities",
+    "solution": "Notorious = well known for bad qualities."
+  },
+  {
+    "question": "One who is both inwards and outwards at times is called an:",
+    "options": [
+      "Introvert",
+      "Ambivert",
+      "Iconoclast",
+      "Notorious"
+    ],
+    "answer": 1,
+    "pattern": "One who is both inwards and outwards at times",
+    "solution": "Ambivert = one who is both inward and outward at times."
+  },
+  {
+    "question": "One who demands strict conformity to rules is called a:",
+    "options": [
+      "Martinet",
+      "Iconoclast",
+      "Intrepid",
+      "Introvert"
+    ],
+    "answer": 0,
+    "pattern": "One who demands strict conformity to rules",
+    "solution": "Martinet = one who demands strict conformity to rules."
+  },
+  {
+    "question": "One who believes in ruthless self-aggrandizement is called an:",
+    "options": [
+      "Egoist",
+      "Altruist",
+      "Optimist",
+      "Pessimist"
+    ],
+    "answer": 0,
+    "pattern": "One who believes in ruthless self-aggrandizement",
+    "solution": "Egoist = one who believes in ruthless self-aggrandizement."
+  },
+  {
+    "question": "One who doesn't consume alcohol is called a:",
+    "options": [
+      "Teetotaler",
+      "Connoisseur",
+      "Interlocutor",
+      "Egoist"
+    ],
+    "answer": 0,
+    "pattern": "One who doesn't consume alcohol",
+    "solution": "Teetotaler = one who doesn't consume alcohol."
+  },
+  {
+    "question": "One who takes part in dialogue or conversation is called an:",
+    "options": [
+      "Interlocutor",
+      "Teetotaler",
+      "Credulous",
+      "Connoisseur"
+    ],
+    "answer": 0,
+    "pattern": "One who takes part in dialogue or conversation",
+    "solution": "Interlocutor = one who takes part in dialogue or conversation."
+  },
+  {
+    "question": "One who easily believes others is called:",
+    "options": [
+      "Credulous",
+      "Incorrigible",
+      "Quixotic",
+      "Virago"
+    ],
+    "answer": 0,
+    "pattern": "One who easily believes others",
+    "solution": "Credulous = one who easily believes others."
+  },
+  {
+    "question": "One who is capable of using both hands is called:",
+    "options": [
+      "Ambidextrous",
+      "Extrovert",
+      "Egoist",
+      "Martinet"
+    ],
+    "answer": 0,
+    "pattern": "One who is capable of using both hands",
+    "solution": "Ambidextrous = one who is capable of using both hands."
+  },
+  {
+    "question": "One who knows a lot about good food and wine is called a:",
+    "options": [
+      "Connoisseur",
+      "Interlocutor",
+      "Teetotaler",
+      "Credulous"
+    ],
+    "answer": 0,
+    "pattern": "One who knows a lot about good food and wine",
+    "solution": "Connoisseur = one who knows a lot about good food and wine."
+  },
+  {
+    "question": "One who is beyond reform is called:",
+    "options": [
+      "Incorrigible",
+      "Intrepid",
+      "Credulous",
+      "Quixotic"
+    ],
+    "answer": 0,
+    "pattern": "One who is beyond reform",
+    "solution": "Incorrigible = one who is beyond reform."
+  },
+  {
+    "question": "One who turns his thoughts outwards is called an:",
+    "options": [
+      "Extrovert",
+      "Introvert",
+      "Ambivert",
+      "Iconoclast"
+    ],
+    "answer": 0,
+    "pattern": "One who turns his thoughts outwards",
+    "solution": "Extrovert = one who turns his thoughts outwards."
+  },
+  {
+    "question": "One who has perfectly, highly skilled, reached the zenith of art is called:",
+    "options": [
+      "Consummate",
+      "Quixotic",
+      "Virago",
+      "Incorrigible"
+    ],
+    "answer": 0,
+    "pattern": "Perfectly, highly skilled; reached the zenith of art",
+    "solution": "Consummate = perfectly skilled or having reached the zenith of art."
+  },
+  {
+    "question": "A shrewish loud-mouthed female is called a:",
+    "options": [
+      "Virago",
+      "Quixotic",
+      "Egoist",
+      "Martinet"
+    ],
+    "answer": 0,
+    "pattern": "A shrewish loud-mouthed female",
+    "solution": "Virago = a shrewish, loud-mouthed female."
+  },
+  {
+    "question": "One who is extravagantly romantic, chivalrous and impractical is called:",
+    "options": [
+      "Quixotic",
+      "Consummate",
+      "Credulous",
+      "Ambidextrous"
+    ],
+    "answer": 0,
+    "pattern": "One who is extravagantly romantic, chivalrous and impractical",
+    "solution": "Quixotic = extravagantly romantic, chivalrous and impractical."
+  },
+  {
+    "question": "A doubtful look or examination of one's motives is called:",
+    "options": [
+      "Suspect",
+      "Prospect",
+      "Introspect",
+      "Retrospect"
+    ],
+    "answer": 0,
+    "pattern": "A doubtful look or examination of one's motives",
+    "solution": "Suspect = a doubtful look or examination of one's motives."
+  },
+  {
+    "question": "A forward look or a view into future is called:",
+    "options": [
+      "Prospect",
+      "Retrospect",
+      "Suspect",
+      "Inspect"
+    ],
+    "answer": 0,
+    "pattern": "A forward look or a view into future",
+    "solution": "Prospect = a forward look or a view into future."
+  },
+  {
+    "question": "To examine one's motives or look inwards is to:",
+    "options": [
+      "Introspect",
+      "Inspect",
+      "Prospect",
+      "Circumspect"
+    ],
+    "answer": 0,
+    "pattern": "Examine one's motives or look inwards",
+    "solution": "Introspect = examine one's motives or look inwards."
+  },
+  {
+    "question": "To examine carefully is to:",
+    "options": [
+      "Inspect",
+      "Introspect",
+      "Suspect",
+      "Prospect"
+    ],
+    "answer": 0,
+    "pattern": "To examine carefully",
+    "solution": "Inspect = to examine carefully."
+  },
+  {
+    "question": "A backward look or a view into the past is called:",
+    "options": [
+      "Retrospect",
+      "Prospect",
+      "Introspect",
+      "Inspect"
+    ],
+    "answer": 0,
+    "pattern": "A backward look or a view into the past",
+    "solution": "Retrospect = a backward look or a view into the past."
+  },
+  {
+    "question": "A careful, cautious watch on surroundings is called:",
+    "options": [
+      "Circumspect",
+      "Suspect",
+      "Prospect",
+      "Retrospect"
+    ],
+    "answer": 0,
+    "pattern": "Careful, cautious watch on surroundings",
+    "solution": "Circumspect = careful, cautious watch on surroundings."
+  },
+  {
+    "question": "To walk aimlessly is to:",
+    "options": [
+      "Amble",
+      "Coincident",
+      "Expatriate",
+      "Prospect"
+    ],
+    "answer": 0,
+    "pattern": "To walk aimlessly",
+    "solution": "Amble = to walk aimlessly."
+  },
+  {
+    "question": "When two things befall together, they are:",
+    "options": [
+      "Coincident",
+      "Chronic",
+      "Anachronism",
+      "Circumspect"
+    ],
+    "answer": 0,
+    "pattern": "When two things befall together",
+    "solution": "Coincident = when two things befall together."
+  },
+  {
+    "question": "A thing occurring again and again for a long time is called:",
+    "options": [
+      "Chronic",
+      "Coincident",
+      "Anachronism",
+      "Amble"
+    ],
+    "answer": 0,
+    "pattern": "A thing occurring again and again for a long time",
+    "solution": "Chronic = a thing occurring again and again for a long time."
+  },
+  {
+    "question": "Someone or something out of time is called an:",
+    "options": [
+      "Anachronism",
+      "Expatriate",
+      "Chronic",
+      "Coincident"
+    ],
+    "answer": 0,
+    "pattern": "Someone or something out of time",
+    "solution": "Anachronism = someone or something out of time."
+  },
+  {
+    "question": "To send out of one's native country is to:",
+    "options": [
+      "Expatriate",
+      "Anachronism",
+      "Amble",
+      "Circumspect"
+    ],
+    "answer": 0,
+    "pattern": "To send out of one's native country",
+    "solution": "Expatriate = to send out of one's native country."
+  },
+  {
+    "question": "To walk around a place especially in a ritual fashion is to:",
+    "options": [
+      "Circumambulate",
+      "Amble",
+      "Circumspect",
+      "Expatriate"
+    ],
+    "answer": 0,
+    "pattern": "To walk around a place especially in a ritual fashion",
+    "solution": "Circumambulate = to walk around a place especially in a ritual fashion."
+  },
+  {
+    "question": "A highly accurate timepiece is called a:",
+    "options": [
+      "Chronometer",
+      "Chronograph",
+      "Anachronism",
+      "Coincident"
+    ],
+    "answer": 0,
+    "pattern": "A highly accurate timepiece",
+    "solution": "Chronometer = a highly accurate timepiece."
+  },
+  {
+    "question": "Capable of moving in all directions is called:",
+    "options": [
+      "Omnidirectional",
+      "Circumspect",
+      "Coincident",
+      "Chronometer"
+    ],
+    "answer": 0,
+    "pattern": "Capable of moving in all directions",
+    "solution": "Omnidirectional = capable of moving in all directions."
+  },
+  {
+    "question": "An instrument which records short intervals of time is called a:",
+    "options": [
+      "Chronograph",
+      "Chronometer",
+      "Anachronism",
+      "Prospect"
+    ],
+    "answer": 0,
+    "pattern": "An instrument which records short intervals of time",
+    "solution": "Chronograph = an instrument which records short intervals of time."
+  },
+  {
+    "question": "To make things happen at the same time is to:",
+    "options": [
+      "Synchronize",
+      "Coincide",
+      "Chronograph",
+      "Circumambulate"
+    ],
+    "answer": 0,
+    "pattern": "Make to happen at the same time",
+    "solution": "Synchronize = to make things happen at the same time."
+  },
+  {
+    "question": "The doctor who deals with the female reproductive system is called a:",
+    "options": [
+      "Obstetrician",
+      "Gynecologist",
+      "Cardiologist",
+      "Dermatologist"
+    ],
+    "answer": 1,
+    "pattern": "The doctor who deals with the female reproductive system",
+    "solution": "Gynecologist = a doctor who deals with the female reproductive system."
+  },
+  {
+    "question": "The doctor who treats gums is called a:",
+    "options": [
+      "Peridontist",
+      "Endodontist",
+      "Orthodontist",
+      "Chirographer"
+    ],
+    "answer": 0,
+    "pattern": "The doctor who treats gums",
+    "solution": "Peridontist = a dental specialist who treats the gums and supporting structures of the teeth."
+  },
+  {
+    "question": "The doctor who treats heart problems is called a:",
+    "options": [
+      "Dermatologist",
+      "Cardiologist",
+      "Ophthalmologist",
+      "Gynecologist"
+    ],
+    "answer": 1,
+    "pattern": "The doctor who treats heart problems",
+    "solution": "Cardiologist = a doctor who treats heart problems and diseases of the heart."
+  },
+  {
+    "question": "The doctor who treats skin diseases is called a:",
+    "options": [
+      "Cardiologist",
+      "Orthopedician",
+      "Dermatologist",
+      "Obstetrician"
+    ],
+    "answer": 2,
+    "pattern": "The doctor who treats skin diseases",
+    "solution": "Dermatologist = a doctor who treats diseases of the skin."
+  },
+
+  {
+    "question": "Study of human development is called:",
+    "options": [
+      "Anthropology",
+      "Geography",
+      "Calligraphy",
+      "Pathology"
+    ],
+    "answer": 0,
+    "pattern": "Study of human development",
+    "solution": "Anthropology = study of human development."
+  },
+  {
+    "question": "Mapping of earth and its formation is called:",
+    "options": [
+      "Geography",
+      "Anthropology",
+      "Hydraulics",
+      "Ornithology"
+    ],
+    "answer": 0,
+    "pattern": "Mapping of earth and its formation",
+    "solution": "Geography = mapping of earth and its formation."
+  },
+  {
+    "question": "Art related to ornate, good handwriting is called:",
+    "options": [
+      "Calligraphy",
+      "Pathology",
+      "Anthropology",
+      "Hydraulics"
+    ],
+    "answer": 0,
+    "pattern": "Art related to ornate, good handwriting",
+    "solution": "Calligraphy = art related to ornate, good handwriting."
+  },
+  {
+    "question": "Scientific study of bodily diseases is called:",
+    "options": [
+      "Pathology",
+      "Ornithology",
+      "Geography",
+      "Calligraphy"
+    ],
+    "answer": 0,
+    "pattern": "Scientific study of bodily diseases",
+    "solution": "Pathology = scientific study of bodily diseases."
+  },
+  {
+    "question": "Study of birds is called:",
+    "options": [
+      "Ornithology",
+      "Anthropology",
+      "Pathology",
+      "Hydraulics"
+    ],
+    "answer": 0,
+    "pattern": "Study of birds",
+    "solution": "Ornithology = study of birds."
+  },
+  {
+    "question": "Study of the law of the flow of water and other liquids is called:",
+    "options": [
+      "Hydraulics",
+      "Geography",
+      "Ornithology",
+      "Anthropology"
+    ],
+    "answer": 0,
+    "pattern": "Study of the law of the flow of water and other liquids",
+    "solution": "Hydraulics = study of the law of the flow of water and other liquids."
+  },
+
+  {
+    "question": "Study of collection of coins, tokens, paper money etc. is called:",
+    "options": ["Numismatics", "Geology", "Psephology", "Graphology"],
+    "answer": 0,
+    "pattern": "Study of collection of coins, tokens, paper money etc.",
+    "solution": "Numismatics = study of collection of coins, tokens, paper money etc."
+  },
+  {
+    "question": "Study of earth and rocks is called:",
+    "options": ["Geology", "Biology", "Theology", "Astronomy"],
+    "answer": 0,
+    "pattern": "Study of earth and rocks",
+    "solution": "Geology = study of earth and rocks."
+  },
+  {
+    "question": "Study of election trends is called:",
+    "options": ["Psephology", "Psychology", "Philology", "Astrology"],
+    "answer": 0,
+    "pattern": "Study of election trends",
+    "solution": "Psephology = study of election trends."
+  },
+  {
+    "question": "Study of flying aero planes is called:",
+    "options": ["Aviation", "Acoustics", "Lithography", "Ornithology"],
+    "answer": 0,
+    "pattern": "Study of flying aero planes",
+    "solution": "Aviation = study of flying aero planes."
+  },
+  {
+    "question": "Study of handwriting is called:",
+    "options": ["Graphology", "Calligraphy", "Geology", "Genetics"],
+    "answer": 0,
+    "pattern": "Study of handwriting",
+    "solution": "Graphology = study of handwriting."
+  },
+  {
+    "question": "Study of hereditary, genes and variation in living organisms is called:",
+    "options": ["Genetics", "Biology", "Pathology", "Anthropology"],
+    "answer": 0,
+    "pattern": "Study of hereditary, genes and variation in living organisms",
+    "solution": "Genetics = study of heredity, genes and variation in living organisms."
+  },
+  {
+    "question": "Printing using a stone or a metal plate with a completely smooth surface is called:",
+    "options": ["Lithography", "Calligraphy", "Typography", "Graphology"],
+    "answer": 0,
+    "pattern": "Printing using a stone or a metal plate with a completely smooth surface",
+    "solution": "Lithography = printing using a stone or a metal plate with a completely smooth surface."
+  },
+  {
+    "question": "Study of languages is called:",
+    "options": ["Philology", "Philology", "Psephology", "Theology"],
+    "answer": 0,
+    "pattern": "Study of languages",
+    "solution": "Philology = study of languages."
+  },
+  {
+    "question": "Study of living things is called:",
+    "options": ["Biology", "Geology", "Biology", "Genetics"],
+    "answer": 0,
+    "pattern": "Study of living things",
+    "solution": "Biology = study of living things."
+  },
+  {
+    "question": "Study of religion is called:",
+    "options": ["Theology", "Astrology", "Anthropology", "Philology"],
+    "answer": 0,
+    "pattern": "Study of religion",
+    "solution": "Theology = study of religion."
+  },
+  {
+    "question": "Study of science of insects is called:",
+    "options": ["Entomology", "Ornithology", "Biology", "Pathology"],
+    "answer": 0,
+    "pattern": "Study of science of insects",
+    "solution": "Entomology = study of insects."
+  },
+  {
+    "question": "Study of sound and sound waves is called:",
+    "options": ["Acoustics", "Aviation", "Astrology", "Geology"],
+    "answer": 0,
+    "pattern": "Study of sound and sound waves",
+    "solution": "Acoustics = study of sound and sound waves."
+  },
+  {
+    "question": "Study of the influence of planets and stars on human events is called:",
+    "options": ["Astrology", "Astronomy", "Geology", "Theology"],
+    "answer": 0,
+    "pattern": "Study of the influence of planets and stars on human events",
+    "solution": "Astrology = study of the influence of planets and stars on human events."
+  },
+  {
+    "question": "Study of celestial bodies is called:",
+    "options": ["Astronomy", "Astrology", "Aviation", "Acoustics"],
+    "answer": 0,
+    "pattern": "Study of celestial bodies",
+    "solution": "Astronomy = study of celestial bodies."
+  },
+
+  {
+    "question": "Study of the relation between the organism and their environment is called:",
+    "options": ["Ecology", "Geology", "Biology", "Anthropology"],
+    "answer": 0,
+    "pattern": "Study of the relation between the organism and their environment",
+    "solution": "Ecology = study of the relation between organisms and their environment."
+  },
+  {
+    "question": "Study of various aspects of aging is called:",
+    "options": ["Gerontology", "Genetics", "Anthropology", "Pathology"],
+    "answer": 0,
+    "pattern": "Study of various aspects of aging",
+    "solution": "Gerontology = study of various aspects of aging."
+  },
+  {
+    "question": "The science of human development is called:",
+    "options": ["Anthropology", "Psychology", "Biology", "Sociology"],
+    "answer": 0,
+    "pattern": "The science of human development",
+    "solution": "Anthropology = the science/study of human beings and human development."
+  },
+  {
+    "question": "Study of religion is called:",
+    "options": ["Theology", "Astrology", "Ecology", "Philology"],
+    "answer": 0,
+    "pattern": "Study of religion",
+    "solution": "Theology = study of religion."
+  },
+  {
+    "question": "The science of time order is called:",
+    "options": ["Chronology", "Geology", "Archaeology", "Astronomy"],
+    "answer": 0,
+    "pattern": "The science of time order",
+    "solution": "Chronology = the science of arranging events in their time order."
+  },
+  {
+    "question": "An optical device for projecting various celestial images and effects is called:",
+    "options": ["Planetarium", "Aquarium", "Podium", "Auditorium"],
+    "answer": 0,
+    "pattern": "An optical device for projecting various celestial images and effects",
+    "solution": "Planetarium = an optical device for projecting various celestial images and effects."
+  },
+  {
+    "question": "A glass container in which fish and other water animals can be kept is called:",
+    "options": ["Aquarium", "Planetarium", "Podium", "Auditorium"],
+    "answer": 0,
+    "pattern": "A glass container in which fish and other water animals can be kept",
+    "solution": "Aquarium = a glass container in which fish and other water animals can be kept."
+  },
+  {
+    "question": "A place for feet or speaker's platform is called:",
+    "options": ["Podium", "Aquarium", "Planetarium", "Auditorium"],
+    "answer": 0,
+    "pattern": "A place for feet or speaker's platform",
+    "solution": "Podium = a place for feet or a speaker's platform."
+  },
+  {
+    "question": "The part of a theatre where people who are watching and listening sit is called:",
+    "options": ["Auditorium", "Podium", "Aquarium", "Planetarium"],
+    "answer": 0,
+    "pattern": "The part of a theatre where people who are watching and listening sit",
+    "solution": "Auditorium = the part of a theatre where people who are watching and listening sit."
+  },
+  {
+    "question": "A place for sun to enter where one can sunbathe is called:",
+    "options": ["Solarium", "Sanatorium", "Museum", "Auditorium"],
+    "answer": 0,
+    "pattern": "A place for sun to enter where one can sunbathe",
+    "solution": "Solarium = a place for sun to enter where one can sunbathe."
+  },
+  {
+    "question": "An establishment for the treatment of the chronically ill is called:",
+    "options": ["Sanatorium", "Solarium", "Aquarium", "Museum"],
+    "answer": 0,
+    "pattern": "An establishment for the treatment of the chronically ill",
+    "solution": "Sanatorium = an establishment for the treatment of the chronically ill."
+  },
+  {
+    "question": "A place where objects are exhibited is called:",
+    "options": ["Museum", "Aquarium", "Auditorium", "Sanatorium"],
+    "answer": 0,
+    "pattern": "A place where objects are exhibited",
+    "solution": "Museum = a place where objects are exhibited."
+  },
+  {
+    "question": "Trees whose leaves fall every autumn are called:",
+    "options": ["Deciduous", "Evergreen", "Perennial", "Tropical"],
+    "answer": 0,
+    "pattern": "Trees whose leaves fall every autumn",
+    "solution": "Deciduous = trees whose leaves fall every autumn."
+  },
+  {
+    "question": "That which falls upon, befalls, happens is called:",
+    "options": ["Incident", "Accident", "Occidental", "Incidentally"],
+    "answer": 0,
+    "pattern": "That which falls upon, befalls, happens",
+    "solution": "Incident = that which falls upon, befalls, happens."
+  },
+  {
+    "question": "A carriage for sick people is called:",
+    "options": ["Ambulance", "Automobile", "Perambulator", "Sanatorium"],
+    "answer": 0,
+    "pattern": "A carriage for sick people",
+    "solution": "Ambulance = a carriage for sick people."
+  },
+  {
+    "question": "That which falls on the western countries is called:",
+    "options": ["Occidental", "Oriental", "Incident", "Accident"],
+    "answer": 0,
+    "pattern": "That which falls on the western countries",
+    "solution": "Occidental = that which falls on the western countries."
+  },
+  {
+    "question": "The school or college one attends is called:",
+    "options": ["Alma Mater", "Auditorium", "Sanatorium", "Museum"],
+    "answer": 0,
+    "pattern": "The school or college one attends",
+    "solution": "Alma Mater = the school or college one attends."
+  },
+  {
+    "question": "A self-moving vehicle is called:",
+    "options": ["Automobile", "Automatic", "Ambulance", "Perambulator"],
+    "answer": 0,
+    "pattern": "A self-moving vehicle",
+    "solution": "Automobile = a self-moving vehicle."
+  },
+  {
+    "question": "A machine that functions by itself is called:",
+    "options": ["Automatic", "Automobile", "Ambulance", "Perambulator"],
+    "answer": 0,
+    "pattern": "A machine that functions by itself",
+    "solution": "Automatic = a machine that functions by itself."
+  },
+  {
+    "question": "A baby carriage is called:",
+    "options": ["Perambulator", "Ambulance", "Automobile", "Automatic"],
+    "answer": 0,
+    "pattern": "A baby carriage",
+    "solution": "Perambulator = a baby carriage."
+  },
+  {
+    "question": "That which falls to someone or something is called:",
+    "options": ["Accident", "Incident", "Occidental", "Automatic"],
+    "answer": 0,
+    "pattern": "That which falls to someone or something",
+    "solution": "Accident = that which falls to someone or something."
+  },
+
+  {
+    question: "The killing of oneself is called:",
+    options: ["Suicide", "Homicide", "Genocide", "Regicide"],
+    answer: 0,
+    pattern: "The killing of oneself",
+    solution: "Suicide = the killing of oneself."
+  },
+  {
+    question: "The killing of parents is called:",
+    options: ["Parricide", "Patricide", "Matricide", "Uxoricide"],
+    answer: 0,
+    pattern: "The killing of parents",
+    solution: "Parricide = the killing of parents."
+  },
+  {
+    question: "The killing of a whole race is called:",
+    options: ["Genocide", "Homicide", "Regicide", "Infanticide"],
+    answer: 0,
+    pattern: "The killing of a whole race",
+    solution: "Genocide = the killing of a whole race."
+  },
+  {
+    question: "The killing of a new born child is called:",
+    options: ["Infanticide", "Genocide", "Parricide", "Homicide"],
+    answer: 0,
+    pattern: "The killing of a new born child",
+    solution: "Infanticide = the killing of a new born child."
+  },
+  {
+    question: "The killing of a king is called:",
+    options: ["Regicide", "Homicide", "Genocide", "Patricide"],
+    answer: 0,
+    pattern: "The killing of a king",
+    solution: "Regicide = the killing of a king."
+  },
+  {
+    question: "The killing of a human being is called:",
+    options: ["Homicide", "Regicide", "Infanticide", "Suicide"],
+    answer: 0,
+    pattern: "The killing of a human being",
+    solution: "Homicide = the killing of a human being."
+  },
+  {
+    question: "The killing of one's husband is called:",
+    options: ["Mariticide", "Uxoricide", "Patricide", "Matricide"],
+    answer: 0,
+    pattern: "The killing of one's husband",
+    solution: "Mariticide = the killing of one's husband."
+  },
+  {
+    question: "The killing of a father is called:",
+    options: ["Patricide", "Matricide", "Parricide", "Sororicide"],
+    answer: 0,
+    pattern: "The killing of a father",
+    solution: "Patricide = the killing of a father."
+  },
+  {
+    question: "The killing of a mother is called:",
+    options: ["Matricide", "Patricide", "Parricide", "Uxoricide"],
+    answer: 0,
+    pattern: "The killing of a mother",
+    solution: "Matricide = the killing of a mother."
+  },
+  {
+    question: "Morbid compulsion to steal is called:",
+    options: ["Kleptomania", "Dipsomania", "Pyromania", "Megalomania"],
+    answer: 0,
+    pattern: "Morbid compulsion to steal",
+    solution: "Kleptomania = morbid compulsion to steal."
+  },
+  {
+    question: "The killing of one's sister is called:",
+    options: ["Sororicide", "Uxoricide", "Matricide", "Patricide"],
+    answer: 0,
+    pattern: "The killing of one's sister",
+    solution: "Sororicide = the killing of one's sister."
+  },
+  {
+    question: "The killing of one's wife is called:",
+    options: ["Uxoricide", "Mariticide", "Sororicide", "Homicide"],
+    answer: 0,
+    pattern: "The killing of one's wife",
+    solution: "Uxoricide = the killing of one's wife."
+  },
+  {
+    question: "Morbid compulsion to keep on consuming alcohol is called:",
+    options: ["Dipsomania", "Kleptomania", "Pyromania", "Megalomania"],
+    answer: 0,
+    pattern: "Morbid compulsion to keep on consuming alcohol",
+    solution: "Dipsomania = morbid compulsion to keep on consuming alcohol."
+  },
+  {
+    question: "The killing of one's brother is called:",
+    options: ["Fratricide", "Sororicide", "Patricide", "Matricide"],
+    answer: 0,
+    pattern: "The killing of one's brother",
+    solution: "Fratricide = the killing of one's brother."
+  },
+  {
+    question: "Madness with obsession with something is called:",
+    options: ["Mania", "Monomania", "Megalomania", "Mythomania"],
+    answer: 0,
+    pattern: "Madness with obsession with something",
+    solution: "Mania = madness with obsession with something."
+  },
+  {
+    question: "Morbid compulsion to steal books is called:",
+    options: ["Bibliokleptomania", "Kleptomania", "Bibliomania", "Pyromania"],
+    answer: 0,
+    pattern: "Morbid compulsion to steal books",
+    solution: "Bibliokleptomania = morbid compulsion to steal books."
+  },
+  {
+    question: "Morbid compulsion to start a fire is called:",
+    options: ["Pyromania", "Kleptomania", "Dipsomania", "Megalomania"],
+    answer: 0,
+    pattern: "Morbid compulsion to start a fire",
+    solution: "Pyromania = morbid compulsion to start a fire."
+  },
+  {
+    question: "Morbid delusion of power, importance or godliness is called:",
+    options: ["Megalomania", "Monomania", "Mania", "Mythomania"],
+    answer: 0,
+    pattern: "Morbid delusion of power, importance or godliness",
+    solution: "Megalomania = morbid delusion of power, importance or godliness."
+  },
+  {
+    question: "Morbid, uncontrollable desire on the part of a woman is called:",
+    options: ["Nymphomania", "Satyromania", "Megalomania", "Monomania"],
+    answer: 0,
+    pattern: "Morbid, uncontrollable desire on the part of a woman",
+    solution: "Nymphomania = morbid, uncontrollable desire on the part of a woman."
+  },
+  {
+    question: "Morbid, uncontrollable desire on the part of a man is called:",
+    options: ["Satyromania", "Nymphomania", "Monomania", "Dipsomania"],
+    answer: 0,
+    pattern: "Morbid, uncontrollable desire on the part of a man",
+    solution: "Satyromania = morbid, uncontrollable desire on the part of a man."
+  },
+  {
+    question: "A person with a one-track mind is called:",
+    options: ["Monomania", "Megalomania", "Mythomania", "Kleptomania"],
+    answer: 0,
+    pattern: "Person with one-track mind",
+    solution: "Monomania = a person with a one-track mind."
+  },
+  {
+    question: "Compulsion to tell lies is called:",
+    options: ["Mythomania", "Megalomania", "Monomania", "Pyromania"],
+    answer: 0,
+    pattern: "Compulsion to tell lies",
+    solution: "Mythomania = compulsion to tell lies."
+  },
+  {
+    question: "High sounding pompous speech or writing is called:",
+    options: ["Grandiloquent", "Garrulous", "Verbose", "Eloquent"],
+    answer: 0,
+    pattern: "High sounding pompous speech or writing",
+    solution: "Grandiloquent = high-sounding, pompous speech or writing."
+  },
+  {
+    question: "A written message from a far-off place is called:",
+    options: ["Telegraph", "Telegram", "Telephone", "Letter"],
+    answer: 0,
+    pattern: "A written message from far-off place",
+    solution: "Telegraph = a written message sent from a far-off place."
+  },
+
+  {
+    question: "Informal, less grammatically rigid language is called:",
+    options: ["Colloquial", "Formal", "Verbose", "Eloquent"],
+    answer: 0,
+    pattern: "Informal, less grammatically rigid language",
+    solution: "Colloquial = informal, less grammatically rigid language."
+  },
+  {
+    question: "Talking around, a method of talking indirectly is called:",
+    options: ["Circumlocution", "Eloquence", "Soliloquy", "Preamble"],
+    answer: 0,
+    pattern: "Talking around / talking indirectly",
+    solution: "Circumlocution = talking around or a method of talking indirectly."
+  },
+  {
+    question: "Generous, forgiving talk is called:",
+    options: ["Magniloquent", "Laconic", "Colloquial", "Circumlocution"],
+    answer: 0,
+    pattern: "Generous, forgiving talk",
+    solution: "Magniloquent = the word given in the supplied source for generous, forgiving talk."
+  },
+  {
+    question: "Expressive in the use of words is called:",
+    options: ["Eloquent", "Laconic", "Colloquial", "Preamble"],
+    answer: 0,
+    pattern: "Expressive in the use of words",
+    solution: "Eloquent = expressive in the use of words."
+  },
+  {
+    question: "A book containing all the published work of an author is called:",
+    options: ["Omnibus", "Biography", "Autobiography", "Preamble"],
+    answer: 0,
+    pattern: "Book containing all the published work of an author",
+    solution: "Omnibus = a book containing all the published work of an author."
+  },
+  {
+    question: "A signature of a celebrity (signature of oneself) is called:",
+    options: ["Autograph", "Biography", "Omnibus", "Photograph"],
+    answer: 0,
+    pattern: "A signature of a celebrity / signature of oneself",
+    solution: "Autograph = a signature of a celebrity or one's own signature."
+  },
+  {
+    question: "A walk beforehand or an introductory statement is called:",
+    options: ["Preamble", "Autograph", "Omnibus", "Soliloquy"],
+    answer: 0,
+    pattern: "Walk before hand or an introductory statement",
+    solution: "Preamble = the word given in the supplied source for a walk beforehand or an introductory statement."
+  },
+  {
+    question: "Writing of one's life story is called:",
+    options: ["Biography", "Autobiography", "Omnibus", "Preamble"],
+    answer: 0,
+    pattern: "Writing of one's life story",
+    solution: "Biography = writing of one's life story."
+  },
+  {
+    question: "Writing of one's own life story is called:",
+    options: ["Autobiography", "Biography", "Autograph", "Soliloquy"],
+    answer: 0,
+    pattern: "Writing of one's own life story",
+    solution: "Autobiography = writing of one's own life story."
+  },
+  {
+    question: "A speech to oneself, alone is called:",
+    options: ["Soliloquy", "Colloquial", "Circumlocution", "Eloquent"],
+    answer: 0,
+    pattern: "A speech to oneself, alone",
+    solution: "Soliloquy = a speech to oneself, alone."
+  },
+  {
+    question: "Few words packed with meaning; concise is called:",
+    options: ["Laconic", "Verbose", "Eloquent", "Magniloquent"],
+    answer: 0,
+    pattern: "Few words packed with meaning / concise",
+    solution: "Laconic = using few words, especially in a concise and meaningful way."
+  },
+  {
+    question: "Written by light is called:",
+    options: ["Photograph", "Autograph", "Biography", "Omnibus"],
+    answer: 0,
+    pattern: "Written by light",
+    solution: "Photograph = the word given in the supplied source for written by light."
+  },
+
+  {
+    question: "Religious madness is called:",
+    options: ["Theomania", "Theist", "Atheist", "Theomachy"],
+    answer: 0,
+    pattern: "Religious madness",
+    solution: "Theomania = religious madness."
+  },
+  {
+    question: "One who believes in the presence of God is called a:",
+    options: ["Atheist", "Theist", "Monotheist", "Polytheist"],
+    answer: 1,
+    pattern: "One who believes in the presence of God",
+    solution: "Theist = one who believes in the presence of God."
+  },
+  {
+    question: "One who doesn't believe in the presence of God is called an:",
+    options: ["Theist", "Atheist", "Pantheist", "Monotheist"],
+    answer: 1,
+    pattern: "One who doesn't believe in the presence of God",
+    solution: "Atheist = one who doesn't believe in the presence of God."
+  },
+  {
+    question: "One who believes in the theory of only one God is called a:",
+    options: ["Polytheist", "Pantheist", "Monotheist", "Theist"],
+    answer: 2,
+    pattern: "Believes in the theory of only one God",
+    solution: "Monotheist = one who believes in the theory of only one God."
+  },
+  {
+    question: "One who believes in many Gods is called a:",
+    options: ["Monotheist", "Polytheist", "Theist", "Atheist"],
+    answer: 1,
+    pattern: "One who believes in many Gods",
+    solution: "Polytheist = one who believes in many Gods."
+  },
+  {
+    question: "One who believes that God is union of all forces of the universe is called a:",
+    options: ["Theist", "Monotheist", "Pantheist", "Atheist"],
+    answer: 2,
+    pattern: "Believes that God is union of all forces of the universe",
+    solution: "Pantheist = one who believes that God is the union of all forces of the universe."
+  },
+  {
+    question: "Related to marriage is called:",
+    options: ["Matrimony", "Monogamy", "Bigamy", "Theomachy"],
+    answer: 0,
+    pattern: "Related to marriage",
+    solution: "Matrimony = the word given in the supplied source for related to marriage."
+  },
+  {
+    question: "Battle among the Gods is called:",
+    options: ["Theomachy", "Theomania", "Matrimony", "Monogamy"],
+    answer: 0,
+    pattern: "Battle among the Gods",
+    solution: "Theomachy = battle among the Gods."
+  },
+  {
+    question: "Practicing only one marriage (having only one wife) is called:",
+    options: ["Bigamy", "Monogamy", "Matrimony", "Polytheism"],
+    answer: 1,
+    pattern: "Practicing only one marriage / having only one wife",
+    solution: "Monogamy = practicing only one marriage (having only one wife)."
+  },
+  {
+    question: "Practicing two marriages (having two wives) is called:",
+    options: ["Monogamy", "Matrimony", "Bigamy", "Theomania"],
+    answer: 2,
+    pattern: "Practicing two marriages / having two wives",
+    solution: "Bigamy = practicing two marriages (having two wives)."
+  },  {
+    question: "Practice of several marriages (having many wives) is called:",
+    options: ["Monogamy", "Bigamy", "Polygamy", "Polyandry"],
+    answer: 2,
+    pattern: "Practice of several marriages / having many wives",
+    solution: "Polygamy = practice of several marriages (having many wives)."
+  },
+  {
+    question: "Self-fertilization especially in plants is called:",
+    options: ["Endogamy", "Autogamy", "Exogamy", "Polygamy"],
+    answer: 1,
+    pattern: "Self-fertilization especially in plants",
+    solution: "Autogamy = self-fertilization especially in plants."
+  },
+  {
+    question: "Marriage within one's own tribe is called:",
+    options: ["Exogamy", "Endogamy", "Monogamy", "Autogamy"],
+    answer: 1,
+    pattern: "Marriage within one's own tribe",
+    solution: "Endogamy = marriage within one's own tribe."
+  },
+  {
+    question: "A father-like figure is called a:",
+    options: ["Patriarch", "Patrimony", "Patronymic", "Paternity"],
+    answer: 0,
+    pattern: "A father-like figure",
+    solution: "Patriarch = a father-like figure."
+  },
+  {
+    question: "Having several husbands is called:",
+    options: ["Polygamy", "Polyandry", "Bigamy", "Endogamy"],
+    answer: 1,
+    pattern: "Having several husbands",
+    solution: "Polyandry = having several husbands."
+  },
+  {
+    question: "People who have both male and female sexual organs are called:",
+    options: ["Hermaphrodite", "Patriarch", "Polyandry", "Patronymic"],
+    answer: 0,
+    pattern: "People who have both male and female sexual organs",
+    solution: "Hermaphrodite = people who have both male and female sexual organs."
+  },
+  {
+    question: "An inheritance from father is called:",
+    options: ["Paternity", "Patrimony", "Patriarch", "Patronymic"],
+    answer: 1,
+    pattern: "An inheritance from father",
+    solution: "Patrimony = an inheritance from father."
+  },
+  {
+    question: "A name framed after father's name is called:",
+    options: ["Patronymic", "Patrimony", "Paternity", "Patriarch"],
+    answer: 0,
+    pattern: "A name framed after father's name",
+    solution: "Patronymic = a name framed after father's name."
+  },
+  {
+    question: "Fatherhood is called:",
+    options: ["Patriarch", "Patronymic", "Paternity", "Patrimony"],
+    answer: 2,
+    pattern: "Fatherhood",
+    solution: "Paternity = fatherhood."
+  },
+  {
+    question: "Marriage outside one's tribe is called:",
+    options: ["Endogamy", "Exogamy", "Autogamy", "Polygamy"],
+    answer: 1,
+    pattern: "Marriage outside one's tribe",
+    solution: "Exogamy = marriage outside one's tribe."
+  },
+  {
+    question: "Living on fruits is called:",
+    options: ["Carnivorous", "Frugivorous", "Omnivorous", "Piscivorous"],
+    answer: 1,
+    pattern: "Living on fruits",
+    solution: "Frugivorous = living on fruits."
+  },
+  {
+    question: "One who eat only fruits is called:",
+    options: ["Vegetarian", "Fruitarian", "Gourmand", "Glutton"],
+    answer: 1,
+    pattern: "One who eat only fruits",
+    solution: "Fruitarian = one who eat only fruits."
+  },
+  {
+    question: "One who eats no animal flesh is called:",
+    options: ["Cannibal", "Carnivorous", "Vegetarian", "Omnivorous"],
+    answer: 2,
+    pattern: "One who eats no animal flesh",
+    solution: "Vegetarian = one who eats no animal flesh."
+  },
+  {
+    question: "One who feeds on human flesh is called:",
+    options: ["Cannibal", "Carnivorous", "Vegetarian", "Piscivorous"],
+    answer: 0,
+    pattern: "One who feeds on human flesh",
+    solution: "Cannibal = one who feeds on human flesh."
+  },
+  {
+    question: "One who enjoys food with a sensual pleasure is called:",
+    options: ["Glutton", "Gourmand", "Fruitarian", "Vegetarian"],
+    answer: 1,
+    pattern: "One who enjoys food with a sensual pleasure",
+    solution: "Gourmand = one who enjoys food with a sensual pleasure."
+  },
+  {
+    question: "One who eats all kinds of food is called:",
+    options: ["Omnivorous", "Herbivorous", "Carnivorous", "Piscivorous"],
+    answer: 0,
+    pattern: "One who eats all kinds of food",
+    solution: "Omnivorous = one who eats all kinds of food."
+  },
+  {
+    question: "Living on flesh is called:",
+    options: ["Herbivorous", "Frugivorous", "Carnivorous", "Omnivorous"],
+    answer: 2,
+    pattern: "Living on flesh",
+    solution: "Carnivorous = living on flesh."
+  },
+  {
+    question: "Living on all is called:",
+    options: ["Piscivorous", "Omnivorous", "Frugivorous", "Herbivorous"],
+    answer: 1,
+    pattern: "Living on all",
+    solution: "Omnivorous = living on all."
+  },
+  {
+    question: "Living on fish is called:",
+    options: ["Piscivorous", "Carnivorous", "Frugivorous", "Herbivorous"],
+    answer: 0,
+    pattern: "Living on fish",
+    solution: "Piscivorous = living on fish."
+  },
+  {
+    question: "One whose eating habit is repulsive is called:",
+    options: ["Gourmand", "Glutton", "Cannibal", "Fruitarian"],
+    answer: 1,
+    pattern: "One whose eating habit is repulsive",
+    solution: "Glutton = one whose eating habit is repulsive."
+  },
+  {
+    question: "Living on grass is called:",
+    options: ["Carnivorous", "Herbivorous", "Omnivorous", "Insectivorous"],
+    answer: 1,
+    pattern: "Living on grass",
+    solution: "Herbivorous = living on grass."
+  },
+];
+
 let questions = numberSystemQuestions;
 let currentTestSubject = "Number System";
 
@@ -3682,6 +5554,70 @@ function saveUserTestHistory(history){
  */
 
 
+
+function getCurrentTestSubjectSafe(){
+  /*
+   * The question list is the source of truth.
+   * This is deliberately checked before currentTestSubject so that
+   * an English test can never be saved as Number System.
+   */
+  if(typeof oneWordSubstitutionQuestions !== "undefined" &&
+     questions === oneWordSubstitutionQuestions){
+    return "English - One Word Substitution";
+  }
+
+  if(typeof numberSystemQuestions !== "undefined" &&
+     questions === numberSystemQuestions){
+    return "Number System";
+  }
+
+  if(typeof percentageQuestions !== "undefined" &&
+     questions === percentageQuestions){
+    return "Percentage";
+  }
+
+  if(typeof additionQuestions !== "undefined" &&
+     questions === additionQuestions){
+    return "Speed Maths - Addition";
+  }
+
+  if(typeof discountQuestions !== "undefined" &&
+     questions === discountQuestions){
+    return "Discount";
+  }
+
+  if(typeof dataSufficiencyQuestions !== "undefined" &&
+     questions === dataSufficiencyQuestions){
+    return "Data Sufficiency";
+  }
+
+  if(typeof calendarQuestions !== "undefined" &&
+     questions === calendarQuestions){
+    return "Calendar";
+  }
+
+  if(typeof directionsQuestions !== "undefined" &&
+     questions === directionsQuestions){
+    return "Directions";
+  }
+
+  if(typeof codingDecodingQuestions !== "undefined" &&
+     questions === codingDecodingQuestions){
+    return "Coding & Decoding";
+  }
+
+  if(typeof timeDistanceQuestions !== "undefined" &&
+     questions === timeDistanceQuestions){
+    return "Time, Speed & Distance";
+  }
+
+  return (
+    typeof currentTestSubject !== "undefined" && currentTestSubject
+      ? currentTestSubject
+      : "Number System"
+  );
+}
+
 function saveTestAttempt(correct){
 
   const now = new Date();
@@ -3742,17 +5678,10 @@ function saveTestAttempt(correct){
     };
   });
 
+  const savedTestSubject = getCurrentTestSubjectSafe();
+
   history.push({
       userId: getLakshmanUserId(),
-      subject:
-        typeof currentTestSubject !== "undefined"
-          ? currentTestSubject
-          : (
-              typeof currentSubject !== "undefined"
-                ? currentSubject
-                : "Number System"
-            ),
-
     id: Date.now(),
 
     /*
@@ -3761,7 +5690,7 @@ function saveTestAttempt(correct){
      */
     attempt: history.length + 1,
 
-    subject: currentTestSubject,
+    subject: savedTestSubject,
 
     date:
       String(now.getDate()).padStart(2,"0") + "-" +
@@ -3840,8 +5769,10 @@ function renderAttemptHistory(){
   const codingDecodingBody = document.getElementById("codingDecodingHistoryBody");
   const discountBody = document.getElementById("discountHistoryBody");
   const dataSufficiencyBody = document.getElementById("dataSufficiencyHistoryBody");
+  const oneWordSubstitutionBody = document.getElementById("oneWordSubstitutionHistoryBody");
+  const oneWordSubstitutionResultBody = document.getElementById("oneWordSubstitutionResultHistoryBody");
 
-  if(!numberBody || !percentageBody || !additionBody || !timeBody || !calendarBody || !directionsBody || !codingDecodingBody || !discountBody || !dataSufficiencyBody) return;
+  if(!numberBody || !percentageBody || !additionBody || !timeBody || !calendarBody || !directionsBody || !codingDecodingBody || !discountBody || !dataSufficiencyBody || !oneWordSubstitutionResultBody) return;
 
   const history = getTestHistory();
 
@@ -3855,6 +5786,8 @@ function renderAttemptHistory(){
   codingDecodingBody.innerHTML = "";
   discountBody.innerHTML = "";
   dataSufficiencyBody.innerHTML = "";
+  if(oneWordSubstitutionBody) oneWordSubstitutionBody.innerHTML = "";
+  oneWordSubstitutionResultBody.innerHTML = "";
 
   const numberItems = [];
   const percentageItems = [];
@@ -3865,6 +5798,7 @@ function renderAttemptHistory(){
   const codingDecodingItems = [];
   const discountItems = [];
   const dataSufficiencyItems = [];
+  const oneWordSubstitutionItems = [];
 
   history.forEach(function(item,index){
     const subject = String(item.subject || "").toLowerCase();
@@ -3877,6 +5811,8 @@ function renderAttemptHistory(){
       discountItems.push({item:item,index:index});
     }else if(subject === "data sufficiency"){
       dataSufficiencyItems.push({item:item,index:index});
+    }else if(subject === "english - one word substitution" || subject === "one word substitution"){
+      oneWordSubstitutionItems.push({item:item,index:index});
     }else if(subject === "calendar"){
       calendarItems.push({item:item,index:index});
     }else if(subject === "directions"){
@@ -4012,6 +5948,13 @@ function renderAttemptHistory(){
     dataSufficiencyQuestions.length
   );
 
+  fillTable(
+    oneWordSubstitutionResultBody,
+    oneWordSubstitutionItems,
+    "No One Word Substitution tests attempted yet.",
+    oneWordSubstitutionQuestions.length
+  );
+
   /*
    * Bind dynamically-created View Details buttons.
    * This avoids depending on inline onclick handlers.
@@ -4025,7 +5968,9 @@ function renderAttemptHistory(){
     "#directionsHistoryBody .history-view-btn[data-history-index]," +
     "#codingDecodingHistoryBody .history-view-btn[data-history-index]," +
     "#discountHistoryBody .history-view-btn[data-history-index]," +
-    "#dataSufficiencyHistoryBody .history-view-btn[data-history-index]"
+    "#dataSufficiencyHistoryBody .history-view-btn[data-history-index]," +
+    "#oneWordSubstitutionHistoryBody .history-view-btn[data-history-index]," +
+    "#oneWordSubstitutionResultHistoryBody .history-view-btn[data-history-index]"
   ).forEach(function(button){
 
     button.addEventListener("click", function(event){
@@ -4546,30 +6491,57 @@ function hideAll(){
   document.getElementById('home').style.display='none';
   document.getElementById('test').style.display='none';
   document.getElementById('result').style.display='none';
+  const english = document.getElementById('englishSection');
+  if(english) english.style.display='none';
 }
 
 function goHome(){
-  /*
-   * If the user leaves the test, preserve the current question,
-   * selected answers and EXACT remaining seconds.
-   */
-  const testVisible=document.getElementById('test').style.display==='block';
-
-  if(testVisible){
-    saveTimerState();
+  if(typeof timerId !== "undefined" && timerId !== null){
+    clearInterval(timerId);
+    timerId = null;
   }
 
-  clearInterval(timerId);
-  timerId=null;
+  if(typeof hideAll === "function"){
+    hideAll();
+  }else{
+    document.getElementById("home").style.display = "none";
+    document.getElementById("test").style.display = "none";
+    document.getElementById("result").style.display = "none";
+  }
 
-  hideAll();
-  document.getElementById('home').style.display='block';
+  const home = document.getElementById("home");
+  if(home) home.style.display = "block";
+
   window.scrollTo(0,0);
 }
 
 function showNumberSystem(){
   goHome();
   document.querySelector('.container').scrollIntoView({behavior:'smooth'});
+}
+
+function showEnglish(){
+  if(typeof timerId !== "undefined" && timerId !== null){
+    clearInterval(timerId);
+    timerId = null;
+  }
+
+  if(typeof hideAll === "function"){
+    hideAll();
+  }else{
+    document.getElementById("home").style.display = "none";
+    document.getElementById("test").style.display = "none";
+    document.getElementById("result").style.display = "none";
+  }
+
+  const english = document.getElementById("englishSection");
+  if(english) english.style.display = "block";
+
+  if(typeof renderAttemptHistory === "function"){
+    renderAttemptHistory();
+  }
+
+  window.scrollTo(0,0);
 }
 
 /* ---------- Start / Resume Test ---------- */
@@ -5060,6 +7032,56 @@ function previous(){
 
 /* ---------- Final test submission ---------- */
 
+
+function showOnlySubmittedResultSubject(subject){
+  const sections = document.querySelectorAll(
+    "#result .result-subject-section"
+  );
+
+  const wanted = String(subject || "").trim().toLowerCase();
+
+  sections.forEach(function(section){
+    const heading = section.querySelector("h4");
+    const text = heading
+      ? String(heading.textContent || "").trim().toLowerCase()
+      : "";
+
+    let match = false;
+
+    if(wanted === "english - one word substitution" ||
+       wanted === "one word substitution"){
+      match =
+        text.includes("english") &&
+        text.includes("one word substitution");
+    }else if(wanted === "speed maths - addition" ||
+             wanted === "addition"){
+      match =
+        text.includes("speed maths") &&
+        text.includes("addition");
+    }else if(wanted === "time, speed & distance" ||
+             wanted === "time and distance" ||
+             wanted === "time & distance"){
+      match = text.includes("time, speed") ||
+              text.includes("time and distance") ||
+              text.includes("time & distance");
+    }else{
+      match = text.includes(wanted);
+    }
+
+    section.style.display = match ? "block" : "none";
+  });
+
+  const title = document.querySelector("#result .title");
+  if(title){
+    if(wanted === "english - one word substitution" ||
+       wanted === "one word substitution"){
+      title.textContent = "📊 English Test Results";
+    }else{
+      title.textContent = "📊 " + subject + " Results";
+    }
+  }
+}
+
 function submitTest(){
 
   clearInterval(timerId);
@@ -5071,10 +7093,13 @@ function submitTest(){
     if(answers[i]===q.answer) correctCount++;
   });
 
+  const submittedSubject = getCurrentTestSubjectSafe();
+
   saveTestAttempt(correctCount);
 
-  // Refresh subject-wise statistics immediately after submission.
+  // Refresh statistics, then show ONLY the subject just submitted.
   renderTestResults();
+  showOnlySubmittedResultSubject(submittedSubject);
 
   /*
    * Test is completely finished.
@@ -5284,6 +7309,20 @@ function startAdditionTestAgain(){
   startFreshRetest("Speed Maths - Addition", additionQuestions);
 }
 
+function updateOneWordSubstitutionQuestionCount(){
+  const el = document.getElementById("oneWordSubstitutionQuestionCount");
+  if(el){
+    el.textContent =
+      oneWordSubstitutionQuestions.length + " Questions • 30 Seconds per Question";
+  }
+}
+
+function startOneWordSubstitutionTestAgain(){
+  sessionStorage.setItem("lakshman_previous_app_page", "english");
+
+  startFreshRetest("English - One Word Substitution", oneWordSubstitutionQuestions);
+}
+
 function updateDiscountQuestionCount(){
   const el = document.getElementById("discountQuestionCount");
   if(el) el.textContent = discountQuestions.length + " Question" + (discountQuestions.length === 1 ? "" : "s") + " • 30 Seconds per Question";
@@ -5335,6 +7374,7 @@ function renderTestResults(){
   const codingDecodingItems = [];
   const discountItems = [];
   const dataSufficiencyItems = [];
+  const oneWordSubstitutionItems = [];
 
   history.forEach(function(item,index){
 
@@ -5348,6 +7388,8 @@ function renderTestResults(){
       discountItems.push({item:item,index:index});
     }else if(subject === "data sufficiency"){
       dataSufficiencyItems.push({item:item,index:index});
+    }else if(subject === "english - one word substitution" || subject === "one word substitution"){
+      oneWordSubstitutionItems.push({item:item,index:index});
     }else if(subject === "calendar"){
       calendarItems.push({item:item,index:index});
     }else if(subject === "directions"){
@@ -5527,6 +7569,17 @@ function renderTestResults(){
     dataSufficiencyQuestions.length
   );
 
+  updateStats(
+    oneWordSubstitutionItems,
+    {
+      total:"oneWordSubstitutionTotalTests",
+      best:"oneWordSubstitutionBestScore",
+      average:"oneWordSubstitutionAverageScore",
+      latest:"oneWordSubstitutionLatestScore"
+    },
+    oneWordSubstitutionQuestions.length
+  );
+
   renderAttemptHistory();
 }
 
@@ -5576,6 +7629,7 @@ document.addEventListener("DOMContentLoaded", function(){
   updateDirectionsQuestionCount();
   updateCodingDecodingQuestionCount();
   updateDataSufficiencyQuestionCount();
+  updateOneWordSubstitutionQuestionCount();
   syncDirectionsResultTotals();
   renderTestResults();
 });
@@ -5633,6 +7687,9 @@ function goBackPage() {
         renderTestResults();
       }
     }
+  } else if (previousPage === "english") {
+    const english = document.getElementById("englishSection");
+    if (english) english.style.display = "block";
   } else {
     const home = document.getElementById("home");
     if (home) home.style.display = "block";
@@ -5648,6 +7705,7 @@ document.addEventListener("DOMContentLoaded", updatePercentageQuestionCount);
 document.addEventListener("DOMContentLoaded", updateAdditionQuestionCount);
 document.addEventListener("DOMContentLoaded", updateCodingDecodingQuestionCount);
 document.addEventListener("DOMContentLoaded", updateDataSufficiencyQuestionCount);
+document.addEventListener("DOMContentLoaded", updateOneWordSubstitutionQuestionCount);
 </script>
 </body>
 </html>
