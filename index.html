@@ -2469,6 +2469,74 @@ footer{background:#86130f;color:white;text-align:center;padding:25px}
 .algebra-q4-visual svg{display:block;width:100%;max-width:760px;height:auto;margin:auto}
 @media(max-width:700px){.algebra-q4-visual{padding:10px}.algebra-q4-visual h4{font-size:18px}.algebra-q4-visual .visual-note{font-size:13px}.algebra-q4-visual svg{min-width:0}}
 
+
+/* ===== Clock Q9 — Result-card-only diagram and detailed solution ===== */
+.clock-q9-solution{
+  display:block;
+  width:100%;
+  line-height:1.75;
+  white-space:normal;
+}
+.clock-q9-solution h4{
+  margin:18px 0 10px;
+  color:#921914;
+  font-size:21px;
+}
+.clock-q9-solution p{
+  margin:10px 0;
+}
+.clock-q9-diagram{
+  margin:14px 0 20px;
+  padding:12px;
+  border:1px solid #dce5ef;
+  border-radius:12px;
+  background:#fbfdff;
+  overflow-x:auto;
+}
+.clock-q9-diagram svg{
+  display:block;
+  width:100%;
+  min-width:620px;
+  max-width:760px;
+  height:auto;
+  margin:auto;
+}
+.clock-q9-solution .clock-q3-equation{
+  margin:9px 0 15px;
+  padding:13px;
+  border:1px solid #ead7c8;
+  border-radius:9px;
+  background:#fffaf6;
+  text-align:center;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:21px;
+  font-weight:700;
+}
+.clock-q9-solution .clock-q3-final{
+  margin-top:18px;
+  padding:14px;
+  border:2px solid #168c2d;
+  border-radius:9px;
+  color:#168c2d;
+  background:#f7fff8;
+  text-align:center;
+  font-size:20px;
+  font-weight:900;
+}
+.clock-q9-solution .clock-q3-note{
+  padding:13px;
+  border-left:4px solid #245fbd;
+  background:#f3f8ff;
+}
+@media(max-width:700px){
+  .clock-q9-solution h4{font-size:18px}
+  .clock-q9-solution .clock-q3-equation{font-size:18px;padding:10px}
+  .clock-q9-diagram{padding:7px}
+  .clock-q9-diagram svg{min-width:600px}
+  .clock-q9-solution .clock-q3-final{font-size:17px}
+}
+/* ===== End Clock Q9 styles ===== */
+
 /* ===== Clock Q3 — Diagram is displayed only inside Result Card solution ===== */
 .clock-q3-question{
   margin:14px 0 18px;
@@ -4241,6 +4309,210 @@ body:has(#test[style*="display:block"]){
   .idioms-q44-note{font-size:13px}
 }
 </style>
+
+<style>
+/* =========================================================
+   CLOCK Q12 — 240-degree minute-hand angle to hour-hand angle
+   Diagram and bilingual working appear only in Result Details.
+   ========================================================= */
+.clock-q12-solution{
+  display:block;
+  width:100%;
+  padding:16px;
+  color:#222;
+  line-height:1.75;
+  white-space:normal;
+}
+.clock-q12-solution h4{
+  margin:18px 0 10px;
+  color:#921914;
+  font-size:21px;
+  font-weight:900;
+}
+.clock-q12-solution p{margin:8px 0}
+.clock-q12-note{
+  padding:12px 14px;
+  border-left:4px solid #245fbd;
+  border-radius:7px;
+  background:#f3f8ff;
+}
+.clock-q12-diagram{
+  width:100%;
+  margin:16px 0 22px;
+  padding:12px;
+  overflow-x:auto;
+  border:1px solid #dce5ef;
+  border-radius:12px;
+  background:#fbfdff;
+}
+.clock-q12-diagram svg{
+  display:block;
+  width:100%;
+  min-width:680px;
+  max-width:900px;
+  height:auto;
+  margin:auto;
+}
+.clock-q12-step{
+  margin:14px 0;
+  padding:14px;
+  border:1px solid #dfe4ea;
+  border-left:4px solid #245fbd;
+  border-radius:9px;
+  background:#f8fbff;
+}
+.clock-q12-step strong{
+  display:block;
+  color:#173b75;
+  font-size:17px;
+}
+.clock-q12-step p{margin:7px 0}
+.clock-q12-equation{
+  margin:10px 0 2px;
+  padding:12px;
+  border:1px solid #ead7c8;
+  border-radius:8px;
+  background:#fffaf6;
+  text-align:center;
+  color:#921914;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px;
+  font-weight:900;
+}
+.clock-q12-final{
+  margin:20px 0 12px;
+  padding:16px;
+  border:2px solid #168c2d;
+  border-radius:10px;
+  background:#f3fff5;
+  text-align:center;
+}
+.clock-q12-final span{
+  display:block;
+  color:#168c2d;
+  font-size:17px;
+  font-weight:800;
+}
+.clock-q12-final strong{
+  display:block;
+  margin-top:5px;
+  color:#921914;
+  font-size:29px;
+}
+@media(max-width:700px){
+  .clock-q12-solution{padding:10px}
+  .clock-q12-solution h4{font-size:18px}
+  .clock-q12-note{font-size:13px}
+  .clock-q12-step{padding:11px}
+  .clock-q12-step strong{font-size:15px}
+  .clock-q12-equation{font-size:18px;padding:10px}
+  .clock-q12-final strong{font-size:24px}
+  .clock-q12-diagram svg{min-width:680px}
+}
+</style>
+
+
+<style>
+/* =========================================================
+   CLOCK Q13 — Convert minute-hand angle into hour-hand angle
+   Diagram and bilingual working appear only in Result Details.
+   ========================================================= */
+.clock-q13-solution{
+  display:block;
+  width:100%;
+  padding:16px;
+  color:#222;
+  line-height:1.75;
+  white-space:normal;
+}
+.clock-q13-solution h4{
+  margin:18px 0 10px;
+  color:#921914;
+  font-size:21px;
+  font-weight:900;
+}
+.clock-q13-solution p{margin:8px 0}
+.clock-q13-note{
+  padding:12px 14px;
+  border-left:4px solid #245fbd;
+  border-radius:7px;
+  background:#f3f8ff;
+}
+.clock-q13-diagram{
+  width:100%;
+  margin:16px 0 22px;
+  padding:12px;
+  overflow-x:auto;
+  border:1px solid #dce5ef;
+  border-radius:12px;
+  background:#fbfdff;
+}
+.clock-q13-diagram svg{
+  display:block;
+  width:100%;
+  min-width:650px;
+  max-width:850px;
+  height:auto;
+  margin:auto;
+}
+.clock-q13-step{
+  margin:14px 0;
+  padding:14px;
+  border:1px solid #dfe4ea;
+  border-left:4px solid #245fbd;
+  border-radius:9px;
+  background:#f8fbff;
+}
+.clock-q13-step strong{
+  display:block;
+  color:#173b75;
+  font-size:17px;
+}
+.clock-q13-step p{margin:7px 0}
+.clock-q13-equation{
+  margin:10px 0 2px;
+  padding:12px;
+  border:1px solid #ead7c8;
+  border-radius:8px;
+  background:#fffaf6;
+  text-align:center;
+  color:#921914;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px;
+  font-weight:900;
+}
+.clock-q13-final{
+  margin:20px 0 12px;
+  padding:16px;
+  border:2px solid #168c2d;
+  border-radius:10px;
+  background:#f3fff5;
+  text-align:center;
+}
+.clock-q13-final span{
+  display:block;
+  color:#168c2d;
+  font-size:17px;
+  font-weight:800;
+}
+.clock-q13-final strong{
+  display:block;
+  margin-top:5px;
+  color:#921914;
+  font-size:29px;
+}
+@media(max-width:700px){
+  .clock-q13-solution{padding:10px}
+  .clock-q13-solution h4{font-size:18px}
+  .clock-q13-note{font-size:13px}
+  .clock-q13-step{padding:11px}
+  .clock-q13-step strong{font-size:15px}
+  .clock-q13-equation{font-size:18px;padding:10px}
+  .clock-q13-final strong{font-size:24px}
+  .clock-q13-diagram svg{min-width:650px}
+}
+</style>
+
 </head>
 <body>
 <script>
@@ -4366,7 +4638,7 @@ body:has(#test[style*="display:block"]){
   </div>
 </div>
 <div class="card"><h2>🔢 Number System</h2><p><b>34 Questions</b><br>30 seconds per question</p><button class="primary" onclick="startTest()">Start Test</button></div>
-<div class="card" id="clockHomeCard"><h2>🕒 Clock</h2><p id="clockQuestionCount">6 Questions • 30 Seconds per Question</p><button class="primary" onclick="startClockTestAgain()">Start Test</button></div>
+<div class="card" id="clockHomeCard"><h2>🕒 Clock</h2><p id="clockQuestionCount">7 Questions • 30 Seconds per Question</p><button class="primary" onclick="startClockTestAgain()">Start Test</button></div>
 <div class="card" id="perfectSquaresHomeCard">
   <h2>🔲 Perfect Squares</h2>
   <p id="perfectSquaresQuestionCount">101 Questions • 30 Seconds per Question</p>
@@ -4712,9 +4984,9 @@ body:has(#test[style*="display:block"]){
         <h4 class="history-section-title">🕒 Clock — Results</h4>
         <div class="stats subject-stats">
           <div class="stat"><strong id="clockTotalTests">0</strong>Total Tests Written</div>
-          <div class="stat"><strong id="clockBestScore">0/6</strong>Best Score</div>
+          <div class="stat"><strong id="clockBestScore">0/8</strong>Best Score</div>
           <div class="stat"><strong id="clockAverageScore">0%</strong>Average Score</div>
-          <div class="stat"><strong id="clockLatestScore">0/6</strong>Latest Test</div>
+          <div class="stat"><strong id="clockLatestScore">0/8</strong>Latest Test</div>
         </div>
         <div class="subject-retest-action">
           <button class="take-test-again-btn" type="button" onclick="startClockTestAgain()">
@@ -25788,6 +26060,954 @@ const clockQuestions = [
 
 
 
+  ,
+  /* Q7: Hour-hand angle in 36 seconds — diagram and complete working appear only in Result Card > View Details. */
+  {
+    question: "What angle is made by the hour hand in 36 seconds?",
+    options: ["(1/2)°", "3°", "(3/10)°", "(10/3)°"],
+    answer: 2,
+    pattern: "The hour hand completes 360° in 12 hours. Therefore, it moves 30° in 60 minutes, 0.5° per minute, or 1/120° per second.",
+    solution:
+      "Step 1: The hour hand completes 360° in 12 hours.\n" +
+      "Step 2: Angle moved in 1 hour = 360° ÷ 12 = 30°.\n" +
+      "Step 3: Angle moved in 1 minute = 30° ÷ 60 = 0.5°.\n" +
+      "Step 4: Convert 36 seconds into minutes: 36 ÷ 60 = 0.6 minute.\n" +
+      "Step 5: Angle moved in 36 seconds = 0.5° × 0.6 = 0.3° = (3/10)°.\n" +
+      "Final Answer: (3/10)° (Option C).",
+    solutionHTML: `
+      <div class="clock-q3-solution clock-q7-solution">
+        <h4>🕒 Diagrammatic representation — Hour hand in 36 seconds</h4>
+        <p>The hour hand moves 0.5° per minute. In 36 seconds (0.6 minute), it moves 0.3° clockwise. The small movement is enlarged on the right for clarity.</p>
+        <div class="clock-q3-diagram">
+          <svg viewBox="0 0 720 390" role="img" aria-label="Clock diagram showing the hour hand moving 0.3 degrees in 36 seconds, with an enlarged angle and step-by-step calculation">
+            <defs>
+              <marker id="clockQ7Arrow" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L7,3 L0,6" fill="#921914"/>
+              </marker>
+            </defs>
+
+            <!-- Clock face: the tiny real movement is intentionally schematic. -->
+            <circle cx="160" cy="155" r="112" fill="#f8fbff" stroke="#245fbd" stroke-width="5"/>
+            <circle cx="160" cy="155" r="6" fill="#921914"/>
+            <g stroke="#245fbd" stroke-width="3" stroke-linecap="round">
+              <path d="M160 52 V65 M263 155 H250 M160 258 V245 M57 155 H70"/>
+              <path d="M211.5 67.5 L205 79 M247.5 103.5 L236 110 M247.5 206.5 L236 200 M211.5 242.5 L205 231 M108.5 242.5 L115 231 M72.5 206.5 L84 200 M72.5 103.5 L84 110 M108.5 67.5 L115 79"/>
+            </g>
+            <g fill="#173b75" font-size="17" font-weight="800" text-anchor="middle">
+              <text x="160" y="35">12</text><text x="283" y="161">3</text>
+              <text x="160" y="286">6</text><text x="37" y="161">9</text>
+            </g>
+            <path d="M160 155 L160 65" stroke="#7b8794" stroke-width="7" stroke-linecap="round"/>
+            <path d="M160 155 L160.47 65.01" stroke="#168c2d" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="160" cy="155" r="5" fill="#921914"/>
+            <text x="160" y="316" fill="#173b75" font-size="16" font-weight="800" text-anchor="middle">36 seconds</text>
+            <text x="160" y="340" fill="#555" font-size="13" text-anchor="middle">Tiny clockwise movement (not to scale)</text>
+
+            <path d="M292 155 H350" stroke="#921914" stroke-width="3" marker-end="url(#clockQ7Arrow)"/>
+
+            <!-- Magnified view of the 0.3 degree movement. -->
+            <text x="535" y="38" fill="#173b75" font-size="20" font-weight="900" text-anchor="middle">Magnified angle view</text>
+            <path d="M430 280 L430 78" stroke="#7b8794" stroke-width="6" stroke-linecap="round"/>
+            <path d="M430 280 L451 79" stroke="#168c2d" stroke-width="6" stroke-linecap="round"/>
+            <path d="M430 185 A95 95 0 0 1 431 185.5" fill="none" stroke="#f08a00" stroke-width="7" stroke-linecap="round"/>
+            <text x="475" y="145" fill="#168c2d" font-size="26" font-weight="900">0.3°</text>
+            <text x="535" y="315" fill="#555" font-size="16" font-weight="700" text-anchor="middle">0.5° × 0.6 = 0.3°</text>
+            <text x="535" y="342" fill="#168c2d" font-size="18" font-weight="900" text-anchor="middle">Final angle</text>
+            <text x="535" y="370" fill="#921914" font-size="17" font-weight="900" text-anchor="middle">= (3/10)°</text>
+          </svg>
+        </div>
+
+        <h4>📘 Step-by-step logical calculation</h4>
+
+        <p><strong>Step 1 — Find the hour hand's complete revolution time</strong></p>
+        <div class="clock-q3-equation">12 hours = 360°</div>
+
+        <p><strong>Step 2 — Find the angle moved in one hour</strong></p>
+        <div class="clock-q3-equation">360° ÷ 12 = 30° per hour</div>
+
+        <p><strong>Step 3 — Find the angle moved in one minute</strong></p>
+        <div class="clock-q3-equation">30° ÷ 60 = 0.5° per minute</div>
+
+        <p><strong>Step 4 — Convert 36 seconds into minutes</strong></p>
+        <div class="clock-q3-equation">36 ÷ 60 = 0.6 minute</div>
+
+        <p><strong>Step 5 — Calculate the angle for 36 seconds</strong></p>
+        <div class="clock-q3-equation">0.5° × 0.6 = 0.3° = (3/10)°</div>
+
+        <p><strong>Step 6 — Match the answer with the given options</strong></p>
+        <div class="clock-q3-equation">A) (1/2)° &nbsp; | &nbsp; B) 3° &nbsp; | &nbsp; C) (3/10)° &nbsp; | &nbsp; D) (10/3)°</div>
+
+        <p class="clock-q3-final">✅ Correct Answer: (3/10)° — Option C</p>
+        <p class="clock-q3-note"><strong>Remember:</strong> The hour hand moves 30° in one hour, so its speed is 0.5° per minute. Do not use the minute hand's speed (6° per minute) or the second hand's speed (6° per second).</p>
+      </div>`
+  }
+
+  ,
+  /* Q8: Hour-hand angle in 50 minutes — diagram and full solution appear only in Result Card > View Details. */
+  {
+    question: "What angle is made by hour hand in 50 minutes?",
+    options: ["40°", "20°", "25°", "15°"],
+    answer: 2,
+    pattern: "The hour hand moves 30° in 60 minutes. Therefore, it moves 0.5° per minute. Multiply 50 minutes by 0.5°.",
+    solution:
+      "Step 1: The hour hand completes 360° in 12 hours.\\n" +
+      "Step 2: Angle moved in 1 hour = 360° ÷ 12 = 30°.\\n" +
+      "Step 3: Angle moved in 1 minute = 30° ÷ 60 = 0.5°.\\n" +
+      "Step 4: Angle moved in 50 minutes = 50 × 0.5° = 25°.\\n" +
+      "Step 5: Match the answer with the options.\\n" +
+      "Final Answer: 25° (Option C).",
+    solutionHTML: `
+      <div class="clock-q3-solution clock-q8-solution">
+        <h4>🕒 Diagrammatic representation — Hour hand in 50 minutes</h4>
+        <p>The hour hand moves 0.5° every minute. In 50 minutes, it moves 25° clockwise from the 12 position. The enlarged view makes this angle easier to see.</p>
+        <div class="clock-q3-diagram">
+          <svg viewBox="0 0 720 390" role="img" aria-label="Clock diagram showing the hour hand moving 25 degrees in 50 minutes, with an enlarged angle view">
+            <defs>
+              <marker id="clockQ8Arrow" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L7,3 L0,6" fill="#921914"/>
+              </marker>
+            </defs>
+            <!-- Main clock face -->
+            <circle cx="160" cy="155" r="112" fill="#f8fbff" stroke="#245fbd" stroke-width="5"/>
+            <circle cx="160" cy="155" r="6" fill="#921914"/>
+            <g stroke="#245fbd" stroke-width="3" stroke-linecap="round">
+              <path d="M160 52 V65 M263 155 H250 M160 258 V245 M57 155 H70"/>
+              <path d="M211.5 67.5 L205 79 M247.5 103.5 L236 110 M247.5 206.5 L236 200 M211.5 242.5 L205 231 M108.5 242.5 L115 231 M72.5 206.5 L84 200 M72.5 103.5 L84 110 M108.5 67.5 L115 79"/>
+            </g>
+            <g fill="#173b75" font-size="17" font-weight="800" text-anchor="middle">
+              <text x="160" y="35">12</text>
+              <text x="283" y="161">3</text>
+              <text x="160" y="286">6</text>
+              <text x="37" y="161">9</text>
+            </g>
+            <!-- Starting hour-hand position at 12 and ending position after 25 degrees clockwise -->
+            <path d="M160 155 L160 65" stroke="#7b8794" stroke-width="7" stroke-linecap="round"/>
+            <path d="M160 155 L198 73.4" stroke="#168c2d" stroke-width="6" stroke-linecap="round"/>
+            <path d="M160 91 A64 64 0 0 1 187 97" fill="none" stroke="#f08a00" stroke-width="6" stroke-linecap="round"/>
+            <text x="205" y="100" fill="#168c2d" font-size="21" font-weight="900">25°</text>
+            <text x="160" y="316" fill="#173b75" font-size="16" font-weight="800" text-anchor="middle">50 minutes</text>
+            <text x="160" y="340" fill="#555" font-size="13" text-anchor="middle">Hour-hand movement (schematic)</text>
+
+            <path d="M292 155 H350" stroke="#921914" stroke-width="3" marker-end="url(#clockQ8Arrow)"/>
+
+            <!-- Enlarged angle view -->
+            <text x="535" y="38" fill="#173b75" font-size="20" font-weight="900" text-anchor="middle">Magnified angle view</text>
+            <path d="M430 280 L430 78" stroke="#7b8794" stroke-width="6" stroke-linecap="round"/>
+            <path d="M430 280 L515 97" stroke="#168c2d" stroke-width="6" stroke-linecap="round"/>
+            <path d="M430 190 A90 90 0 0 1 468 198" fill="none" stroke="#f08a00" stroke-width="6" stroke-linecap="round"/>
+            <text x="480" y="150" fill="#168c2d" font-size="26" font-weight="900">25°</text>
+            <text x="535" y="315" fill="#555" font-size="16" font-weight="700" text-anchor="middle">50 × 0.5° = 25°</text>
+            <text x="535" y="342" fill="#168c2d" font-size="18" font-weight="900" text-anchor="middle">Final angle</text>
+            <text x="535" y="370" fill="#921914" font-size="17" font-weight="900" text-anchor="middle">Option C</text>
+          </svg>
+        </div>
+
+        <h4>📘 Step-by-step logical calculation</h4>
+        <p><strong>Step 1 — Find the hour hand's complete revolution</strong></p>
+        <div class="clock-q3-equation">12 hours = 360°</div>
+
+        <p><strong>Step 2 — Calculate the angle moved in one hour</strong></p>
+        <div class="clock-q3-equation">360° ÷ 12 = 30° per hour</div>
+
+        <p><strong>Step 3 — Calculate the angle moved in one minute</strong></p>
+        <div class="clock-q3-equation">30° ÷ 60 = 0.5° per minute</div>
+
+        <p><strong>Step 4 — Calculate the angle for 50 minutes</strong></p>
+        <div class="clock-q3-equation">50 × 0.5° = 25°</div>
+
+        <p><strong>Step 5 — Match the answer with the given options</strong></p>
+        <div class="clock-q3-equation">A) 40° &nbsp; | &nbsp; B) 20° &nbsp; | &nbsp; C) 25° &nbsp; | &nbsp; D) 15°</div>
+
+        <p class="clock-q3-final">✅ Correct Answer: 25° — Option C</p>
+        <p class="clock-q3-note"><strong>Remember:</strong> The hour hand moves 30° in 60 minutes, so its speed is 0.5° per minute. For 50 minutes, multiply 50 by 0.5°.</p>
+      </div>`
+  }
+
+  ,
+  /* Q9: Hour-hand angle in 8 hours 12 minutes — complete calculation and diagram are shown only in Result Card > View Details. */
+  {
+    question: "What angle is made by the hour hand in 8 hours 12 minutes?",
+    options: ["284°", "246°", "258°", "262°"],
+    answer: 1,
+    pattern: "The hour hand moves 30° in 1 hour or 0.5° per minute. Convert 8 hours 12 minutes into 492 minutes, then multiply 492 by 0.5°.",
+    solution:
+      "Step 1: Convert 8 hours into minutes: 8 × 60 = 480 minutes.\\n" +
+      "Step 2: Add the remaining 12 minutes: 480 + 12 = 492 minutes.\\n" +
+      "Step 3: The hour hand completes 360° in 12 hours.\\n" +
+      "Step 4: Angle moved in 1 hour = 360° ÷ 12 = 30°.\\n" +
+      "Step 5: Angle moved in 1 minute = 30° ÷ 60 = 0.5°.\\n" +
+      "Step 6: Angle moved in 492 minutes = 492 × 0.5° = 246°.\\n" +
+      "Final Answer: 246° (Option B).",
+    solutionHTML: `
+      <div class="clock-q3-solution clock-q9-solution">
+        <h4>🕒 Diagrammatic representation — Hour hand in 8 hours 12 minutes</h4>
+        <p>The hour hand moves 0.5° per minute. In 8 hours 12 minutes (492 minutes), it sweeps through 246° clockwise. The clock illustration shows the starting direction at 12 and the ending direction after the complete elapsed time; the calculation below gives the exact swept angle.</p>
+
+        <div class="clock-q3-diagram clock-q9-diagram">
+          <svg viewBox="0 0 760 430" role="img" aria-label="Clock diagram showing the hour hand sweeping 246 degrees clockwise in 8 hours 12 minutes, with a magnified calculation view">
+            <defs>
+              <marker id="clockQ9Arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#921914"/>
+              </marker>
+            </defs>
+
+            <!-- Clock face and hour markers -->
+            <circle cx="175" cy="185" r="125" fill="#f8fbff" stroke="#245fbd" stroke-width="5"/>
+            <circle cx="175" cy="185" r="6" fill="#921914"/>
+            <g stroke="#245fbd" stroke-width="3" stroke-linecap="round">
+              <path d="M175 70 V84 M290 185 H276 M175 300 V286 M60 185 H74"/>
+              <path d="M232.5 85.4 L225.5 97.5 M274.6 127.5 L262.5 134.5 M274.6 242.5 L262.5 235.5 M232.5 284.6 L225.5 272.5 M117.5 284.6 L124.5 272.5 M75.4 242.5 L87.5 235.5 M75.4 127.5 L87.5 134.5 M117.5 85.4 L124.5 97.5"/>
+            </g>
+            <g fill="#173b75" font-size="18" font-weight="800" text-anchor="middle">
+              <text x="175" y="48">12</text>
+              <text x="315" y="192">3</text>
+              <text x="175" y="330">6</text>
+              <text x="35" y="192">9</text>
+            </g>
+
+            <!-- Initial direction at 12 and final direction after 246 degrees clockwise -->
+            <path d="M175 185 L175 88" stroke="#7b8794" stroke-width="7" stroke-linecap="round"/>
+            <path d="M175 185 L87 228" stroke="#168c2d" stroke-width="7" stroke-linecap="round"/>
+            <path d="M175 108 A77 77 0 1 1 103 219" fill="none" stroke="#f08a00" stroke-width="6" stroke-linecap="round" marker-end="url(#clockQ9Arrow)"/>
+            <text x="72" y="257" fill="#168c2d" font-size="21" font-weight="900">246°</text>
+            <text x="175" y="360" fill="#173b75" font-size="16" font-weight="800" text-anchor="middle">8 hours 12 minutes</text>
+            <text x="175" y="383" fill="#555" font-size="13" text-anchor="middle">Clockwise swept angle</text>
+
+            <!-- Arrow to the step-by-step calculation -->
+            <path d="M325 185 H385" stroke="#921914" stroke-width="3" marker-end="url(#clockQ9Arrow)"/>
+
+            <!-- Calculation panel -->
+            <rect x="410" y="48" width="325" height="330" rx="14" fill="#fffaf6" stroke="#ead7c8" stroke-width="2"/>
+            <text x="572" y="82" text-anchor="middle" fill="#173b75" font-size="20" font-weight="900">Angle calculation</text>
+            <text x="572" y="125" text-anchor="middle" fill="#222" font-size="18" font-weight="700">8 × 60 + 12</text>
+            <text x="572" y="155" text-anchor="middle" fill="#921914" font-size="23" font-weight="900">= 492 minutes</text>
+            <line x1="445" y1="180" x2="700" y2="180" stroke="#d7c7b8" stroke-width="2"/>
+            <text x="572" y="218" text-anchor="middle" fill="#222" font-size="17">Hour-hand speed</text>
+            <text x="572" y="250" text-anchor="middle" fill="#173b75" font-size="22" font-weight="900">0.5° per minute</text>
+            <text x="572" y="292" text-anchor="middle" fill="#222" font-size="17">492 × 0.5°</text>
+            <text x="572" y="332" text-anchor="middle" fill="#168c2d" font-size="27" font-weight="900">= 246°</text>
+            <text x="572" y="357" text-anchor="middle" fill="#921914" font-size="16" font-weight="900">Correct answer: Option B</text>
+          </svg>
+        </div>
+
+        <h4>📘 Step-by-step logical calculation</h4>
+
+        <p><strong>Step 1 — Convert 8 hours into minutes</strong></p>
+        <div class="clock-q3-equation">8 × 60 = 480 minutes</div>
+
+        <p><strong>Step 2 — Add the remaining 12 minutes</strong></p>
+        <div class="clock-q3-equation">480 + 12 = 492 minutes</div>
+
+        <p><strong>Step 3 — Find the hour hand's complete revolution</strong></p>
+        <div class="clock-q3-equation">12 hours = 360°</div>
+
+        <p><strong>Step 4 — Calculate the angle moved in one hour</strong></p>
+        <div class="clock-q3-equation">360° ÷ 12 = 30° per hour</div>
+
+        <p><strong>Step 5 — Calculate the angle moved in one minute</strong></p>
+        <div class="clock-q3-equation">30° ÷ 60 = 0.5° per minute</div>
+
+        <p><strong>Step 6 — Calculate the angle for 492 minutes</strong></p>
+        <div class="clock-q3-equation">492 × 0.5° = 246°</div>
+
+        <p><strong>Step 7 — Match the answer with the given options</strong></p>
+        <div class="clock-q3-equation">A) 284° &nbsp; | &nbsp; B) 246° &nbsp; | &nbsp; C) 258° &nbsp; | &nbsp; D) 262°</div>
+
+        <p class="clock-q3-final">✅ Correct Answer: 246° — Option B</p>
+        <p class="clock-q3-note"><strong>Remember:</strong> The hour hand moves 30° in one hour, 0.5° in one minute, and 1/120° in one second. Since the question gives hours and minutes, convert the full duration into minutes before multiplying by 0.5°.</p>
+      </div>`
+  }
+
+
+
+  ,
+  /* Q10: Number of complete rotations made by the hour and minute hands in 72 hours. */
+  {
+    question: "If m and n are the numbers of rotations made by the hour hand and minute hand of a clock, respectively, in 72 hours, then what is n − m?<br>ఒక గడియారంలో గంటల ముల్లు మరియు నిమిషాల ముల్లు వరుసగా m మరియు n భ్రమణాలు చేస్తే, 72 గంటల్లో n − m విలువ ఎంత?",
+    options: ["66", "72", "24", "56"],
+    answer: 0,
+    pattern: "గంటల ముల్లు 12 గంటలకు 1 పూర్తి భ్రమణం చేస్తుంది. నిమిషాల ముల్లు ప్రతి 1 గంటకు 1 పూర్తి భ్రమణం చేస్తుంది.",
+    solution: "Step 1: గంటల ముల్లు 12 గంటల్లో 1 భ్రమణం చేస్తుంది. కాబట్టి 72 గంటల్లో m = 72 ÷ 12 = 6 భ్రమణాలు.\nStep 2: నిమిషాల ముల్లు 1 గంటలో 1 భ్రమణం చేస్తుంది. కాబట్టి 72 గంటల్లో n = 72 ÷ 1 = 72 భ్రమణాలు.\nStep 3: n − m = 72 − 6 = 66.\nFinal Answer: 66 (Option A).",
+    solutionHTML: `
+      <div class="clock-q10-solution">
+        <h4>🕒 Diagrammatic Representation — 72 గంటల్లో ముళ్ల భ్రమణాలు</h4>
+        <p class="clock-q10-note">గంటల ముల్లు మరియు నిమిషాల ముల్లు 72 గంటల్లో ఎన్ని పూర్తి చుట్లు తిరుగుతాయో క్రింది చిత్రంలో చూడండి.</p>
+        <div class="clock-q10-diagram">
+          <svg viewBox="0 0 820 390" role="img" aria-label="72 గంటల్లో గంటల ముల్లు 6 భ్రమణాలు, నిమిషాల ముల్లు 72 భ్రమణాలు చేస్తాయి. తేడా 66.">
+            <defs>
+              <marker id="clockQ10Arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#921914"/>
+              </marker>
+            </defs>
+            <rect x="18" y="18" width="375" height="350" rx="16" fill="#f4f8ff" stroke="#245fbd" stroke-width="2"/>
+            <text x="205" y="52" text-anchor="middle" fill="#173b75" font-size="22" font-weight="900">గంటల ముల్లు (m)</text>
+            <circle cx="205" cy="170" r="82" fill="#fff" stroke="#245fbd" stroke-width="5"/>
+            <circle cx="205" cy="170" r="5" fill="#921914"/>
+            <g fill="#173b75" font-size="17" font-weight="800" text-anchor="middle">
+              <text x="205" y="102">12</text><text x="275" y="176">3</text><text x="205" y="247">6</text><text x="135" y="176">9</text>
+            </g>
+            <path d="M205 170 L205 112" stroke="#f08a00" stroke-width="7" stroke-linecap="round"/>
+            <path d="M205 170 L255 199" stroke="#168c2d" stroke-width="4" stroke-linecap="round"/>
+            <path d="M205 83 A88 88 0 1 1 204 82" fill="none" stroke="#f08a00" stroke-width="5" stroke-dasharray="8 5" marker-end="url(#clockQ10Arrow)"/>
+            <text x="205" y="292" text-anchor="middle" fill="#222" font-size="18" font-weight="800">12 గంటలు = 1 భ్రమణం</text>
+            <text x="205" y="326" text-anchor="middle" fill="#168c2d" font-size="24" font-weight="900">72 ÷ 12 = 6</text>
+            <text x="205" y="350" text-anchor="middle" fill="#921914" font-size="17" font-weight="900">m = 6 భ్రమణాలు</text>
+
+            <rect x="427" y="18" width="375" height="350" rx="16" fill="#fffaf3" stroke="#e49a26" stroke-width="2"/>
+            <text x="614" y="52" text-anchor="middle" fill="#921914" font-size="22" font-weight="900">నిమిషాల ముల్లు (n)</text>
+            <circle cx="614" cy="170" r="82" fill="#fff" stroke="#e49a26" stroke-width="5"/>
+            <circle cx="614" cy="170" r="5" fill="#921914"/>
+            <g fill="#173b75" font-size="17" font-weight="800" text-anchor="middle">
+              <text x="614" y="102">12</text><text x="684" y="176">3</text><text x="614" y="247">6</text><text x="544" y="176">9</text>
+            </g>
+            <path d="M614 170 L614 103" stroke="#921914" stroke-width="7" stroke-linecap="round"/>
+            <path d="M614 83 A88 88 0 1 1 613 82" fill="none" stroke="#921914" stroke-width="5" stroke-dasharray="5 4" marker-end="url(#clockQ10Arrow)"/>
+            <text x="614" y="292" text-anchor="middle" fill="#222" font-size="18" font-weight="800">1 గంట = 1 భ్రమణం</text>
+            <text x="614" y="326" text-anchor="middle" fill="#168c2d" font-size="24" font-weight="900">72 ÷ 1 = 72</text>
+            <text x="614" y="350" text-anchor="middle" fill="#921914" font-size="17" font-weight="900">n = 72 భ్రమణాలు</text>
+          </svg>
+        </div>
+
+        <h4>📘 Step-by-step Logical Calculation</h4>
+        <div class="clock-q10-step">
+          <strong>Step 1 — గంటల ముల్లు (m) భ్రమణాలు</strong>
+          <p>గంటల ముల్లు 12 గంటలకు ఒక పూర్తి భ్రమణం చేస్తుంది.</p>
+          <div class="clock-q10-equation">m = 72 ÷ 12 = 6</div>
+        </div>
+        <div class="clock-q10-step">
+          <strong>Step 2 — నిమిషాల ముల్లు (n) భ్రమణాలు</strong>
+          <p>నిమిషాల ముల్లు ప్రతి గంటకు ఒక పూర్తి భ్రమణం చేస్తుంది.</p>
+          <div class="clock-q10-equation">n = 72 ÷ 1 = 72</div>
+        </div>
+        <div class="clock-q10-step">
+          <strong>Step 3 — అడిగిన విలువ n − m</strong>
+          <p>నిమిషాల ముల్లు భ్రమణాల నుండి గంటల ముల్లు భ్రమణాలను తీసివేయాలి.</p>
+          <div class="clock-q10-equation">n − m = 72 − 6 = 66</div>
+        </div>
+        <div class="clock-q10-final">
+          <span>✅ సరైన సమాధానం</span>
+          <strong>66 — Option A</strong>
+        </div>
+        <p class="clock-q10-note"><strong>గుర్తుంచుకోండి:</strong> గంటల ముల్లు 12 గంటలకు 1 చుట్టు తిరుగుతుంది; నిమిషాల ముల్లు 1 గంటకు 1 చుట్టు తిరుగుతుంది. 72 గంటల్లో వాటి భ్రమణాల తేడా 66.</p>
+      </div>`
+  },
+  /* Q11: Compare the speed of the minute hand with the speed of the hour hand. */
+  {
+    question: "The speed of the minute hand is how many times the speed of the hour hand?<br>నిమిషాల ముల్లు వేగం, గంటల ముల్లు వేగం కంటే ఎన్ని రెట్లు ఎక్కువ?",
+    options: ["8", "12", "6", "15"],
+    answer: 1,
+    pattern: "The minute hand moves 6° per minute, while the hour hand moves 0.5° per minute. / నిమిషాల ముల్లు నిమిషానికి 6° కదులుతుంది; గంటల ముల్లు నిమిషానికి 0.5° కదులుతుంది.",
+    solution: "Step 1: Minute hand speed = 360° ÷ 60 = 6° per minute.\nStep 2: Hour hand speed = 360° ÷ (12 × 60) = 0.5° per minute.\nStep 3: Speed ratio = 6 ÷ 0.5 = 12.\nFinal Answer: 12 times (Option B).",
+    solutionHTML: `
+      <div class="clock-q11-solution">
+        <h4>🕒 Diagrammatic Representation — Comparing the Speeds of Clock Hands</h4>
+        <p class="clock-q11-note"><strong>English:</strong> The minute hand moves faster than the hour hand. The diagram compares the angle covered by both hands in one minute.</p>
+        <p class="clock-q11-note"><strong>తెలుగు:</strong> గంటల ముల్లుతో పోలిస్తే నిమిషాల ముల్లు వేగంగా కదులుతుంది. ఒక నిమిషంలో రెండు ముళ్లు కదిలే కోణాలను ఈ చిత్రం పోలుస్తుంది.</p>
+
+        <div class="clock-q11-diagram">
+          <svg viewBox="0 0 820 430" role="img" aria-label="Clock speed comparison: minute hand 6 degrees per minute, hour hand 0.5 degrees per minute, ratio 12 times.">
+            <defs>
+              <marker id="clockQ11ArrowBlue" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#245fbd"/>
+              </marker>
+              <marker id="clockQ11ArrowOrange" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#f08a00"/>
+              </marker>
+            </defs>
+
+            <rect x="18" y="18" width="370" height="390" rx="15" fill="#f2f7ff" stroke="#245fbd" stroke-width="2"/>
+            <text x="203" y="52" text-anchor="middle" fill="#173b75" font-size="21" font-weight="900">Minute Hand</text>
+            <circle cx="203" cy="178" r="91" fill="#fff" stroke="#245fbd" stroke-width="4"/>
+            <circle cx="203" cy="178" r="5" fill="#921914"/>
+            <g fill="#173b75" font-size="16" font-weight="800" text-anchor="middle">
+              <text x="203" y="105">12</text><text x="278" y="184">3</text>
+              <text x="203" y="259">6</text><text x="128" y="184">9</text>
+            </g>
+            <path d="M203 178 L203 102" stroke="#245fbd" stroke-width="6" stroke-linecap="round"/>
+            <path d="M203 92 A86 86 0 0 1 212 93" fill="none" stroke="#245fbd" stroke-width="5" marker-end="url(#clockQ11ArrowBlue)"/>
+            <text x="203" y="302" text-anchor="middle" fill="#245fbd" font-size="22" font-weight="900">6° / minute</text>
+            <text x="203" y="333" text-anchor="middle" fill="#222" font-size="16">360° ÷ 60 minutes</text>
+            <text x="203" y="361" text-anchor="middle" fill="#168c2d" font-size="19" font-weight="900">= 6°</text>
+
+            <rect x="432" y="18" width="370" height="390" rx="15" fill="#fff8ee" stroke="#f08a00" stroke-width="2"/>
+            <text x="617" y="52" text-anchor="middle" fill="#921914" font-size="21" font-weight="900">Hour Hand</text>
+            <circle cx="617" cy="178" r="91" fill="#fff" stroke="#f08a00" stroke-width="4"/>
+            <circle cx="617" cy="178" r="5" fill="#921914"/>
+            <g fill="#173b75" font-size="16" font-weight="800" text-anchor="middle">
+              <text x="617" y="105">12</text><text x="692" y="184">3</text>
+              <text x="617" y="259">6</text><text x="542" y="184">9</text>
+            </g>
+            <path d="M617 178 L617 108" stroke="#f08a00" stroke-width="6" stroke-linecap="round"/>
+            <path d="M617 92 A86 86 0 0 1 618 93" fill="none" stroke="#f08a00" stroke-width="5" marker-end="url(#clockQ11ArrowOrange)"/>
+            <text x="617" y="302" text-anchor="middle" fill="#921914" font-size="22" font-weight="900">0.5° / minute</text>
+            <text x="617" y="333" text-anchor="middle" fill="#222" font-size="16">360° ÷ 720 minutes</text>
+            <text x="617" y="361" text-anchor="middle" fill="#168c2d" font-size="19" font-weight="900">= 0.5°</text>
+
+            <rect x="225" y="374" width="370" height="38" rx="9" fill="#ecfdf5" stroke="#168c2d" stroke-width="2"/>
+            <text x="410" y="399" text-anchor="middle" fill="#168c2d" font-size="20" font-weight="900">6 ÷ 0.5 = 12 TIMES</text>
+          </svg>
+        </div>
+
+        <h4>📘 Step-by-Step Logical Calculation</h4>
+
+        <div class="clock-q11-step">
+          <strong>Step 1 — Find the speed of the minute hand</strong>
+          <p><strong>English:</strong> The minute hand completes 360° in 60 minutes.</p>
+          <p><strong>తెలుగు:</strong> నిమిషాల ముల్లు 60 నిమిషాల్లో 360° పూర్తి చేస్తుంది.</p>
+          <div class="clock-q11-equation">Minute hand speed = 360° ÷ 60 = 6° per minute</div>
+        </div>
+
+        <div class="clock-q11-step">
+          <strong>Step 2 — Find the speed of the hour hand</strong>
+          <p><strong>English:</strong> The hour hand completes 360° in 12 hours (720 minutes).</p>
+          <p><strong>తెలుగు:</strong> గంటల ముల్లు 12 గంటల్లో అంటే 720 నిమిషాల్లో 360° పూర్తి చేస్తుంది.</p>
+          <div class="clock-q11-equation">Hour hand speed = 360° ÷ 720 = 0.5° per minute</div>
+        </div>
+
+        <div class="clock-q11-step">
+          <strong>Step 3 — Compare both speeds</strong>
+          <p><strong>English:</strong> Divide the minute hand speed by the hour hand speed.</p>
+          <p><strong>తెలుగు:</strong> నిమిషాల ముల్లు వేగాన్ని గంటల ముల్లు వేగంతో భాగించాలి.</p>
+          <div class="clock-q11-equation">Speed ratio = 6 ÷ 0.5 = 12</div>
+        </div>
+
+        <div class="clock-q11-step">
+          <strong>Step 4 — Match the answer with the options</strong>
+          <p><strong>English:</strong> The minute hand is 12 times as fast as the hour hand.</p>
+          <p><strong>తెలుగు:</strong> నిమిషాల ముల్లు, గంటల ముల్లు కంటే 12 రెట్లు వేగంగా కదులుతుంది.</p>
+          <div class="clock-q11-equation">A) 8 &nbsp; | &nbsp; B) 12 &nbsp; | &nbsp; C) 6 &nbsp; | &nbsp; D) 15</div>
+        </div>
+
+        <div class="clock-q11-final">
+          <span>✅ Correct Answer / సరైన సమాధానం</span>
+          <strong>12 — Option B</strong>
+        </div>
+
+        <p class="clock-q11-note"><strong>Remember / గుర్తుంచుకోండి:</strong> Minute hand speed = 6° per minute; Hour hand speed = 0.5° per minute. Their speed ratio is 12:1. / నిమిషాల ముల్లు వేగం 6°; గంటల ముల్లు వేగం 0.5°. వాటి వేగాల నిష్పత్తి 12:1.</p>
+      </div>`
+  }
+
+  ,
+  /* Q12: Convert the minute-hand sweep of 240 degrees into elapsed minutes,
+     then calculate the hour-hand angle during the same elapsed time. */
+  {
+    question: "If the minute hand forms an angle of 240°, then what is the angle formed by the hour hand in the same time?<br>నిమిషాల ముల్లు 240° కోణాన్ని ఏర్పరిస్తే, అదే సమయంలో గంటల ముల్లు ఏర్పరిచే కోణం ఎంత?",
+    options: ["25°", "18°", "20°", "15°"],
+    answer: 2,
+    pattern: "The minute hand moves 6° per minute. First find the elapsed time: 240° ÷ 6° = 40 minutes. The hour hand moves 0.5° per minute, so 40 × 0.5° = 20°.",
+    solution: "Step 1: Minute-hand speed = 360° ÷ 60 = 6° per minute.\\nStep 2: Time taken by the minute hand to move 240° = 240° ÷ 6° = 40 minutes.\\nStep 3: Hour-hand speed = 360° ÷ 720 = 0.5° per minute.\\nStep 4: Hour-hand angle in the same 40 minutes = 40 × 0.5° = 20°.\\nFinal Answer: 20° (Option C).",
+    solutionHTML: `
+      <div class="clock-q12-solution">
+        <h4>🕒 Diagrammatic Representation — 240° Minute-Hand Angle and Hour-Hand Angle</h4>
+        <p class="clock-q12-note"><strong>English:</strong> The minute hand sweeps through 240°. We first convert this angle into elapsed time. Then we calculate how far the hour hand moves during that same time.</p>
+        <p class="clock-q12-note"><strong>తెలుగు:</strong> నిమిషాల ముల్లు 240° కోణం తిరుగుతుంది. ముందుగా ఆ కోణానికి పట్టిన సమయాన్ని కనుక్కొని, అదే సమయంలో గంటల ముల్లు కదిలిన కోణాన్ని లెక్కించాలి.</p>
+
+        <div class="clock-q12-diagram">
+          <svg viewBox="0 0 900 430" role="img" aria-label="Minute hand rotates 240 degrees in 40 minutes; hour hand rotates 20 degrees in the same 40 minutes.">
+            <defs>
+              <marker id="clockQ12ArrowMinute" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#245fbd"/>
+              </marker>
+              <marker id="clockQ12ArrowHour" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#f08a00"/>
+              </marker>
+            </defs>
+
+            <!-- Minute-hand illustration: 240-degree clockwise sweep -->
+            <rect x="18" y="18" width="410" height="390" rx="16" fill="#f2f7ff" stroke="#245fbd" stroke-width="2"/>
+            <text x="223" y="52" text-anchor="middle" fill="#173b75" font-size="22" font-weight="900">Minute Hand</text>
+            <circle cx="223" cy="190" r="105" fill="#fff" stroke="#245fbd" stroke-width="4"/>
+            <circle cx="223" cy="190" r="5" fill="#921914"/>
+            <g stroke="#245fbd" stroke-width="2.5" stroke-linecap="round">
+              <path d="M223 85 V98 M328 190 H315 M223 295 V282 M118 190 H131"/>
+              <path d="M275.5 99.1 L269 110.4 M313.9 137.5 L302.6 144 M313.9 242.5 L302.6 236 M275.5 280.9 L269 269.6 M170.5 280.9 L177 269.6 M132.1 242.5 L143.4 236 M132.1 137.5 L143.4 144 M170.5 99.1 L177 110.4"/>
+            </g>
+            <g fill="#173b75" font-size="17" font-weight="800" text-anchor="middle">
+              <text x="223" y="76">12</text><text x="352" y="196">3</text>
+              <text x="223" y="322">6</text><text x="94" y="196">9</text>
+              <text x="132" y="279">8</text>
+            </g>
+            <path d="M223 190 L223 101" stroke="#7b8794" stroke-width="5" stroke-linecap="round"/>
+            <path d="M223 190 L132 235" stroke="#245fbd" stroke-width="7" stroke-linecap="round"/>
+            <path d="M223 87 A103 103 0 1 1 132 235" fill="none" stroke="#245fbd" stroke-width="6" stroke-linecap="round" marker-end="url(#clockQ12ArrowMinute)"/>
+            <text x="223" y="352" text-anchor="middle" fill="#245fbd" font-size="24" font-weight="900">240°</text>
+            <text x="223" y="378" text-anchor="middle" fill="#222" font-size="17" font-weight="800">240° ÷ 6° = 40 minutes</text>
+
+            <!-- Hour-hand illustration: 20-degree clockwise movement in the same 40 minutes -->
+            <rect x="472" y="18" width="410" height="390" rx="16" fill="#fff8ee" stroke="#f08a00" stroke-width="2"/>
+            <text x="677" y="52" text-anchor="middle" fill="#921914" font-size="22" font-weight="900">Hour Hand</text>
+            <circle cx="677" cy="190" r="105" fill="#fff" stroke="#f08a00" stroke-width="4"/>
+            <circle cx="677" cy="190" r="5" fill="#921914"/>
+            <g fill="#173b75" font-size="17" font-weight="800" text-anchor="middle">
+              <text x="677" y="76">12</text><text x="806" y="196">3</text>
+              <text x="677" y="322">6</text><text x="548" y="196">9</text>
+            </g>
+            <path d="M677 190 L677 94" stroke="#7b8794" stroke-width="5" stroke-linecap="round"/>
+            <path d="M677 190 L710 99" stroke="#f08a00" stroke-width="7" stroke-linecap="round"/>
+            <path d="M677 86 A104 104 0 0 1 712 92" fill="none" stroke="#f08a00" stroke-width="6" stroke-linecap="round" marker-end="url(#clockQ12ArrowHour)"/>
+            <text x="677" y="352" text-anchor="middle" fill="#921914" font-size="24" font-weight="900">20°</text>
+            <text x="677" y="378" text-anchor="middle" fill="#222" font-size="17" font-weight="800">40 × 0.5° = 20°</text>
+          </svg>
+        </div>
+
+        <h4>📘 Step-by-Step Logical Calculation / దశలవారీ తార్కిక వివరణ</h4>
+
+        <div class="clock-q12-step">
+          <strong>Step 1 — Find the speed of the minute hand / నిమిషాల ముల్లు వేగాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> The minute hand completes one full revolution of 360° in 60 minutes.</p>
+          <p><strong>తెలుగు:</strong> నిమిషాల ముల్లు 60 నిమిషాల్లో 360° అంటే ఒక పూర్తి భ్రమణం చేస్తుంది.</p>
+          <div class="clock-q12-equation">360° ÷ 60 = 6° per minute</div>
+        </div>
+
+        <div class="clock-q12-step">
+          <strong>Step 2 — Find the time taken for 240° / 240° కోణానికి పట్టిన సమయాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> Divide the given minute-hand angle by its speed.</p>
+          <p><strong>తెలుగు:</strong> ఇచ్చిన నిమిషాల ముల్లు కోణాన్ని దాని వేగంతో భాగించాలి.</p>
+          <div class="clock-q12-equation">Time = 240° ÷ 6° = 40 minutes</div>
+        </div>
+
+        <div class="clock-q12-step">
+          <strong>Step 3 — Find the speed of the hour hand / గంటల ముల్లు వేగాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> The hour hand completes 360° in 12 hours, or 720 minutes.</p>
+          <p><strong>తెలుగు:</strong> గంటల ముల్లు 12 గంటల్లో అంటే 720 నిమిషాల్లో 360° పూర్తి చేస్తుంది.</p>
+          <div class="clock-q12-equation">360° ÷ 720 = 0.5° per minute</div>
+        </div>
+
+        <div class="clock-q12-step">
+          <strong>Step 4 — Calculate the hour-hand angle in the same 40 minutes / అదే 40 నిమిషాల్లో గంటల ముల్లు కోణాన్ని లెక్కించాలి</strong>
+          <p><strong>English:</strong> Multiply the hour-hand speed by the elapsed time.</p>
+          <p><strong>తెలుగు:</strong> గంటల ముల్లు ఒక నిమిషంలో కదిలే కోణాన్ని 40 నిమిషాలతో గుణించాలి.</p>
+          <div class="clock-q12-equation">Hour-hand angle = 40 × 0.5° = 20°</div>
+        </div>
+
+        <div class="clock-q12-step">
+          <strong>Step 5 — Match the answer with the given options / ఇచ్చిన ఆప్షన్లలో సరైన సమాధానాన్ని ఎంచుకోవాలి</strong>
+          <p><strong>English:</strong> The hour hand moves through 20° in the same time.</p>
+          <p><strong>తెలుగు:</strong> అదే సమయంలో గంటల ముల్లు 20° కోణం కదులుతుంది.</p>
+          <div class="clock-q12-equation">A) 25° &nbsp; | &nbsp; B) 18° &nbsp; | &nbsp; C) 20° &nbsp; | &nbsp; D) 15°</div>
+        </div>
+
+        <div class="clock-q12-final">
+          <span>✅ Correct Answer / సరైన సమాధానం</span>
+          <strong>20° — Option C</strong>
+        </div>
+
+        <p class="clock-q12-note"><strong>Remember / గుర్తుంచుకోండి:</strong> Minute-hand speed = 6° per minute; hour-hand speed = 0.5° per minute. First convert the minute-hand angle into time, then use that same time for the hour hand. / నిమిషాల ముల్లు వేగం 6°; గంటల ముల్లు వేగం 0.5°. ముందుగా నిమిషాల ముల్లు కోణం ఆధారంగా సమయాన్ని కనుక్కొని, అదే సమయాన్ని గంటల ముల్లు కోణం కోసం ఉపయోగించాలి.</p>
+
+      </div>`
+  },
+
+  /* Q13: Given minute-hand angle is 108°. Find the hour-hand angle in the same elapsed time.
+     The minute hand moves 6° per minute; the hour hand moves 0.5° per minute. */
+  {
+    question: "If the minute hand forms an angle of 108°, then what is the angle formed by the hour hand at the same time?<br>నిమిషాల ముల్లు 108° కోణాన్ని ఏర్పరిస్తే, అదే సమయంలో గంటల ముల్లు ఏర్పరిచే కోణం ఎంత?",
+    options: ["5°", "8°", "9°", "10°"],
+    answer: 2,
+    pattern: "The minute hand moves 6° per minute. Time = 108° ÷ 6° = 18 minutes. The hour hand moves 0.5° per minute, so its angle in 18 minutes is 18 × 0.5° = 9°. / నిమిషాల ముల్లు నిమిషానికి 6° కదులుతుంది. సమయం = 108° ÷ 6° = 18 నిమిషాలు. గంటల ముల్లు నిమిషానికి 0.5° కదులుతుంది. కాబట్టి 18 × 0.5° = 9°.",
+    solution: "Step 1: Minute-hand speed = 360° ÷ 60 = 6° per minute.\\nStep 2: Time taken for the minute hand to move 108° = 108° ÷ 6° = 18 minutes.\\nStep 3: Hour-hand speed = 360° ÷ 720 = 0.5° per minute.\\nStep 4: Hour-hand angle in the same 18 minutes = 18 × 0.5° = 9°.\\nFinal Answer: 9° (Option C).",
+    solutionHTML: `
+      <div class="clock-q13-solution">
+        <h4>🕒 Diagrammatic Representation — 108° Minute-Hand Angle and Hour-Hand Angle</h4>
+        <p class="clock-q13-note"><strong>English:</strong> The minute hand covers 108°. First convert this angle into minutes. Then calculate the angle covered by the hour hand during those same 18 minutes.</p>
+        <p class="clock-q13-note"><strong>తెలుగు:</strong> నిమిషాల ముల్లు 108° కోణం కదులుతుంది. ముందుగా ఆ కోణానికి పట్టే సమయాన్ని కనుక్కోవాలి. తరువాత అదే 18 నిమిషాల్లో గంటల ముల్లు కదిలే కోణాన్ని లెక్కించాలి.</p>
+
+        <div class="clock-q13-diagram">
+          <svg viewBox="0 0 850 390" role="img" aria-label="Diagram showing the minute hand moving 108 degrees in 18 minutes and the hour hand moving 9 degrees in the same 18 minutes.">
+            <defs>
+              <marker id="clockQ13MinuteArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#245fbd"/>
+              </marker>
+              <marker id="clockQ13HourArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#f08a00"/>
+              </marker>
+            </defs>
+
+            <!-- Minute hand: 108-degree movement -->
+            <rect x="15" y="15" width="395" height="355" rx="15" fill="#f2f7ff" stroke="#245fbd" stroke-width="2"/>
+            <text x="212" y="48" text-anchor="middle" fill="#173b75" font-size="21" font-weight="900">Minute Hand</text>
+            <circle cx="212" cy="172" r="91" fill="#fff" stroke="#245fbd" stroke-width="4"/>
+            <circle cx="212" cy="172" r="5" fill="#921914"/>
+            <g fill="#173b75" font-size="16" font-weight="800" text-anchor="middle">
+              <text x="212" y="91">12</text><text x="324" y="178">3</text>
+              <text x="212" y="280">6</text><text x="100" y="178">9</text>
+            </g>
+            <path d="M212 172 L212 94" stroke="#7b8794" stroke-width="5" stroke-linecap="round"/>
+            <path d="M212 172 L286 133" stroke="#245fbd" stroke-width="7" stroke-linecap="round"/>
+            <path d="M212 78 A94 94 0 0 1 299 136" fill="none" stroke="#245fbd" stroke-width="6" stroke-linecap="round" marker-end="url(#clockQ13MinuteArrow)"/>
+            <text x="212" y="315" text-anchor="middle" fill="#245fbd" font-size="24" font-weight="900">108°</text>
+            <text x="212" y="342" text-anchor="middle" fill="#222" font-size="16" font-weight="800">108° ÷ 6° = 18 minutes</text>
+
+            <!-- Hour hand: 9-degree movement in the same 18 minutes -->
+            <rect x="440" y="15" width="395" height="355" rx="15" fill="#fff8ee" stroke="#f08a00" stroke-width="2"/>
+            <text x="637" y="48" text-anchor="middle" fill="#921914" font-size="21" font-weight="900">Hour Hand</text>
+            <circle cx="637" cy="172" r="91" fill="#fff" stroke="#f08a00" stroke-width="4"/>
+            <circle cx="637" cy="172" r="5" fill="#921914"/>
+            <g fill="#173b75" font-size="16" font-weight="800" text-anchor="middle">
+              <text x="637" y="91">12</text><text x="749" y="178">3</text>
+              <text x="637" y="280">6</text><text x="525" y="178">9</text>
+            </g>
+            <path d="M637 172 L637 94" stroke="#7b8794" stroke-width="5" stroke-linecap="round"/>
+            <path d="M637 172 L651 94" stroke="#f08a00" stroke-width="7" stroke-linecap="round"/>
+            <path d="M637 78 A94 94 0 0 1 652 80" fill="none" stroke="#f08a00" stroke-width="6" stroke-linecap="round" marker-end="url(#clockQ13HourArrow)"/>
+            <text x="637" y="315" text-anchor="middle" fill="#921914" font-size="24" font-weight="900">9°</text>
+            <text x="637" y="342" text-anchor="middle" fill="#222" font-size="16" font-weight="800">18 × 0.5° = 9°</text>
+          </svg>
+        </div>
+
+        <h4>📘 Step-by-Step Logical Calculation / దశలవారీ తార్కిక వివరణ</h4>
+
+        <div class="clock-q13-step">
+          <strong>Step 1 — Find the speed of the minute hand / నిమిషాల ముల్లు వేగాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> The minute hand completes 360° in 60 minutes.</p>
+          <p><strong>తెలుగు:</strong> నిమిషాల ముల్లు 60 నిమిషాల్లో 360° పూర్తి భ్రమణం చేస్తుంది.</p>
+          <div class="clock-q13-equation">360° ÷ 60 = 6° per minute</div>
+        </div>
+
+        <div class="clock-q13-step">
+          <strong>Step 2 — Find the time for 108° / 108° కోణానికి పట్టే సమయాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> Divide the given minute-hand angle by the minute-hand speed.</p>
+          <p><strong>తెలుగు:</strong> ఇచ్చిన 108° కోణాన్ని నిమిషాల ముల్లు వేగమైన 6°తో భాగించాలి.</p>
+          <div class="clock-q13-equation">Time = 108° ÷ 6° = 18 minutes</div>
+        </div>
+
+        <div class="clock-q13-step">
+          <strong>Step 3 — Find the speed of the hour hand / గంటల ముల్లు వేగాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> The hour hand completes 360° in 12 hours, or 720 minutes.</p>
+          <p><strong>తెలుగు:</strong> గంటల ముల్లు 12 గంటల్లో అంటే 720 నిమిషాల్లో 360° పూర్తి భ్రమణం చేస్తుంది.</p>
+          <div class="clock-q13-equation">360° ÷ 720 = 0.5° per minute</div>
+        </div>
+
+        <div class="clock-q13-step">
+          <strong>Step 4 — Calculate the hour-hand angle in the same 18 minutes / అదే 18 నిమిషాల్లో గంటల ముల్లు కోణాన్ని లెక్కించాలి</strong>
+          <p><strong>English:</strong> Multiply the hour-hand speed by 18 minutes.</p>
+          <p><strong>తెలుగు:</strong> గంటల ముల్లు ఒక నిమిషంలో కదిలే 0.5° కోణాన్ని 18తో గుణించాలి.</p>
+          <div class="clock-q13-equation">Hour-hand angle = 18 × 0.5° = 9°</div>
+        </div>
+
+        <div class="clock-q13-step">
+          <strong>Step 5 — Match the answer with the given options / ఇచ్చిన ఆప్షన్లలో సరైన సమాధానాన్ని ఎంచుకోవాలి</strong>
+          <p><strong>English:</strong> The hour hand moves through 9° during the same time.</p>
+          <p><strong>తెలుగు:</strong> అదే సమయంలో గంటల ముల్లు 9° కోణం కదులుతుంది.</p>
+          <div class="clock-q13-equation">A) 5° &nbsp; | &nbsp; B) 8° &nbsp; | &nbsp; C) 9° &nbsp; | &nbsp; D) 10°</div>
+        </div>
+
+        <div class="clock-q13-final">
+          <span>✅ Correct Answer / సరైన సమాధానం</span>
+          <strong>9° — Option C</strong>
+        </div>
+
+        <p class="clock-q13-note"><strong>Remember / గుర్తుంచుకోండి:</strong> Minute-hand speed = 6° per minute; hour-hand speed = 0.5° per minute. For the same elapsed time, the hour hand moves one-twelfth of the angle moved by the minute hand: 108° ÷ 12 = 9°. / నిమిషాల ముల్లు వేగం 6°; గంటల ముల్లు వేగం 0.5°. ఒకే సమయంలో గంటల ముల్లు, నిమిషాల ముల్లు కదిలిన కోణంలో పన్నెండో వంతు కదులుతుంది: 108° ÷ 12 = 9°.</p>
+      </div>`
+  }
+
+  ,
+
+  /* Q14: Given hour-hand angle is 18°. Find the minute-hand angle in the same elapsed time. */
+  {
+    question: "If the hour hand forms an angle of 18°, then what is the angle formed by the minute hand in the same time?<br>గంటల ముల్లు 18° కోణాన్ని ఏర్పరిస్తే, అదే సమయంలో నిమిషాల ముల్లు ఏర్పరిచే కోణం ఎంత?",
+    options: ["150°", "216°", "118°", "180°"],
+    answer: 1,
+    pattern: "The hour hand moves 0.5° per minute and the minute hand moves 6° per minute. Their speed ratio is 6 ÷ 0.5 = 12. Therefore, the minute-hand angle = 18° × 12 = 216°. / గంటల ముల్లు నిమిషానికి 0.5°, నిమిషాల ముల్లు నిమిషానికి 6° కదులుతాయి. వేగాల నిష్పత్తి 12. కాబట్టి 18° × 12 = 216°.",
+    solution: "Step 1: Hour-hand speed = 360° ÷ 720 = 0.5° per minute.\\nStep 2: Time taken for the hour hand to move 18° = 18° ÷ 0.5° = 36 minutes.\\nStep 3: Minute-hand speed = 360° ÷ 60 = 6° per minute.\\nStep 4: Minute-hand angle in the same 36 minutes = 36 × 6° = 216°.\\nFinal Answer: 216° (Option B).",
+    solutionHTML: `
+      <div class="clock-q14-solution">
+        <h4>🕒 Diagrammatic Representation — 18° Hour-Hand Angle and Minute-Hand Angle</h4>
+        <p class="clock-q14-note"><strong>English:</strong> The hour hand moves through 18°. First find the time taken by the hour hand. Then calculate how far the minute hand moves during that same time.</p>
+        <p class="clock-q14-note"><strong>తెలుగు:</strong> గంటల ముల్లు 18° కోణం కదులుతుంది. ముందుగా ఆ కోణానికి పట్టే సమయాన్ని కనుక్కోవాలి. తరువాత అదే సమయంలో నిమిషాల ముల్లు కదిలే కోణాన్ని లెక్కించాలి.</p>
+
+        <div class="clock-q14-diagram">
+          <svg viewBox="0 0 900 410" role="img" aria-label="Hour hand moves 18 degrees in 36 minutes and minute hand moves 216 degrees in the same 36 minutes.">
+            <defs>
+              <marker id="clockQ14HourArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#f08a00"/>
+              </marker>
+              <marker id="clockQ14MinuteArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#245fbd"/>
+              </marker>
+            </defs>
+
+            <!-- Hour-hand panel -->
+            <rect x="15" y="15" width="410" height="370" rx="15" fill="#fff8ee" stroke="#f08a00" stroke-width="2"/>
+            <text x="220" y="48" text-anchor="middle" fill="#921914" font-size="22" font-weight="900">Hour Hand / గంటల ముల్లు</text>
+            <circle cx="220" cy="180" r="105" fill="#fff" stroke="#f08a00" stroke-width="4"/>
+            <circle cx="220" cy="180" r="5" fill="#921914"/>
+            <g fill="#173b75" font-size="17" font-weight="800" text-anchor="middle">
+              <text x="220" y="88">12</text><text x="348" y="186">3</text>
+              <text x="220" y="304">6</text><text x="92" y="186">9</text>
+            </g>
+            <path d="M220 180 L220 88" stroke="#7b8794" stroke-width="5" stroke-linecap="round"/>
+            <path d="M220 180 L253 94" stroke="#f08a00" stroke-width="7" stroke-linecap="round"/>
+            <path d="M220 70 A112 112 0 0 1 255 77" fill="none" stroke="#f08a00" stroke-width="6" stroke-linecap="round" marker-end="url(#clockQ14HourArrow)"/>
+            <text x="220" y="337" text-anchor="middle" fill="#921914" font-size="25" font-weight="900">18°</text>
+            <text x="220" y="363" text-anchor="middle" fill="#222" font-size="16" font-weight="800">18° ÷ 0.5° = 36 minutes</text>
+
+            <!-- Minute-hand panel -->
+            <rect x="475" y="15" width="410" height="370" rx="15" fill="#f2f7ff" stroke="#245fbd" stroke-width="2"/>
+            <text x="680" y="48" text-anchor="middle" fill="#173b75" font-size="22" font-weight="900">Minute Hand / నిమిషాల ముల్లు</text>
+            <circle cx="680" cy="180" r="105" fill="#fff" stroke="#245fbd" stroke-width="4"/>
+            <circle cx="680" cy="180" r="5" fill="#921914"/>
+            <g fill="#173b75" font-size="17" font-weight="800" text-anchor="middle">
+              <text x="680" y="88">12</text><text x="808" y="186">3</text>
+              <text x="680" y="304">6</text><text x="552" y="186">9</text>
+            </g>
+            <path d="M680 180 L680 88" stroke="#7b8794" stroke-width="5" stroke-linecap="round"/>
+            <path d="M680 180 L591 235" stroke="#245fbd" stroke-width="7" stroke-linecap="round"/>
+            <path d="M680 68 A112 112 0 1 1 585 239" fill="none" stroke="#245fbd" stroke-width="6" stroke-linecap="round" marker-end="url(#clockQ14MinuteArrow)"/>
+            <text x="680" y="337" text-anchor="middle" fill="#245fbd" font-size="25" font-weight="900">216°</text>
+            <text x="680" y="363" text-anchor="middle" fill="#222" font-size="16" font-weight="800">36 × 6° = 216°</text>
+          </svg>
+        </div>
+
+        <h4>📘 Step-by-Step Logical Calculation / దశలవారీ తార్కిక వివరణ</h4>
+
+        <div class="clock-q14-step">
+          <strong>Step 1 — Find the speed of the hour hand / గంటల ముల్లు వేగాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> The hour hand completes 360° in 12 hours, which is 720 minutes.</p>
+          <p><strong>తెలుగు:</strong> గంటల ముల్లు 12 గంటల్లో అంటే 720 నిమిషాల్లో 360° పూర్తి భ్రమణం చేస్తుంది.</p>
+          <div class="clock-q14-equation">Hour-hand speed = 360° ÷ 720 = 0.5° per minute</div>
+        </div>
+
+        <div class="clock-q14-step">
+          <strong>Step 2 — Find the time taken for 18° / 18° కోణానికి పట్టే సమయాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> Divide the given hour-hand angle by its speed.</p>
+          <p><strong>తెలుగు:</strong> ఇచ్చిన 18° కోణాన్ని గంటల ముల్లు వేగమైన 0.5°తో భాగించాలి.</p>
+          <div class="clock-q14-equation">Time = 18° ÷ 0.5° = 36 minutes</div>
+        </div>
+
+        <div class="clock-q14-step">
+          <strong>Step 3 — Find the speed of the minute hand / నిమిషాల ముల్లు వేగాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> The minute hand completes 360° in 60 minutes.</p>
+          <p><strong>తెలుగు:</strong> నిమిషాల ముల్లు 60 నిమిషాల్లో 360° పూర్తి భ్రమణం చేస్తుంది.</p>
+          <div class="clock-q14-equation">Minute-hand speed = 360° ÷ 60 = 6° per minute</div>
+        </div>
+
+        <div class="clock-q14-step">
+          <strong>Step 4 — Calculate the minute-hand angle in the same 36 minutes / అదే 36 నిమిషాల్లో నిమిషాల ముల్లు కోణాన్ని లెక్కించాలి</strong>
+          <p><strong>English:</strong> Multiply the minute-hand speed by 36 minutes.</p>
+          <p><strong>తెలుగు:</strong> నిమిషాల ముల్లు ఒక నిమిషంలో కదిలే 6° కోణాన్ని 36తో గుణించాలి.</p>
+          <div class="clock-q14-equation">Minute-hand angle = 36 × 6° = 216°</div>
+        </div>
+
+        <div class="clock-q14-step">
+          <strong>Step 5 — Match the answer with the given options / ఇచ్చిన ఆప్షన్లలో సరైన సమాధానాన్ని ఎంచుకోవాలి</strong>
+          <p><strong>English:</strong> The minute hand moves through 216° during the same 36 minutes.</p>
+          <p><strong>తెలుగు:</strong> అదే 36 నిమిషాల్లో నిమిషాల ముల్లు 216° కోణం కదులుతుంది.</p>
+          <div class="clock-q14-equation">A) 150° &nbsp; | &nbsp; B) 216° &nbsp; | &nbsp; C) 118° &nbsp; | &nbsp; D) 180°</div>
+        </div>
+
+        <div class="clock-q14-final">
+          <span>✅ Correct Answer / సరైన సమాధానం</span>
+          <strong>216° — Option B</strong>
+        </div>
+
+        <p class="clock-q14-note"><strong>Quick Method / సులభమైన పద్ధతి:</strong> The minute hand moves 12 times faster than the hour hand. Therefore, minute-hand angle = 18° × 12 = 216°. / నిమిషాల ముల్లు, గంటల ముల్లు కంటే 12 రెట్లు వేగంగా కదులుతుంది. కాబట్టి నిమిషాల ముల్లు కోణం = 18° × 12 = 216°.</p>
+      </div>`
+  }
+
+  ,
+
+  /* =========================================================
+     CLOCK Q15 — Given hour-hand angle is 12°.
+     Find the minute-hand angle during the same elapsed time.
+     Correct answer: 144° (Option B).
+     ========================================================= */
+  {
+    question: "If the hour hand forms an angle of 12°, then what is the angle formed by the minute hand in the same time?<br>గంటల ముల్లు 12° కోణాన్ని ఏర్పరిస్తే, అదే సమయంలో నిమిషాల ముల్లు ఏర్పరిచే కోణం ఎంత?",
+    options: ["124°", "144°", "128°", "150°"],
+    answer: 1,
+    pattern: "The minute hand moves 12 times faster than the hour hand. Therefore, for the same elapsed time, minute-hand angle = 12° × 12 = 144°. / నిమిషాల ముల్లు గంటల ముల్లు కంటే 12 రెట్లు వేగంగా కదులుతుంది. కాబట్టి అదే సమయంలో నిమిషాల ముల్లు కోణం = 12° × 12 = 144°.",
+    solution: "Step 1: Hour-hand speed = 360° ÷ 720 = 0.5° per minute.\\nStep 2: Time taken for the hour hand to move 12° = 12° ÷ 0.5° = 24 minutes.\\nStep 3: Minute-hand speed = 360° ÷ 60 = 6° per minute.\\nStep 4: Minute-hand angle in the same 24 minutes = 24 × 6° = 144°.\\nFinal Answer: 144° (Option B).",
+    solutionHTML: `
+      <div class="clock-q15-solution">
+        <h4>🕒 Diagrammatic Representation — 12° Hour-Hand Angle and Minute-Hand Angle</h4>
+
+        <p class="clock-q15-note"><strong>English:</strong> The hour hand moves through 12°. We first calculate the time taken by the hour hand, then find the angle moved by the minute hand during the same time.</p>
+        <p class="clock-q15-note"><strong>తెలుగు:</strong> గంటల ముల్లు 12° కోణం కదులుతుంది. ముందుగా గంటల ముల్లు ఆ కోణాన్ని కదలడానికి పట్టే సమయాన్ని కనుక్కొని, అదే సమయంలో నిమిషాల ముల్లు కదిలే కోణాన్ని లెక్కించాలి.</p>
+
+        <div class="clock-q15-diagram">
+          <svg viewBox="0 0 900 420" role="img" aria-label="The hour hand moves 12 degrees in 24 minutes. During the same 24 minutes, the minute hand moves 144 degrees.">
+            <defs>
+              <marker id="clockQ15HourArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#f08a00"/>
+              </marker>
+              <marker id="clockQ15MinuteArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#245fbd"/>
+              </marker>
+            </defs>
+
+            <!-- Hour-hand diagram -->
+            <rect x="15" y="15" width="410" height="390" rx="15" fill="#fff8ee" stroke="#f08a00" stroke-width="2"/>
+            <text x="220" y="48" text-anchor="middle" fill="#921914" font-size="22" font-weight="900">Hour Hand / గంటల ముల్లు</text>
+            <circle cx="220" cy="180" r="105" fill="#fff" stroke="#f08a00" stroke-width="4"/>
+            <circle cx="220" cy="180" r="5" fill="#921914"/>
+            <g fill="#173b75" font-size="17" font-weight="800" text-anchor="middle">
+              <text x="220" y="88">12</text><text x="348" y="186">3</text>
+              <text x="220" y="304">6</text><text x="92" y="186">9</text>
+            </g>
+            <path d="M220 180 L220 88" stroke="#7b8794" stroke-width="5" stroke-linecap="round"/>
+            <path d="M220 180 L242 92" stroke="#f08a00" stroke-width="7" stroke-linecap="round"/>
+            <path d="M220 68 A112 112 0 0 1 243 70" fill="none" stroke="#f08a00" stroke-width="6" stroke-linecap="round" marker-end="url(#clockQ15HourArrow)"/>
+            <text x="220" y="337" text-anchor="middle" fill="#921914" font-size="25" font-weight="900">12°</text>
+            <text x="220" y="365" text-anchor="middle" fill="#222" font-size="16" font-weight="800">12° ÷ 0.5° = 24 minutes</text>
+
+            <!-- Minute-hand diagram -->
+            <rect x="475" y="15" width="410" height="390" rx="15" fill="#f2f7ff" stroke="#245fbd" stroke-width="2"/>
+            <text x="680" y="48" text-anchor="middle" fill="#173b75" font-size="22" font-weight="900">Minute Hand / నిమిషాల ముల్లు</text>
+            <circle cx="680" cy="180" r="105" fill="#fff" stroke="#245fbd" stroke-width="4"/>
+            <circle cx="680" cy="180" r="5" fill="#921914"/>
+            <g fill="#173b75" font-size="17" font-weight="800" text-anchor="middle">
+              <text x="680" y="88">12</text><text x="808" y="186">3</text>
+              <text x="680" y="304">6</text><text x="552" y="186">9</text>
+            </g>
+            <path d="M680 180 L680 88" stroke="#7b8794" stroke-width="5" stroke-linecap="round"/>
+            <path d="M680 180 L585 210" stroke="#245fbd" stroke-width="7" stroke-linecap="round"/>
+            <path d="M680 68 A112 112 0 0 1 585 210" fill="none" stroke="#245fbd" stroke-width="6" stroke-linecap="round" marker-end="url(#clockQ15MinuteArrow)"/>
+            <text x="680" y="337" text-anchor="middle" fill="#245fbd" font-size="25" font-weight="900">144°</text>
+            <text x="680" y="365" text-anchor="middle" fill="#222" font-size="16" font-weight="800">24 × 6° = 144°</text>
+          </svg>
+        </div>
+
+        <h4>📘 Step-by-Step Logical Calculation / దశలవారీ తార్కిక వివరణ</h4>
+
+        <div class="clock-q15-step">
+          <strong>Step 1 — Find the speed of the hour hand / గంటల ముల్లు వేగాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> The hour hand completes one full rotation of 360° in 12 hours, which is 720 minutes.</p>
+          <p><strong>తెలుగు:</strong> గంటల ముల్లు 12 గంటల్లో అంటే 720 నిమిషాల్లో 360° పూర్తి భ్రమణం చేస్తుంది.</p>
+          <div class="clock-q15-equation">Hour-hand speed = 360° ÷ 720 = 0.5° per minute</div>
+        </div>
+
+        <div class="clock-q15-step">
+          <strong>Step 2 — Find the time taken for 12° / 12° కోణానికి పట్టే సమయాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> Divide the given hour-hand angle by the hour-hand speed.</p>
+          <p><strong>తెలుగు:</strong> ఇచ్చిన 12° కోణాన్ని గంటల ముల్లు ఒక నిమిషంలో కదిలే 0.5°తో భాగించాలి.</p>
+          <div class="clock-q15-equation">Time = 12° ÷ 0.5° = 24 minutes</div>
+        </div>
+
+        <div class="clock-q15-step">
+          <strong>Step 3 — Find the speed of the minute hand / నిమిషాల ముల్లు వేగాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> The minute hand completes one full rotation of 360° in 60 minutes.</p>
+          <p><strong>తెలుగు:</strong> నిమిషాల ముల్లు 60 నిమిషాల్లో 360° పూర్తి భ్రమణం చేస్తుంది.</p>
+          <div class="clock-q15-equation">Minute-hand speed = 360° ÷ 60 = 6° per minute</div>
+        </div>
+
+        <div class="clock-q15-step">
+          <strong>Step 4 — Calculate the minute-hand angle in the same 24 minutes / అదే 24 నిమిషాల్లో నిమిషాల ముల్లు కోణాన్ని లెక్కించాలి</strong>
+          <p><strong>English:</strong> Multiply the minute-hand speed by 24 minutes.</p>
+          <p><strong>తెలుగు:</strong> నిమిషాల ముల్లు ఒక నిమిషంలో కదిలే 6° కోణాన్ని 24తో గుణించాలి.</p>
+          <div class="clock-q15-equation">Minute-hand angle = 24 × 6° = 144°</div>
+        </div>
+
+        <div class="clock-q15-step">
+          <strong>Step 5 — Match the answer with the given options / ఇచ్చిన ఆప్షన్లలో సరైన సమాధానాన్ని ఎంచుకోవాలి</strong>
+          <p><strong>English:</strong> During the same 24 minutes, the minute hand moves through 144°.</p>
+          <p><strong>తెలుగు:</strong> అదే 24 నిమిషాల్లో నిమిషాల ముల్లు 144° కోణం కదులుతుంది.</p>
+          <div class="clock-q15-equation">A) 124° &nbsp; | &nbsp; B) 144° &nbsp; | &nbsp; C) 128° &nbsp; | &nbsp; D) 150°</div>
+        </div>
+
+        <div class="clock-q15-final">
+          <span>✅ Correct Answer / సరైన సమాధానం</span>
+          <strong>144° — Option B</strong>
+        </div>
+
+        <p class="clock-q15-note"><strong>Quick Method / సులభమైన పద్ధతి:</strong> The minute hand moves 12 times faster than the hour hand. Therefore, minute-hand angle = 12° × 12 = 144°. / నిమిషాల ముల్లు గంటల ముల్లు కంటే 12 రెట్లు వేగంగా కదులుతుంది. కాబట్టి నిమిషాల ముల్లు కోణం = 12° × 12 = 144°.</p>
+      </div>`
+  }
+
+
+  ,
+  /* =========================================================
+     CLOCK Q16 — Minutes remaining from 10:27 AM until 12 noon.
+     Correct answer: 93 minutes (Option B).
+     ========================================================= */
+  {
+    question: "How many minutes before 12 noon is it when it is 27 minutes past 10 A.M.?<br>ఉదయం 10 గంటల 27 నిమిషాలు అయినప్పుడు, మధ్యాహ్నం 12 గంటలు కావడానికి ఇంకా ఎన్ని నిమిషాలు ఉన్నాయి?",
+    options: ["30", "93", "49", "94"],
+    answer: 1,
+    pattern: "Find the elapsed time from 10:27 A.M. to 12:00 noon. From 10:27 to 11:00 is 33 minutes, and from 11:00 to 12:00 is 60 minutes. Total = 93 minutes. / 10:27 A.M. నుంచి 12:00 noon వరకు సమయాన్ని లెక్కించాలి. 10:27 నుంచి 11:00 వరకు 33 నిమిషాలు, 11:00 నుంచి 12:00 వరకు 60 నిమిషాలు. మొత్తం 93 నిమిషాలు.",
+    solution:
+      "Step 1: Start time = 10:27 A.M.\\n" +
+      "Step 2: Time from 10:27 A.M. to 11:00 A.M. = 33 minutes.\\n" +
+      "Step 3: Time from 11:00 A.M. to 12:00 noon = 60 minutes.\\n" +
+      "Step 4: Total remaining time = 33 + 60 = 93 minutes.\\n" +
+      "Final Answer: 93 minutes (Option B).",
+    solutionHTML: `
+      <div class="clock-q16-solution">
+        <h4>🕒 Diagrammatic Representation — Time from 10:27 A.M. to 12:00 Noon</h4>
+        <p class="clock-q16-note"><strong>English:</strong> The given time is 27 minutes past 10 A.M. We need to calculate how many minutes remain until 12 noon.</p>
+        <p class="clock-q16-note"><strong>తెలుగు:</strong> ఇచ్చిన సమయం ఉదయం 10 గంటల 27 నిమిషాలు. మధ్యాహ్నం 12 గంటలు కావడానికి ఇంకా ఎన్ని నిమిషాలు ఉన్నాయో లెక్కించాలి.</p>
+
+        <div class="clock-q16-diagram">
+          <svg viewBox="0 0 900 330" role="img" aria-label="Timeline from 10:27 AM to 11 AM showing 33 minutes, then from 11 AM to 12 noon showing 60 minutes, total 93 minutes">
+            <defs>
+              <marker id="clockQ16Arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0 0 L0 6 L9 3 Z" fill="#921914"/>
+              </marker>
+            </defs>
+            <text x="450" y="35" text-anchor="middle" fill="#921914" font-size="23" font-weight="900">Remaining Time Timeline / మిగిలిన సమయ రేఖ</text>
+
+            <rect x="55" y="95" width="300" height="95" rx="13" fill="#fff4e5" stroke="#f08a00" stroke-width="3"/>
+            <rect x="355" y="95" width="490" height="95" rx="13" fill="#eef6ff" stroke="#245fbd" stroke-width="3"/>
+            <text x="205" y="130" text-anchor="middle" fill="#921914" font-size="22" font-weight="900">33 minutes</text>
+            <text x="205" y="160" text-anchor="middle" fill="#333" font-size="17" font-weight="700">10:27 → 11:00</text>
+            <text x="600" y="130" text-anchor="middle" fill="#173b75" font-size="22" font-weight="900">60 minutes</text>
+            <text x="600" y="160" text-anchor="middle" fill="#333" font-size="17" font-weight="700">11:00 → 12:00</text>
+
+            <g fill="#173b75" font-size="19" font-weight="900" text-anchor="middle">
+              <text x="55" y="225">10:27 A.M.</text>
+              <text x="355" y="225">11:00 A.M.</text>
+              <text x="845" y="225">12:00 Noon</text>
+            </g>
+            <path d="M80 250 H815" stroke="#921914" stroke-width="3" marker-end="url(#clockQ16Arrow)"/>
+            <text x="450" y="290" text-anchor="middle" fill="#168c2d" font-size="25" font-weight="900">33 + 60 = 93 minutes</text>
+          </svg>
+        </div>
+
+        <h4>📘 Step-by-Step Logical Calculation / దశలవారీ తార్కిక వివరణ</h4>
+
+        <div class="clock-q16-step">
+          <strong>Step 1 — Identify the given time / ఇచ్చిన సమయాన్ని గుర్తించాలి</strong>
+          <p><strong>English:</strong> The clock shows 27 minutes past 10 A.M.</p>
+          <p><strong>తెలుగు:</strong> గడియారంలో ఉదయం 10 గంటల 27 నిమిషాలు అయ్యాయి.</p>
+          <div class="clock-q16-equation">Starting Time = 10:27 A.M.</div>
+        </div>
+
+        <div class="clock-q16-step">
+          <strong>Step 2 — Calculate the time up to 11:00 A.M. / 11:00 A.M. వరకు సమయాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> Subtract 27 minutes from 60 minutes to reach the next full hour.</p>
+          <p><strong>తెలుగు:</strong> తర్వాతి పూర్తి గంట అయిన 11:00 కావడానికి 60 నిమిషాల నుంచి 27 నిమిషాలు తీసివేయాలి.</p>
+          <div class="clock-q16-equation">60 − 27 = 33 minutes</div>
+        </div>
+
+        <div class="clock-q16-step">
+          <strong>Step 3 — Calculate the time from 11:00 A.M. to 12 noon / 11:00 నుంచి మధ్యాహ్నం 12 వరకు సమయాన్ని లెక్కించాలి</strong>
+          <p><strong>English:</strong> From 11 A.M. to 12 noon, exactly one hour remains.</p>
+          <p><strong>తెలుగు:</strong> ఉదయం 11 గంటల నుంచి మధ్యాహ్నం 12 గంటల వరకు ఒక గంట ఉంటుంది.</p>
+          <div class="clock-q16-equation">1 hour = 60 minutes</div>
+        </div>
+
+        <div class="clock-q16-step">
+          <strong>Step 4 — Add both time intervals / రెండు సమయ భాగాలను కలపాలి</strong>
+          <p><strong>English:</strong> Add the 33 minutes and the 60 minutes to get the total remaining time.</p>
+          <p><strong>తెలుగు:</strong> మిగిలిన మొత్తం సమయాన్ని తెలుసుకోవడానికి 33 నిమిషాలకు 60 నిమిషాలు కలపాలి.</p>
+          <div class="clock-q16-equation">33 + 60 = 93 minutes</div>
+        </div>
+
+        <div class="clock-q16-step">
+          <strong>Step 5 — Match the answer with the options / ఇచ్చిన ఆప్షన్లలో సరైన సమాధానాన్ని ఎంచుకోవాలి</strong>
+          <p><strong>English:</strong> The time from 10:27 A.M. to 12 noon is 93 minutes.</p>
+          <p><strong>తెలుగు:</strong> ఉదయం 10:27 నుంచి మధ్యాహ్నం 12 గంటల వరకు 93 నిమిషాలు ఉన్నాయి.</p>
+          <div class="clock-q16-equation">A) 30 &nbsp; | &nbsp; B) 93 &nbsp; | &nbsp; C) 49 &nbsp; | &nbsp; D) 94</div>
+        </div>
+
+        <div class="clock-q16-final">
+          <span>✅ Correct Answer / సరైన సమాధానం</span>
+          <strong>93 Minutes — Option B</strong>
+        </div>
+
+        <p class="clock-q16-note"><strong>Quick Method / సులభమైన పద్ధతి:</strong> 10:27 to 11:00 = 33 minutes; 11:00 to 12:00 = 60 minutes. Therefore, 33 + 60 = 93 minutes. / 10:27 నుంచి 11:00 వరకు 33 నిమిషాలు; 11:00 నుంచి 12:00 వరకు 60 నిమిషాలు. కాబట్టి 33 + 60 = 93 నిమిషాలు.</p>
+      </div>`
+  }
+
 ];
 
 let questions = numberSystemQuestions;
@@ -33751,3 +34971,509 @@ window.addEventListener('DOMContentLoaded', function(){
 })();
 </script>
 <!-- PERCENTAGE Q22 IMAGE-DATA INTEGRATION END -->
+
+<style>
+/* ===== Clock Q10 — 72-hour rotation count solution card ===== */
+.clock-q10-solution{
+  display:block;
+  margin:18px 0;
+  padding:18px;
+  border:1px solid #dfe4ea;
+  border-radius:14px;
+  background:#fff;
+  color:#222;
+  line-height:1.7;
+}
+.clock-q10-solution h4{
+  margin:8px 0 12px;
+  color:#921914;
+  font-size:21px;
+  font-weight:900;
+}
+.clock-q10-note{
+  color:#555;
+  font-size:15px;
+  line-height:1.65;
+}
+.clock-q10-diagram{
+  width:100%;
+  margin:14px 0 22px;
+  padding:10px;
+  overflow-x:auto;
+  border:1px solid #e3e8ef;
+  border-radius:12px;
+  background:linear-gradient(180deg,#fff,#fbfcff);
+}
+.clock-q10-diagram svg{
+  display:block;
+  width:100%;
+  min-width:620px;
+  max-width:820px;
+  height:auto;
+  margin:auto;
+}
+.clock-q10-step{
+  margin:12px 0;
+  padding:14px 16px;
+  border-left:5px solid #245fbd;
+  border-radius:8px;
+  background:#f6f9ff;
+}
+.clock-q10-step strong{
+  display:block;
+  color:#173b75;
+  font-size:17px;
+}
+.clock-q10-step p{margin:7px 0;color:#444}
+.clock-q10-equation{
+  margin:10px 0 2px;
+  padding:12px;
+  border:1px solid #ead7c8;
+  border-radius:8px;
+  background:#fffaf6;
+  text-align:center;
+  color:#921914;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:23px;
+  font-weight:900;
+}
+.clock-q10-final{
+  margin:20px 0 12px;
+  padding:16px;
+  border:2px solid #168c2d;
+  border-radius:10px;
+  background:#f3fff5;
+  text-align:center;
+}
+.clock-q10-final span{
+  display:block;
+  color:#168c2d;
+  font-size:17px;
+  font-weight:800;
+}
+.clock-q10-final strong{
+  display:block;
+  margin-top:5px;
+  color:#921914;
+  font-size:29px;
+}
+@media(max-width:700px){
+  .clock-q10-solution{padding:11px}
+  .clock-q10-solution h4{font-size:18px}
+  .clock-q10-note{font-size:13px}
+  .clock-q10-step{padding:11px}
+  .clock-q10-step strong{font-size:15px}
+  .clock-q10-equation{font-size:19px}
+  .clock-q10-final strong{font-size:24px}
+}
+
+/* =========================================================
+   CLOCK Q11 — SPEED OF MINUTE HAND VS HOUR HAND
+   Diagram and bilingual explanation appear only in Result
+   Card > View Details through the existing solutionHTML flow.
+   ========================================================= */
+.clock-q11-solution{
+  display:block;
+  width:100%;
+  padding:16px;
+  color:#222;
+  line-height:1.75;
+  white-space:normal;
+}
+.clock-q11-solution h4{
+  margin:18px 0 10px;
+  color:#921914;
+  font-size:21px;
+  font-weight:900;
+}
+.clock-q11-solution p{
+  margin:8px 0;
+}
+.clock-q11-note{
+  padding:12px 14px;
+  border-left:4px solid #245fbd;
+  border-radius:7px;
+  background:#f3f8ff;
+}
+.clock-q11-diagram{
+  width:100%;
+  margin:16px 0 22px;
+  padding:12px;
+  overflow-x:auto;
+  border:1px solid #dce5ef;
+  border-radius:12px;
+  background:#fbfdff;
+}
+.clock-q11-diagram svg{
+  display:block;
+  width:100%;
+  min-width:620px;
+  max-width:820px;
+  height:auto;
+  margin:auto;
+}
+.clock-q11-step{
+  margin:14px 0;
+  padding:14px;
+  border:1px solid #dfe4ea;
+  border-left:4px solid #245fbd;
+  border-radius:9px;
+  background:#f8fbff;
+}
+.clock-q11-step strong{
+  display:block;
+  color:#173b75;
+  font-size:17px;
+}
+.clock-q11-step p{
+  margin:7px 0;
+}
+.clock-q11-equation{
+  margin:10px 0 2px;
+  padding:12px;
+  border:1px solid #ead7c8;
+  border-radius:8px;
+  background:#fffaf6;
+  color:#921914;
+  text-align:center;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:21px;
+  font-weight:900;
+}
+.clock-q11-final{
+  margin:20px 0 12px;
+  padding:16px;
+  border:2px solid #168c2d;
+  border-radius:10px;
+  background:#f3fff5;
+  text-align:center;
+}
+.clock-q11-final span{
+  display:block;
+  color:#168c2d;
+  font-size:17px;
+  font-weight:800;
+}
+.clock-q11-final strong{
+  display:block;
+  margin-top:5px;
+  color:#921914;
+  font-size:29px;
+}
+@media(max-width:700px){
+  .clock-q11-solution{padding:10px}
+  .clock-q11-solution h4{font-size:18px}
+  .clock-q11-diagram{padding:7px}
+  .clock-q11-diagram svg{min-width:600px}
+  .clock-q11-step{padding:10px}
+  .clock-q11-step strong{font-size:15px}
+  .clock-q11-equation{font-size:18px;padding:9px}
+  .clock-q11-final strong{font-size:24px}
+}
+/* ===== End Clock Q11 styles ===== */
+
+
+
+/* =========================================================
+   CLOCK Q14 — Convert hour-hand angle into minute-hand angle
+   Diagram and bilingual step-by-step solution appear only in Result Details.
+   ========================================================= */
+.clock-q14-solution{
+  display:block;
+  width:100%;
+  padding:16px;
+  color:#222;
+  line-height:1.75;
+  white-space:normal;
+}
+.clock-q14-solution h4{
+  margin:18px 0 10px;
+  color:#921914;
+  font-size:21px;
+  font-weight:900;
+}
+.clock-q14-solution p{margin:8px 0}
+.clock-q14-note{
+  padding:12px 14px;
+  border-left:4px solid #245fbd;
+  border-radius:7px;
+  background:#f3f8ff;
+}
+.clock-q14-diagram{
+  width:100%;
+  margin:16px 0 22px;
+  padding:12px;
+  overflow-x:auto;
+  border:1px solid #dce5ef;
+  border-radius:12px;
+  background:#fbfdff;
+}
+.clock-q14-diagram svg{
+  display:block;
+  width:100%;
+  min-width:680px;
+  max-width:900px;
+  height:auto;
+  margin:auto;
+}
+.clock-q14-step{
+  margin:14px 0;
+  padding:14px;
+  border:1px solid #dfe4ea;
+  border-left:4px solid #245fbd;
+  border-radius:9px;
+  background:#f8fbff;
+}
+.clock-q14-step strong{
+  display:block;
+  color:#173b75;
+  font-size:17px;
+}
+.clock-q14-step p{margin:7px 0}
+.clock-q14-equation{
+  margin:10px 0 2px;
+  padding:12px;
+  border:1px solid #ead7c8;
+  border-radius:8px;
+  background:#fffaf6;
+  text-align:center;
+  color:#921914;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px;
+  font-weight:900;
+}
+.clock-q14-final{
+  margin:20px 0 12px;
+  padding:16px;
+  border:2px solid #168c2d;
+  border-radius:10px;
+  background:#f3fff5;
+  text-align:center;
+}
+.clock-q14-final span{
+  display:block;
+  color:#168c2d;
+  font-size:17px;
+  font-weight:800;
+}
+.clock-q14-final strong{
+  display:block;
+  margin-top:5px;
+  color:#921914;
+  font-size:29px;
+}
+@media(max-width:700px){
+  .clock-q14-solution{padding:10px}
+  .clock-q14-solution h4{font-size:18px}
+  .clock-q14-diagram{padding:7px}
+  .clock-q14-diagram svg{min-width:680px}
+  .clock-q14-step{padding:10px}
+  .clock-q14-step strong{font-size:15px}
+  .clock-q14-equation{font-size:18px;padding:9px}
+  .clock-q14-final strong{font-size:24px}
+}
+/* ===== End Clock Q14 styles ===== */
+
+
+/* =========================================================
+   CLOCK Q15 — Convert hour-hand angle into minute-hand angle
+   Bilingual explanation and diagram appear in Result Details.
+   ========================================================= */
+.clock-q15-solution{
+  display:block;
+  width:100%;
+  padding:16px;
+  color:#222;
+  line-height:1.75;
+  white-space:normal;
+}
+.clock-q15-solution h4{
+  margin:18px 0 10px;
+  color:#921914;
+  font-size:21px;
+  font-weight:900;
+}
+.clock-q15-solution p{margin:8px 0}
+.clock-q15-note{
+  padding:12px 14px;
+  border-left:4px solid #245fbd;
+  border-radius:7px;
+  background:#f3f8ff;
+}
+.clock-q15-diagram{
+  width:100%;
+  margin:16px 0 22px;
+  padding:12px;
+  overflow-x:auto;
+  border:1px solid #dce5ef;
+  border-radius:12px;
+  background:#fbfdff;
+}
+.clock-q15-diagram svg{
+  display:block;
+  width:100%;
+  min-width:680px;
+  max-width:900px;
+  height:auto;
+  margin:auto;
+}
+.clock-q15-step{
+  margin:14px 0;
+  padding:14px;
+  border:1px solid #dfe4ea;
+  border-left:4px solid #245fbd;
+  border-radius:9px;
+  background:#f8fbff;
+}
+.clock-q15-step strong{
+  display:block;
+  color:#173b75;
+  font-size:17px;
+}
+.clock-q15-step p{margin:7px 0}
+.clock-q15-equation{
+  margin:10px 0 2px;
+  padding:12px;
+  border:1px solid #ead7c8;
+  border-radius:8px;
+  background:#fffaf6;
+  text-align:center;
+  color:#921914;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px;
+  font-weight:900;
+}
+.clock-q15-final{
+  margin:20px 0 12px;
+  padding:16px;
+  border:2px solid #168c2d;
+  border-radius:10px;
+  background:#f3fff5;
+  text-align:center;
+}
+.clock-q15-final span{
+  display:block;
+  color:#168c2d;
+  font-size:17px;
+  font-weight:800;
+}
+.clock-q15-final strong{
+  display:block;
+  margin-top:5px;
+  color:#921914;
+  font-size:29px;
+}
+@media(max-width:700px){
+  .clock-q15-solution{padding:10px}
+  .clock-q15-solution h4{font-size:18px}
+  .clock-q15-diagram{padding:7px}
+  .clock-q15-diagram svg{min-width:680px}
+  .clock-q15-step{padding:10px}
+  .clock-q15-step strong{font-size:15px}
+  .clock-q15-equation{font-size:18px;padding:9px}
+  .clock-q15-final strong{font-size:24px}
+}
+/* ===== End Clock Q15 styles ===== */
+
+
+/* =========================================================
+   CLOCK Q16 — Time remaining until 12 noon from 10:27 A.M.
+   Diagram and bilingual logical explanation appear in Result Details.
+   ========================================================= */
+.clock-q16-solution{
+  display:block;
+  width:100%;
+  padding:16px;
+  color:#222;
+  line-height:1.75;
+  white-space:normal;
+}
+.clock-q16-solution h4{
+  margin:18px 0 10px;
+  color:#921914;
+  font-size:21px;
+  font-weight:900;
+}
+.clock-q16-solution p{margin:8px 0}
+.clock-q16-note{
+  padding:12px 14px;
+  border-left:4px solid #245fbd;
+  border-radius:7px;
+  background:#f3f8ff;
+}
+.clock-q16-diagram{
+  width:100%;
+  margin:16px 0 22px;
+  padding:12px;
+  overflow-x:auto;
+  border:1px solid #dce5ef;
+  border-radius:12px;
+  background:#fbfdff;
+}
+.clock-q16-diagram svg{
+  display:block;
+  width:100%;
+  min-width:680px;
+  max-width:900px;
+  height:auto;
+  margin:auto;
+}
+.clock-q16-step{
+  margin:14px 0;
+  padding:14px;
+  border:1px solid #dfe4ea;
+  border-left:4px solid #245fbd;
+  border-radius:9px;
+  background:#f8fbff;
+}
+.clock-q16-step strong{
+  display:block;
+  color:#173b75;
+  font-size:17px;
+}
+.clock-q16-step p{margin:7px 0}
+.clock-q16-equation{
+  margin:10px 0 2px;
+  padding:12px;
+  border:1px solid #ead7c8;
+  border-radius:8px;
+  background:#fffaf6;
+  text-align:center;
+  color:#921914;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px;
+  font-weight:900;
+}
+.clock-q16-final{
+  margin:20px 0 12px;
+  padding:16px;
+  border:2px solid #168c2d;
+  border-radius:10px;
+  background:#f3fff5;
+  text-align:center;
+}
+.clock-q16-final span{
+  display:block;
+  color:#168c2d;
+  font-size:17px;
+  font-weight:800;
+}
+.clock-q16-final strong{
+  display:block;
+  margin-top:5px;
+  color:#921914;
+  font-size:29px;
+}
+@media(max-width:700px){
+  .clock-q16-solution{padding:10px}
+  .clock-q16-solution h4{font-size:18px}
+  .clock-q16-diagram{padding:7px}
+  .clock-q16-diagram svg{min-width:680px}
+  .clock-q16-step{padding:10px}
+  .clock-q16-step strong{font-size:15px}
+  .clock-q16-equation{font-size:18px;padding:9px}
+  .clock-q16-final strong{font-size:24px}
+}
+/* ===== End Clock Q16 styles ===== */
+
+</style>
