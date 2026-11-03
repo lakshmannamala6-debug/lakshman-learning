@@ -2468,6 +2468,84 @@ footer{background:#86130f;color:white;text-align:center;padding:25px}
 .algebra-q4-visual .visual-note{margin:0 0 12px;color:#555;font-size:14px;line-height:1.5}
 .algebra-q4-visual svg{display:block;width:100%;max-width:760px;height:auto;margin:auto}
 @media(max-width:700px){.algebra-q4-visual{padding:10px}.algebra-q4-visual h4{font-size:18px}.algebra-q4-visual .visual-note{font-size:13px}.algebra-q4-visual svg{min-width:0}}
+
+/* ===== Clock Q3 — Diagram is displayed only inside Result Card solution ===== */
+.clock-q3-question{
+  margin:14px 0 18px;
+  padding:16px;
+  border:1px solid #e4d8ca;
+  border-radius:12px;
+  background:#fff;
+}
+.clock-q3-question-text{
+  margin-bottom:12px;
+  color:#222;
+  font-size:20px;
+  line-height:1.55;
+}
+.clock-q3-diagram{
+  overflow-x:auto;
+  padding:8px;
+  border-radius:10px;
+  background:#fbfdff;
+}
+.clock-q3-diagram svg{
+  display:block;
+  width:100%;
+  max-width:650px;
+  height:auto;
+  margin:auto;
+}
+.clock-q3-solution .clock-q3-diagram{
+  margin:12px 0 18px;
+  border:1px solid #dce5ef;
+}
+.clock-q3-solution .clock-q3-diagram svg{
+  min-width:0;
+}
+.clock-q3-solution{
+  display:block;
+  line-height:1.7;
+  white-space:normal;
+}
+.clock-q3-solution h4{
+  margin:0 0 12px;
+  color:#921914;
+  font-size:21px;
+}
+.clock-q3-solution p{margin:10px 0}
+.clock-q3-equation{
+  margin:8px 0 14px;
+  padding:12px;
+  border:1px solid #ead7c8;
+  border-radius:8px;
+  background:#fffaf6;
+  text-align:center;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:21px;
+  font-weight:700;
+}
+.clock-q3-final{
+  padding:12px;
+  border:2px solid #168c2d;
+  border-radius:8px;
+  color:#168c2d;
+  text-align:center;
+  font-size:20px;
+  font-weight:900;
+}
+.clock-q3-note{
+  padding:12px;
+  border-left:4px solid #245fbd;
+  background:#f3f8ff;
+}
+@media(max-width:700px){
+  .clock-q3-question{padding:10px}
+  .clock-q3-question-text{font-size:17px}
+  .clock-q3-equation{font-size:17px;padding:9px}
+  .clock-q3-solution h4{font-size:18px}
+}
+
 </style>
 <style>
 /* ===== Data Interpretation Q1 — Table + SVG Visualization ===== */
@@ -4288,6 +4366,7 @@ body:has(#test[style*="display:block"]){
   </div>
 </div>
 <div class="card"><h2>🔢 Number System</h2><p><b>34 Questions</b><br>30 seconds per question</p><button class="primary" onclick="startTest()">Start Test</button></div>
+<div class="card" id="clockHomeCard"><h2>🕒 Clock</h2><p id="clockQuestionCount">6 Questions • 30 Seconds per Question</p><button class="primary" onclick="startClockTestAgain()">Start Test</button></div>
 <div class="card" id="perfectSquaresHomeCard">
   <h2>🔲 Perfect Squares</h2>
   <p id="perfectSquaresQuestionCount">101 Questions • 30 Seconds per Question</p>
@@ -4628,6 +4707,23 @@ body:has(#test[style*="display:block"]){
   <div class="container">
     <div class="resultbox">
       <h2 class="title">📊 Test Results</h2>
+
+      <div class="history-section result-subject-section" data-result-subject="Clock" id="clockResultSection" style="display:none">
+        <h4 class="history-section-title">🕒 Clock — Results</h4>
+        <div class="stats subject-stats">
+          <div class="stat"><strong id="clockTotalTests">0</strong>Total Tests Written</div>
+          <div class="stat"><strong id="clockBestScore">0/6</strong>Best Score</div>
+          <div class="stat"><strong id="clockAverageScore">0%</strong>Average Score</div>
+          <div class="stat"><strong id="clockLatestScore">0/6</strong>Latest Test</div>
+        </div>
+        <div class="subject-retest-action">
+          <button class="take-test-again-btn" type="button" onclick="startClockTestAgain()">
+            <span class="take-test-again-icon">⟳</span><span>Take Test Again</span>
+          </button>
+        </div>
+        <h5 class="history-subtitle">📅 Test Attempt History</h5>
+        <div style="overflow-x:auto"><table class="history-subtable"><thead><tr><th>Attempt</th><th>Date</th><th>Score</th><th>Accuracy</th><th>Action</th></tr></thead><tbody id="clockHistoryBody"><tr><td colspan="5" class="history-empty">No tests attempted yet.</td></tr></tbody></table></div>
+      </div>
 
       <!-- 1. Number System Results -->
       <div class="history-section result-subject-section">
@@ -25376,6 +25472,324 @@ const probabilityQuestions = [
   }
 ];
 
+const clockQuestions = [
+  {
+    question: "What angle is made by the second hand in 15 seconds?",
+    options: ["15°", "1.5°", "(1/8)°", "90°"],
+    answer: 3,
+    pattern: "A clock's second hand completes 360° in 60 seconds.",
+    solution: "Step 1: The second hand completes one full circle (360°) in 60 seconds.\nStep 2: Speed = 360° ÷ 60 = 6° per second.\nStep 3: In 15 seconds, angle = 6° × 15 = 90°.\nFinal Answer: 90° (Option D)."
+  },
+  {
+    question: "What angle is made by second hand in 41 seconds?",
+    options: ["195°", "225°", "246°", "290°"],
+    answer: 2,
+    pattern: "The second hand completes 360° in 60 seconds, so it moves 6° every second.",
+    solution: "Step 1: A complete circle is 360°.\nStep 2: The second hand takes 60 seconds to complete 360°.\nStep 3: Angle moved in 1 second = 360° ÷ 60 = 6°.\nStep 4: Angle moved in 41 seconds = 6° × 41 = 246°.\nFinal Answer: 246° (Option C)."
+  },
+  /* Q3: Clock second-hand angle in 3 minutes 20 seconds. */
+  {
+    question: "What angle is made by the second hand in 3 minutes 20 seconds?",
+    options: ["1250°", "1200°", "1400°", "900°"],
+    answer: 1,
+    pattern: "The second hand completes 360° in 60 seconds. Therefore, it moves 6° per second. Convert the full time into seconds before multiplying.",
+    solution: "Step 1: Convert 3 minutes 20 seconds into seconds: (3 × 60) + 20 = 200 seconds.\nStep 2: The second hand completes 360° in 60 seconds.\nStep 3: Angle moved in 1 second = 360° ÷ 60 = 6°.\nStep 4: Angle moved in 200 seconds = 200 × 6 = 1200°.\nFinal Answer: 1200° (Option B).",
+    solutionHTML: `
+      <div class="clock-q3-solution">
+        <h4>Diagrammatic representation</h4>
+        <div class="clock-q3-diagram">
+          <svg viewBox="0 0 520 270" role="img" aria-label="Clock diagram showing 120 degrees for 20 seconds and three complete rotations">
+            <defs>
+              <marker id="clockQ3Arrow" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="#921914"/></marker>
+            </defs>
+            <circle cx="135" cy="130" r="92" fill="#f8fbff" stroke="#245fbd" stroke-width="5"/>
+            <circle cx="135" cy="130" r="5" fill="#921914"/>
+            <g stroke="#245fbd" stroke-width="4" stroke-linecap="round">
+              <path d="M135 43 V55 M222 130 H210 M135 217 V205 M48 130 H60"/>
+              <path d="M178.5 54.6 L172.5 65 M210.4 86.5 L200 92.5 M210.4 173.5 L200 167.5 M178.5 205.4 L172.5 195 M91.5 205.4 L97.5 195 M59.6 173.5 L70 167.5 M59.6 86.5 L70 92.5 M91.5 54.6 L97.5 65"/>
+            </g>
+            <g fill="#173b75" font-size="15" font-weight="800" text-anchor="middle">
+              <text x="135" y="31">12</text><text x="233" y="135">3</text><text x="135" y="243">6</text><text x="37" y="135">9</text>
+            </g>
+            <path d="M135 130 L135 52" stroke="#7b8794" stroke-width="4" stroke-linecap="round"/>
+            <path d="M135 130 L202.5 169" stroke="#921914" stroke-width="5" stroke-linecap="round"/>
+            <path d="M135 75 A55 55 0 0 1 182.6 157.5" fill="none" stroke="#168c2d" stroke-width="5" stroke-linecap="round"/>
+            <text x="174" y="103" fill="#168c2d" font-size="17" font-weight="900">120°</text>
+            <text x="135" y="264" fill="#555" font-size="13" text-anchor="middle">20 seconds = 120°</text>
+            <path d="M270 130 H325" stroke="#921914" stroke-width="3" marker-end="url(#clockQ3Arrow)"/>
+            <text x="395" y="77" fill="#173b75" font-size="19" font-weight="900" text-anchor="middle">3 full rounds</text>
+            <text x="395" y="111" fill="#921914" font-size="23" font-weight="900" text-anchor="middle">+ 120°</text>
+            <text x="395" y="151" fill="#168c2d" font-size="20" font-weight="900" text-anchor="middle">= 1200°</text>
+            <text x="395" y="184" fill="#555" font-size="13" text-anchor="middle">Total angle moved</text>
+          </svg>
+        </div>
+        <h4>Step-by-step calculation</h4>
+        <p><strong>Step 1 — Convert time into seconds</strong></p>
+        <div class="clock-q3-equation">3 minutes 20 seconds = (3 × 60) + 20 = 200 seconds</div>
+        <p><strong>Step 2 — Find the second hand's movement per second</strong></p>
+        <div class="clock-q3-equation">360° ÷ 60 = 6° per second</div>
+        <p><strong>Step 3 — Calculate the angle for 200 seconds</strong></p>
+        <div class="clock-q3-equation">200 × 6° = 1200°</div>
+        <p class="clock-q3-final">Correct Answer: 1200° — Option B</p>
+        <p class="clock-q3-note">Diagram: 20 seconds represents 120°. The additional 3 minutes represent 3 complete rotations (3 × 360° = 1080°). Therefore, 1080° + 120° = 1200°.</p>
+      </div>`
+  }
+
+  ,
+  /* Q4: Minute-hand angle in 33 seconds — diagram and calculation appear only in Result Card > View Details. */
+  {
+    question: "What angle is made by the minute hand in 33 seconds?",
+    options: ["4°", "3.3°", "5.9°", "4.9°"],
+    answer: 1,
+    pattern: "The minute hand completes 360° in 60 minutes (3600 seconds), so it moves 0.1° per second.",
+    solution:
+      "Step 1: The minute hand completes one full circle of 360° in 60 minutes.\\n" +
+      "Step 2: Convert 60 minutes into seconds: 60 × 60 = 3600 seconds.\\n" +
+      "Step 3: Angle moved in 1 second = 360° ÷ 3600 = 0.1°.\\n" +
+      "Step 4: Angle moved in 33 seconds = 33 × 0.1° = 3.3°.\\n" +
+      "Final Answer: 3.3° (Option B).",
+    solutionHTML: `
+      <div class="clock-q3-solution clock-q4-solution">
+        <h4>🕒 Diagrammatic representation — Minute hand movement</h4>
+        <p>The minute hand moves slowly: it completes 360° in 60 minutes. In 33 seconds, it moves only 3.3°.</p>
+        <div class="clock-q3-diagram">
+          <svg viewBox="0 0 680 330" role="img" aria-label="Clock diagram showing the minute hand moving 3.3 degrees in 33 seconds, with a magnified angle illustration">
+            <defs>
+              <marker id="clockQ4Arrow" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6" fill="#921914"/>
+              </marker>
+              <marker id="clockQ4GreenArrow" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6" fill="#168c2d"/>
+              </marker>
+            </defs>
+
+            <!-- Clock face -->
+            <circle cx="155" cy="145" r="105" fill="#f8fbff" stroke="#245fbd" stroke-width="5"/>
+            <circle cx="155" cy="145" r="5" fill="#921914"/>
+            <g stroke="#245fbd" stroke-width="3" stroke-linecap="round">
+              <path d="M155 48 V60 M252 145 H240 M155 242 V230 M58 145 H70"/>
+              <path d="M203.5 60 L198 70 M240 96.5 L230 102 M240 193.5 L230 188 M203.5 230 L198 220 M106.5 230 L112 220 M70 193.5 L80 188 M70 96.5 L80 102 M106.5 60 L112 70"/>
+            </g>
+            <g fill="#173b75" font-size="16" font-weight="800" text-anchor="middle">
+              <text x="155" y="34">12</text>
+              <text x="270" y="151">3</text>
+              <text x="155" y="267">6</text>
+              <text x="40" y="151">9</text>
+            </g>
+
+            <!-- Starting and ending minute-hand positions; the small difference is intentionally magnified on the right. -->
+            <path d="M155 145 L155 61" stroke="#7b8794" stroke-width="6" stroke-linecap="round"/>
+            <path d="M155 145 L159.8 61.1" stroke="#921914" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="155" cy="145" r="5" fill="#921914"/>
+            <text x="155" y="292" fill="#173b75" font-size="15" font-weight="800" text-anchor="middle">33 seconds</text>
+            <text x="155" y="312" fill="#555" font-size="13" text-anchor="middle">Minute hand moves slightly</text>
+
+            <!-- Direction arrow -->
+            <path d="M285 145 H345" stroke="#921914" stroke-width="3" marker-end="url(#clockQ4Arrow)"/>
+
+            <!-- Magnified angle view -->
+            <text x="500" y="35" fill="#173b75" font-size="18" font-weight="900" text-anchor="middle">Magnified view</text>
+            <path d="M390 245 L390 75" stroke="#7b8794" stroke-width="5" stroke-linecap="round"/>
+            <path d="M390 245 L407 76" stroke="#168c2d" stroke-width="5" stroke-linecap="round"/>
+            <path d="M390 165 A80 80 0 0 1 398 165.4" fill="none" stroke="#f08a00" stroke-width="5" stroke-linecap="round"/>
+            <path d="M390 245 L390 75" stroke="#7b8794" stroke-width="1.5" stroke-dasharray="5 5"/>
+            <text x="430" y="115" fill="#168c2d" font-size="19" font-weight="900">3.3°</text>
+            <text x="500" y="280" fill="#555" font-size="14" font-weight="700" text-anchor="middle">33 × 0.1° = 3.3°</text>
+            <text x="500" y="302" fill="#168c2d" font-size="16" font-weight="900" text-anchor="middle">Final angle</text>
+          </svg>
+        </div>
+
+        <h4>📘 Step-by-step logical calculation</h4>
+
+        <p><strong>Step 1 — Find the total time for one full revolution</strong></p>
+        <div class="clock-q3-equation">
+          60 minutes × 60 seconds = 3600 seconds
+        </div>
+
+        <p><strong>Step 2 — Find the minute hand's angle per second</strong></p>
+        <div class="clock-q3-equation">
+          360° ÷ 3600 seconds = 0.1° per second
+        </div>
+
+        <p><strong>Step 3 — Calculate the angle for 33 seconds</strong></p>
+        <div class="clock-q3-equation">
+          33 × 0.1° = 3.3°
+        </div>
+
+        <p><strong>Step 4 — Match the answer with the options</strong></p>
+        <div class="clock-q3-equation">
+          A) 4° &nbsp; | &nbsp; B) 3.3° &nbsp; | &nbsp; C) 5.9° &nbsp; | &nbsp; D) 4.9°
+        </div>
+
+        <p class="clock-q3-final">✅ Correct Answer: 3.3° — Option B</p>
+
+        <p class="clock-q3-note">
+          <strong>Remember:</strong> The second hand moves 6° per second, but the minute hand moves only 0.1° per second.
+          Do not use the second-hand speed for a minute-hand question.
+        </p>
+      </div>`
+  }
+  ,
+  /* Q5: Minute-hand angle in 29 seconds — full working and diagram appear in Result Card > View Details. */
+  {
+    question: "What angle is made by the minute hand in 29 seconds?",
+    options: ["17°", "29°", "1.7°", "2.9°"],
+    answer: 3,
+    pattern: "The minute hand completes 360° in 60 minutes (3600 seconds), so it moves 0.1° per second.",
+    solution:
+      "Step 1: One complete revolution of the minute hand is 360° in 60 minutes.\\n" +
+      "Step 2: Convert 60 minutes into seconds: 60 × 60 = 3600 seconds.\\n" +
+      "Step 3: Angle moved in 1 second = 360° ÷ 3600 = 0.1°.\\n" +
+      "Step 4: Angle moved in 29 seconds = 29 × 0.1° = 2.9°.\\n" +
+      "Final Answer: 2.9° (Option D).",
+    solutionHTML: `
+      <div class="clock-q3-solution clock-q5-solution">
+        <h4>🕒 Diagrammatic representation — Minute hand in 29 seconds</h4>
+        <p>The minute hand moves 0.1° every second. Therefore, in 29 seconds it moves through 2.9° clockwise.</p>
+        <div class="clock-q3-diagram">
+          <svg viewBox="0 0 700 340" role="img" aria-label="Clock diagram and magnified illustration showing the minute hand moving 2.9 degrees in 29 seconds">
+            <defs>
+              <marker id="clockQ5Arrow" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6" fill="#921914"/>
+              </marker>
+            </defs>
+
+            <!-- Main clock face -->
+            <circle cx="155" cy="145" r="105" fill="#f8fbff" stroke="#245fbd" stroke-width="5"/>
+            <circle cx="155" cy="145" r="5" fill="#921914"/>
+            <g stroke="#245fbd" stroke-width="3" stroke-linecap="round">
+              <path d="M155 48 V60 M252 145 H240 M155 242 V230 M58 145 H70"/>
+              <path d="M203.5 60 L198 70 M240 96.5 L230 102 M240 193.5 L230 188 M203.5 230 L198 220 M106.5 230 L112 220 M70 193.5 L80 188 M70 96.5 L80 102 M106.5 60 L112 70"/>
+            </g>
+            <g fill="#173b75" font-size="16" font-weight="800" text-anchor="middle">
+              <text x="155" y="34">12</text><text x="270" y="151">3</text>
+              <text x="155" y="267">6</text><text x="40" y="151">9</text>
+            </g>
+            <!-- Starting and ending positions are close; magnification is shown on the right. -->
+            <path d="M155 145 L155 61" stroke="#7b8794" stroke-width="6" stroke-linecap="round"/>
+            <path d="M155 145 L159.25 61.1" stroke="#921914" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="155" cy="145" r="5" fill="#921914"/>
+            <text x="155" y="292" fill="#173b75" font-size="15" font-weight="800" text-anchor="middle">29 seconds</text>
+            <text x="155" y="313" fill="#555" font-size="13" text-anchor="middle">Small clockwise movement</text>
+
+            <!-- Flow arrow -->
+            <path d="M285 145 H345" stroke="#921914" stroke-width="3" marker-end="url(#clockQ5Arrow)"/>
+
+            <!-- Magnified angle -->
+            <text x="515" y="35" fill="#173b75" font-size="19" font-weight="900" text-anchor="middle">Magnified angle view</text>
+            <path d="M405 255 L405 75" stroke="#7b8794" stroke-width="5" stroke-linecap="round"/>
+            <path d="M405 255 L428 77" stroke="#168c2d" stroke-width="5" stroke-linecap="round"/>
+            <path d="M405 170 A85 85 0 0 1 416 170.7" fill="none" stroke="#f08a00" stroke-width="6" stroke-linecap="round"/>
+            <text x="455" y="125" fill="#168c2d" font-size="22" font-weight="900">2.9°</text>
+            <text x="515" y="290" fill="#555" font-size="15" font-weight="700" text-anchor="middle">29 × 0.1° = 2.9°</text>
+            <text x="515" y="315" fill="#168c2d" font-size="17" font-weight="900" text-anchor="middle">Final angle</text>
+          </svg>
+        </div>
+
+        <h4>📘 Step-by-step logical calculation</h4>
+        <p><strong>Step 1 — Find the time for one complete revolution</strong></p>
+        <div class="clock-q3-equation">60 minutes × 60 seconds = 3600 seconds</div>
+
+        <p><strong>Step 2 — Calculate the angle moved in one second</strong></p>
+        <div class="clock-q3-equation">360° ÷ 3600 = 0.1° per second</div>
+
+        <p><strong>Step 3 — Calculate the angle for 29 seconds</strong></p>
+        <div class="clock-q3-equation">29 × 0.1° = 2.9°</div>
+
+        <p><strong>Step 4 — Check the given options</strong></p>
+        <div class="clock-q3-equation">A) 17° &nbsp; | &nbsp; B) 29° &nbsp; | &nbsp; C) 1.7° &nbsp; | &nbsp; D) 2.9°</div>
+
+        <p class="clock-q3-final">✅ Correct Answer: 2.9° — Option D</p>
+        <p class="clock-q3-note"><strong>Important:</strong> The second hand moves 6° per second, but the minute hand moves 0.1° per second. Since this question asks about the minute hand, use 0.1° × 29 seconds.</p>
+      </div>`
+  }
+
+  ,
+  /* Q6: Minute-hand angle in 4 minutes 44 seconds — diagram and full logical working in Result Card > View Details. */
+  {
+    question: "What angle is made by the minute hand in 4 minutes 44 seconds?",
+    options: ["27.4°", "28.4°", "23.7°", "26.9°"],
+    answer: 1,
+    pattern: "The minute hand completes 360° in 60 minutes (3600 seconds), so it moves 0.1° per second. Convert 4 minutes 44 seconds into 284 seconds.",
+    solution:
+      "Step 1: Convert 4 minutes 44 seconds into seconds: (4 × 60) + 44 = 284 seconds.\n" +
+      "Step 2: The minute hand completes one full revolution of 360° in 60 minutes.\n" +
+      "Step 3: Convert 60 minutes into seconds: 60 × 60 = 3600 seconds.\n" +
+      "Step 4: Angle moved in one second = 360° ÷ 3600 = 0.1°.\n" +
+      "Step 5: Angle moved in 284 seconds = 284 × 0.1° = 28.4°.\n" +
+      "Final Answer: 28.4° (Option B).",
+    solutionHTML: `
+      <div class="clock-q3-solution clock-q6-solution">
+        <h4>🕒 Diagrammatic representation — Minute hand in 4 minutes 44 seconds</h4>
+        <p>The minute hand moves 0.1° per second. In 4 minutes 44 seconds (284 seconds), it moves through 28.4° clockwise.</p>
+        <div class="clock-q3-diagram">
+          <svg viewBox="0 0 720 370" role="img" aria-label="Clock diagram showing the minute hand movement over 4 minutes 44 seconds, with a magnified 28.4 degree angle and the calculation 284 times 0.1 degrees">
+            <defs>
+              <marker id="clockQ6Arrow" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L7,3 L0,6" fill="#921914"/>
+              </marker>
+            </defs>
+            <!-- Clock face and hour markers -->
+            <circle cx="160" cy="155" r="112" fill="#f8fbff" stroke="#245fbd" stroke-width="5"/>
+            <circle cx="160" cy="155" r="6" fill="#921914"/>
+            <g stroke="#245fbd" stroke-width="3" stroke-linecap="round">
+              <path d="M160 52 V65 M263 155 H250 M160 258 V245 M57 155 H70"/>
+              <path d="M211.5 67.5 L205 79 M247.5 103.5 L236 110 M247.5 206.5 L236 200 M211.5 242.5 L205 231 M108.5 242.5 L115 231 M72.5 206.5 L84 200 M72.5 103.5 L84 110 M108.5 67.5 L115 79"/>
+            </g>
+            <g fill="#173b75" font-size="17" font-weight="800" text-anchor="middle">
+              <text x="160" y="35">12</text><text x="283" y="161">3</text>
+              <text x="160" y="286">6</text><text x="37" y="161">9</text>
+            </g>
+            <!-- Starting position at 12 and approximate ending position after 28.4 degrees clockwise -->
+            <path d="M160 155 L160 65" stroke="#7b8794" stroke-width="6" stroke-linecap="round"/>
+            <path d="M160 155 L203 76" stroke="#168c2d" stroke-width="6" stroke-linecap="round"/>
+            <path d="M160 92 A63 63 0 0 1 190 99" fill="none" stroke="#f08a00" stroke-width="6" stroke-linecap="round"/>
+            <text x="160" y="316" fill="#173b75" font-size="16" font-weight="800" text-anchor="middle">4 min 44 sec = 284 sec</text>
+            <text x="160" y="340" fill="#555" font-size="13" text-anchor="middle">Clock-face movement shown schematically</text>
+
+            <!-- Arrow to magnified view -->
+            <path d="M292 155 H350" stroke="#921914" stroke-width="3" marker-end="url(#clockQ6Arrow)"/>
+
+            <!-- Magnified angle -->
+            <text x="535" y="38" fill="#173b75" font-size="20" font-weight="900" text-anchor="middle">Magnified angle view</text>
+            <path d="M430 280 L430 78" stroke="#7b8794" stroke-width="6" stroke-linecap="round"/>
+            <path d="M430 280 L526 103" stroke="#168c2d" stroke-width="6" stroke-linecap="round"/>
+            <path d="M430 190 A90 90 0 0 1 473 201" fill="none" stroke="#f08a00" stroke-width="6" stroke-linecap="round"/>
+            <text x="495" y="155" fill="#168c2d" font-size="25" font-weight="900">28.4°</text>
+            <text x="535" y="315" fill="#555" font-size="16" font-weight="700" text-anchor="middle">284 × 0.1° = 28.4°</text>
+            <text x="535" y="342" fill="#168c2d" font-size="18" font-weight="900" text-anchor="middle">Final angle</text>
+          </svg>
+        </div>
+
+        <h4>📘 Step-by-step logical calculation</h4>
+
+        <p><strong>Step 1 — Convert minutes into seconds</strong></p>
+        <div class="clock-q3-equation">4 minutes = 4 × 60 = 240 seconds</div>
+
+        <p><strong>Step 2 — Add the remaining 44 seconds</strong></p>
+        <div class="clock-q3-equation">240 + 44 = 284 seconds</div>
+
+        <p><strong>Step 3 — Find the time for one complete revolution</strong></p>
+        <div class="clock-q3-equation">60 minutes × 60 seconds = 3600 seconds</div>
+
+        <p><strong>Step 4 — Find the minute hand's movement per second</strong></p>
+        <div class="clock-q3-equation">360° ÷ 3600 = 0.1° per second</div>
+
+        <p><strong>Step 5 — Calculate the angle for 284 seconds</strong></p>
+        <div class="clock-q3-equation">284 × 0.1° = 28.4°</div>
+
+        <p><strong>Step 6 — Match the answer with the given options</strong></p>
+        <div class="clock-q3-equation">A) 27.4° &nbsp; | &nbsp; B) 28.4° &nbsp; | &nbsp; C) 23.7° &nbsp; | &nbsp; D) 26.9°</div>
+
+        <p class="clock-q3-final">✅ Correct Answer: 28.4° — Option B</p>
+        <p class="clock-q3-note"><strong>Remember:</strong> The minute hand moves 6° per minute or 0.1° per second. Do not use the second hand's speed of 6° per second for this question.</p>
+      </div>`
+  }
+
+
+
+];
+
 let questions = numberSystemQuestions;
 let currentTestSubject = "Number System";
 
@@ -25742,6 +26156,7 @@ function normalizeTestSubject(subject){
 }
 
 function subjectForQuestionList(questionList){
+  if(typeof clockQuestions !== "undefined" && questionList === clockQuestions) return "Clock";
   if(typeof oneWordSubstitutionQuestions !== "undefined" && questionList === oneWordSubstitutionQuestions) return "English - One Word Substitution";
   if(typeof fillInTheBlanksQuestions !== "undefined" && questionList === fillInTheBlanksQuestions) return "English - Fill in the Blanks";
   if(typeof idiomsPhrasesQuestions !== "undefined" && questionList === idiomsPhrasesQuestions) return "English - Idioms & Phrases";
@@ -28073,6 +28488,8 @@ function showOnlySubmittedResultSubject(subject){
     if(!sectionSubject){
       if(headingText.includes("order & ranking") || headingText.includes("order and ranking")){
         sectionSubject = "order & ranking";
+      }else if(headingText.includes("clock")){
+        sectionSubject = "clock";
       }else if(headingText.includes("number system")){
         sectionSubject = "number system";
       }else if(headingText.includes("percentage")){
@@ -28144,7 +28561,15 @@ function submitTest(){
 
   let correctCount = 0;
   questions.forEach(function(q, i){
-    if(Number(answers[i]) === Number(q.answer)) correctCount++;
+    const hasAnswer =
+      answers[i] !== null &&
+      answers[i] !== undefined &&
+      answers[i] !== -1 &&
+      answers[i] !== "";
+
+    if(hasAnswer && Number(answers[i]) === Number(q.answer)){
+      correctCount++;
+    }
   });
 
   const submittedSubject = getCurrentTestSubjectSafe();
@@ -28328,6 +28753,16 @@ function startFreshRetest(subject, questionList){
   startTimer();
 
   window.scrollTo(0,0);
+}
+
+function updateClockQuestionCount(){
+  const el = document.getElementById("clockQuestionCount");
+  if(el) el.textContent = clockQuestions.length + " Question" + (clockQuestions.length === 1 ? "" : "s") + " • 30 Seconds per Question";
+}
+
+function startClockTestAgain(){
+  sessionStorage.setItem("lakshman_previous_app_page", "home");
+  startFreshRetest("Clock", clockQuestions);
 }
 
 function startNumberSystemTest(){
@@ -29236,6 +29671,47 @@ function showResults(){
   window.scrollTo(0,0);
 }
 
+function renderClockResultCard(){
+  const history = getTestHistory();
+  const attempts = history.map(function(item,index){ return {item:item,index:index}; })
+    .filter(function(record){ return normalizeTestSubject(record.item.subject).toLowerCase() === "clock"; });
+  const totalEl = document.getElementById("clockTotalTests");
+  const bestEl = document.getElementById("clockBestScore");
+  const avgEl = document.getElementById("clockAverageScore");
+  const latestEl = document.getElementById("clockLatestScore");
+  const body = document.getElementById("clockHistoryBody");
+  if(!totalEl || !bestEl || !avgEl || !latestEl || !body) return;
+
+  totalEl.textContent = attempts.length;
+  if(!attempts.length){
+    bestEl.textContent = "0/" + clockQuestions.length;
+    avgEl.textContent = "0%";
+    latestEl.textContent = "0/" + clockQuestions.length;
+    body.innerHTML = '<tr><td colspan="5" class="history-empty">No tests attempted yet.</td></tr>';
+    return;
+  }
+
+  const scores = attempts.map(function(record){ return Number(record.item.score) || 0; });
+  const best = Math.max.apply(null, scores);
+  const latest = attempts[attempts.length - 1].item;
+  const average = attempts.reduce(function(sum,record){
+    const total = Math.max(1, Number(record.item.total) || clockQuestions.length);
+    const score = Math.max(0, Math.min(total, Number(record.item.score) || 0));
+    return sum + (score / total) * 100;
+  },0) / attempts.length;
+  bestEl.textContent = best + "/" + clockQuestions.length;
+  avgEl.textContent = Math.round(average) + "%";
+  latestEl.textContent = (Number(latest.score) || 0) + "/" + (Number(latest.total) || clockQuestions.length);
+
+  body.innerHTML = attempts.slice().reverse().map(function(record,reverseIndex){
+    const item = record.item;
+    const total = Number(item.total) || clockQuestions.length;
+    const score = Number(item.score) || 0;
+    const accuracy = total ? Math.round(score / total * 100) : 0;
+    return '<tr><td>' + (attempts.length - reverseIndex) + '</td><td>' + String(item.date || "—") + '</td><td>' + score + '/' + total + '</td><td>' + accuracy + '%</td><td><button class="history-view-btn" type="button" onclick="viewAttemptDetails(' + record.index + ')">View</button></td></tr>';
+  }).join("");
+}
+
 function renderTestResults(){
 
   const history = getTestHistory();
@@ -30113,6 +30589,7 @@ function renderTestResults(){
   );
 
   renderAttemptHistory();
+  renderClockResultCard();
 }
 
 
@@ -30166,6 +30643,7 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 document.addEventListener("DOMContentLoaded", function(){
+  if (typeof updateClockQuestionCount === "function") updateClockQuestionCount();
   window.updateNumberSeriesQuestionCount();
   if (typeof window.updateMathematicalOperationsQuestionCount === "function") window.updateMathematicalOperationsQuestionCount();
   window.updateCalendarQuestionCount();
