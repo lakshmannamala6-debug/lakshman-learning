@@ -6581,7 +6581,7 @@ body:has(#test[style*="display:block"]){
 <footer>© 2026 <b>LAKSHMAN LEARNING</b> • LEARN • GROW • WISDOM</footer>
 
 <script>
-const simplificationQuestions = [
+const simplificationQuestionBankData = [
   {question:"48 ÷ 6 × 3 + 5 = ?",options:["24","29","31","19"],answer:1,pattern:"BODMAS — Mixed Operations",solution:"48 ÷ 6 = 8, then 8 × 3 = 24, and 24 + 5 = 29. Correct answer: 29."},
   {question:"√144 + 25% of 80 = ?",options:["28","32","36","40"],answer:1,pattern:"Square Root + Percentage",solution:"√144 = 12 and 25% of 80 = 20. Therefore, 12 + 20 = 32. Correct answer: 32."},
   {question:"(3/4) of 64 − 18 ÷ 3 = ?",options:["42","46","48","54"],answer:0,pattern:"Fractions + BODMAS",solution:"(3/4) of 64 = 48 and 18 ÷ 3 = 6. Therefore, 48 − 6 = 42. Correct answer: 42."},
@@ -27007,6 +27007,525 @@ const clockQuestions = [
         <p class="clock-q16-note"><strong>Quick Method / సులభమైన పద్ధతి:</strong> 10:27 to 11:00 = 33 minutes; 11:00 to 12:00 = 60 minutes. Therefore, 33 + 60 = 93 minutes. / 10:27 నుంచి 11:00 వరకు 33 నిమిషాలు; 11:00 నుంచి 12:00 వరకు 60 నిమిషాలు. కాబట్టి 33 + 60 = 93 నిమిషాలు.</p>
       </div>`
   }
+  ,
+  /* =========================================================
+     CLOCK Q17 — Find the time remaining until 12 noon.
+     24 minutes ago it was 9:47 A.M.; current time is 10:11 A.M.
+     Correct answer: 109 minutes (Option C).
+     ========================================================= */
+  {
+    question: "How many minutes is it before 12 noon if 24 minutes ago it was 47 minutes past 9 A.M.?<br>24 నిమిషాల క్రితం ఉదయం 9 గంటల 47 నిమిషాలు అయితే, ఇప్పుడు మధ్యాహ్నం 12 గంటలు కావడానికి ఇంకా ఎన్ని నిమిషాలు ఉన్నాయి?",
+    options: ["103 minutes", "90 minutes", "109 minutes", "124 minutes"],
+    answer: 2,
+    pattern: "24 minutes ago = 9:47 A.M. Add 24 minutes to find the present time: 10:11 A.M. Then 10:11 to 12:00 noon = 49 + 60 = 109 minutes. / 24 నిమిషాల క్రితం 9:47 A.M. కాబట్టి 24 నిమిషాలు కలిపితే ప్రస్తుత సమయం 10:11 A.M. అవుతుంది. 10:11 నుంచి 12:00 వరకు 49 + 60 = 109 నిమిషాలు.",
+    solution:
+      "Step 1: Time 24 minutes ago = 9:47 A.M.\\n" +
+      "Step 2: Present time = 9:47 + 24 minutes = 10:11 A.M.\\n" +
+      "Step 3: Time from 10:11 A.M. to 11:00 A.M. = 49 minutes.\\n" +
+      "Step 4: Time from 11:00 A.M. to 12:00 noon = 60 minutes.\\n" +
+      "Step 5: Total remaining time = 49 + 60 = 109 minutes.\\n" +
+      "Final Answer: 109 minutes (Option C).",
+    solutionHTML: `
+      <div class="clock-q17-solution">
+        <h4>🕒 Diagrammatic Representation — Find the Time Before 12 Noon / మధ్యాహ్నం 12 గంటలకు మిగిలిన సమయం</h4>
+        <p class="clock-q17-note"><strong>English:</strong> Twenty-four minutes ago, the time was 9:47 A.M. First find the present time, then calculate the remaining time until 12 noon.</p>
+        <p class="clock-q17-note"><strong>తెలుగు:</strong> 24 నిమిషాల క్రితం సమయం ఉదయం 9:47. ముందుగా ప్రస్తుత సమయాన్ని కనుక్కొని, ఆ తర్వాత మధ్యాహ్నం 12 గంటలు కావడానికి ఇంకా ఎంత సమయం ఉందో లెక్కించాలి.</p>
+
+        <div class="clock-q17-diagram">
+          <svg viewBox="0 0 960 390" role="img" aria-label="Timeline: 9:47 AM plus 13 minutes reaches 10 AM, plus 11 minutes reaches present time 10:11 AM; then 49 minutes to 11 AM and 60 minutes to noon, total remaining 109 minutes.">
+            <defs>
+              <marker id="clockQ17Arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0 0 L0 6 L9 3 Z" fill="#921914"/>
+              </marker>
+            </defs>
+            <text x="480" y="32" text-anchor="middle" fill="#921914" font-size="23" font-weight="900">Complete Time Flow / సమయ క్రమం</text>
+
+            <rect x="35" y="78" width="175" height="86" rx="11" fill="#fff4e5" stroke="#f08a00" stroke-width="3"/>
+            <rect x="210" y="78" width="125" height="86" rx="11" fill="#fff8ee" stroke="#f08a00" stroke-width="3"/>
+            <rect x="335" y="78" width="150" height="86" rx="11" fill="#eef6ff" stroke="#245fbd" stroke-width="3"/>
+            <rect x="485" y="78" width="210" height="86" rx="11" fill="#eef6ff" stroke="#245fbd" stroke-width="3"/>
+            <rect x="695" y="78" width="230" height="86" rx="11" fill="#f0fff2" stroke="#168c2d" stroke-width="3"/>
+
+            <g text-anchor="middle" font-weight="900">
+              <text x="122" y="111" fill="#921914" font-size="21">9:47 A.M.</text>
+              <text x="122" y="140" fill="#555" font-size="15">24 min ago</text>
+              <text x="272" y="111" fill="#921914" font-size="21">13 min</text>
+              <text x="272" y="140" fill="#555" font-size="15">to 10:00</text>
+              <text x="410" y="111" fill="#173b75" font-size="21">10:11 A.M.</text>
+              <text x="410" y="140" fill="#555" font-size="15">Present time</text>
+              <text x="590" y="111" fill="#173b75" font-size="21">49 minutes</text>
+              <text x="590" y="140" fill="#555" font-size="15">10:11 → 11:00</text>
+              <text x="810" y="111" fill="#168c2d" font-size="21">60 minutes</text>
+              <text x="810" y="140" fill="#555" font-size="15">11:00 → 12:00</text>
+            </g>
+
+            <path d="M55 205 H900" stroke="#921914" stroke-width="3" marker-end="url(#clockQ17Arrow)"/>
+            <g fill="#173b75" font-size="17" font-weight="800" text-anchor="middle">
+              <text x="122" y="235">9:47</text>
+              <text x="272" y="235">10:00</text>
+              <text x="410" y="235">10:11</text>
+              <text x="590" y="235">11:00</text>
+              <text x="810" y="235">12:00 Noon</text>
+            </g>
+
+            <rect x="95" y="270" width="300" height="58" rx="10" fill="#fff4e5" stroke="#f08a00" stroke-width="2"/>
+            <text x="245" y="306" text-anchor="middle" fill="#921914" font-size="20" font-weight="900">13 + 11 = 24 min elapsed</text>
+            <rect x="455" y="270" width="400" height="58" rx="10" fill="#f0fff2" stroke="#168c2d" stroke-width="2"/>
+            <text x="655" y="306" text-anchor="middle" fill="#168c2d" font-size="22" font-weight="900">49 + 60 = 109 min left</text>
+            <text x="480" y="365" text-anchor="middle" fill="#921914" font-size="22" font-weight="900">Present Time: 10:11 A.M.  |  Noon: 12:00 P.M.</text>
+          </svg>
+        </div>
+
+        <h4>📘 Step-by-Step Logical Calculation / దశలవారీ తార్కిక వివరణ</h4>
+
+        <div class="clock-q17-step">
+          <strong>Step 1 — Identify the time 24 minutes ago / 24 నిమిషాల క్రితం సమయాన్ని గుర్తించాలి</strong>
+          <p><strong>English:</strong> The question says that 24 minutes ago, it was 47 minutes past 9 A.M.</p>
+          <p><strong>తెలుగు:</strong> ప్రశ్న ప్రకారం 24 నిమిషాల క్రితం ఉదయం 9 గంటల 47 నిమిషాలు అయ్యింది.</p>
+          <div class="clock-q17-equation">Time 24 minutes ago = 9:47 A.M.</div>
+        </div>
+
+        <div class="clock-q17-step">
+          <strong>Step 2 — Find the present time / ప్రస్తుత సమయాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> Add 24 minutes to 9:47 A.M. Adding 13 minutes reaches 10:00 A.M.; the remaining 11 minutes gives 10:11 A.M.</p>
+          <p><strong>తెలుగు:</strong> 9:47 A.M. కు 24 నిమిషాలు కలపాలి. మొదట 13 నిమిషాలు కలిపితే 10:00 అవుతుంది. మిగిలిన 11 నిమిషాలు కలిపితే 10:11 A.M. అవుతుంది.</p>
+          <div class="clock-q17-equation">9:47 + 24 minutes = 10:11 A.M.</div>
+        </div>
+
+        <div class="clock-q17-step">
+          <strong>Step 3 — Calculate the time from 10:11 to 11:00 / 10:11 నుంచి 11:00 వరకు సమయాన్ని లెక్కించాలి</strong>
+          <p><strong>English:</strong> There are 60 minutes in one hour. Subtract the 11 minutes already passed.</p>
+          <p><strong>తెలుగు:</strong> ఒక గంటలో 60 నిమిషాలు ఉంటాయి. ఇప్పటికే గడిచిన 11 నిమిషాలను తీసివేయాలి.</p>
+          <div class="clock-q17-equation">60 − 11 = 49 minutes</div>
+        </div>
+
+        <div class="clock-q17-step">
+          <strong>Step 4 — Calculate the time from 11:00 to 12 noon / 11:00 నుంచి మధ్యాహ్నం 12 వరకు సమయాన్ని లెక్కించాలి</strong>
+          <p><strong>English:</strong> From 11:00 A.M. to 12:00 noon is exactly one hour.</p>
+          <p><strong>తెలుగు:</strong> ఉదయం 11:00 నుంచి మధ్యాహ్నం 12:00 వరకు ఖచ్చితంగా ఒక గంట ఉంటుంది.</p>
+          <div class="clock-q17-equation">1 hour = 60 minutes</div>
+        </div>
+
+        <div class="clock-q17-step">
+          <strong>Step 5 — Add the remaining time intervals / మిగిలిన సమయ భాగాలను కలపాలి</strong>
+          <p><strong>English:</strong> Add 49 minutes and 60 minutes to find the total time remaining until noon.</p>
+          <p><strong>తెలుగు:</strong> మధ్యాహ్నం 12 గంటలు కావడానికి మిగిలిన మొత్తం సమయాన్ని తెలుసుకోవడానికి 49 నిమిషాలకు 60 నిమిషాలు కలపాలి.</p>
+          <div class="clock-q17-equation">49 + 60 = 109 minutes</div>
+        </div>
+
+        <div class="clock-q17-step">
+          <strong>Step 6 — Match the answer with the given options / ఇచ్చిన ఆప్షన్లలో సరైన సమాధానాన్ని ఎంచుకోవాలి</strong>
+          <p><strong>English:</strong> The present time is 10:11 A.M., so 109 minutes remain until 12 noon.</p>
+          <p><strong>తెలుగు:</strong> ప్రస్తుత సమయం ఉదయం 10:11 కాబట్టి, మధ్యాహ్నం 12 గంటలు కావడానికి ఇంకా 109 నిమిషాలు ఉన్నాయి.</p>
+          <div class="clock-q17-equation">A) 103 &nbsp; | &nbsp; B) 90 &nbsp; | &nbsp; C) 109 &nbsp; | &nbsp; D) 124</div>
+        </div>
+
+        <div class="clock-q17-final">
+          <span>✅ Correct Answer / సరైన సమాధానం</span>
+          <strong>109 Minutes — Option C</strong>
+        </div>
+
+        <p class="clock-q17-note"><strong>Quick Method / సులభమైన పద్ధతి:</strong> 9:47 + 24 minutes = 10:11 A.M. Then 10:11 to 12:00 = 49 + 60 = 109 minutes. / 9:47 కు 24 నిమిషాలు కలిపితే 10:11 అవుతుంది. 10:11 నుంచి 12:00 వరకు 49 + 60 = 109 నిమిషాలు.</p>
+      </div>`
+  }
+
+
+  ,
+  /* =========================================================
+     CLOCK Q18 — Algebraic time relationship.
+     48 minutes ago, elapsed time after 9 A.M. was three times
+     the current number of minutes remaining until 12 noon.
+     Correct answer: 33 minutes (Option A).
+     ========================================================= */
+  {
+    question: "How many minutes is it before 12 noon if 48 minutes ago it was three times as many minutes past 9 A.M.?<br>48 నిమిషాల క్రితం ఉదయం 9 గంటల తర్వాత గడిచిన నిమిషాలు, ప్రస్తుతం మధ్యాహ్నం 12 గంటలకు మిగిలి ఉన్న నిమిషాల కంటే మూడు రెట్లు ఉంటే, ఇప్పుడు 12 గంటలు కావడానికి ఇంకా ఎన్ని నిమిషాలు ఉన్నాయి?",
+    options: ["33 minutes", "40 minutes", "43 minutes", "43.5 minutes"],
+    answer: 0,
+    pattern: "Let x be the number of minutes remaining until 12 noon now. Forty-eight minutes ago, the remaining time until noon was x + 48. The elapsed time after 9 A.M. then was 180 − (x + 48). According to the question, this equals 3x. Therefore 180 − (x + 48) = 3x; 132 = 4x; x = 33 minutes. / ఇప్పుడు మధ్యాహ్నం 12 గంటలకు మిగిలి ఉన్న నిమిషాలను x అనుకుందాం. 48 నిమిషాల క్రితం 12 గంటలకు మిగిలిన సమయం x + 48. అప్పుడు 9 గంటల తర్వాత గడిచిన సమయం 180 − (x + 48). ఇది 3x కు సమానం. కాబట్టి x = 33 నిమిషాలు.",
+    solution:
+      "Step 1: Let x = the present number of minutes before 12 noon.\\n" +
+      "Step 2: Forty-eight minutes ago, the time remaining until noon was x + 48 minutes.\\n" +
+      "Step 3: From 9:00 A.M. to 12:00 noon = 3 hours = 180 minutes.\\n" +
+      "Step 4: Minutes past 9 A.M. 48 minutes ago = 180 − (x + 48).\\n" +
+      "Step 5: Given relationship: 180 − (x + 48) = 3x.\\n" +
+      "Step 6: 132 − x = 3x; 132 = 4x; x = 33.\\n" +
+      "Final Answer: 33 minutes (Option A).",
+    solutionHTML: `
+      <div class="clock-q18-solution">
+        <h4>🕒 Diagrammatic Representation — Past Time, Present Time and 12 Noon / గత సమయం, ప్రస్తుత సమయం మరియు మధ్యాహ్నం 12 గంటలు</h4>
+
+        <p class="clock-q18-note"><strong>English:</strong> Let x be the number of minutes remaining until 12 noon at the present time. Forty-eight minutes ago, the elapsed time after 9 A.M. was three times x.</p>
+        <p class="clock-q18-note"><strong>తెలుగు:</strong> ప్రస్తుతం మధ్యాహ్నం 12 గంటలు కావడానికి ఇంకా ఎన్ని నిమిషాలు ఉన్నాయో ఆ సంఖ్యను x అనుకుందాం. 48 నిమిషాల క్రితం ఉదయం 9 గంటల తర్వాత గడిచిన సమయం, ఈ x కి మూడు రెట్లు.</p>
+
+        <div class="clock-q18-diagram">
+          <svg viewBox="0 0 960 440" role="img" aria-label="Timeline from 9 AM to noon. Forty-eight minutes ago, elapsed time after 9 AM was 3x and remaining time until noon was x plus 48. At present, remaining time until noon is x. Equation: 180 minus (x plus 48) equals 3x, giving x equals 33 minutes.">
+            <defs>
+              <marker id="clockQ18Arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0 0 L0 6 L9 3 Z" fill="#921914"/>
+              </marker>
+            </defs>
+
+            <text x="480" y="34" text-anchor="middle" fill="#921914" font-size="24" font-weight="900">Time Relationship / సమయ సంబంధం</text>
+
+            <rect x="55" y="75" width="850" height="74" rx="12" fill="#f4f8ff" stroke="#245fbd" stroke-width="2.5"/>
+            <text x="480" y="105" text-anchor="middle" fill="#173b75" font-size="20" font-weight="900">9:00 A.M. to 12:00 Noon = 3 hours = 180 minutes</text>
+            <text x="480" y="132" text-anchor="middle" fill="#555" font-size="16" font-weight="700">మొత్తం సమయం = 180 నిమిషాలు</text>
+
+            <path d="M105 205 H855" stroke="#7b8794" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="105" cy="205" r="9" fill="#245fbd"/>
+            <circle cx="855" cy="205" r="9" fill="#168c2d"/>
+            <text x="105" y="184" text-anchor="middle" fill="#173b75" font-size="19" font-weight="900">9:00 A.M.</text>
+            <text x="855" y="184" text-anchor="middle" fill="#168c2d" font-size="19" font-weight="900">12:00 Noon</text>
+
+            <rect x="105" y="225" width="570" height="70" rx="10" fill="#fff4e5" stroke="#f08a00" stroke-width="3"/>
+            <rect x="675" y="225" width="180" height="70" rx="10" fill="#eef6ff" stroke="#245fbd" stroke-width="3"/>
+            <text x="390" y="254" text-anchor="middle" fill="#921914" font-size="22" font-weight="900">3x minutes</text>
+            <text x="390" y="279" text-anchor="middle" fill="#555" font-size="16" font-weight="700">48 minutes ago: past 9 A.M.</text>
+            <text x="765" y="254" text-anchor="middle" fill="#173b75" font-size="20" font-weight="900">x + 48</text>
+            <text x="765" y="279" text-anchor="middle" fill="#555" font-size="15" font-weight="700">then left to noon</text>
+
+            <path d="M105 326 H855" stroke="#921914" stroke-width="3" marker-end="url(#clockQ18Arrow)"/>
+            <text x="480" y="354" text-anchor="middle" fill="#921914" font-size="18" font-weight="900">48 minutes later → Present time / 48 నిమిషాల తర్వాత → ప్రస్తుత సమయం</text>
+
+            <rect x="275" y="370" width="410" height="52" rx="10" fill="#f0fff2" stroke="#168c2d" stroke-width="2.5"/>
+            <text x="480" y="403" text-anchor="middle" fill="#168c2d" font-size="23" font-weight="900">Present remaining time = x = 33 min</text>
+          </svg>
+        </div>
+
+        <h4>📘 Step-by-Step Logical Calculation / దశలవారీ తార్కిక వివరణ</h4>
+
+        <div class="clock-q18-step">
+          <strong>Step 1 — Assume the unknown time / తెలియని సమయాన్ని x గా అనుకోవాలి</strong>
+          <p><strong>English:</strong> Let x represent the number of minutes remaining until 12 noon now.</p>
+          <p><strong>తెలుగు:</strong> ప్రస్తుతం మధ్యాహ్నం 12 గంటలు కావడానికి ఇంకా ఎన్ని నిమిషాలు ఉన్నాయో ఆ సంఖ్యను x అనుకుందాం.</p>
+          <div class="clock-q18-equation">Present remaining time = x minutes</div>
+        </div>
+
+        <div class="clock-q18-step">
+          <strong>Step 2 — Find the remaining time 48 minutes ago / 48 నిమిషాల క్రితం మిగిలిన సమయాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> Forty-eight minutes ago, there were 48 more minutes left until noon than there are now.</p>
+          <p><strong>తెలుగు:</strong> 48 నిమిషాల క్రితం, ప్రస్తుతం ఉన్న సమయం కంటే 48 నిమిషాలు ఎక్కువగా 12 గంటలకు మిగిలి ఉండేవి.</p>
+          <div class="clock-q18-equation">Remaining time then = x + 48</div>
+        </div>
+
+        <div class="clock-q18-step">
+          <strong>Step 3 — Convert the time from 9 A.M. to noon into minutes / ఉదయం 9 నుంచి మధ్యాహ్నం 12 వరకు సమయాన్ని నిమిషాల్లోకి మార్చాలి</strong>
+          <p><strong>English:</strong> From 9 A.M. to 12 noon is 3 hours. Each hour has 60 minutes.</p>
+          <p><strong>తెలుగు:</strong> ఉదయం 9 గంటల నుంచి మధ్యాహ్నం 12 గంటల వరకు 3 గంటలు. ప్రతి గంటలో 60 నిమిషాలు ఉంటాయి.</p>
+          <div class="clock-q18-equation">3 × 60 = 180 minutes</div>
+        </div>
+
+        <div class="clock-q18-step">
+          <strong>Step 4 — Calculate the minutes past 9 A.M. 48 minutes ago / 48 నిమిషాల క్రితం 9 గంటల తర్వాత గడిచిన నిమిషాలను లెక్కించాలి</strong>
+          <p><strong>English:</strong> Subtract the time remaining until noon at that earlier moment from the total 180 minutes.</p>
+          <p><strong>తెలుగు:</strong> మొత్తం 180 నిమిషాల నుంచి 48 నిమిషాల క్రితం 12 గంటలకు మిగిలి ఉన్న (x + 48) నిమిషాలను తీసివేయాలి.</p>
+          <div class="clock-q18-equation">Minutes past 9 then = 180 − (x + 48)</div>
+        </div>
+
+        <div class="clock-q18-step">
+          <strong>Step 5 — Form the equation using the given condition / ప్రశ్నలో ఇచ్చిన సంబంధంతో సమీకరణం రాయాలి</strong>
+          <p><strong>English:</strong> The question says that the minutes past 9 A.M. 48 minutes ago were three times the present remaining minutes.</p>
+          <p><strong>తెలుగు:</strong> 48 నిమిషాల క్రితం 9 గంటల తర్వాత గడిచిన నిమిషాలు, ప్రస్తుతం 12 గంటలకు మిగిలి ఉన్న నిమిషాలకు మూడు రెట్లు అని ప్రశ్నలో ఇచ్చారు.</p>
+          <div class="clock-q18-equation">180 − (x + 48) = 3x</div>
+        </div>
+
+        <div class="clock-q18-step">
+          <strong>Step 6 — Simplify the equation / సమీకరణాన్ని సరళీకరించాలి</strong>
+          <p><strong>English:</strong> Open the bracket and move the x terms to one side.</p>
+          <p><strong>తెలుగు:</strong> బ్రాకెట్‌ను తొలగించి, x ఉన్న పదాలను ఒక వైపుకు తీసుకురావాలి.</p>
+          <div class="clock-q18-equation">180 − x − 48 = 3x<br>132 − x = 3x<br>132 = 4x</div>
+        </div>
+
+        <div class="clock-q18-step">
+          <strong>Step 7 — Find the value of x / x విలువను కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> Divide both sides by 4 to get the present number of minutes before noon.</p>
+          <p><strong>తెలుగు:</strong> x విలువను తెలుసుకోవడానికి రెండు వైపులా 4తో భాగించాలి.</p>
+          <div class="clock-q18-equation">x = 132 ÷ 4 = 33 minutes</div>
+        </div>
+
+        <div class="clock-q18-step">
+          <strong>Step 8 — Match the correct option / సరైన ఆప్షన్‌ను ఎంచుకోవాలి</strong>
+          <p><strong>English:</strong> Therefore, 33 minutes remain until 12 noon.</p>
+          <p><strong>తెలుగు:</strong> కాబట్టి మధ్యాహ్నం 12 గంటలు కావడానికి ఇంకా 33 నిమిషాలు ఉన్నాయి.</p>
+          <div class="clock-q18-equation">A) 33 &nbsp; | &nbsp; B) 40 &nbsp; | &nbsp; C) 43 &nbsp; | &nbsp; D) 43.5</div>
+        </div>
+
+        <div class="clock-q18-final">
+          <span>✅ Correct Answer / సరైన సమాధానం</span>
+          <strong>33 Minutes — Option A</strong>
+        </div>
+
+        <p class="clock-q18-note"><strong>Quick Method / సులభమైన పద్ధతి:</strong> 3 hours = 180 minutes. Let the present remaining time be x. Then 180 − (x + 48) = 3x, so 132 = 4x and x = 33 minutes. / 3 గంటలు = 180 నిమిషాలు. ప్రస్తుతం మిగిలిన సమయం x అనుకుంటే, 180 − (x + 48) = 3x. అందువల్ల 132 = 4x; x = 33 నిమిషాలు.</p>
+      </div>`
+  }
+
+  ,
+  /* =========================================================
+     CLOCK Q19 — Relative gain of minute hand over hour hand.
+     In 15 minutes, minute hand gains 82.5° over hour hand.
+     Correct answer: 82.5° (Option B).
+     ========================================================= */
+  {
+    question: "In 15 minutes, by how many degrees does the minute hand gain over the hour hand?<br>15 నిమిషాల్లో గంటల ముల్లుతో పోలిస్తే నిమిషాల ముల్లు ఎన్ని డిగ్రీలు ఆధిక్యంగా కదులుతుంది?",
+    options: ["54°", "82.5°", "85°", "75°"],
+    answer: 1,
+    pattern: "The minute hand moves 6° per minute and the hour hand moves 0.5° per minute. Relative speed = 6° − 0.5° = 5.5° per minute. In 15 minutes, gain = 5.5° × 15 = 82.5°. / నిమిషాల ముల్లు నిమిషానికి 6° కదులుతుంది; గంటల ముల్లు 0.5° కదులుతుంది. సాపేక్ష వేగం = 6° − 0.5° = 5.5°/నిమిషం. 15 నిమిషాల్లో ఆధిక్యం = 5.5° × 15 = 82.5°.",
+    solution:
+      "Step 1: Minute-hand speed = 360° ÷ 60 = 6° per minute.\n" +
+      "Step 2: Hour-hand speed = 360° ÷ 720 = 0.5° per minute.\n" +
+      "Step 3: Relative speed = 6° − 0.5° = 5.5° per minute.\n" +
+      "Step 4: Gain in 15 minutes = 5.5° × 15 = 82.5°.\n" +
+      "Step 5: Check separately: minute hand moves 6° × 15 = 90°; hour hand moves 0.5° × 15 = 7.5°. Difference = 90° − 7.5° = 82.5°.\n" +
+      "Final Answer: 82.5° (Option B).",
+    solutionHTML: `
+      <div class="clock-q19-solution">
+        <h4>🕒 Diagrammatic Representation — Minute Hand Gains Over Hour Hand</h4>
+
+        <p class="clock-q19-note"><strong>English:</strong> In 15 minutes, both hands move clockwise, but the minute hand moves faster. The gain is the difference between the angles covered by the two hands.</p>
+        <p class="clock-q19-note"><strong>తెలుగు:</strong> 15 నిమిషాల్లో రెండు ముళ్లు కూడా సవ్యదిశలో కదులుతాయి. అయితే నిమిషాల ముల్లు వేగంగా కదులుతుంది. రెండు ముళ్లు కదిలిన కోణాల మధ్య తేడానే నిమిషాల ముల్లు పొందిన ఆధిక్యం.</p>
+
+        <div class="clock-q19-diagram">
+          <svg viewBox="0 0 900 440" role="img" aria-label="Clock diagram showing minute hand movement 90 degrees, hour hand movement 7.5 degrees, and relative gain 82.5 degrees">
+            <defs>
+              <marker id="clockQ19ArrowBlue" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L8,3 L0,6 Z" fill="#245fbd"></path>
+              </marker>
+              <marker id="clockQ19ArrowOrange" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L8,3 L0,6 Z" fill="#f08a00"></path>
+              </marker>
+            </defs>
+
+            <circle cx="245" cy="215" r="155" fill="#fff" stroke="#245fbd" stroke-width="5"></circle>
+            <circle cx="245" cy="215" r="7" fill="#921914"></circle>
+            <g stroke="#7b8794" stroke-width="3">
+              <line x1="245" y1="70" x2="245" y2="84"></line>
+              <line x1="390" y1="215" x2="376" y2="215"></line>
+              <line x1="245" y1="360" x2="245" y2="346"></line>
+              <line x1="100" y1="215" x2="114" y2="215"></line>
+            </g>
+            <g fill="#173b75" font-size="22" font-weight="800" text-anchor="middle">
+              <text x="245" y="52">12</text>
+              <text x="414" y="223">3</text>
+              <text x="245" y="393">6</text>
+              <text x="76" y="223">9</text>
+            </g>
+
+            <line x1="245" y1="215" x2="245" y2="75" stroke="#f08a00" stroke-width="8" stroke-linecap="round"></line>
+            <line x1="245" y1="215" x2="263.3" y2="76.2" stroke="#168c2d" stroke-width="7" stroke-linecap="round"></line>
+            <line x1="245" y1="215" x2="385" y2="215" stroke="#245fbd" stroke-width="8" stroke-linecap="round"></line>
+
+            <path d="M245 125 A90 90 0 0 1 256.8 125.8" fill="none" stroke="#f08a00" stroke-width="5"></path>
+            <path d="M245 105 A110 110 0 0 1 355 215" fill="none" stroke="#245fbd" stroke-width="5" marker-end="url(#clockQ19ArrowBlue)"></path>
+            <path d="M245 145 A70 70 0 0 1 254.1 145.6" fill="none" stroke="#168c2d" stroke-width="5"></path>
+
+            <g font-size="19" font-weight="800">
+              <text x="275" y="105" fill="#168c2d">Hour hand: 7.5°</text>
+              <text x="320" y="285" fill="#245fbd">Minute hand: 90°</text>
+              <text x="60" y="420" fill="#921914">Difference / ఆధిక్యం = 90° − 7.5° = 82.5°</text>
+            </g>
+            <text x="490" y="105" fill="#921914" font-size="23" font-weight="900">15 Minutes / 15 నిమిషాలు</text>
+            <text x="490" y="155" fill="#245fbd" font-size="20" font-weight="800">Minute hand: 6° × 15 = 90°</text>
+            <text x="490" y="205" fill="#168c2d" font-size="20" font-weight="800">Hour hand: 0.5° × 15 = 7.5°</text>
+            <text x="490" y="275" fill="#921914" font-size="21" font-weight="900">Relative gain / సాపేక్ష ఆధిక్యం</text>
+            <text x="490" y="320" fill="#921914" font-size="28" font-weight="900">90° − 7.5° = 82.5°</text>
+            <text x="490" y="370" fill="#555" font-size="17">Not to scale — explanatory clock diagram</text>
+          </svg>
+        </div>
+
+        <h4>Step-by-Step Logical Explanation / దశలవారీ తార్కిక వివరణ</h4>
+
+        <div class="clock-q19-step">
+          <strong>Step 1 — Find the minute-hand speed / నిమిషాల ముల్లు వేగం</strong>
+          <p><strong>English:</strong> The minute hand completes 360° in 60 minutes.</p>
+          <p><strong>తెలుగు:</strong> నిమిషాల ముల్లు 60 నిమిషాల్లో 360° పూర్తి చేస్తుంది.</p>
+          <div class="clock-q19-equation">360° ÷ 60 = 6° per minute</div>
+        </div>
+
+        <div class="clock-q19-step">
+          <strong>Step 2 — Find the hour-hand speed / గంటల ముల్లు వేగం</strong>
+          <p><strong>English:</strong> The hour hand completes 360° in 12 hours = 720 minutes.</p>
+          <p><strong>తెలుగు:</strong> గంటల ముల్లు 12 గంటల్లో అంటే 720 నిమిషాల్లో 360° పూర్తి చేస్తుంది.</p>
+          <div class="clock-q19-equation">360° ÷ 720 = 0.5° per minute</div>
+        </div>
+
+        <div class="clock-q19-step">
+          <strong>Step 3 — Calculate relative speed / సాపేక్ష వేగాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> Relative speed means the minute hand's speed minus the hour hand's speed.</p>
+          <p><strong>తెలుగు:</strong> సాపేక్ష వేగం అంటే నిమిషాల ముల్లు వేగం నుంచి గంటల ముల్లు వేగాన్ని తీసివేయడం.</p>
+          <div class="clock-q19-equation">6° − 0.5° = 5.5° per minute</div>
+        </div>
+
+        <div class="clock-q19-step">
+          <strong>Step 4 — Find the gain in 15 minutes / 15 నిమిషాల్లో ఆధిక్యాన్ని లెక్కించాలి</strong>
+          <p><strong>English:</strong> Multiply the relative speed by the given time.</p>
+          <p><strong>తెలుగు:</strong> సాపేక్ష వేగాన్ని ఇచ్చిన 15 నిమిషాలతో గుణించాలి.</p>
+          <div class="clock-q19-equation">5.5° × 15 = 82.5°</div>
+        </div>
+
+        <div class="clock-q19-step">
+          <strong>Step 5 — Verify by calculating both angles / రెండు కోణాలతో తనిఖీ</strong>
+          <p><strong>English:</strong> In 15 minutes, the minute hand moves 90° and the hour hand moves 7.5°. Their difference is 82.5°.</p>
+          <p><strong>తెలుగు:</strong> 15 నిమిషాల్లో నిమిషాల ముల్లు 90° కదులుతుంది; గంటల ముల్లు 7.5° కదులుతుంది. వాటి మధ్య తేడా 82.5°.</p>
+          <div class="clock-q19-equation">
+            Minute hand = 6° × 15 = 90°<br>
+            Hour hand = 0.5° × 15 = 7.5°<br>
+            Gain = 90° − 7.5° = 82.5°
+          </div>
+        </div>
+
+        <div class="clock-q19-step">
+          <strong>Step 6 — Match the correct option / సరైన ఆప్షన్‌ను ఎంచుకోవాలి</strong>
+          <p><strong>English:</strong> The minute hand gains 82.5° over the hour hand in 15 minutes.</p>
+          <p><strong>తెలుగు:</strong> 15 నిమిషాల్లో గంటల ముల్లుపై నిమిషాల ముల్లు 82.5° ఆధిక్యాన్ని పొందుతుంది.</p>
+          <div class="clock-q19-equation">A) 54° &nbsp; | &nbsp; B) 82.5° &nbsp; | &nbsp; C) 85° &nbsp; | &nbsp; D) 75°</div>
+        </div>
+
+        <div class="clock-q19-final">
+          <span>✅ Correct Answer / సరైన సమాధానం</span>
+          <strong>82.5° — Option B</strong>
+        </div>
+
+        <p class="clock-q19-note"><strong>Quick Method / సులభమైన పద్ధతి:</strong> Relative speed = 6° − 0.5° = 5.5° per minute. Gain in 15 minutes = 5.5° × 15 = 82.5°. / సాపేక్ష వేగం = 6° − 0.5° = 5.5°/నిమిషం. 15 నిమిషాల్లో ఆధిక్యం = 5.5° × 15 = 82.5°.</p>
+      </div>`
+  }
+
+
+  ,
+  /* =========================================================
+     CLOCK Q20 — Relative angular gain in 24 minutes.
+     Minute hand movement = 144°; hour hand movement = 12°.
+     Relative gain = 132° (Option D).
+     ========================================================= */
+  {
+    question: "In 24 minutes, by how many degrees does the minute hand gain over the hour hand?<br>24 నిమిషాల్లో గంటల ముల్లుతో పోలిస్తే నిమిషాల ముల్లు ఎన్ని డిగ్రీల ఆధిక్యాన్ని పొందుతుంది?",
+    options: ["122°", "112.5°", "144°", "132°"],
+    answer: 3,
+    pattern: "Minute-hand speed = 6° per minute. Hour-hand speed = 0.5° per minute. Relative speed = 6° − 0.5° = 5.5° per minute. Gain in 24 minutes = 5.5° × 24 = 132°. / నిమిషాల ముల్లు వేగం 6°/నిమిషం; గంటల ముల్లు వేగం 0.5°/నిమిషం. సాపేక్ష వేగం 5.5°/నిమిషం. 24 నిమిషాల్లో ఆధిక్యం 5.5° × 24 = 132°.",
+    solution:
+      "Step 1: Minute-hand speed = 360° ÷ 60 = 6° per minute.\\n" +
+      "Step 2: Hour-hand speed = 360° ÷ 720 = 0.5° per minute.\\n" +
+      "Step 3: Relative speed = 6° − 0.5° = 5.5° per minute.\\n" +
+      "Step 4: Gain in 24 minutes = 5.5° × 24 = 132°.\\n" +
+      "Step 5: Minute hand moves 6° × 24 = 144°; hour hand moves 0.5° × 24 = 12°. Difference = 144° − 12° = 132°.\\n" +
+      "Final Answer: 132° (Option D).",
+    solutionHTML: `
+      <div class="clock-q20-solution">
+        <h4>🕒 Diagrammatic Representation — Minute Hand Gains Over Hour Hand</h4>
+
+        <p class="clock-q20-note"><strong>English:</strong> In 24 minutes, both hands move clockwise from the 12 o'clock position. The minute hand covers 144°, while the hour hand covers 12°. The difference between these angles is the minute hand's gain.</p>
+        <p class="clock-q20-note"><strong>తెలుగు:</strong> 24 నిమిషాల్లో రెండు ముళ్లు 12 గంటల స్థానం నుంచి సవ్యదిశలో కదులుతాయి. నిమిషాల ముల్లు 144° కదులుతుంది; గంటల ముల్లు 12° కదులుతుంది. ఈ రెండు కోణాల మధ్య తేడానే నిమిషాల ముల్లు పొందిన ఆధిక్యం.</p>
+
+        <div class="clock-q20-diagram">
+          <svg viewBox="0 0 900 470" role="img" aria-label="Clock diagram showing minute hand movement 144 degrees, hour hand movement 12 degrees, and relative gain 132 degrees">
+            <defs>
+              <marker id="clockQ20MinuteArrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L8,3 L0,6 Z" fill="#245fbd"></path>
+              </marker>
+              <marker id="clockQ20HourArrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L8,3 L0,6 Z" fill="#f08a00"></path>
+              </marker>
+            </defs>
+
+            <circle cx="245" cy="220" r="160" fill="#fff" stroke="#245fbd" stroke-width="5"></circle>
+            <circle cx="245" cy="220" r="7" fill="#921914"></circle>
+            <g stroke="#7b8794" stroke-width="3">
+              <line x1="245" y1="72" x2="245" y2="88"></line>
+              <line x1="393" y1="220" x2="377" y2="220"></line>
+              <line x1="245" y1="368" x2="245" y2="352"></line>
+              <line x1="97" y1="220" x2="113" y2="220"></line>
+            </g>
+            <g fill="#173b75" font-size="22" font-weight="800" text-anchor="middle">
+              <text x="245" y="51">12</text>
+              <text x="420" y="228">3</text>
+              <text x="245" y="405">6</text>
+              <text x="70" y="228">9</text>
+            </g>
+
+            <!-- Starting reference line at 12 -->
+            <line x1="245" y1="220" x2="245" y2="78" stroke="#7b8794" stroke-width="3" stroke-dasharray="7 6"></line>
+
+            <!-- Hour hand: 12 degrees clockwise from 12 -->
+            <line x1="245" y1="220" x2="274.5" y2="81.1" stroke="#f08a00" stroke-width="8" stroke-linecap="round"></line>
+
+            <!-- Minute hand: 144 degrees clockwise from 12 -->
+            <line x1="245" y1="220" x2="161.4" y2="334.8" stroke="#245fbd" stroke-width="8" stroke-linecap="round"></line>
+
+            <!-- Illustrative angle arcs -->
+            <path d="M245 118 A102 102 0 0 1 266.2 120.2" fill="none" stroke="#f08a00" stroke-width="5"></path>
+            <path d="M245 92 A128 128 0 0 1 169.8 334.5" fill="none" stroke="#245fbd" stroke-width="5" marker-end="url(#clockQ20MinuteArrow)"></path>
+
+            <g font-size="18" font-weight="800">
+              <text x="285" y="105" fill="#f08a00">Hour hand: 12°</text>
+              <text x="30" y="350" fill="#245fbd">Minute hand: 144°</text>
+              <text x="30" y="445" fill="#921914">Gain / ఆధిక్యం = 144° − 12° = 132°</text>
+            </g>
+
+            <text x="490" y="95" fill="#921914" font-size="24" font-weight="900">24 Minutes / 24 నిమిషాలు</text>
+            <text x="490" y="155" fill="#245fbd" font-size="21" font-weight="800">Minute hand: 6° × 24 = 144°</text>
+            <text x="490" y="210" fill="#f08a00" font-size="21" font-weight="800">Hour hand: 0.5° × 24 = 12°</text>
+            <text x="490" y="285" fill="#921914" font-size="22" font-weight="900">Relative gain / సాపేక్ష ఆధిక్యం</text>
+            <text x="490" y="335" fill="#168c2d" font-size="30" font-weight="900">144° − 12° = 132°</text>
+            <text x="490" y="390" fill="#555" font-size="17">Not to scale — explanatory clock diagram</text>
+          </svg>
+        </div>
+
+        <h4>Step-by-Step Logical Explanation / దశలవారీ తార్కిక వివరణ</h4>
+
+        <div class="clock-q20-step">
+          <strong>Step 1 — Find the minute-hand speed / నిమిషాల ముల్లు వేగాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> The minute hand completes one full circle of 360° in 60 minutes.</p>
+          <p><strong>తెలుగు:</strong> నిమిషాల ముల్లు 60 నిమిషాల్లో 360° పూర్తి వృత్తాన్ని తిరుగుతుంది.</p>
+          <div class="clock-q20-equation">360° ÷ 60 = 6° per minute</div>
+        </div>
+
+        <div class="clock-q20-step">
+          <strong>Step 2 — Find the hour-hand speed / గంటల ముల్లు వేగాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> The hour hand completes 360° in 12 hours, that is, 720 minutes.</p>
+          <p><strong>తెలుగు:</strong> గంటల ముల్లు 12 గంటల్లో అంటే 720 నిమిషాల్లో 360° పూర్తి చేస్తుంది.</p>
+          <div class="clock-q20-equation">360° ÷ 720 = 0.5° per minute</div>
+        </div>
+
+        <div class="clock-q20-step">
+          <strong>Step 3 — Calculate relative speed / సాపేక్ష వేగాన్ని లెక్కించాలి</strong>
+          <p><strong>English:</strong> Both hands move in the same direction. So subtract the slower hour-hand speed from the faster minute-hand speed.</p>
+          <p><strong>తెలుగు:</strong> రెండు ముళ్లు ఒకే దిశలో కదులుతాయి. కాబట్టి వేగంగా కదిలే నిమిషాల ముల్లు వేగం నుంచి గంటల ముల్లు వేగాన్ని తీసివేయాలి.</p>
+          <div class="clock-q20-equation">6° − 0.5° = 5.5° per minute</div>
+        </div>
+
+        <div class="clock-q20-step">
+          <strong>Step 4 — Calculate the gain in 24 minutes / 24 నిమిషాల్లో ఆధిక్యాన్ని కనుక్కోవాలి</strong>
+          <p><strong>English:</strong> Multiply the relative speed by the given time, 24 minutes.</p>
+          <p><strong>తెలుగు:</strong> సాపేక్ష వేగాన్ని ప్రశ్నలో ఇచ్చిన 24 నిమిషాలతో గుణించాలి.</p>
+          <div class="clock-q20-equation">5.5° × 24 = 132°</div>
+        </div>
+
+        <div class="clock-q20-step">
+          <strong>Step 5 — Verify both hand movements / రెండు ముళ్ల కదలికలను విడిగా తనిఖీ చేయాలి</strong>
+          <p><strong>English:</strong> In 24 minutes, the minute hand moves 144°. During the same time, the hour hand moves 12°. Their difference is 132°.</p>
+          <p><strong>తెలుగు:</strong> 24 నిమిషాల్లో నిమిషాల ముల్లు 144° కదులుతుంది. అదే సమయంలో గంటల ముల్లు 12° కదులుతుంది. వాటి మధ్య తేడా 132°.</p>
+          <div class="clock-q20-equation">
+            Minute hand = 6° × 24 = 144°<br>
+            Hour hand = 0.5° × 24 = 12°<br>
+            Relative gain = 144° − 12° = 132°
+          </div>
+        </div>
+
+        <div class="clock-q20-step">
+          <strong>Step 6 — Match the correct option / సరైన ఆప్షన్‌ను ఎంచుకోవాలి</strong>
+          <p><strong>English:</strong> The minute hand gains 132° over the hour hand in 24 minutes.</p>
+          <p><strong>తెలుగు:</strong> 24 నిమిషాల్లో గంటల ముల్లుతో పోలిస్తే నిమిషాల ముల్లు 132° ఆధిక్యాన్ని పొందుతుంది.</p>
+          <div class="clock-q20-equation">A) 122° &nbsp; | &nbsp; B) 112.5° &nbsp; | &nbsp; C) 144° &nbsp; | &nbsp; D) 132°</div>
+        </div>
+
+        <div class="clock-q20-final">
+          <span>✅ Correct Answer / సరైన సమాధానం</span>
+          <strong>132° — Option D</strong>
+        </div>
+
+        <p class="clock-q20-note"><strong>Quick Method / సులభమైన పద్ధతి:</strong> Relative speed = 6° − 0.5° = 5.5° per minute. Gain in 24 minutes = 5.5° × 24 = 132°. / సాపేక్ష వేగం = 6° − 0.5° = 5.5°/నిమిషం. 24 నిమిషాల్లో ఆధిక్యం = 5.5° × 24 = 132°.</p>
+      </div>`
+  }
+
 
 ];
 
@@ -27402,7 +27921,7 @@ if(typeof numberSystemQuestions !== "undefined" && questionList === numberSystem
     if(typeof window.vennDiagramsQuestions !== "undefined" && questionList === window.vennDiagramsQuestions) return "Venn Diagrams";
   if(typeof averageQuestions !== "undefined" && questionList === averageQuestions) return "Average";
 if(typeof percentageQuestions !== "undefined" && questionList === percentageQuestions) return "Percentage";
-  if(typeof simplificationQuestions !== "undefined" && questionList === simplificationQuestions) return "Simplification";
+  if(typeof simplificationQuestionBankData !== "undefined" && questionList === simplificationQuestionBankData) return "Simplification";
   if(typeof probabilityQuestions !== "undefined" && questionList === probabilityQuestions) return "Probability";
   if(typeof elementaryStatisticsQuestions !== "undefined" && questionList === elementaryStatisticsQuestions) return "Elementary Statistics";
   if(typeof trigonometryQuestions !== "undefined" && questionList === trigonometryQuestions) return "Trigonometry";
@@ -28001,7 +28520,7 @@ const codingDecodingItems = [];
   );
 
   if(simplificationBody){
-    fillTable(simplificationBody,simplificationItems,"No Simplification tests attempted yet.",simplificationQuestions.length);
+    fillTable(simplificationBody,simplificationItems,"No Simplification tests attempted yet.",simplificationQuestionBankData.length);
   }
 
   if(probabilityBody){
@@ -30187,9 +30706,9 @@ function startDataInterpretationTestAgain(){
 
 function updateSimplificationQuestionCount(){
   const el=document.getElementById("simplificationQuestionCount");
-  if(el) el.textContent=simplificationQuestions.length+" Questions • 30 Seconds per Question";
+  if(el) el.textContent=simplificationQuestionBankData.length+" Questions • 30 Seconds per Question";
 }
-function startSimplificationTestAgain(){startFreshRetest("Simplification",simplificationQuestions);}
+function startSimplificationTestAgain(){startFreshRetest("Simplification",simplificationQuestionBankData);}
 
 function updatePercentageQuestionCount(){
   const el = document.getElementById("percentageQuestionCount");
@@ -31413,7 +31932,7 @@ function renderTestResults(){
   updateStats(
     simplificationItems,
     {total:"simplificationTotalTests",best:"simplificationBestScore",average:"simplificationAverageScore",latest:"simplificationLatestScore"},
-    simplificationQuestions.length
+    simplificationQuestionBankData.length
   );
 
   updateStats(
@@ -32013,7 +32532,7 @@ if (typeof window.updatePercentageQuestionCount !== "function") {
 if (typeof window.updateSimplificationQuestionCount !== "function") {
   window.updateSimplificationQuestionCount=function(){
     const el=document.getElementById("simplificationQuestionCount");
-    if(el && typeof simplificationQuestions!=="undefined") el.textContent=simplificationQuestions.length+" Questions • 30 Seconds per Question";
+    if(el && typeof simplificationQuestionBankData!=="undefined") el.textContent=simplificationQuestionBankData.length+" Questions • 30 Seconds per Question";
   };
 }
 
@@ -35475,5 +35994,414 @@ window.addEventListener('DOMContentLoaded', function(){
   .clock-q16-final strong{font-size:24px}
 }
 /* ===== End Clock Q16 styles ===== */
+
+
+
+/* =========================================================
+   CLOCK Q17 — Past-time adjustment and remaining time to noon.
+   Bilingual logical steps and a full time-flow diagram.
+   ========================================================= */
+.clock-q17-solution{
+  display:block;
+  width:100%;
+  padding:16px;
+  color:#222;
+  line-height:1.75;
+  white-space:normal;
+}
+.clock-q17-solution h4{
+  margin:18px 0 10px;
+  color:#921914;
+  font-size:21px;
+  font-weight:900;
+}
+.clock-q17-solution p{margin:8px 0}
+.clock-q17-note{
+  padding:12px 14px;
+  border-left:4px solid #245fbd;
+  border-radius:7px;
+  background:#f3f8ff;
+}
+.clock-q17-diagram{
+  width:100%;
+  margin:16px 0 22px;
+  padding:12px;
+  overflow-x:auto;
+  border:1px solid #dce5ef;
+  border-radius:12px;
+  background:#fbfdff;
+}
+.clock-q17-diagram svg{
+  display:block;
+  width:100%;
+  min-width:760px;
+  max-width:960px;
+  height:auto;
+  margin:auto;
+}
+.clock-q17-step{
+  margin:14px 0;
+  padding:14px;
+  border:1px solid #dfe4ea;
+  border-left:4px solid #245fbd;
+  border-radius:9px;
+  background:#f8fbff;
+}
+.clock-q17-step strong{
+  display:block;
+  color:#173b75;
+  font-size:17px;
+}
+.clock-q17-step p{margin:7px 0}
+.clock-q17-equation{
+  margin:10px 0 2px;
+  padding:12px;
+  border:1px solid #ead7c8;
+  border-radius:8px;
+  background:#fffaf6;
+  text-align:center;
+  color:#921914;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px;
+  font-weight:900;
+}
+.clock-q17-final{
+  margin:20px 0 12px;
+  padding:16px;
+  border:2px solid #168c2d;
+  border-radius:10px;
+  background:#f3fff5;
+  text-align:center;
+}
+.clock-q17-final span{
+  display:block;
+  color:#168c2d;
+  font-size:17px;
+  font-weight:800;
+}
+.clock-q17-final strong{
+  display:block;
+  margin-top:5px;
+  color:#921914;
+  font-size:29px;
+}
+@media(max-width:700px){
+  .clock-q17-solution{padding:10px}
+  .clock-q17-solution h4{font-size:18px}
+  .clock-q17-diagram{padding:7px}
+  .clock-q17-diagram svg{min-width:760px}
+  .clock-q17-step{padding:10px}
+  .clock-q17-step strong{font-size:15px}
+  .clock-q17-equation{font-size:18px;padding:9px}
+  .clock-q17-final strong{font-size:24px}
+}
+/* ===== End Clock Q17 styles ===== */
+
+
+/* =========================================================
+   CLOCK Q18 — Algebraic time relationship and bilingual
+   diagrammatic explanation. Added without changing Q1–Q17.
+   ========================================================= */
+.clock-q18-solution{
+  display:block;
+  width:100%;
+  padding:16px;
+  color:#222;
+  line-height:1.75;
+  white-space:normal;
+}
+.clock-q18-solution h4{
+  margin:18px 0 10px;
+  color:#921914;
+  font-size:21px;
+  font-weight:900;
+}
+.clock-q18-solution p{margin:8px 0}
+.clock-q18-note{
+  padding:12px 14px;
+  border-left:4px solid #245fbd;
+  border-radius:7px;
+  background:#f3f8ff;
+}
+.clock-q18-diagram{
+  width:100%;
+  margin:16px 0 22px;
+  padding:12px;
+  overflow-x:auto;
+  border:1px solid #dce5ef;
+  border-radius:12px;
+  background:#fbfdff;
+}
+.clock-q18-diagram svg{
+  display:block;
+  width:100%;
+  min-width:760px;
+  max-width:960px;
+  height:auto;
+  margin:auto;
+}
+.clock-q18-step{
+  margin:14px 0;
+  padding:14px;
+  border:1px solid #dfe4ea;
+  border-left:4px solid #245fbd;
+  border-radius:9px;
+  background:#f8fbff;
+}
+.clock-q18-step strong{
+  display:block;
+  color:#173b75;
+  font-size:17px;
+}
+.clock-q18-step p{margin:7px 0}
+.clock-q18-equation{
+  margin:10px 0 2px;
+  padding:12px;
+  border:1px solid #ead7c8;
+  border-radius:8px;
+  background:#fffaf6;
+  text-align:center;
+  color:#921914;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px;
+  line-height:1.65;
+  font-weight:900;
+}
+.clock-q18-final{
+  margin:20px 0 12px;
+  padding:16px;
+  border:2px solid #168c2d;
+  border-radius:10px;
+  background:#f3fff5;
+  text-align:center;
+}
+.clock-q18-final span{
+  display:block;
+  color:#168c2d;
+  font-size:17px;
+  font-weight:800;
+}
+.clock-q18-final strong{
+  display:block;
+  margin-top:5px;
+  color:#921914;
+  font-size:29px;
+}
+@media(max-width:700px){
+  .clock-q18-solution{padding:10px}
+  .clock-q18-solution h4{font-size:18px}
+  .clock-q18-diagram{padding:7px}
+  .clock-q18-diagram svg{min-width:760px}
+  .clock-q18-step{padding:10px}
+  .clock-q18-step strong{font-size:15px}
+  .clock-q18-equation{font-size:18px;padding:9px}
+  .clock-q18-final strong{font-size:24px}
+}
+/* ===== End Clock Q18 styles ===== */
+
+
+/* =========================================================
+   CLOCK Q19 — Relative angular gain of minute hand over hour hand.
+   Bilingual step-by-step explanation and SVG diagram in Result Details.
+   ========================================================= */
+.clock-q19-solution{
+  display:block;
+  width:100%;
+  padding:16px;
+  color:#222;
+  line-height:1.75;
+  white-space:normal;
+}
+.clock-q19-solution h4{
+  margin:18px 0 10px;
+  color:#921914;
+  font-size:21px;
+  font-weight:900;
+}
+.clock-q19-solution p{margin:8px 0}
+.clock-q19-note{
+  padding:12px 14px;
+  border-left:4px solid #245fbd;
+  border-radius:7px;
+  background:#f3f8ff;
+}
+.clock-q19-diagram{
+  width:100%;
+  margin:16px 0 22px;
+  padding:12px;
+  overflow-x:auto;
+  border:1px solid #dce5ef;
+  border-radius:12px;
+  background:#fbfdff;
+}
+.clock-q19-diagram svg{
+  display:block;
+  width:100%;
+  min-width:760px;
+  max-width:960px;
+  height:auto;
+  margin:auto;
+}
+.clock-q19-step{
+  margin:14px 0;
+  padding:14px;
+  border:1px solid #dfe4ea;
+  border-left:4px solid #245fbd;
+  border-radius:9px;
+  background:#f8fbff;
+}
+.clock-q19-step strong{
+  display:block;
+  color:#173b75;
+  font-size:17px;
+}
+.clock-q19-step p{margin:7px 0}
+.clock-q19-equation{
+  margin:10px 0 2px;
+  padding:12px;
+  border:1px solid #ead7c8;
+  border-radius:8px;
+  background:#fffaf6;
+  text-align:center;
+  color:#921914;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px;
+  line-height:1.65;
+  font-weight:900;
+}
+.clock-q19-final{
+  margin:20px 0 12px;
+  padding:16px;
+  border:2px solid #168c2d;
+  border-radius:10px;
+  background:#f3fff5;
+  text-align:center;
+}
+.clock-q19-final span{
+  display:block;
+  color:#168c2d;
+  font-size:17px;
+  font-weight:800;
+}
+.clock-q19-final strong{
+  display:block;
+  margin-top:5px;
+  color:#921914;
+  font-size:29px;
+}
+@media(max-width:700px){
+  .clock-q19-solution{padding:10px}
+  .clock-q19-solution h4{font-size:18px}
+  .clock-q19-diagram{padding:7px}
+  .clock-q19-diagram svg{min-width:760px}
+  .clock-q19-step{padding:10px}
+  .clock-q19-step strong{font-size:15px}
+  .clock-q19-equation{font-size:18px;padding:9px}
+  .clock-q19-final strong{font-size:24px}
+}
+/* ===== End Clock Q19 styles ===== */
+
+
+
+/* =========================================================
+   CLOCK Q20 — Relative angular gain in 24 minutes.
+   Dedicated styles for bilingual solution and diagram.
+   ========================================================= */
+.clock-q20-solution{
+  display:block;
+  width:100%;
+  padding:16px;
+  color:#222;
+  line-height:1.75;
+  white-space:normal;
+}
+.clock-q20-solution h4{
+  margin:18px 0 10px;
+  color:#921914;
+  font-size:21px;
+  font-weight:900;
+}
+.clock-q20-solution p{margin:8px 0}
+.clock-q20-note{
+  padding:12px 14px;
+  border-left:4px solid #245fbd;
+  border-radius:7px;
+  background:#f3f8ff;
+}
+.clock-q20-diagram{
+  width:100%;
+  margin:16px 0 22px;
+  padding:12px;
+  overflow-x:auto;
+  border:1px solid #dce5ef;
+  border-radius:12px;
+  background:#fbfdff;
+}
+.clock-q20-diagram svg{
+  display:block;
+  width:100%;
+  min-width:760px;
+  max-width:960px;
+  height:auto;
+  margin:auto;
+}
+.clock-q20-step{
+  margin:14px 0;
+  padding:14px;
+  border:1px solid #dfe4ea;
+  border-left:4px solid #245fbd;
+  border-radius:9px;
+  background:#f8fbff;
+}
+.clock-q20-step strong{
+  display:block;
+  color:#173b75;
+  font-size:17px;
+}
+.clock-q20-step p{margin:7px 0}
+.clock-q20-equation{
+  margin:10px 0 2px;
+  padding:12px;
+  border:1px solid #ead7c8;
+  border-radius:8px;
+  background:#fffaf6;
+  text-align:center;
+  color:#921914;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px;
+  line-height:1.65;
+  font-weight:900;
+}
+.clock-q20-final{
+  margin:20px 0 12px;
+  padding:16px;
+  border:2px solid #168c2d;
+  border-radius:10px;
+  background:#f3fff5;
+  text-align:center;
+}
+.clock-q20-final span{
+  display:block;
+  color:#168c2d;
+  font-size:17px;
+  font-weight:800;
+}
+.clock-q20-final strong{
+  display:block;
+  margin-top:5px;
+  color:#921914;
+  font-size:29px;
+}
+@media(max-width:700px){
+  .clock-q20-solution{padding:10px}
+  .clock-q20-solution h4{font-size:18px}
+  .clock-q20-diagram{padding:7px}
+  .clock-q20-diagram svg{min-width:760px}
+  .clock-q20-step{padding:10px}
+  .clock-q20-step strong{font-size:15px}
+  .clock-q20-equation{font-size:18px;padding:9px}
+  .clock-q20-final strong{font-size:24px}
+}
+/* ===== End Clock Q20 styles ===== */
 
 </style>
