@@ -4779,7 +4779,7 @@ body:has(#test[style*="display:block"]){
 </div>
 <div class="card">
   <h2>🔗 Analogy</h2>
-  <p id="analogyQuestionCount">15 Questions • 30 Seconds per Question</p>
+  <p id="analogyQuestionCount">18 Questions • 30 Seconds per Question</p>
   <button class="primary" onclick="startAnalogyTestAgain()">Start Test</button>
 </div>
 <div class="card">
@@ -6148,9 +6148,9 @@ body:has(#test[style*="display:block"]){
         <h4 class="history-section-title">Analogy — Results</h4>
         <div class="stats subject-stats">
           <div class="stat"><strong id="analogyTotalTests">0</strong>Total Tests Written</div>
-          <div class="stat"><strong id="analogyBestScore">0/15</strong>Best Score</div>
+          <div class="stat"><strong id="analogyBestScore">0/18</strong>Best Score</div>
           <div class="stat"><strong id="analogyAverageScore">0%</strong>Average Score</div>
-          <div class="stat"><strong id="analogyLatestScore">0/15</strong>Latest Test</div>
+          <div class="stat"><strong id="analogyLatestScore">0/18</strong>Latest Test</div>
         </div>
         <div class="subject-retest-action">
           <button class="take-test-again-btn" type="button" onclick="startAnalogyTestAgain()">
@@ -7181,11 +7181,189 @@ const numberSystemQuestions = [
 {"question":"What is the total number of factors of 3600?","options":["45","30","35","20"],"answer":0,"pattern":"Number of Factors","solution":"3600 = 2^4 × 3^2 × 5^2, so factors = (4+1)(2+1)(2+1) = 45."},
 {"question":"Convert 0.714285... into a fraction.","options":["5/7","1/7","15/7","16/7"],"answer":0,"pattern":"Recurring Decimal → Fraction","solution":"0.714285... = 5/7."},
 {"question":"Find the least number which leaves remainder 3 when divided by 5, 7, and 8.","options":["280","283","313","275"],"answer":1,"pattern":"LCM + Common Remainder","solution":"LCM(5,7,8) = 280; required number = 280 + 3 = 283."},
-{"question":"The unit digit of 7^103 is:","options":["4","3","1","0"],"answer":1,"pattern":"Unit Digit Cycle","solution":"Unit digits of powers of 7 repeat as 7,9,3,1. Since 103 mod 4 = 3, the unit digit is 3."},
+{
+  "question":"The unit digit of 7¹⁰³ is:\n7¹⁰³ యొక్క ఒకట్ల స్థానం అంకె ఏది?",
+  "questionHTML":"<span>The unit digit of <b>7<sup>103</sup></b> is:</span><br><span style='color:#921914;font-weight:700'>7¹⁰³ యొక్క ఒకట్ల స్థానం అంకె ఏది?</span>",
+  "options":["4","3","1","0"],
+  "answer":1,
+  "pattern":"Unit Digit Cycle / ఒకట్ల స్థానం అంకెల చక్రం",
+  "solution":"Step 1 (English): Find the unit-digit cycle of powers of 7: 7¹ → 7, 7² → 9, 7³ → 3, 7⁴ → 1.\nదశ 1 (తెలుగు): 7 యొక్క ఘాతాల ఒకట్ల స్థానాలను గమనించండి: 7, 9, 3, 1.\n\nStep 2 (English): The cycle repeats every 4 powers. Divide the exponent by 4.\nదశ 2 (తెలుగు): ఈ క్రమం ప్రతి 4 ఘాతాల తర్వాత మళ్లీ పునరావృతమవుతుంది. కాబట్టి ఘాతాన్ని 4తో భాగించాలి.\n\nStep 3 (English): 103 ÷ 4 leaves remainder 3, because 103 = 4 × 25 + 3.\nదశ 3 (తెలుగు): 103ను 4తో భాగిస్తే శేషం 3. ఎందుకంటే 103 = 4 × 25 + 3.\n\nStep 4 (English): Remainder 3 means the third number in the cycle (7, 9, 3, 1). The unit digit is 3.\nదశ 4 (తెలుగు): శేషం 3 కాబట్టి క్రమంలోని మూడవ అంకె 3. అందువల్ల సమాధానం 3.\n\nFinal Answer: 3 — Option B / సరైన సమాధానం: 3 — ఎంపిక B.",
+  "solutionHTML":`<div class="logic-solution number-system-q-unit-digit-7-103">
+    <h4>🔢 Number System — Unit Digit Cycle / ఒకట్ల స్థానం అంకెల చక్రం</h4>
+    <p><b>Question:</b> Find the unit digit of 7<sup>103</sup>.</p>
+    <p><b>తెలుగు:</b> 7<sup>103</sup> యొక్క ఒకట్ల స్థానం అంకెను కనుగొనండి.</p>
+
+    <div class="logic-step">
+      <h4>Step 1: Write the unit-digit cycle / ఒకట్ల స్థానాల క్రమం</h4>
+      <p>Only the last digit of each power is needed.</p>
+      <p>ప్రతి ఘాతంలో చివరి అంకెను మాత్రమే పరిశీలించాలి.</p>
+      <div class="logic-calc">7¹ → 7 &nbsp; | &nbsp; 7² → 9 &nbsp; | &nbsp; 7³ → 3 &nbsp; | &nbsp; 7⁴ → 1</div>
+      <p>So the repeating cycle is <b>7, 9, 3, 1</b>.</p>
+      <p>అందువల్ల పునరావృతమయ్యే క్రమం <b>7, 9, 3, 1</b>.</p>
+    </div>
+
+    <div class="logic-step">
+      <h4>Step 2: Find the cycle length / క్రమం పొడవు</h4>
+      <p>The cycle contains 4 digits, so divide the exponent by 4.</p>
+      <p>ఈ క్రమంలో 4 అంకెలు ఉన్నాయి. కాబట్టి ఘాతాన్ని 4తో భాగించాలి.</p>
+      <div class="logic-calc">Cycle length = 4</div>
+    </div>
+
+    <div class="logic-step">
+      <h4>Step 3: Divide the exponent / ఘాతాన్ని భాగించండి</h4>
+      <div class="logic-calc">103 ÷ 4 = 25 remainder 3<br>103 = (4 × 25) + 3</div>
+      <p>Remainder = 3 / శేషం = 3</p>
+    </div>
+
+    <div class="logic-step">
+      <h4>Step 4: Select the 3rd digit / మూడవ అంకెను ఎంచుకోండి</h4>
+      <p>Remainder 3 means select the 3rd digit in the cycle.</p>
+      <p>శేషం 3 కాబట్టి క్రమంలోని మూడవ అంకెను తీసుకోవాలి.</p>
+      <div class="logic-calc">1st → 7 &nbsp;&nbsp; 2nd → 9 &nbsp;&nbsp; <b>3rd → 3</b> &nbsp;&nbsp; 4th → 1</div>
+    </div>
+
+    <div style="margin:18px 0;padding:14px;border:1px solid #dfe4ea;border-radius:12px;background:#f8fbff">
+      <h4 style="margin:0 0 8px;color:#921914">Diagrammatic Representation / చిత్రరూప వివరణ</h4>
+      <svg viewBox="0 0 760 230" role="img" aria-label="Unit digit cycle 7, 9, 3, 1; exponent 103 divided by 4 leaves remainder 3, selecting digit 3">
+        <defs>
+          <marker id="nsu103Arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#245fbd"></path>
+          </marker>
+        </defs>
+        <text x="380" y="28" text-anchor="middle" font-size="19" font-weight="800" fill="#173b75">Repeating Unit-Digit Cycle / పునరావృత అంకెల క్రమం</text>
+        <g font-family="Arial,sans-serif" text-anchor="middle">
+          <rect x="55" y="65" width="112" height="66" rx="12" fill="#eef6ff" stroke="#245fbd" stroke-width="2"/>
+          <rect x="231" y="65" width="112" height="66" rx="12" fill="#eef6ff" stroke="#245fbd" stroke-width="2"/>
+          <rect x="407" y="65" width="112" height="66" rx="12" fill="#ecfdf5" stroke="#168c2d" stroke-width="3"/>
+          <rect x="583" y="65" width="112" height="66" rx="12" fill="#eef6ff" stroke="#245fbd" stroke-width="2"/>
+          <g font-size="27" font-weight="900" fill="#173b75">
+            <text x="111" y="108">7</text><text x="287" y="108">9</text><text x="463" y="108" fill="#168c2d">3</text><text x="639" y="108">1</text>
+          </g>
+          <g font-size="13" font-weight="700" fill="#555">
+            <text x="111" y="151">1st</text><text x="287" y="151">2nd</text><text x="463" y="151">3rd ✓</text><text x="639" y="151">4th</text>
+          </g>
+          <g stroke="#245fbd" stroke-width="2.5" fill="none" marker-end="url(#nsu103Arrow)">
+            <path d="M170 98 H220"/><path d="M346 98 H396"/><path d="M522 98 H572"/>
+          </g>
+          <path d="M640 164 C640 207 110 207 110 164" fill="none" stroke="#f08a00" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#nsu103Arrow)"/>
+          <text x="380" y="196" text-anchor="middle" font-size="15" font-weight="700" fill="#9a5700">Cycle repeats after 4 powers / ప్రతి 4 ఘాతాల తర్వాత పునరావృతం</text>
+        </g>
+      </svg>
+      <div class="logic-calc">103 ÷ 4 → Remainder 3 → 3rd cycle digit = 3</div>
+    </div>
+
+    <div class="logic-final-box">
+      <span>Final Answer / సరైన సమాధానం</span>
+      <strong>3 — Option B</strong>
+    </div>
+  </div>`
+},
 {"question":"The difference between the two numbers is 1365. On dividing the larger by the smaller, the quotient is 6, and the remainder is 15. Find the smaller number.","options":["240","270","285","295"],"answer":1,"pattern":"Division Algorithm","solution":"Larger = 6x + 15 and larger - x = 1365. Thus 5x + 15 = 1365, giving x = 270."},
 {"question":"If 2x+3y=50 and x, y∈N, then what is the value of x for which y is minimum?","options":["20","22","24","26"],"answer":1,"pattern":"Linear Equation + Minimum Value","solution":"y = (50 - 2x)/3. For natural y and maximum feasible x, x = 22 gives y = 2."},
 {"question":"A number r when divided by 8 leaves remainder 3. What will be the remainder when (r²+6r+7) is divided by 8?","options":["2","3","4","1"],"answer":0,"pattern":"Remainder Theorem / Modular Arithmetic","solution":"r ≡ 3 (mod 8), so r² + 6r + 7 ≡ 9 + 18 + 7 = 34 ≡ 2 (mod 8)."},
-{"question":"The digit in the unit place of (251)^3 + (495)^3 + (986)^6 - (721)^2546 is:","options":["2","7","1","9"],"answer":2,"pattern":"Unit Digit / Last Digit of Powers","solution":"Step 1: Unit digit only is needed, so consider only the last digit of each base. 251 → 1, 495 → 5, 986 → 6, 721 → 1. Step 2: (251)^3 has unit digit 1^3 = 1. Step 3: (495)^3 has unit digit 5^3 = 125 → 5. Step 4: Every positive power of 6 has unit digit 6, so (986)^6 has unit digit 6. Step 5: Every positive power of 1 has unit digit 1, so (721)^2546 has unit digit 1. Step 6: Add/subtract the unit digits: 1 + 5 + 6 - 1 = 11. Therefore the unit digit is 1. Correct answer: (c) 1. Exam Shortcut: For unit-digit questions, ignore all digits except the unit digit of each base; then use the power cycle when necessary."},
+{
+  "question": "The digit in the unit place of (251)^3 + (495)^3 + (986)^6 - (721)^2546 is:",
+  "questionHTML": `<div class="number-system-unit-digit-q35">
+    <div><b>The digit in the unit place of</b></div>
+    <div style="margin:8px 0;font-size:22px;font-weight:800;text-align:center;line-height:1.7">
+      (251)<sup>3</sup> + (495)<sup>3</sup> + (986)<sup>6</sup> − (721)<sup>2546</sup>
+    </div>
+    <div><b>is:</b></div>
+    <div style="margin-top:10px;color:#921914;font-weight:700">
+      (251)<sup>3</sup> + (495)<sup>3</sup> + (986)<sup>6</sup> − (721)<sup>2546</sup> యొక్క ఒకట్ల స్థానంలోని అంకె ఏది?
+    </div>
+  </div>`,
+  "options": ["2", "7", "1", "9"],
+  "answer": 2,
+  "pattern": "Unit Digit / Last Digit of Powers / ఒకట్ల స్థానం",
+  "solution": "Step 1: Consider only the unit digit of each base: 251 → 1, 495 → 5, 986 → 6, and 721 → 1. Step 2: (251)^3 has unit digit 1. Step 3: (495)^3 has unit digit 5. Step 4: Every positive power of a number ending in 6 ends in 6, so (986)^6 has unit digit 6. Step 5: Every positive power of a number ending in 1 ends in 1, so (721)^2546 has unit digit 1. Step 6: 1 + 5 + 6 − 1 = 11, so the final unit digit is 1. Correct answer: Option 3 (1).",
+  "solutionHTML": `<div class="logic-solution number-system-unit-digit-q35-solution">
+    <h4>🔢 Number System — Unit Digit / ఒకట్ల స్థానం</h4>
+    <div class="logic-step">
+      <h4>Step 1: Understand the question / ప్రశ్నను అర్థం చేసుకోండి</h4>
+      <p>We need only the digit in the units place of the complete expression. So, we can ignore all digits except the last digit of each base.</p>
+      <p>మొత్తం వ్యక్తీకరణలో ఒకట్ల స్థానంలోని అంకె మాత్రమే కావాలి. కాబట్టి ప్రతి ఆధార సంఖ్యలో చివరి అంకెను మాత్రమే తీసుకోవాలి.</p>
+      <div class="logic-calc">(251)<sup>3</sup> + (495)<sup>3</sup> + (986)<sup>6</sup> − (721)<sup>2546</sup></div>
+    </div>
+    <div class="logic-step">
+      <h4>Step 2: Identify the unit digits / ఒకట్ల స్థానపు అంకెలను గుర్తించండి</h4>
+      <div class="logic-calc">
+        251 → <b>1</b><br>
+        495 → <b>5</b><br>
+        986 → <b>6</b><br>
+        721 → <b>1</b>
+      </div>
+      <p>తెలుగు: 251లో 1, 495లో 5, 986లో 6, 721లో 1 ఒకట్ల స్థానంలో ఉన్నాయి.</p>
+    </div>
+    <div class="logic-step">
+      <h4>Step 3: Find the unit digit of each power / ప్రతి ఘాతపు ఒకట్ల అంకెను కనుగొనండి</h4>
+      <p><b>(251)<sup>3</sup>:</b> Its base ends in 1. Any positive power of a number ending in 1 also ends in 1.</p>
+      <p>1తో ముగిసే సంఖ్యకు ఏ ధన పూర్ణ ఘాతం తీసుకున్నా ఒకట్ల అంకె 1గానే ఉంటుంది.</p>
+      <div class="logic-calc">(251)<sup>3</sup> → 1<sup>3</sup> → <b>1</b></div>
+      <p><b>(495)<sup>3</sup>:</b> Its base ends in 5. Any positive power of a number ending in 5 ends in 5.</p>
+      <p>5తో ముగిసే సంఖ్యకు ఏ ధన పూర్ణ ఘాతం తీసుకున్నా ఒకట్ల అంకె 5గానే ఉంటుంది.</p>
+      <div class="logic-calc">(495)<sup>3</sup> → 5<sup>3</sup> = 125 → <b>5</b></div>
+      <p><b>(986)<sup>6</sup>:</b> Any positive power of a number ending in 6 ends in 6.</p>
+      <p>6తో ముగిసే సంఖ్యకు ఏ ధన పూర్ణ ఘాతం తీసుకున్నా ఒకట్ల అంకె 6గానే ఉంటుంది.</p>
+      <div class="logic-calc">(986)<sup>6</sup> → <b>6</b></div>
+      <p><b>(721)<sup>2546</sup>:</b> Any positive power of a number ending in 1 ends in 1. The large exponent does not change its unit digit.</p>
+      <p>1తో ముగిసే సంఖ్యకు 2546 వంటి పెద్ద ఘాతం ఉన్నా ఒకట్ల అంకె మారదు.</p>
+      <div class="logic-calc">(721)<sup>2546</sup> → <b>1</b></div>
+    </div>
+    <div class="logic-step">
+      <h4>Step 4: Combine the unit digits / ఒకట్ల అంకెలను కలపండి</h4>
+      <p>Now add and subtract the unit digits in the same order as the original expression.</p>
+      <p>ఇప్పుడు అసలు వ్యక్తీకరణలో ఉన్న క్రమంలోనే కూడిక మరియు తీసివేత చేయాలి.</p>
+      <div class="logic-calc">
+        1 + 5 + 6 − 1<br>
+        = 11
+      </div>
+      <p>11 యొక్క ఒకట్ల స్థానపు అంకె <b>1</b>.</p>
+    </div>
+    <div class="logic-section">
+      <h3>Diagrammatic Representation / చిత్రరూప వివరణ</h3>
+      <p>Each base contributes only its unit digit. Apply the same powers and signs, then take the last digit.</p>
+      <p>ప్రతి ఆధార సంఖ్యలోని ఒకట్ల అంకెను మాత్రమే తీసుకొని, అదే ఘాతాలు మరియు గుర్తులతో లెక్కించాలి.</p>
+      <svg viewBox="0 0 760 300" role="img" aria-label="Unit digit flow: 251 to 1, 495 to 5, 986 to 6, 721 to 1; then 1 plus 5 plus 6 minus 1 equals 11, final unit digit 1">
+        <defs>
+          <marker id="nsq35Arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#245fbd"></path>
+          </marker>
+        </defs>
+        <g font-family="Arial,sans-serif" text-anchor="middle">
+          <g font-size="17" font-weight="800" fill="#173b75">
+            <rect x="18" y="24" width="160" height="62" rx="10" fill="#eef6ff" stroke="#245fbd" stroke-width="2"/>
+            <rect x="204" y="24" width="160" height="62" rx="10" fill="#eef6ff" stroke="#245fbd" stroke-width="2"/>
+            <rect x="390" y="24" width="160" height="62" rx="10" fill="#eef6ff" stroke="#245fbd" stroke-width="2"/>
+            <rect x="576" y="24" width="166" height="62" rx="10" fill="#eef6ff" stroke="#245fbd" stroke-width="2"/>
+            <text x="98" y="50">(251)³</text><text x="98" y="72">last digit: 1</text>
+            <text x="284" y="50">(495)³</text><text x="284" y="72">last digit: 5</text>
+            <text x="470" y="50">(986)⁶</text><text x="470" y="72">last digit: 6</text>
+            <text x="659" y="50">(721)²⁵⁴⁶</text><text x="659" y="72">last digit: 1</text>
+          </g>
+          <g stroke="#245fbd" stroke-width="2.5" fill="none" marker-end="url(#nsq35Arrow)">
+            <path d="M98 91 V130"/><path d="M284 91 V130"/><path d="M470 91 V130"/><path d="M659 91 V130"/>
+          </g>
+          <g font-size="24" font-weight="900" fill="#168c2d">
+            <rect x="58" y="137" width="80" height="52" rx="10" fill="#ecfdf5" stroke="#168c2d" stroke-width="2"/>
+            <rect x="244" y="137" width="80" height="52" rx="10" fill="#ecfdf5" stroke="#168c2d" stroke-width="2"/>
+            <rect x="430" y="137" width="80" height="52" rx="10" fill="#ecfdf5" stroke="#168c2d" stroke-width="2"/>
+            <rect x="619" y="137" width="80" height="52" rx="10" fill="#ecfdf5" stroke="#168c2d" stroke-width="2"/>
+            <text x="98" y="172">1</text><text x="284" y="172">5</text><text x="470" y="172">6</text><text x="659" y="172">1</text>
+          </g>
+          <text x="380" y="224" font-size="23" font-weight="900" fill="#921914">1 + 5 + 6 − 1 = 11</text>
+          <path d="M380 232 V251" stroke="#f08a00" stroke-width="3" marker-end="url(#nsq35Arrow)"/>
+          <rect x="270" y="258" width="220" height="36" rx="9" fill="#fff2d9" stroke="#f08a00" stroke-width="2"/>
+          <text x="380" y="283" font-size="20" font-weight="900" fill="#921914">Unit digit = 1</text>
+        </g>
+      </svg>
+    </div>
+    <div class="logic-final-box">
+      <span>Final Answer / తుది సమాధానం</span>
+      <strong>Option 3 — 1</strong>
+    </div>
+  </div>`
+},
 {"question":"Each of Ravi and Kavita had some marbles. Kavita had 12 more marbles than Ravi had. If each of them had one more marble, then three times the number of marbles Kavita would then have had would have been equal to four times the number of marbles Ravi would then have had. How many marbles did Kavita actually have?","options":["43","48","47","51"],"answer":2,"pattern":"Linear Equation","solution":"Let Ravi have x and Kavita x+12. Use 3(x+13)=4(x+1) to obtain Kavita's count."},
 {"question":"In a room, there are some chairs and some people. If on each chair, only one person is seated, then there is no chair for exactly one person. If on each chair, two persons sit, then there is one vacant chair. What is the number of chairs in the room?","options":["3","4","7","6"],"answer":0,"pattern":"Linear Equation","solution":"Translate both seating conditions into equations and solve for the number of chairs."},
 {"question":"In a garden, there are 6 daisy plants the first year. Each year, a gardener adds 3 new daisy plants. He has 26 jasmine plants the first year and loses 2 each year. When will the number of daisy plants equal to the number of jasmine plants after the first year?","options":["5 years","4 years","2 years","6 years"],"answer":0,"pattern":"Arithmetic Progression / Linear Equation","solution":"Daisies = 6 + 3n and jasmine = 26 - 2n. Equating gives n = 4 years after the first year, i.e. the 5th year."},
@@ -19290,8 +19468,403 @@ const analogyQuestions = [
       </div>
     </div>`
   }
+,
+
+  /*
+   * ===== Q16 IMAGE-DATA INTEGRATION =====
+   * Supplied image:
+   * Car : Road :: Ship : ?
+   * Options: Water, Air, Road, Both Air and Water
+   * Correct answer: Water (Option 1 / zero-based answer index 0)
+   * Relation: Vehicle → medium/surface on which it travels.
+   * Added at the end of analogyQuestions; all previous questions remain unchanged.
+   */
+  {
+    question: "Select the related word from the given alternatives.\nCar : Road :: Ship : ?\n\nఇచ్చిన సంబంధానికి సరిపోయే పదాన్ని ఎంచుకోండి.\nకారు రోడ్డుపై ప్రయాణిస్తుంది. అదే విధంగా, ఓడ దేనిపై ప్రయాణిస్తుంది?",
+    options: [
+      "Water (నీరు)",
+      "Air (గాలి)",
+      "Road (రోడ్డు)",
+      "Both Air and Water (గాలి మరియు నీరు రెండూ)"
+    ],
+    answer: 0,
+    pattern: "Car → Road; Ship → Water. The relation is Vehicle → the surface or medium on which it normally travels.",
+    solution: "A car normally travels on a road. In the same way, a ship normally travels on water. Therefore, Water (Option 1) is the correct answer.",
+    solutionHTML: `<div class="logic-solution analogy-q16-solution">
+      <div class="logic-step">
+        <h4>🔗 Analogy — Q16 / సారూప్యత — ప్రశ్న 16</h4>
+        <p><b>Question / ప్రశ్న:</b> Car : Road :: Ship : ?</p>
+        <p><b>తెలుగు:</b> కారు రోడ్డుపై ప్రయాణిస్తుంది. అదే విధంగా, ఓడ దేనిపై ప్రయాణిస్తుంది?</p>
+        <p><b>Options / ఎంపికలు:</b></p>
+        <p>1. Water (నీరు) &nbsp; 2. Air (గాలి) &nbsp; 3. Road (రోడ్డు) &nbsp; 4. Both Air and Water (గాలి మరియు నీరు రెండూ)</p>
+      </div>
+
+      <div class="logic-step">
+        <h4>🧠 Step 1 — Understand the Given Pair / ఇచ్చిన జంటను అర్థం చేసుకోండి</h4>
+        <div class="logic-calc">
+          <b>Car → Road</b><br>
+          <b>కారు → రోడ్డు</b>
+        </div>
+        <p><b>English:</b> A car normally travels on a road.</p>
+        <p><b>తెలుగు:</b> కారు సాధారణంగా రోడ్డుపై ప్రయాణిస్తుంది.</p>
+      </div>
+
+      <div class="logic-step">
+        <h4>🔎 Step 2 — Identify the Relationship / సంబంధాన్ని గుర్తించండి</h4>
+        <p><b>English:</b> The relationship is a vehicle and the surface or medium on which it normally travels.</p>
+        <p><b>తెలుగు:</b> ఇక్కడ సంబంధం వాహనం మరియు అది సాధారణంగా ప్రయాణించే మార్గం లేదా మాధ్యమం మధ్య ఉంది.</p>
+        <div class="logic-calc">
+          <b>Vehicle → Travel surface / medium</b><br>
+          <b>వాహనం → ప్రయాణించే మార్గం / మాధ్యమం</b>
+        </div>
+      </div>
+
+      <div class="logic-step">
+        <h4>🧩 Step 3 — Apply the Same Relationship / అదే సంబంధాన్ని వర్తింపజేయండి</h4>
+        <p><b>English:</b> A ship normally travels on water. So, Ship → Water.</p>
+        <p><b>తెలుగు:</b> ఓడ సాధారణంగా నీటిపై ప్రయాణిస్తుంది. కాబట్టి, ఓడ → నీరు.</p>
+        <div class="logic-calc">
+          <b>Car : Road :: Ship : Water</b><br>
+          <b>కారు : రోడ్డు :: ఓడ : నీరు</b>
+        </div>
+      </div>
+
+      <div class="logic-section">
+        <h3>🖼️ Diagrammatic Representation / చిత్ర రూప వివరణ</h3>
+        <p><b>English:</b> The diagram compares the travel surface of a car with the travel medium of a ship.</p>
+        <p><b>తెలుగు:</b> కారు ప్రయాణించే రోడ్డును, ఓడ ప్రయాణించే నీటిని ఈ చిత్రం పోల్చి చూపిస్తుంది.</p>
+        <svg viewBox="0 0 1000 560" role="img" aria-label="Analogy Q16: a car travels on a road and a ship travels on water" style="display:block;width:100%;max-width:760px;height:auto;margin:12px auto 4px;">
+          <defs>
+            <marker id="analogyQ16Arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+              <path d="M0,0 L12,6 L0,12 Z" fill="#921914"></path>
+            </marker>
+            <linearGradient id="analogyQ16Road" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#707780"></stop>
+              <stop offset="100%" stop-color="#343a40"></stop>
+            </linearGradient>
+            <linearGradient id="analogyQ16Water" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#9bdcf5"></stop>
+              <stop offset="100%" stop-color="#267fbd"></stop>
+            </linearGradient>
+          </defs>
+
+          <rect x="25" y="20" width="950" height="520" rx="20" fill="#f8fbff" stroke="#dfe4ea" stroke-width="2"></rect>
+          <text x="500" y="60" text-anchor="middle" font-size="27" font-weight="900" fill="#921914">Vehicle → Travel Surface / Medium</text>
+          <text x="500" y="88" text-anchor="middle" font-size="18" font-weight="700" fill="#555">వాహనం → ప్రయాణించే మార్గం / మాధ్యమం</text>
+
+          <rect x="65" y="115" width="870" height="175" rx="16" fill="#fffaf0" stroke="#d9c9ad" stroke-width="2"></rect>
+          <text x="115" y="150" font-size="23" font-weight="900" fill="#173b75">CAR / కారు</text>
+          <rect x="110" y="205" width="335" height="52" rx="5" fill="url(#analogyQ16Road)"></rect>
+          <line x1="125" y1="231" x2="430" y2="231" stroke="#fff" stroke-width="3" stroke-dasharray="24 18"></line>
+          <rect x="205" y="174" width="125" height="42" rx="12" fill="#245fbd" stroke="#173b75" stroke-width="3"></rect>
+          <path d="M225 174 L246 151 L296 151 L318 174 Z" fill="#b9dcf7" stroke="#173b75" stroke-width="3"></path>
+          <circle cx="232" cy="218" r="13" fill="#222" stroke="#fff" stroke-width="3"></circle>
+          <circle cx="304" cy="218" r="13" fill="#222" stroke="#fff" stroke-width="3"></circle>
+          <line x1="465" y1="205" x2="570" y2="205" stroke="#921914" stroke-width="4" marker-end="url(#analogyQ16Arrow)"></line>
+          <text x="515" y="185" text-anchor="middle" font-size="18" font-weight="800" fill="#921914">travels on</text>
+          <rect x="600" y="165" width="270" height="80" rx="14" fill="#eef6ff" stroke="#245fbd" stroke-width="3"></rect>
+          <text x="735" y="200" text-anchor="middle" font-size="25" font-weight="900" fill="#173b75">ROAD / రోడ్డు</text>
+          <text x="735" y="226" text-anchor="middle" font-size="16" fill="#555">Land surface / భూమిపై మార్గం</text>
+
+          <rect x="65" y="315" width="870" height="195" rx="16" fill="#f0f9ff" stroke="#a9d8ed" stroke-width="2"></rect>
+          <text x="115" y="350" font-size="23" font-weight="900" fill="#173b75">SHIP / ఓడ</text>
+          <rect x="110" y="420" width="335" height="58" rx="5" fill="url(#analogyQ16Water)"></rect>
+          <path d="M180 410 L350 410 L320 447 L215 447 Z" fill="#921914" stroke="#6f100d" stroke-width="3"></path>
+          <rect x="235" y="378" width="75" height="32" fill="#fff" stroke="#173b75" stroke-width="2"></rect>
+          <rect x="254" y="360" width="38" height="18" fill="#f08a00"></rect>
+          <line x1="125" y1="436" x2="430" y2="436" stroke="#fff" stroke-width="3" stroke-dasharray="28 16"></line>
+          <line x1="465" y1="410" x2="570" y2="410" stroke="#921914" stroke-width="4" marker-end="url(#analogyQ16Arrow)"></line>
+          <text x="515" y="390" text-anchor="middle" font-size="18" font-weight="800" fill="#921914">travels on</text>
+          <rect x="600" y="370" width="270" height="80" rx="14" fill="#eaf8ff" stroke="#168cbd" stroke-width="3"></rect>
+          <text x="735" y="405" text-anchor="middle" font-size="25" font-weight="900" fill="#075b91">WATER / నీరు</text>
+          <text x="735" y="431" text-anchor="middle" font-size="16" fill="#555">Water medium / నీటి మాధ్యమం</text>
+          <text x="500" y="490" text-anchor="middle" font-size="17" font-weight="800" fill="#168c2d">Same relationship: Vehicle → where it normally travels</text>
+        </svg>
+      </div>
+
+      <div class="logic-step">
+        <h4>⚡ Step 4 — Eliminate the Other Options / మిగతా ఎంపికలను తొలగించండి</h4>
+        <p><b>Option 1 — Water (నీరు):</b> Correct. A ship normally travels on water.</p>
+        <p><b>Option 2 — Air (గాలి):</b> Incorrect. An aeroplane travels through the air; a ship does not normally travel through air.</p>
+        <p><b>Option 3 — Road (రోడ్డు):</b> Incorrect. A car travels on a road; this is already the first pair.</p>
+        <p><b>Option 4 — Both Air and Water (గాలి మరియు నీరు రెండూ):</b> Incorrect. The matching relationship in this question is ship → water.</p>
+        <p><b>తెలుగు:</b> ఓడ నీటిపై ప్రయాణిస్తుంది. అందువల్ల సరైన ఎంపిక Water (నీరు). మిగతా ఎంపికలు ఇచ్చిన సంబంధానికి సరిపోవు.</p>
+      </div>
+
+      <div class="logic-section">
+        <h3>📚 Remember / గుర్తుంచుకోండి</h3>
+        <div class="logic-calc">
+          <b>Car → Road</b><br>
+          <b>Ship → Water</b><br>
+          <b>Vehicle → Travel surface / medium</b>
+        </div>
+      </div>
+
+      <div class="logic-final-box">
+        <span>✅ Final Answer / తుది సమాధానం</span>
+        <strong>Option 1 — Smell (వాసన)</strong>
+      </div>
+    </div>`
+  },
+
+  /*
+   * ===== Q17 IMAGE-DATA INTEGRATION =====
+   * Supplied image:
+   * Tongue : Taste :: Nose : ?
+   * Options: Smell, Face, Touch, Air
+   * Correct answer: Smell (Option 1 / zero-based answer index 0)
+   * Relation: Sense organ → function/sense detected by that organ.
+   * Added after Q16; all previous question data remains unchanged.
+   */
+  {
+    question: "Complete the analogy.\nTongue : Taste :: Nose : ?\n\nసారూప్యతను పూర్తి చేయండి.\nనాలుక : రుచి :: ముక్కు : ?",
+    options: [
+      "Smell (వాసన)",
+      "Face (ముఖం)",
+      "Touch (స్పర్శ)",
+      "Air (గాలి)"
+    ],
+    answer: 0,
+    pattern: "Tongue → Taste; Nose → Smell. The relationship is Sense organ → function/sense detected by that organ.",
+    solution: "The tongue is used to taste food. In the same way, the nose is used to smell things. Therefore, Smell (Option 1) is the correct answer.",
+    solutionHTML: `<div class="logic-solution analogy-q17-solution">
+      <div class="logic-step">
+        <h4>🔗 Analogy — Q17 / సారూప్యత — ప్రశ్న 17</h4>
+        <p><b>Question / ప్రశ్న:</b> Tongue : Taste :: Nose : ?</p>
+        <p><b>తెలుగు:</b> నాలుక రుచిని తెలుసుకోవడానికి ఉపయోగపడుతుంది. అదే విధంగా, ముక్కు దేనిని గుర్తించడానికి ఉపయోగపడుతుంది?</p>
+        <p><b>Options / ఎంపికలు:</b></p>
+        <p>1. Smell (వాసన) &nbsp; 2. Face (ముఖం) &nbsp; 3. Touch (స్పర్శ) &nbsp; 4. Air (గాలి)</p>
+      </div>
+
+      <div class="logic-step">
+        <h4>🧠 Step 1 — Understand the Given Pair / ఇచ్చిన జంటను అర్థం చేసుకోండి</h4>
+        <div class="logic-calc">
+          <b>Tongue → Taste</b><br>
+          <b>నాలుక → రుచి</b>
+        </div>
+        <p><b>English:</b> The tongue helps us identify the taste of food.</p>
+        <p><b>తెలుగు:</b> ఆహారం యొక్క రుచిని తెలుసుకోవడానికి నాలుక సహాయపడుతుంది.</p>
+      </div>
+
+      <div class="logic-step">
+        <h4>🔎 Step 2 — Identify the Relationship / సంబంధాన్ని గుర్తించండి</h4>
+        <p><b>English:</b> The relationship is a sense organ and the function or sense detected by that organ.</p>
+        <p><b>తెలుగు:</b> ఇక్కడ సంబంధం ఒక ఇంద్రియ అవయవం మరియు ఆ అవయవం ద్వారా తెలుసుకునే అనుభూతి మధ్య ఉంది.</p>
+        <div class="logic-calc">
+          <b>Sense organ → Function / Sense</b><br>
+          <b>ఇంద్రియ అవయవం → పని / అనుభూతి</b>
+        </div>
+      </div>
+
+      <div class="logic-step">
+        <h4>🧩 Step 3 — Apply the Same Relationship / అదే సంబంధాన్ని వర్తింపజేయండి</h4>
+        <p><b>English:</b> The nose helps us identify smells. So, Nose → Smell.</p>
+        <p><b>తెలుగు:</b> వాసనను గుర్తించడానికి ముక్కు సహాయపడుతుంది. కాబట్టి, ముక్కు → వాసన.</p>
+        <div class="logic-calc">
+          <b>Tongue : Taste :: Nose : Smell</b><br>
+          <b>నాలుక : రుచి :: ముక్కు : వాసన</b>
+        </div>
+      </div>
+
+      <div class="logic-section">
+        <h3>🖼️ Diagrammatic Representation / చిత్ర రూప వివరణ</h3>
+        <p><b>English:</b> The diagram compares the sense detected by the tongue with the sense detected by the nose.</p>
+        <p><b>తెలుగు:</b> నాలుక ద్వారా తెలుసుకునే రుచిని, ముక్కు ద్వారా గుర్తించే వాసనను ఈ చిత్రం పోల్చి చూపిస్తుంది.</p>
+        <svg viewBox="0 0 1000 500" role="img" aria-label="Analogy Q17: tongue detects taste and nose detects smell" style="display:block;width:100%;max-width:760px;height:auto;margin:12px auto 4px;">
+          <defs>
+            <marker id="analogyQ17Arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+              <path d="M0,0 L12,6 L0,12 Z" fill="#921914"></path>
+            </marker>
+            <linearGradient id="analogyQ17Taste" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffe3e8"></stop>
+              <stop offset="100%" stop-color="#f7a8b8"></stop>
+            </linearGradient>
+            <linearGradient id="analogyQ17Smell" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#e7f7ff"></stop>
+              <stop offset="100%" stop-color="#a9dcf5"></stop>
+            </linearGradient>
+          </defs>
+
+          <rect x="20" y="18" width="960" height="464" rx="20" fill="#f8fbff" stroke="#dfe4ea" stroke-width="2"></rect>
+          <text x="500" y="58" text-anchor="middle" font-size="27" font-weight="900" fill="#921914">Sense Organ → Sense / Function</text>
+          <text x="500" y="88" text-anchor="middle" font-size="19" font-weight="700" fill="#555">ఇంద్రియ అవయవం → అనుభూతి / పని</text>
+
+          <rect x="55" y="115" width="890" height="150" rx="16" fill="#fff8fa" stroke="#efc5cf" stroke-width="2"></rect>
+          <text x="105" y="151" font-size="23" font-weight="900" fill="#921914">TONGUE / నాలుక</text>
+          <path d="M150 205 C185 165 270 165 305 205 C270 245 185 245 150 205 Z" fill="url(#analogyQ17Taste)" stroke="#b94b68" stroke-width="4"></path>
+          <path d="M225 183 C220 198 220 214 225 228" fill="none" stroke="#b94b68" stroke-width="3"></path>
+          <circle cx="185" cy="199" r="4" fill="#b94b68"></circle>
+          <circle cx="205" cy="215" r="4" fill="#b94b68"></circle>
+          <circle cx="250" cy="198" r="4" fill="#b94b68"></circle>
+          <line x1="350" y1="205" x2="505" y2="205" stroke="#921914" stroke-width="4" marker-end="url(#analogyQ17Arrow)"></line>
+          <text x="425" y="185" text-anchor="middle" font-size="18" font-weight="800" fill="#921914">detects / గుర్తిస్తుంది</text>
+          <rect x="555" y="165" width="325" height="80" rx="14" fill="#fff0f3" stroke="#c45b75" stroke-width="3"></rect>
+          <text x="717" y="199" text-anchor="middle" font-size="27" font-weight="900" fill="#921914">TASTE / రుచి</text>
+          <text x="717" y="226" text-anchor="middle" font-size="17" fill="#555">Food taste / ఆహార రుచి</text>
+
+          <rect x="55" y="295" width="890" height="150" rx="16" fill="#f2faff" stroke="#b9dff1" stroke-width="2"></rect>
+          <text x="105" y="331" font-size="23" font-weight="900" fill="#075b91">NOSE / ముక్కు</text>
+          <path d="M220 335 C210 360 205 388 220 408 C235 423 270 418 282 400 C268 396 255 390 253 375 C251 357 246 344 240 335 Z" fill="url(#analogyQ17Smell)" stroke="#267fbd" stroke-width="4"></path>
+          <path d="M221 405 Q238 414 255 403" fill="none" stroke="#267fbd" stroke-width="3"></path>
+          <path d="M290 355 C310 342 315 330 305 320 M300 380 C325 370 333 357 326 345" fill="none" stroke="#267fbd" stroke-width="3" stroke-linecap="round"></path>
+          <line x1="350" y1="385" x2="505" y2="385" stroke="#921914" stroke-width="4" marker-end="url(#analogyQ17Arrow)"></line>
+          <text x="425" y="365" text-anchor="middle" font-size="18" font-weight="800" fill="#921914">detects / గుర్తిస్తుంది</text>
+          <rect x="555" y="345" width="325" height="80" rx="14" fill="#eaf8ff" stroke="#168cbd" stroke-width="3"></rect>
+          <text x="717" y="379" text-anchor="middle" font-size="27" font-weight="900" fill="#075b91">SMELL / వాసన</text>
+          <text x="717" y="406" text-anchor="middle" font-size="17" fill="#555">Odour / వాసన</text>
+        </svg>
+      </div>
+
+      <div class="logic-step">
+        <h4>⚡ Step 4 — Eliminate the Other Options / మిగతా ఎంపికలను తొలగించండి</h4>
+        <p><b>Option 1 — Smell (వాసన):</b> Correct. The nose detects smell.</p>
+        <p><b>Option 2 — Face (ముఖం):</b> Incorrect. Face is not the function of the nose.</p>
+        <p><b>Option 3 — Touch (స్పర్శ):</b> Incorrect. Touch is mainly detected through the skin.</p>
+        <p><b>Option 4 — Air (గాలి):</b> Incorrect. Air is not the matching sense/function in this analogy.</p>
+        <p><b>తెలుగు:</b> ముక్కు వాసనను గుర్తిస్తుంది. అందువల్ల సరైన ఎంపిక Smell (వాసన). మిగతా ఎంపికలు ఇచ్చిన సంబంధానికి సరిపోవు.</p>
+      </div>
+
+      <div class="logic-section">
+        <h3>📚 Remember / గుర్తుంచుకోండి</h3>
+        <div class="logic-calc">
+          <b>Tongue → Taste</b><br>
+          <b>Nose → Smell</b><br>
+          <b>Sense organ → Sense / Function</b>
+        </div>
+      </div>
+
+      <div class="logic-final-box">
+        <span>✅ Final Answer / తుది సమాధానం</span>
+        <strong>Option 1 — Smell (వాసన)</strong>
+      </div>
+    </div>`
+  }
+  ,
+
+  /*
+   * ===== Q18 IMAGE-DATA INTEGRATION =====
+   * Supplied image:
+   * Square : 90° :: Equilateral triangle : ?
+   * Options: 30°, 60°, 90°, 120°
+   * Correct answer: 60° (Option 2 / zero-based answer index 1)
+   * Relation: Interior angle of the given regular shape.
+   * A square has four 90° interior angles. An equilateral triangle
+   * has three equal 60° interior angles.
+   */
+  {
+    question: "Complete the analogy. / సారూప్యతను పూర్తి చేయండి.\nSquare : 90° :: Equilateral triangle : ?\nచతురస్రం : 90° :: సమబాహు త్రిభుజం : ?",
+    options: ["30°", "60°", "90°", "120°"],
+    answer: 1,
+    pattern: "A square has an interior angle of 90°. An equilateral triangle has equal interior angles of 60° each. / చతురస్రం అంతర్గత కోణం 90°. సమబాహు త్రిభుజంలోని ప్రతి అంతర్గత కోణం 60°.",
+    solution: "A square has four right angles, each measuring 90°. An equilateral triangle has three equal angles. The sum of the interior angles of a triangle is 180°, so each angle is 180° ÷ 3 = 60°. Therefore, the correct answer is Option 2 — 60°. / చతురస్రంలోని ప్రతి కోణం 90°. సమబాహు త్రిభుజంలో మూడు కోణాలు సమానంగా ఉంటాయి. త్రిభుజంలోని కోణాల మొత్తం 180°. కాబట్టి ప్రతి కోణం 180° ÷ 3 = 60°.",
+    solutionHTML: `<div class="logic-solution analogy-q18-solution">
+      <div class="logic-step">
+        <h4>🔗 Analogy — Q18 / సారూప్యత — ప్రశ్న 18</h4>
+        <p><b>Question / ప్రశ్న:</b> Square : 90° :: Equilateral triangle : ?</p>
+        <p><b>తెలుగు:</b> చతురస్రం : 90° :: సమబాహు త్రిభుజం : ?</p>
+        <p>We must compare the interior angle of each shape. / ప్రతి ఆకారం యొక్క అంతర్గత కోణాన్ని పోల్చాలి.</p>
+      </div>
+
+      <div class="logic-step">
+        <h4>🧠 Step 1 — Understand the Square / చతురస్రాన్ని అర్థం చేసుకోండి</h4>
+        <p>A square has four equal interior angles. Each angle is a right angle measuring <b>90°</b>.</p>
+        <p><b>తెలుగు:</b> చతురస్రానికి నాలుగు సమాన అంతర్గత కోణాలు ఉంటాయి. ప్రతి కోణం 90° ఉంటుంది.</p>
+        <div class="logic-calc">
+          <b>Square → 90°</b><br>
+          <b>చతురస్రం → 90°</b>
+        </div>
+      </div>
+
+      <div class="logic-step">
+        <h4>📐 Step 2 — Understand the Equilateral Triangle / సమబాహు త్రిభుజాన్ని అర్థం చేసుకోండి</h4>
+        <p>An equilateral triangle has three equal sides and three equal interior angles.</p>
+        <p><b>తెలుగు:</b> సమబాహు త్రిభుజానికి మూడు సమాన భుజాలు మరియు మూడు సమాన అంతర్గత కోణాలు ఉంటాయి.</p>
+        <p>The sum of the interior angles of every triangle is <b>180°</b>.</p>
+        <p><b>తెలుగు:</b> ప్రతి త్రిభుజంలోని మూడు అంతర్గత కోణాల మొత్తం 180°.</p>
+        <div class="logic-calc">
+          <b>Each angle = 180° ÷ 3</b><br>
+          <b>= 60°</b>
+        </div>
+      </div>
+
+      <div class="logic-step">
+        <h4>🖼️ Step 3 — Diagrammatic Representation / రేఖాచిత్ర వివరణ</h4>
+        <p>The square shows a 90° corner. The equilateral triangle shows three equal 60° corners.</p>
+        <p><b>తెలుగు:</b> చతురస్రంలో 90° కోణం, సమబాహు త్రిభుజంలో మూడు 60° సమాన కోణాలు చూపబడ్డాయి.</p>
+        <svg viewBox="0 0 1000 440" role="img" aria-label="Square interior angle 90 degrees corresponds to each equilateral triangle interior angle 60 degrees">
+          <defs>
+            <marker id="analogyQ18Arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+              <path d="M0,0 L12,6 L0,12 Z" fill="#921914"></path>
+            </marker>
+          </defs>
+          <rect x="15" y="15" width="970" height="410" rx="18" fill="#f8fbff" stroke="#dfe4ea" stroke-width="2"></rect>
+
+          <text x="245" y="65" text-anchor="middle" font-size="29" font-weight="900" fill="#173b75">SQUARE / చతురస్రం</text>
+          <rect x="145" y="115" width="200" height="200" fill="#eef6ff" stroke="#245fbd" stroke-width="5"></rect>
+          <path d="M145 275 L145 315 L185 315" fill="none" stroke="#168c2d" stroke-width="5"></path>
+          <text x="205" y="270" font-size="27" font-weight="900" fill="#921914">90°</text>
+          <text x="245" y="365" text-anchor="middle" font-size="20" font-weight="800" fill="#555">Each interior angle / ప్రతి అంతర్గత కోణం</text>
+
+          <line x1="405" y1="215" x2="570" y2="215" stroke="#921914" stroke-width="4" marker-end="url(#analogyQ18Arrow)"></line>
+          <text x="488" y="185" text-anchor="middle" font-size="19" font-weight="800" fill="#921914">Corresponding angle</text>
+          <text x="488" y="245" text-anchor="middle" font-size="17" font-weight="700" fill="#555">సంబంధిత కోణం</text>
+
+          <text x="755" y="65" text-anchor="middle" font-size="27" font-weight="900" fill="#173b75">EQUILATERAL TRIANGLE</text>
+          <text x="755" y="91" text-anchor="middle" font-size="19" font-weight="700" fill="#555">సమబాహు త్రిభుజం</text>
+          <polygon points="755,112 625,330 885,330" fill="#fff2d9" stroke="#245fbd" stroke-width="5" stroke-linejoin="round"></polygon>
+          <path d="M755 112 L738 140 L772 140 Z" fill="#d9f5df" stroke="#168c2d" stroke-width="2"></path>
+          <text x="755" y="178" text-anchor="middle" font-size="25" font-weight="900" fill="#168c2d">60°</text>
+          <text x="650" y="310" font-size="23" font-weight="900" fill="#168c2d">60°</text>
+          <text x="830" y="310" font-size="23" font-weight="900" fill="#168c2d">60°</text>
+          <text x="755" y="375" text-anchor="middle" font-size="20" font-weight="800" fill="#555">All three angles are equal / మూడు కోణాలు సమానం</text>
+        </svg>
+      </div>
+
+      <div class="logic-step">
+        <h4>🧮 Step 4 — Step-by-Step Calculation / దశలవారీ గణన</h4>
+        <p><b>Step 1:</b> Total angles in a triangle = 180°.</p>
+        <p><b>దశ 1:</b> త్రిభుజంలోని కోణాల మొత్తం = 180°.</p>
+        <p><b>Step 2:</b> An equilateral triangle has 3 equal angles.</p>
+        <p><b>దశ 2:</b> సమబాహు త్రిభుజంలో 3 సమాన కోణాలు ఉంటాయి.</p>
+        <p><b>Step 3:</b> Divide 180° by 3.</p>
+        <p><b>దశ 3:</b> 180° ను 3 తో భాగించాలి.</p>
+        <div class="logic-calc">
+          <b>180° ÷ 3 = 60°</b><br>
+          <b>Square : 90° :: Equilateral triangle : 60°</b>
+        </div>
+      </div>
+
+      <div class="logic-section">
+        <h3>⚡ Shortcut Trick / సులభమైన పద్ధతి</h3>
+        <p>Remember: Square = 90° at each corner; Equilateral triangle = 60° at each corner.</p>
+        <p><b>గుర్తుంచుకోండి:</b> చతురస్రం ప్రతి మూల = 90°; సమబాహు త్రిభుజం ప్రతి మూల = 60°.</p>
+        <div class="logic-calc">
+          <b>Square → 90°</b><br>
+          <b>Equilateral Triangle → 60°</b>
+        </div>
+      </div>
+
+      <div class="logic-step">
+        <h4>❌ Step 5 — Eliminate the Other Options / మిగతా ఎంపికలను పరిశీలించండి</h4>
+        <p><b>Option 1 — 30°:</b> Incorrect. It is not the interior angle of an equilateral triangle.</p>
+        <p><b>Option 2 — 60°:</b> Correct. All three interior angles of an equilateral triangle are 60°.</p>
+        <p><b>Option 3 — 90°:</b> Incorrect. 90° is the square's interior angle.</p>
+        <p><b>Option 4 — 120°:</b> Incorrect. It does not match the required interior angle.</p>
+        <p><b>తెలుగు:</b> సమబాహు త్రిభుజంలోని ప్రతి కోణం 60° మాత్రమే. కాబట్టి రెండవ ఎంపిక సరైనది.</p>
+      </div>
+
+      <div class="logic-final-box">
+        <span>✅ Final Answer / తుది సమాధానం</span>
+        <strong>Option 2 — 60°</strong>
+      </div>
+    </div>`
+  }
 
 ];
+
+
+
+/* ===== English — Word Building Q1 from supplied screenshots ===== */
 
 
 
@@ -33092,8 +33665,8 @@ if (typeof window.updateElementaryStatisticsQuestionCount !== "function") {
      09. Existing test navigation is retained.
      10. Existing result/history logic is retained.
      11. Question count is derived from analogyQuestions.length.
-     12. The home card displays the live analogyQuestions.length count (15 questions).
-     13. The result placeholders now use 0/15.
+     12. The home card displays the live analogyQuestions.length count (16 questions).
+     13. The result placeholders now use 0/16.
      14. No existing question record is removed.
      15. No existing section is replaced.
      16. Q10 validation is non-destructive.
@@ -36405,3 +36978,16 @@ window.addEventListener('DOMContentLoaded', function(){
 /* ===== End Clock Q20 styles ===== */
 
 </style>
+
+
+<!-- ANALOGY Q16 PRESERVATION CHECK
+     01. The supplied Car : Road :: Ship : ? question is appended as Q16.
+     02. Telugu question sentence and bilingual options are included.
+     03. Correct option: Water (Option 1; zero-based answer index 0).
+     04. The result/review card uses solutionHTML for the full explanation.
+     05. Step-by-step explanation is provided in English and Telugu.
+     06. The result card includes an SVG diagrammatic representation.
+     07. Existing Q1–Q15 records are retained without deletion or replacement.
+     08. Analogy question count and score placeholders are updated to 16.
+     09. Existing test navigation, result calculation and history flow are retained.
+-->
